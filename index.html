@@ -3,28 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jenish Kamli | Growth Manager</title>
+<title>Jenish Kamli | Elite Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #0d0d0d;
-  color: #fff;
+  background: radial-gradient(circle at top, #0f2027, #0d0d0d);
+  color: white;
   overflow-x: hidden;
 }
 
-/* NAVBAR */
+/* NAV */
 nav {
   position: fixed;
   width: 100%;
   padding: 15px 40px;
   display: flex;
   justify-content: space-between;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.5);
   backdrop-filter: blur(10px);
+  z-index: 1000;
 }
 
 nav h1 {
@@ -48,18 +52,19 @@ nav a {
 
 .hero h2 {
   font-size: 3rem;
+  text-align: center;
 }
 
-.typing {
+.highlight {
   color: #00f7ff;
 }
 
 .btn {
-  padding: 12px 25px;
+  margin-top: 20px;
+  padding: 12px 30px;
   border: 1px solid #00f7ff;
   background: transparent;
   color: white;
-  margin-top: 20px;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -69,38 +74,53 @@ nav a {
   color: black;
 }
 
-/* DASHBOARD */
+/* CARDS */
 .dashboard {
   padding: 80px 40px;
 }
 
 .cards {
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
+  gap: 20px;
 }
 
 .card {
   flex: 1;
-  background: #111;
+  min-width: 200px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
   padding: 20px;
-  border-radius: 10px;
-  transition: 0.3s;
+  backdrop-filter: blur(10px);
+  transition: 0.4s;
 }
 
 .card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-10px) scale(1.03);
 }
 
-/* AI CHAT */
+/* CHART */
+.chart {
+  max-width: 700px;
+  margin: auto;
+}
+
+/* CHAT */
 .chatbox {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 300px;
-  background: #111;
-  border-radius: 10px;
+  width: 320px;
+  background: rgba(0,0,0,0.7);
+  border-radius: 15px;
   padding: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.messages {
+  height: 200px;
+  overflow-y: auto;
+  font-size: 14px;
 }
 
 .chatbox input {
@@ -108,12 +128,12 @@ nav a {
   padding: 10px;
   border: none;
   outline: none;
+  margin-top: 5px;
 }
 
-.messages {
-  height: 200px;
-  overflow-y: auto;
-  font-size: 14px;
+/* GLOW */
+.glow {
+  text-shadow: 0 0 10px #00f7ff;
 }
 
 </style>
@@ -130,73 +150,85 @@ nav a {
 </nav>
 
 <section class="hero">
-  <h2>I Scale E-commerce Brands 🚀</h2>
-  <p class="typing">Flipkart • Amazon • Meesho Growth Expert</p>
-  <button class="btn">View My Work</button>
+  <h2 class="glow">I Scale <span class="highlight">E-commerce Brands 🚀</span></h2>
+  <p>Flipkart • Amazon • Meesho Growth Expert</p>
+  <button class="btn" onclick="scrollToSection()">View Growth</button>
 </section>
 
 <section class="dashboard" id="dashboard">
-  <h2>Growth Dashboard 📊</h2>
+  <h2>📊 Growth Dashboard</h2>
 
   <div class="cards">
-    <div class="card">
-      <h3>March</h3>
-      <p>2.8L Impressions</p>
-    </div>
+    <div class="card"><h3>March</h3><p>2.8L</p></div>
+    <div class="card"><h3>April</h3><p>6.7L</p></div>
+    <div class="card"><h3>May</h3><p>13.2L</p></div>
+    <div class="card"><h3>June</h3><p>18.4L</p></div>
+    <div class="card"><h3>July</h3><p>20.2L 🔥</p></div>
+  </div>
 
-    <div class="card">
-      <h3>April</h3>
-      <p>6.7L Impressions</p>
-    </div>
-
-    <div class="card">
-      <h3>May</h3>
-      <p>13.2L Impressions</p>
-    </div>
-
-    <div class="card">
-      <h3>June</h3>
-      <p>18.4L Impressions</p>
-    </div>
-
-    <div class="card">
-      <h3>July</h3>
-      <p>20.2L Impressions 🔥</p>
-    </div>
+  <div class="chart">
+    <canvas id="myChart"></canvas>
   </div>
 </section>
 
 <section id="contact" style="padding:80px 40px;">
-  <h2>Contact Me</h2>
+  <h2>Contact</h2>
   <p>Email: jeniish.kamli@gmail.com</p>
-  <p>Phone: +91 9624736282</p>
 </section>
 
-<!-- AI CHAT -->
+<!-- CHAT -->
 <div class="chatbox">
   <div class="messages" id="messages"></div>
-  <input type="text" id="input" placeholder="Ask something..." onkeypress="handle(event)">
+  <input id="input" placeholder="Ask me anything..." onkeypress="chat(event)">
 </div>
 
 <script>
-function handle(e) {
-  if (e.key === "Enter") {
-    let input = document.getElementById("input").value;
-    let msgBox = document.getElementById("messages");
 
-    msgBox.innerHTML += "<p><b>You:</b> " + input + "</p>";
+/* SCROLL */
+function scrollToSection(){
+  document.getElementById("dashboard").scrollIntoView({behavior:"smooth"});
+}
 
-    let reply = "I help scale e-commerce brands using SEO and marketplace strategies 🚀";
+/* GSAP ANIMATION */
+gsap.from(".hero h2", {y:50, opacity:0, duration:1});
+gsap.from(".card", {y:50, opacity:0, stagger:0.2});
 
-    if(input.toLowerCase().includes("flipkart")){
-      reply = "Jenish increased impressions from 2.8L to 20L 🔥";
+/* CHART */
+new Chart(document.getElementById("myChart"), {
+  type: "line",
+  data: {
+    labels: ["Mar","Apr","May","Jun","Jul"],
+    datasets: [{
+      label: "Impressions Growth",
+      data: [2.8,6.7,13.2,18.4,20.2],
+      borderWidth: 2
+    }]
+  }
+});
+
+/* AI CHAT */
+function chat(e){
+  if(e.key === "Enter"){
+    let input = document.getElementById("input").value.toLowerCase();
+    let box = document.getElementById("messages");
+
+    box.innerHTML += "<p><b>You:</b> "+input+"</p>";
+
+    let reply = "I help scale brands using marketplace strategies 🚀";
+
+    if(input.includes("growth")){
+      reply = "Jenish scaled Flipkart from 2.8L to 20L impressions 📈";
     }
 
-    msgBox.innerHTML += "<p><b>AI:</b> " + reply + "</p>";
+    if(input.includes("hire")){
+      reply = "You can contact via email to work together 💼";
+    }
 
+    box.innerHTML += "<p><b>AI:</b> "+reply+"</p>";
     document.getElementById("input").value = "";
   }
 }
+
 </script>
 
 </body>
