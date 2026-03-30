@@ -9,6 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 <style>
 :root{
   --gold:#C9A84C;
@@ -288,6 +289,38 @@ section{padding:120px 60px;}
 }
 .tag:hover{border-color:var(--gold);color:var(--gold);}
 
+/* ─── PHYSICS SKILL PIT ─── */
+#physics-pit {
+  background: var(--black);
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+#matter-container {
+  width: 100%;
+  max-width: 1000px;
+  height: 500px;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--black3);
+  position: relative;
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+  cursor: grab;
+}
+#matter-container:active {
+  cursor: grabbing;
+}
+.pit-hint {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 16px;
+  animation: pulse 2s infinite;
+}
+
 /* ─── CONTACT ─── */
 #contact{background:var(--black);text-align:center;}
 .contact-inner{max-width:700px;margin:0 auto;}
@@ -347,7 +380,7 @@ section{padding:120px 60px;}
 .chat-messages{
   height:300px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;
 }
-.msg{max-width:85%;padding:10px 14px;border-radius:6px;font-size:13px;line-height:1.6;}
+.msg{max-width:85%;padding:10px 14px;border-radius:6px;font-size:13px;line-height:1.6; word-wrap: break-word;}
 .msg.bot{background:var(--card);border:1px solid var(--border);color:var(--text);align-self:flex-start;border-radius:2px 14px 14px 14px;}
 .msg.user{background:var(--gold);color:var(--black);align-self:flex-end;font-weight:500;border-radius:14px 2px 14px 14px;}
 .typing{display:flex;gap:4px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:2px 14px 14px 14px;align-self:flex-start;width:fit-content;}
@@ -434,7 +467,7 @@ footer{
       E-Commerce<br/><span class="accent">Growth</span><br/>Architect
     </h1>
     <p class="hero-sub reveal">
-      Hi, I'm Jenish Kamli, founder of Core Digitals. I scale brands across Amazon, Flipkart, and D2C channels. Combining sharp strategy with creative assets (like my video editing experience) to drive real ROI.
+      Hi, I'm Jenish Kamli, founder of Core Digitals. I scale brands across Amazon, Flipkart, and D2C channels. Combining sharp strategy with creative assets to drive real ROI.
     </p>
     <div class="hero-actions reveal">
       <a href="#projects" class="btn-gold">View My Work</a>
@@ -602,7 +635,7 @@ footer{
       <div class="service-item reveal">
         <div class="service-num">05</div>
         <div class="service-name">Video & Graphic Assets</div>
-        <div class="service-desc">Using Premiere Pro to create high-converting video ads and rich graphics for your listings.</div>
+        <div class="service-desc">Using Adobe Premiere Pro to create high-converting video ads and rich graphics for your listings.</div>
         <span class="service-arrow">→</span>
       </div>
       <div class="service-item reveal">
@@ -610,57 +643,6 @@ footer{
         <div class="service-name">Growth Consulting</div>
         <div class="service-desc">Monthly strategy retainer with full analytics review, competitor tracking, and actionable roadmaps.</div>
         <span class="service-arrow">→</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="projects-header">
-    <div>
-      <span class="section-label reveal">Portfolio</span>
-      <h2 class="section-title reveal">Case <span class="accent">Studies</span></h2>
-    </div>
-    <a href="#contact" class="btn-outline reveal">All Projects →</a>
-  </div>
-  <div class="projects-grid">
-    <div class="project-card reveal">
-      <div class="project-thumb" style="background:linear-gradient(135deg,#1a1200,#2d1f00);">
-        🏆
-        <div class="project-overlay">
-          <div class="overlay-btn">View Details</div>
-        </div>
-      </div>
-      <div class="project-info">
-        <div class="project-tag">Amazon PPC</div>
-        <div class="project-title">Electronics Brand — 4.8x ROAS</div>
-        <div class="project-desc">Scaled from ₹80K to ₹4.2L monthly revenue in 3 months with targeted Sponsored Products campaigns.</div>
-      </div>
-    </div>
-    <div class="project-card reveal">
-      <div class="project-thumb" style="background:linear-gradient(135deg,#001a0d,#002d1a);">
-        📦
-        <div class="project-overlay">
-          <div class="overlay-btn">View Details</div>
-        </div>
-      </div>
-      <div class="project-info">
-        <div class="project-tag">Flipkart Growth</div>
-        <div class="project-title">Fashion Label — 3x Orders</div>
-        <div class="project-desc">Triple-digit order growth in 6 months via catalogue revamp, smart ads, and Big Billion Day strategy.</div>
-      </div>
-    </div>
-    <div class="project-card reveal">
-      <div class="project-thumb" style="background:linear-gradient(135deg,#1a0012,#2d001f);">
-        🚀
-        <div class="project-overlay">
-          <div class="overlay-btn">View Details</div>
-        </div>
-      </div>
-      <div class="project-info">
-        <div class="project-tag">D2C Shopify</div>
-        <div class="project-title">Beauty Brand — ₹50L+ Monthly</div>
-        <div class="project-desc">Built complete D2C funnel with Meta Ads + email automation hitting ₹50L+ monthly revenue.</div>
       </div>
     </div>
   </div>
@@ -724,6 +706,16 @@ footer{
   </div>
 </section>
 
+<section id="physics-pit">
+  <span class="section-label reveal">Interactive Sandbox</span>
+  <h2 class="section-title reveal">My <span class="accent">Tech Stack</span></h2>
+  <div class="divider reveal" style="margin:24px auto;"></div>
+  <p class="section-sub reveal" style="margin:0 auto 40px;">Grab, drag, and throw the skills around. Physics engine powered by Matter.js.</p>
+  
+  <div id="matter-container" class="reveal"></div>
+  <div class="pit-hint">Drag objects with your mouse</div>
+</section>
+
 <section id="contact">
   <div class="contact-inner">
     <span class="section-label reveal">Let's Work</span>
@@ -759,21 +751,21 @@ footer{
     <div class="chat-head">
       <div class="chat-avatar">🤖</div>
       <div class="chat-head-info">
-        <div class="name">Core Digitals AI Assistant</div>
+        <div class="name">Core Digitals AI</div>
         <div class="status"><span class="status-dot"></span> Online — E-Commerce Expert</div>
       </div>
     </div>
     <div class="chat-messages" id="chat-messages">
-      <div class="msg bot">👋 Hey! I'm Jenish's AI assistant. Ask me anything about e-commerce growth, platforms, or services!</div>
+      <div class="msg bot">👋 Namaste! Main Jenish (Core Digitals) ka AI assistant hoon. E-commerce growth, Amazon/Flipkart ads, ya services ke baare mein kuch bhi puchiye!</div>
     </div>
     <div class="chat-suggestions">
-      <button class="suggestion-btn" onclick="sendSuggestion('How did you scale on Flipkart?')">Flipkart Growth</button>
-      <button class="suggestion-btn" onclick="sendSuggestion('Tell me about Amazon services')">Amazon</button>
-      <button class="suggestion-btn" onclick="sendSuggestion('What services do you offer?')">Services</button>
-      <button class="suggestion-btn" onclick="sendSuggestion('I want to hire Jenish')">Hire</button>
+      <button class="suggestion-btn" onclick="sendSuggestion('Who is Jenish?')">About Jenish</button>
+      <button class="suggestion-btn" onclick="sendSuggestion('What is Core Digitals?')">Core Digitals</button>
+      <button class="suggestion-btn" onclick="sendSuggestion('Flipkart growth strategy?')">Flipkart</button>
+      <button class="suggestion-btn" onclick="sendSuggestion('I want to hire you')">Hire</button>
     </div>
     <div class="chat-input-area">
-      <input type="text" id="chat-input" placeholder="Ask about e-commerce..." onkeydown="if(event.key==='Enter')sendChat()"/>
+      <input type="text" id="chat-input" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendChat()"/>
       <button id="chat-send" onclick="sendChat()">➤</button>
     </div>
   </div>
@@ -881,7 +873,7 @@ function initCharts(){
     }
   });
 
-  // Platform chart (kept original as requested)
+  // Platform chart 
   const pCtx=document.getElementById('platformChart').getContext('2d');
   new Chart(pCtx,{
     type:'doughnut',
@@ -927,33 +919,182 @@ document.querySelectorAll('.btn-gold,.nav-cta').forEach(btn=>{
   });
 });
 
-// ── CHAT SYSTEM ──
+// ── MATTER.JS PHYSICS SKILL PIT ──
+function initPhysics() {
+  const container = document.getElementById('matter-container');
+  const Engine = Matter.Engine,
+        Render = Matter.Render,
+        Runner = Matter.Runner,
+        MouseConstraint = Matter.MouseConstraint,
+        Mouse = Matter.Mouse,
+        Composite = Matter.Composite,
+        Bodies = Matter.Bodies,
+        Events = Matter.Events;
+
+  const engine = Engine.create();
+  const world = engine.world;
+
+  const render = Render.create({
+      element: container,
+      engine: engine,
+      options: {
+          width: container.clientWidth,
+          height: container.clientHeight,
+          wireframes: false,
+          background: 'transparent'
+      }
+  });
+
+  Render.run(render);
+  const runner = Runner.create();
+  Runner.run(runner, engine);
+
+  // Walls & Floor
+  const cw = container.clientWidth;
+  const ch = container.clientHeight;
+  const thickness = 60;
+  const ground = Bodies.rectangle(cw/2, ch+thickness/2, cw*2, thickness, { isStatic: true });
+  const leftWall = Bodies.rectangle(-thickness/2, ch/2, thickness, ch*2, { isStatic: true });
+  const rightWall = Bodies.rectangle(cw+thickness/2, ch/2, thickness, ch*2, { isStatic: true });
+  
+  Composite.add(world, [ground, leftWall, rightWall]);
+
+  // Skill Balls Array
+  const skills = [
+    { text: "Amazon", color: "#FF9900", r: 55 },
+    { text: "Flipkart", color: "#047BD5", r: 50 },
+    { text: "Meesho", color: "#F43397", r: 45 },
+    { text: "Shopify", color: "#95BF47", r: 50 },
+    { text: "PPC", color: "#C9A84C", r: 40 },
+    { text: "SEO", color: "#8A6B2A", r: 35 },
+    { text: "Core Digitals", color: "#141414", r: 65, stroke: "#C9A84C" },
+    { text: "Video Editing", color: "#E8C97A", r: 55, textColor: "#000" },
+    { text: "Premiere Pro", color: "#9999FF", r: 50 },
+    { text: "D2C", color: "#4ade80", r: 40, textColor: "#000" }
+  ];
+
+  const skillBodies = [];
+
+  skills.forEach((skill, i) => {
+    const x = Math.random() * (cw - 100) + 50;
+    const y = -100 - (i * 80); // Drop them one by one
+    const body = Bodies.circle(x, y, skill.r, {
+      restitution: 0.9, // Bounciness
+      friction: 0.005,
+      render: {
+        fillStyle: skill.color,
+        strokeStyle: skill.stroke || skill.color,
+        lineWidth: 3
+      }
+    });
+    body.skillData = skill; // Attach data for rendering text
+    skillBodies.push(body);
+  });
+
+  Composite.add(world, skillBodies);
+
+  // Add mouse control
+  const mouse = Mouse.create(render.canvas);
+  const mouseConstraint = MouseConstraint.create(engine, {
+      mouse: mouse,
+      constraint: {
+          stiffness: 0.2,
+          render: { visible: false }
+      }
+  });
+  Composite.add(world, mouseConstraint);
+  render.mouse = mouse; // Sync mouse
+
+  // Draw custom text on top of bodies
+  Events.on(render, 'afterRender', function() {
+    const context = render.context;
+    context.font = "bold 13px 'DM Sans', sans-serif";
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+
+    skillBodies.forEach(body => {
+      const pos = body.position;
+      context.fillStyle = body.skillData.textColor || "#FFF";
+      context.fillText(body.skillData.text, pos.x, pos.y);
+    });
+  });
+
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    render.bounds.max.x = container.clientWidth;
+    render.bounds.max.y = container.clientHeight;
+    render.options.width = container.clientWidth;
+    render.options.height = container.clientHeight;
+    render.canvas.width = container.clientWidth;
+    render.canvas.height = container.clientHeight;
+    Matter.Body.setPosition(ground, {x: container.clientWidth/2, y: container.clientHeight+thickness/2});
+    Matter.Body.setPosition(rightWall, {x: container.clientWidth+thickness/2, y: container.clientHeight/2});
+  });
+}
+
+// Initialize physics only when it scrolls into view to save performance
+let physicsInit = false;
+const pitObserver = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting && !physicsInit) {
+    physicsInit = true;
+    initPhysics();
+  }
+}, { threshold: 0.2 });
+pitObserver.observe(document.getElementById('physics-pit'));
+
+
+// ── ADVANCED AI CHAT SYSTEM ──
 function toggleChat(){
   const box=document.getElementById('chat-box');
   box.classList.toggle('open');
 }
 
-const RESPONSES={
-  growth:"📈 I scaled a Flipkart brand from ₹40K to ₹3.8L/month in just 4 months! Strategy: catalogue overhaul, smart bidding, Big Billion Day prep, and review generation. The key was finding high-intent keywords with low competition and dominating those first.",
-  amazon:"🛒 Amazon is my strongest platform! I manage full-cycle — Brand Registry, Sponsored Products/Brands/Display, A+ Content, FBA setup, and Buy Box optimization. My average ACoS for Amazon clients is under 12% with 4.8x ROAS.",
-  services:"💼 Here's what Core Digitals offers:\n1. Amazon Full Management\n2. Flipkart Scaling & Ads\n3. D2C Brand Building\n4. Performance Marketing\n5. Video & Graphic Assets\n6. Growth Strategy Consulting\n\nAll engagements start with a FREE strategy call!",
-  hire:"🔥 Ready to scale your brand? Let's connect directly!\n\n👉 https://wa.me/917567250343\n\nI'm currently taking on 2-3 new clients this month.",
-  meesho:"📦 Meesho is a goldmine for value-segment products! I help brands optimize catalogues, nail pricing strategy, and run Meesho Ads effectively for maximum volume growth.",
-  roas:"📊 For my clients, I consistently achieve 4-6x ROAS on Amazon PPC and Meta Ads. The secret is granular campaign structure + negative keyword management + dayparting.",
-  flipkart:"🏪 Flipkart scaling is about flash sales, Smart Ads, and catalogue quality. I helped a fashion brand 3x their orders in 6 months via strategic Big Billion Day preparation and year-round catalog optimization.",
-  default:"I'm here to help with e-commerce growth and Core Digitals services 🚀\nFor anything else, feel free to connect directly on WhatsApp.\n\n👉 https://wa.me/917567250343"
-};
-
-function getReply(msg){
-  const m=msg.toLowerCase();
-  if(m.includes('growth')||m.includes('scale')||m.includes('grow'))return RESPONSES.growth;
-  if(m.includes('flipkart'))return RESPONSES.flipkart;
-  if(m.includes('amazon'))return RESPONSES.amazon;
-  if(m.includes('meesho'))return RESPONSES.meesho;
-  if(m.includes('roas')||m.includes('return'))return RESPONSES.roas;
-  if(m.includes('service')||m.includes('offer')||m.includes('what do'))return RESPONSES.services;
-  if(m.includes('hire')||m.includes('work with')||m.includes('contact')||m.includes('price')||m.includes('cost'))return RESPONSES.hire;
-  return RESPONSES.default;
+function getAdvancedReply(msg){
+  const m = msg.toLowerCase();
+  
+  // Jenish / Core Digitals Identity
+  if(/(who is jenish|about you|your name|founder)/.test(m)) {
+    return "I am Jenish Kamli, an E-commerce Growth Manager and the founder of Core Digitals. I operate from Umargaon, Gujarat, and help brands scale to ₹Crore+ revenues.";
+  }
+  if(/(core digitals|your agency|company)/.test(m)) {
+    return "Core Digitals is my digital agency focusing on e-commerce growth (Amazon, Flipkart, D2C) and high-quality graphic/video design services to boost brand conversions.";
+  }
+  if(/(location|where are you|umargaon|odisha|basudevpur)/.test(m)) {
+    return "I am based in Umargaon, Gujarat, but I also have strong connections to Basudevpur in Bhadrak, Odisha. My agency works with clients nationwide!";
+  }
+  
+  // Platform Strategies
+  if(/(flipkart|smart ads|bbd)/.test(m)) {
+    return "🏪 On Flipkart, I focus on Smart Ads, catalogue quality, and flash sale prep. For example, I recently helped a fashion brand 3x their orders in 6 months using strategic BBD (Big Billion Day) preparation.";
+  }
+  if(/(amazon|ppc|buy box|acos)/.test(m)) {
+    return "🛒 Amazon is my strongest platform. I handle Brand Registry, Sponsored Products, FBA setup, and Buy Box optimization. I consistently maintain an average ACoS of under 12% and hit around 4.8x ROAS for my clients.";
+  }
+  if(/(meesho)/.test(m)) {
+    return "📦 Meesho is great for volume in the value segment. I optimize catalogues, refine pricing strategies, and run effective Meesho Ads to scale quickly.";
+  }
+  
+  // Creative / Tech Skills
+  if(/(video|premiere pro|editing|youtube|lost phone|ek sitara)/.test(m)) {
+    return "🎬 Yes, I'm highly experienced in Adobe Premiere Pro! I use it to create high-converting video ads for e-commerce. I also do creative storytelling and have worked on YouTube series like 'The Lost Phone' and channel 'Ek Sitara'.";
+  }
+  if(/(game|gaming|minecraft|gta)/.test(m)) {
+    return "🎮 Haha, when I'm not scaling e-commerce brands, I love gaming! I play Minecraft and GTA V, and I'm on Xbox Game Pass. It keeps the strategic and creative parts of my brain sharp!";
+  }
+  
+  // Business / Hire
+  if(/(hire|work with|contact|price|cost|consultation)/.test(m)) {
+    return "🔥 I'd love to work with you! I currently have a few slots open for new clients. Let's discuss your brand's potential over a quick call. 👉 https://wa.me/917567250343";
+  }
+  if(/(service|what do you do|offer)/.test(m)) {
+    return "💼 Core Digitals Offers:\n1. Amazon/Flipkart/Meesho Mgmt\n2. D2C & Shopify Scaling\n3. Performance Marketing (Ads)\n4. Video Editing & Graphics\n5. Complete Growth Strategy";
+  }
+  if(/(roas|return|sales|result)/.test(m)) {
+    return "📊 I focus heavily on profitability. My average client sees a 4.8x ROAS and significant YoY growth. Check out the 'Performance Dashboard' section above for real data!";
+  }
+  
+  // Fallback
+  return "I'm the AI Assistant for Jenish Kamli (Core Digitals). I can tell you about e-commerce growth, platform strategies, or our services! For specific project quotes, please WhatsApp Jenish directly: https://wa.me/917567250343";
 }
 
 function appendMsg(text,type){
@@ -982,10 +1123,10 @@ function sendChat(){
   input.value='';
   appendMsg(text,'user');
   showTyping();
-  const delay=1200+Math.random()*800;
+  const delay=1000 + Math.random()*800;
   setTimeout(()=>{
     hideTyping();
-    appendMsg(getReply(text),'bot');
+    appendMsg(getAdvancedReply(text),'bot');
   },delay);
 }
 
@@ -1000,383 +1141,6 @@ window.addEventListener('scroll',()=>{
   if(window.scrollY>60){nav.style.background='rgba(10,10,10,0.97)';}
   else{nav.style.background='linear-gradient(180deg,rgba(10,10,10,.95) 0%,transparent 100%)';}
 });
-</script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Jenish Kamli | Core Digitals</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
-
-<style>
-/* ... (All your existing CSS remains exactly the same until the game section) ... */
-:root{
-  --gold:#C9A84C;
-  --gold-light:#E8C97A;
-  --gold-dim:#8A6B2A;
-  --black:#0A0A0A;
-  --black2:#111111;
-  --black3:#181818;
-  --card:#141414;
-  --border:rgba(201,168,76,0.18);
-  --text:#F0EDE6;
-  --muted:#7A7468;
-  --font-display:'Cormorant Garamond',serif;
-  --font-body:'DM Sans',sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  background:var(--black);
-  color:var(--text);
-  font-family:var(--font-body);
-  font-size:16px;
-  overflow-x:hidden;
-  cursor:none;
-}
-
-/* ... (Your existing CSS: Cursor, Nav, Hero, Sections, Charts, Chat, Footer) ... */
-/* I am omitting the duplicate CSS here for brevity, keep all your original CSS here */
-
-/* ─── GAME SECTION STYLES ─── */
-#game-section {
-    background: var(--black2);
-    position: relative;
-    padding: 80px 60px;
-    text-align: center;
-}
-
-.game-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-    min-height: 500px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-}
-
-/* Phase 1: Physics Drop */
-#physics-game {
-    width: 100%;
-    height: 500px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-}
-
-.game-overlay-text {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
-    pointer-events: none;
-}
-
-.game-score {
-    font-family: var(--font-display);
-    font-size: 24px;
-    color: var(--gold);
-    font-weight: 700;
-}
-
-/* Phase 2: ROAS Clicker */
-#clicker-game {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: var(--card);
-    z-index: 5; /* Hidden behind physics initially */
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-}
-
-.revenue-display {
-    font-family: var(--font-display);
-    font-size: 64px;
-    color: #4ade80;
-    margin-bottom: 10px;
-}
-
-.clicker-btn {
-    padding: 20px 60px;
-    background: var(--gold);
-    color: var(--black);
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    border-radius: 50px;
-    cursor: none;
-    margin-bottom: 30px;
-    transition: transform 0.1s;
-}
-.clicker-btn:active { transform: scale(0.95); }
-
-.upgrades-container {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.upgrade-btn {
-    background: var(--black3);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 15px 20px;
-    border-radius: 8px;
-    cursor: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.3s;
-}
-.upgrade-btn:hover:not(:disabled) {
-    border-color: var(--gold);
-    background: rgba(201,168,76,0.1);
-}
-.upgrade-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-.up-title { font-weight: bold; font-size: 14px; margin-bottom: 5px; color: var(--gold); }
-.up-cost { font-size: 12px; color: var(--muted); }
-.up-effect { font-size: 11px; color: #4ade80; margin-top: 5px;}
-
-.victory-screen {
-    position: absolute;
-    inset: 0;
-    background: rgba(10,10,10,0.95);
-    z-index: 30;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.victory-screen h2 { color: var(--gold); font-family: var(--font-display); font-size: 48px; margin-bottom: 20px;}
-</style>
-</head>
-<body>
-
-<section id="game-section">
-    <div class="section-label reveal">Interactive Experience</div>
-    <h2 class="section-title reveal">The Core Digitals <span class="accent">Growth Engine</span></h2>
-    <p class="section-sub reveal" style="margin: 0 auto 40px;">First, build a solid foundation. Then, scale the revenue.</p>
-
-    <div class="game-container reveal">
-        <div id="physics-game">
-            <div class="game-overlay-text">
-                <div style="font-size:14px; color:var(--muted); text-transform:uppercase; letter-spacing:2px;">Phase 1: Foundation</div>
-                <div class="game-score">Packages Stacked: <span id="stack-score">0</span> / 10</div>
-                <div style="font-size:12px; color:var(--muted); margin-top:10px;">Click to drop a package. Build a stable stack!</div>
-            </div>
-            </div>
-
-        <div id="clicker-game">
-            <div style="font-size:14px; color:var(--muted); text-transform:uppercase; letter-spacing:2px;">Phase 2: Scale</div>
-            <div class="revenue-display">₹<span id="revenue-val">0</span></div>
-            <div style="color:var(--gold); margin-bottom: 20px;">Revenue / Sec: ₹<span id="rps-val">0</span></div>
-            
-            <button class="clicker-btn" id="main-click">Optimize Listing (+₹100)</button>
-
-            <div class="upgrades-container">
-                <button class="upgrade-btn" id="up-ppc" data-cost="1000" data-rps="50">
-                    <span class="up-title">Amazon PPC</span>
-                    <span class="up-cost">Cost: ₹1,000</span>
-                    <span class="up-effect">+₹50/sec</span>
-                </button>
-                <button class="upgrade-btn" id="up-seo" data-cost="5000" data-rps="300">
-                    <span class="up-title">Core Digitals SEO</span>
-                    <span class="up-cost">Cost: ₹5,000</span>
-                    <span class="up-effect">+₹300/sec</span>
-                </button>
-                <button class="upgrade-btn" id="up-d2c" data-cost="20000" data-rps="1500">
-                    <span class="up-title">D2C Funnel</span>
-                    <span class="up-cost">Cost: ₹20,000</span>
-                    <span class="up-effect">+₹1,500/sec</span>
-                </button>
-            </div>
-        </div>
-
-        <div class="victory-screen" id="victory-screen">
-            <h2>₹1 Crore Target Hit! 🚀</h2>
-            <p style="color:var(--text); margin-bottom: 30px;">You've successfully scaled the brand.</p>
-            <a href="#contact" class="btn-gold" onclick="document.getElementById('victory-screen').style.display='none'">Let's do this in real life</a>
-        </div>
-    </div>
-</section>
-
-<script>
-// ... (Your existing JS for Cursor, GSAP, Charts, Chat) ...
-
-/* ─── GAME LOGIC ─── */
-
-// --- Phase 1: Matter.js Physics ---
-const Engine = Matter.Engine,
-      Render = Matter.Render,
-      Runner = Matter.Runner,
-      Bodies = Matter.Bodies,
-      Composite = Matter.Composite,
-      Mouse = Matter.Mouse,
-      MouseConstraint = Matter.MouseConstraint;
-
-const engine = Engine.create();
-const gameDiv = document.getElementById('physics-game');
-const width = gameDiv.clientWidth || 1000;
-const height = gameDiv.clientHeight || 500;
-
-const render = Render.create({
-    element: gameDiv,
-    engine: engine,
-    options: {
-        width: width,
-        height: height,
-        wireframes: false,
-        background: 'transparent'
-    }
-});
-
-// Ground and walls
-const ground = Bodies.rectangle(width/2, height, width, 60, { isStatic: true, render: { fillStyle: '#181818' } });
-const leftWall = Bodies.rectangle(0, height/2, 60, height, { isStatic: true, render: { fillStyle: 'transparent' } });
-const rightWall = Bodies.rectangle(width, height/2, 60, height, { isStatic: true, render: { fillStyle: 'transparent' } });
-Composite.add(engine.world, [ground, leftWall, rightWall]);
-
-// Mouse interaction for dropping
-const mouse = Mouse.create(render.canvas);
-const mouseConstraint = MouseConstraint.create(engine, {
-    mouse: mouse,
-    constraint: { stiffness: 0.2, render: { visible: false } }
-});
-Composite.add(engine.world, mouseConstraint);
-render.mouse = mouse;
-
-let boxesStacked = 0;
-const targetBoxes = 10;
-const scoreSpan = document.getElementById('stack-score');
-
-// Add a box on click
-Matter.Events.on(mouseConstraint, 'mousedown', function(event) {
-    if(boxesStacked >= targetBoxes) return;
-    
-    // Only drop if clicked in the upper half
-    if(event.mouse.position.y < height / 2) {
-        const size = 40 + Math.random() * 30;
-        const box = Bodies.rectangle(event.mouse.position.x, 50, size, size, {
-            render: {
-                fillStyle: '#C9A84C',
-                strokeStyle: '#8A6B2A',
-                lineWidth: 2
-            }
-        });
-        Composite.add(engine.world, box);
-        boxesStacked++;
-        scoreSpan.innerText = boxesStacked;
-
-        if(boxesStacked >= targetBoxes) {
-            setTimeout(transitionToPhase2, 2000); // Wait a bit then transition
-        }
-    }
-});
-
-Render.run(render);
-const runner = Runner.create();
-Runner.run(runner, engine);
-
-// --- Phase 2: Clicker Game ---
-let revenue = 0;
-let rps = 0; // Revenue per second
-const targetRevenue = 10000000; // 1 Crore
-
-const revSpan = document.getElementById('revenue-val');
-const rpsSpan = document.getElementById('rps-val');
-const mainBtn = document.getElementById('main-click');
-const upBtns = document.querySelectorAll('.upgrade-btn');
-const p1 = document.getElementById('physics-game');
-const p2 = document.getElementById('clicker-game');
-
-function transitionToPhase2() {
-    gsap.to(p1, {opacity: 0, duration: 1, onComplete: () => {
-        p1.style.display = 'none';
-        p2.style.display = 'flex';
-        gsap.fromTo(p2, {opacity: 0}, {opacity: 1, duration: 1});
-        startGameLoop();
-    }});
-}
-
-function formatMoney(num) {
-    return num.toLocaleString('en-IN');
-}
-
-function updateUI() {
-    revSpan.innerText = formatMoney(Math.floor(revenue));
-    rpsSpan.innerText = formatMoney(rps);
-
-    upBtns.forEach(btn => {
-        const cost = parseInt(btn.dataset.cost);
-        btn.disabled = revenue < cost;
-    });
-
-    if(revenue >= targetRevenue) {
-        document.getElementById('victory-screen').style.display = 'flex';
-        revenue = targetRevenue; // Cap it
-    }
-}
-
-mainBtn.addEventListener('click', () => {
-    revenue += 100;
-    updateUI();
-});
-
-upBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const cost = parseInt(btn.dataset.cost);
-        const boost = parseInt(btn.dataset.rps);
-        if(revenue >= cost) {
-            revenue -= cost;
-            rps += boost;
-            // Increase cost for next purchase
-            btn.dataset.cost = Math.floor(cost * 1.5);
-            btn.querySelector('.up-cost').innerText = `Cost: ₹${formatMoney(btn.dataset.cost)}`;
-            updateUI();
-        }
-    });
-});
-
-let lastTime = performance.now();
-function startGameLoop() {
-    requestAnimationFrame(gameLoop);
-}
-
-function gameLoop(currentTime) {
-    const deltaTime = (currentTime - lastTime) / 1000;
-    lastTime = currentTime;
-    
-    if(revenue < targetRevenue) {
-        revenue += rps * deltaTime;
-        updateUI();
-    }
-    requestAnimationFrame(gameLoop);
-}
-
 </script>
 </body>
 </html>
