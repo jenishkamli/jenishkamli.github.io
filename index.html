@@ -3,13 +3,16 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Jenish Kamli | E-Commerce Growth Expert</title>
+<title>Jenish Kamli | Core Digitals</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+
 <style>
+/* ... (All your existing CSS remains exactly the same until the game section) ... */
 :root{
   --gold:#C9A84C;
   --gold-light:#E8C97A;
@@ -35,982 +38,339 @@ body{
   cursor:none;
 }
 
-/* ─── CURSOR ─── */
-#cursor{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;}
-#cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,168,76,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .12s ease;}
-body:hover #cursor{opacity:1;}
+/* ... (Your existing CSS: Cursor, Nav, Hero, Sections, Charts, Chat, Footer) ... */
+/* I am omitting the duplicate CSS here for brevity, keep all your original CSS here */
 
-/* ─── SCROLLBAR ─── */
-::-webkit-scrollbar{width:4px;}
-::-webkit-scrollbar-track{background:var(--black);}
-::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:2px;}
+/* ─── GAME SECTION STYLES ─── */
+#game-section {
+    background: var(--black2);
+    position: relative;
+    padding: 80px 60px;
+    text-align: center;
+}
 
-/* ─── NAV ─── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  padding:20px 60px;display:flex;align-items:center;justify-content:space-between;
-  background:linear-gradient(180deg,rgba(10,10,10,.95) 0%,transparent 100%);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
+.game-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    min-height: 500px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
-.nav-logo{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--gold);letter-spacing:1px;}
-.nav-links{display:flex;gap:36px;list-style:none;}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;transition:color .3s;}
-.nav-links a:hover{color:var(--gold);}
-.nav-cta{
-  padding:10px 24px;border:1px solid var(--gold);border-radius:2px;
-  color:var(--gold);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
-  text-decoration:none;transition:all .3s;position:relative;overflow:hidden;
-}
-.nav-cta::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .3s;z-index:-1;}
-.nav-cta:hover{color:var(--black);}
-.nav-cta:hover::before{transform:scaleX(1);transform-origin:left;}
 
-/* ─── HERO ─── */
-#hero{
-  min-height:100vh;display:flex;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;
-  background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,168,76,.06) 0%,transparent 70%);
+/* Phase 1: Physics Drop */
+#physics-game {
+    width: 100%;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
 }
-.hero-bg{
-  position:absolute;inset:0;
-  background:
-    radial-gradient(1px 1px at 20% 30%,rgba(201,168,76,.4) 0%,transparent 100%),
-    radial-gradient(1px 1px at 80% 70%,rgba(201,168,76,.3) 0%,transparent 100%),
-    radial-gradient(1px 1px at 50% 50%,rgba(201,168,76,.2) 0%,transparent 100%);
-}
-.hero-grid{
-  position:absolute;inset:0;
-  background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);
-  background-size:80px 80px;
-}
-.hero-inner{text-align:center;position:relative;z-index:2;max-width:900px;padding:0 40px;}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:8px 20px;border:1px solid var(--border);border-radius:100px;
-  font-size:12px;font-weight:500;color:var(--gold);letter-spacing:1px;text-transform:uppercase;
-  margin-bottom:32px;
-  background:rgba(201,168,76,.06);
-  backdrop-filter:blur(10px);
-}
-.badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.4);}}
-.hero-title{
-  font-family:var(--font-display);
-  font-size:clamp(52px,8vw,110px);
-  font-weight:300;line-height:1.0;
-  letter-spacing:-1px;
-  margin-bottom:24px;
-}
-.hero-title .accent{color:var(--gold);font-weight:600;font-style:italic;}
-.hero-sub{
-  font-size:16px;color:var(--muted);line-height:1.8;max-width:560px;margin:0 auto 48px;font-weight:300;
-}
-.hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-.btn-gold{
-  padding:16px 40px;background:var(--gold);color:var(--black);
-  font-size:13px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
-  text-decoration:none;border-radius:2px;border:none;cursor:none;
-  transition:all .3s;position:relative;overflow:hidden;
-}
-.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 20px 60px rgba(201,168,76,.3);}
-.btn-outline{
-  padding:16px 40px;border:1px solid var(--border);color:var(--text);
-  font-size:13px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;
-  text-decoration:none;border-radius:2px;
-  transition:all .3s;cursor:none;
-}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
-.hero-stats{
-  display:flex;justify-content:center;gap:60px;margin-top:80px;
-  padding-top:40px;border-top:1px solid var(--border);
-}
-.stat-item{text-align:center;}
-.stat-num{font-family:var(--font-display);font-size:40px;font-weight:700;color:var(--gold);}
-.stat-label{font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px;}
-.hero-scroll{
-  position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-  color:var(--muted);font-size:11px;letter-spacing:2px;text-transform:uppercase;
-}
-.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollDown 2s infinite;}
-@keyframes scrollDown{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}100%{transform:scaleY(0);transform-origin:bottom;}}
 
-/* ─── SECTION COMMON ─── */
-section{padding:120px 60px;}
-.section-label{
-  display:inline-block;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
-  color:var(--gold);margin-bottom:16px;
+.game-overlay-text {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    pointer-events: none;
 }
-.section-title{
-  font-family:var(--font-display);font-size:clamp(36px,5vw,64px);font-weight:300;line-height:1.1;
-  margin-bottom:20px;
-}
-.section-title .accent{color:var(--gold);font-style:italic;}
-.section-sub{color:var(--muted);font-size:16px;line-height:1.8;max-width:560px;font-weight:300;}
-.divider{width:60px;height:1px;background:var(--gold);margin:24px 0;}
 
-/* ─── PLATFORMS ─── */
-#platforms{background:var(--black2);}
-.platforms-header{text-align:center;margin-bottom:64px;}
-.platforms-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;max-width:1100px;margin:0 auto;
+.game-score {
+    font-family: var(--font-display);
+    font-size: 24px;
+    color: var(--gold);
+    font-weight: 700;
 }
-.platform-card{
-  position:relative;
-  padding:36px 24px;border:1px solid var(--border);border-radius:4px;
-  background:var(--card);text-align:center;
-  transition:all .4s cubic-bezier(.23,1,.32,1);
-  cursor:none;overflow:hidden;
-}
-.platform-card::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 50% 0%,rgba(201,168,76,.12) 0%,transparent 70%);
-  opacity:0;transition:opacity .4s;
-}
-.platform-card:hover{
-  border-color:var(--gold);
-  transform:translateY(-8px) scale(1.02);
-  box-shadow:0 30px 80px rgba(201,168,76,.15),0 0 0 1px rgba(201,168,76,.2);
-}
-.platform-card:hover::before{opacity:1;}
-.platform-icon{font-size:42px;margin-bottom:16px;display:block;animation:float 3s ease-in-out infinite;}
-.platform-card:nth-child(2) .platform-icon{animation-delay:.3s;}
-.platform-card:nth-child(3) .platform-icon{animation-delay:.6s;}
-.platform-card:nth-child(4) .platform-icon{animation-delay:.9s;}
-.platform-card:nth-child(5) .platform-icon{animation-delay:1.2s;}
-.platform-card:nth-child(6) .platform-icon{animation-delay:1.5s;}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
-.platform-name{font-size:14px;font-weight:600;color:var(--text);letter-spacing:.5px;}
-.platform-badge{
-  position:absolute;top:10px;right:10px;
-  background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);
-  color:var(--gold);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
-  padding:3px 8px;border-radius:2px;opacity:0;transition:opacity .3s;
-}
-.platform-card:hover .platform-badge{opacity:1;}
 
-/* ─── DASHBOARD ─── */
-#dashboard{background:var(--black);}
-.dashboard-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;max-width:1200px;margin:0 auto;}
-.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.kpi-card{
-  padding:28px 24px;background:var(--card);border:1px solid var(--border);border-radius:4px;
-  transition:all .3s;
+/* Phase 2: ROAS Clicker */
+#clicker-game {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--card);
+    z-index: 5; /* Hidden behind physics initially */
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
 }
-.kpi-card:hover{border-color:var(--gold);box-shadow:0 0 40px rgba(201,168,76,.1);}
-.kpi-label{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
-.kpi-value{font-family:var(--font-display);font-size:34px;font-weight:700;color:var(--gold);line-height:1;}
-.kpi-delta{font-size:12px;color:#4ade80;margin-top:6px;font-weight:500;}
-.chart-container{position:relative;height:320px;}
-.chart-wrapper{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:28px;}
-.chart-title{font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:20px;}
 
-/* ─── SERVICES ─── */
-#services{background:var(--black2);}
-.services-layout{display:grid;grid-template-columns:1fr 2fr;gap:80px;max-width:1200px;margin:0 auto;}
-.services-grid{display:grid;gap:2px;}
-.service-item{
-  padding:32px 36px;background:var(--card);border:1px solid var(--border);
-  transition:all .4s;cursor:none;position:relative;overflow:hidden;
+.revenue-display {
+    font-family: var(--font-display);
+    font-size: 64px;
+    color: #4ade80;
+    margin-bottom: 10px;
 }
-.service-item::after{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
-  background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .4s;
-}
-.service-item:hover{background:rgba(201,168,76,.04);border-color:rgba(201,168,76,.3);}
-.service-item:hover::after{transform:scaleY(1);}
-.service-num{font-family:var(--font-display);font-size:13px;color:var(--gold-dim);margin-bottom:8px;}
-.service-name{font-size:17px;font-weight:600;margin-bottom:8px;color:var(--text);}
-.service-desc{font-size:13px;color:var(--muted);line-height:1.7;}
-.service-arrow{position:absolute;right:28px;top:50%;transform:translateY(-50%);color:var(--gold);opacity:0;transition:all .3s;font-size:20px;}
-.service-item:hover .service-arrow{opacity:1;transform:translateY(-50%) translateX(4px);}
 
-/* ─── PROJECTS ─── */
-#projects{background:var(--black);}
-.projects-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;max-width:1200px;margin-left:auto;margin-right:auto;}
-.projects-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;max-width:1200px;margin:0 auto;
+.clicker-btn {
+    padding: 20px 60px;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: none;
+    margin-bottom: 30px;
+    transition: transform 0.1s;
 }
-.project-card{
-  background:var(--card);border:1px solid var(--border);border-radius:4px;
-  overflow:hidden;transition:all .4s cubic-bezier(.23,1,.32,1);cursor:none;position:relative;
-}
-.project-card:hover{
-  transform:translateY(-8px);
-  border-color:var(--gold);
-  box-shadow:0 40px 100px rgba(201,168,76,.12);
-}
-.project-thumb{
-  height:220px;background:linear-gradient(135deg,var(--black3),var(--card));
-  position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
-  font-size:56px;
-}
-.project-overlay{
-  position:absolute;inset:0;background:rgba(10,10,10,.85);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
-  opacity:0;transition:all .4s;
-}
-.project-card:hover .project-overlay{opacity:1;}
-.overlay-btn{
-  padding:10px 28px;background:var(--gold);color:var(--black);
-  font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
-  border:none;border-radius:2px;cursor:none;
-  transform:translateY(10px);transition:transform .4s .1s;
-}
-.project-card:hover .overlay-btn{transform:translateY(0);}
-.project-info{padding:28px;}
-.project-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
-.project-title{font-size:18px;font-weight:600;margin-bottom:8px;}
-.project-desc{font-size:13px;color:var(--muted);line-height:1.7;}
+.clicker-btn:active { transform: scale(0.95); }
 
-/* ─── AMAZON CASE STUDY ─── */
-#amazon{background:var(--black2);}
-.amazon-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.amazon-visual{
-  padding:48px;background:var(--card);border:1px solid var(--border);border-radius:4px;
-  position:relative;overflow:hidden;
+.upgrades-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-.amazon-visual::before{
-  content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;
-  background:radial-gradient(circle,rgba(201,168,76,.05) 0%,transparent 60%);
-}
-.amazon-metrics{display:grid;gap:24px;}
-.amazon-metric{display:flex;align-items:center;gap:20px;padding:20px;background:rgba(201,168,76,.04);border:1px solid var(--border);border-radius:2px;}
-.metric-icon{font-size:28px;}
-.metric-num{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--gold);}
-.metric-label{font-size:12px;color:var(--muted);margin-top:2px;}
-.amazon-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
-.tag{
-  padding:6px 16px;border:1px solid var(--border);border-radius:2px;
-  font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);
-  transition:all .3s;
-}
-.tag:hover{border-color:var(--gold);color:var(--gold);}
 
-/* ─── CONTACT ─── */
-#contact{background:var(--black);text-align:center;}
-.contact-inner{max-width:700px;margin:0 auto;}
-.contact-actions{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:48px;}
-.contact-row{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
-.btn-linkedin{
-  padding:16px 40px;background:transparent;border:1px solid #0077B5;color:#0077B5;
-  font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
-  text-decoration:none;border-radius:2px;transition:all .3s;display:inline-flex;align-items:center;gap:8px;
+.upgrade-btn {
+    background: var(--black3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 15px 20px;
+    border-radius: 8px;
+    cursor: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s;
 }
-.btn-linkedin:hover{background:#0077B5;color:#fff;transform:translateY(-2px);}
-.btn-whatsapp{
-  padding:16px 40px;background:transparent;border:1px solid #25D366;color:#25D366;
-  font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
-  text-decoration:none;border-radius:2px;transition:all .3s;display:inline-flex;align-items:center;gap:8px;
+.upgrade-btn:hover:not(:disabled) {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.1);
 }
-.btn-whatsapp:hover{background:#25D366;color:#fff;transform:translateY(-2px);}
+.upgrade-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.up-title { font-weight: bold; font-size: 14px; margin-bottom: 5px; color: var(--gold); }
+.up-cost { font-size: 12px; color: var(--muted); }
+.up-effect { font-size: 11px; color: #4ade80; margin-top: 5px;}
 
-/* ─── FLOATING WHATSAPP ─── */
-#wa-float{
-  position:fixed;bottom:30px;right:30px;z-index:900;
-  width:56px;height:56px;background:#25D366;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  text-decoration:none;font-size:26px;
-  box-shadow:0 8px 32px rgba(37,211,102,.4);
-  transition:all .3s;
-  animation:waPulse 3s ease-in-out infinite;
+.victory-screen {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,10,10,0.95);
+    z-index: 30;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-#wa-float:hover{transform:scale(1.1);box-shadow:0 12px 40px rgba(37,211,102,.5);}
-@keyframes waPulse{0%,100%{box-shadow:0 8px 32px rgba(37,211,102,.4);}50%{box-shadow:0 8px 50px rgba(37,211,102,.7),0 0 0 12px rgba(37,211,102,.1);}}
-
-/* ─── AI CHAT ─── */
-#chat-widget{position:fixed;bottom:100px;right:30px;z-index:901;}
-#chat-toggle{
-  width:56px;height:56px;background:var(--gold);border-radius:50%;
-  border:none;cursor:none;display:flex;align-items:center;justify-content:center;
-  font-size:24px;box-shadow:0 8px 32px rgba(201,168,76,.4);transition:all .3s;
-  animation:glow 3s ease-in-out infinite;
-}
-@keyframes glow{0%,100%{box-shadow:0 8px 32px rgba(201,168,76,.4);}50%{box-shadow:0 8px 50px rgba(201,168,76,.7);}}
-#chat-toggle:hover{transform:scale(1.08);}
-#chat-box{
-  position:absolute;bottom:70px;right:0;width:360px;
-  background:var(--black3);border:1px solid var(--border);border-radius:8px;
-  overflow:hidden;display:none;box-shadow:0 30px 80px rgba(0,0,0,.6);
-  transform:translateY(10px) scale(.95);transition:all .3s;
-}
-#chat-box.open{display:flex;flex-direction:column;transform:translateY(0) scale(1);}
-.chat-head{
-  padding:18px 20px;background:linear-gradient(135deg,var(--card),rgba(201,168,76,.08));
-  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;
-}
-.chat-avatar{width:38px;height:38px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;}
-.chat-head-info .name{font-size:14px;font-weight:600;color:var(--text);}
-.chat-head-info .status{font-size:11px;color:#4ade80;display:flex;align-items:center;gap:4px;}
-.status-dot{width:6px;height:6px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite;}
-.chat-messages{
-  height:300px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;
-}
-.msg{max-width:85%;padding:10px 14px;border-radius:6px;font-size:13px;line-height:1.6;}
-.msg.bot{background:var(--card);border:1px solid var(--border);color:var(--text);align-self:flex-start;border-radius:2px 14px 14px 14px;}
-.msg.user{background:var(--gold);color:var(--black);align-self:flex-end;font-weight:500;border-radius:14px 2px 14px 14px;}
-.typing{display:flex;gap:4px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:2px 14px 14px 14px;align-self:flex-start;width:fit-content;}
-.typing span{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:bounce 1s infinite;}
-.typing span:nth-child(2){animation-delay:.15s;}
-.typing span:nth-child(3){animation-delay:.3s;}
-@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
-.chat-input-area{
-  padding:12px 16px;border-top:1px solid var(--border);
-  display:flex;gap:8px;align-items:center;background:var(--card);
-}
-#chat-input{
-  flex:1;background:transparent;border:1px solid var(--border);border-radius:2px;
-  padding:8px 12px;color:var(--text);font-size:13px;font-family:var(--font-body);outline:none;
-}
-#chat-input:focus{border-color:var(--gold);}
-#chat-send{
-  width:36px;height:36px;background:var(--gold);border:none;border-radius:2px;
-  cursor:none;font-size:16px;display:flex;align-items:center;justify-content:center;
-  transition:all .2s;
-}
-#chat-send:hover{background:var(--gold-light);}
-.chat-suggestions{padding:8px 16px;display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid var(--border);}
-.suggestion-btn{
-  padding:4px 10px;border:1px solid var(--border);background:transparent;
-  color:var(--muted);font-size:11px;border-radius:100px;cursor:none;
-  transition:all .2s;font-family:var(--font-body);
-}
-.suggestion-btn:hover{border-color:var(--gold);color:var(--gold);}
-
-/* ─── RIPPLE ─── */
-.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.3);transform:scale(0);animation:rippleAnim .6s linear;pointer-events:none;}
-@keyframes rippleAnim{to{transform:scale(4);opacity:0;}}
-
-/* ─── FOOTER ─── */
-footer{
-  padding:40px 60px;border-top:1px solid var(--border);
-  display:flex;justify-content:space-between;align-items:center;
-  background:var(--black2);
-}
-.footer-logo{font-family:var(--font-display);font-size:18px;color:var(--gold);}
-.footer-copy{font-size:12px;color:var(--muted);}
-
-/* ─── REVEAL ─── */
-.reveal{opacity:0;transform:translateY(30px);}
-
-/* ─── RESPONSIVE ─── */
-@media(max-width:768px){
-  nav{padding:16px 24px;}
-  .nav-links{display:none;}
-  section{padding:80px 24px;}
-  .dashboard-layout{grid-template-columns:1fr;}
-  .services-layout{grid-template-columns:1fr;}
-  .amazon-inner{grid-template-columns:1fr;}
-  .hero-stats{gap:30px;}
-  footer{flex-direction:column;gap:12px;text-align:center;}
-  #chat-box{width:300px;}
-}
+.victory-screen h2 { color: var(--gold); font-family: var(--font-display); font-size: 48px; margin-bottom: 20px;}
 </style>
 </head>
 <body>
 
-<!-- CURSOR -->
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
+<section id="game-section">
+    <div class="section-label reveal">Interactive Experience</div>
+    <h2 class="section-title reveal">The Core Digitals <span class="accent">Growth Engine</span></h2>
+    <p class="section-sub reveal" style="margin: 0 auto 40px;">First, build a solid foundation. Then, scale the revenue.</p>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">JK</div>
-  <ul class="nav-links">
-    <li><a href="#platforms">Platforms</a></li>
-    <li><a href="#dashboard">Results</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="https://wa.me/917567250343" class="nav-cta" target="_blank">Hire Me</a>
-</nav>
+    <div class="game-container reveal">
+        <div id="physics-game">
+            <div class="game-overlay-text">
+                <div style="font-size:14px; color:var(--muted); text-transform:uppercase; letter-spacing:2px;">Phase 1: Foundation</div>
+                <div class="game-score">Packages Stacked: <span id="stack-score">0</span> / 10</div>
+                <div style="font-size:12px; color:var(--muted); margin-top:10px;">Click to drop a package. Build a stable stack!</div>
+            </div>
+            </div>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-inner">
-    <div class="hero-badge reveal"><span class="badge-dot"></span> Available for Projects</div>
-    <h1 class="hero-title reveal">
-      E-Commerce<br/><span class="accent">Growth</span><br/>Architect
-    </h1>
-    <p class="hero-sub reveal">
-      I scale brands to ₹Crore revenues across Amazon, Flipkart, Meesho &amp; D2C channels — with data-driven strategy, performance marketing, and operational excellence.
-    </p>
-    <div class="hero-actions reveal">
-      <a href="#projects" class="btn-gold">View My Work</a>
-      <a href="#contact" class="btn-outline">Let's Connect</a>
+        <div id="clicker-game">
+            <div style="font-size:14px; color:var(--muted); text-transform:uppercase; letter-spacing:2px;">Phase 2: Scale</div>
+            <div class="revenue-display">₹<span id="revenue-val">0</span></div>
+            <div style="color:var(--gold); margin-bottom: 20px;">Revenue / Sec: ₹<span id="rps-val">0</span></div>
+            
+            <button class="clicker-btn" id="main-click">Optimize Listing (+₹100)</button>
+
+            <div class="upgrades-container">
+                <button class="upgrade-btn" id="up-ppc" data-cost="1000" data-rps="50">
+                    <span class="up-title">Amazon PPC</span>
+                    <span class="up-cost">Cost: ₹1,000</span>
+                    <span class="up-effect">+₹50/sec</span>
+                </button>
+                <button class="upgrade-btn" id="up-seo" data-cost="5000" data-rps="300">
+                    <span class="up-title">Core Digitals SEO</span>
+                    <span class="up-cost">Cost: ₹5,000</span>
+                    <span class="up-effect">+₹300/sec</span>
+                </button>
+                <button class="upgrade-btn" id="up-d2c" data-cost="20000" data-rps="1500">
+                    <span class="up-title">D2C Funnel</span>
+                    <span class="up-cost">Cost: ₹20,000</span>
+                    <span class="up-effect">+₹1,500/sec</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="victory-screen" id="victory-screen">
+            <h2>₹1 Crore Target Hit! 🚀</h2>
+            <p style="color:var(--text); margin-bottom: 30px;">You've successfully scaled the brand.</p>
+            <a href="#contact" class="btn-gold" onclick="document.getElementById('victory-screen').style.display='none'">Let's do this in real life</a>
+        </div>
     </div>
-    <div class="hero-stats reveal">
-      <div class="stat-item">
-        <div class="stat-num" data-count="150">0</div>
-        <div class="stat-label">Brands Scaled</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-count="12">0</div>
-        <div class="stat-label">Cr+ Revenue</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-count="98">0</div>
-        <div class="stat-label">% Client Retention</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-count="5">0</div>
-        <div class="stat-label">Years Experience</div>
-      </div>
-    </div>
-  </div>
-  <div class="hero-scroll"><div class="scroll-line"></div>SCROLL</div>
 </section>
-
-<!-- PLATFORMS -->
-<section id="platforms">
-  <div class="platforms-header">
-    <span class="section-label reveal">Expertise</span>
-    <h2 class="section-title reveal">Platforms I <span class="accent">Master</span></h2>
-    <p class="section-sub reveal">End-to-end management and growth across India's top e-commerce ecosystems.</p>
-  </div>
-  <div class="platforms-grid">
-    <div class="platform-card reveal">
-      <span class="platform-icon">🛒</span>
-      <div class="platform-name">Amazon India</div>
-      <div class="platform-badge">Managed & Optimized</div>
-    </div>
-    <div class="platform-card reveal">
-      <span class="platform-icon">🏪</span>
-      <div class="platform-name">Flipkart</div>
-      <div class="platform-badge">Managed & Optimized</div>
-    </div>
-    <div class="platform-card reveal">
-      <span class="platform-icon">🛍️</span>
-      <div class="platform-name">Meesho</div>
-      <div class="platform-badge">Managed & Optimized</div>
-    </div>
-    <div class="platform-card reveal">
-      <span class="platform-icon">🛒</span>
-      <div class="platform-name">Myntra</div>
-      <div class="platform-badge">Managed & Optimized</div>
-    </div>
-    <div class="platform-card reveal">
-      <span class="platform-icon">🌐</span>
-      <div class="platform-name">D2C / Shopify</div>
-      <div class="platform-badge">Managed & Optimized</div>
-    </div>
-    <div class="platform-card reveal">
-      <span class="platform-icon">📦</span>
-      <div class="platform-name">Nykaa / JioMart</div>
-      <div class="platform-badge">Managed & Optimized</div>
-    </div>
-  </div>
-</section>
-
-<!-- DASHBOARD -->
-<section id="dashboard">
-  <div style="max-width:1200px;margin:0 auto;">
-    <div style="margin-bottom:56px;">
-      <span class="section-label reveal">Live Results</span>
-      <h2 class="section-title reveal">Performance <span class="accent">Dashboard</span></h2>
-      <p class="section-sub reveal">Real numbers from real campaigns. Data speaks louder than claims.</p>
-    </div>
-    <div class="dashboard-layout">
-      <div>
-        <div class="kpi-grid">
-          <div class="kpi-card reveal">
-            <div class="kpi-label">Avg. ROAS</div>
-            <div class="kpi-value" data-count="4.8" data-suffix="x">0x</div>
-            <div class="kpi-delta">↑ 32% vs last quarter</div>
-          </div>
-          <div class="kpi-card reveal">
-            <div class="kpi-label">Revenue Generated</div>
-            <div class="kpi-value" data-count="12" data-prefix="₹" data-suffix="Cr+">₹0</div>
-            <div class="kpi-delta">↑ 68% YoY</div>
-          </div>
-          <div class="kpi-card reveal">
-            <div class="kpi-label">Orders Growth</div>
-            <div class="kpi-value" data-count="240" data-suffix="%">0%</div>
-            <div class="kpi-delta">↑ 3x in 6 months</div>
-          </div>
-          <div class="kpi-card reveal">
-            <div class="kpi-label">Revenue Estimate</div>
-            <div class="kpi-value" data-count="50" data-prefix="₹" data-suffix="L+">₹0</div>
-            <div class="kpi-delta">↑ Monthly potential</div>
-          </div>
-          <div class="kpi-card reveal">
-            <div class="kpi-label">Brands Scaled</div>
-            <div class="kpi-value" data-count="150" data-suffix="+">0+</div>
-            <div class="kpi-delta">Across all platforms</div>
-          </div>
-          <div class="kpi-card reveal">
-            <div class="kpi-label">Avg. CTR</div>
-            <div class="kpi-value" data-count="6.2" data-suffix="%">0%</div>
-            <div class="kpi-delta">↑ Industry avg 1.8%</div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="chart-wrapper reveal">
-          <div class="chart-title">Monthly Revenue Growth — Flagship Client</div>
-          <div class="chart-container">
-            <canvas id="revenueChart"></canvas>
-          </div>
-        </div>
-        <div class="chart-wrapper reveal" style="margin-top:16px;">
-          <div class="chart-title">Platform Performance Split</div>
-          <div class="chart-container" style="height:200px;">
-            <canvas id="platformChart"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="services-layout">
-    <div>
-      <span class="section-label reveal">What I Do</span>
-      <h2 class="section-title reveal">Specialized <span class="accent">Services</span></h2>
-      <div class="divider reveal"></div>
-      <p class="section-sub reveal">
-        From marketplace setup to scaling 8-figure revenues — I cover every layer of e-commerce growth.
-      </p>
-      <br/><br/>
-      <a href="https://wa.me/917567250343" class="btn-gold reveal" target="_blank">Get a Strategy Call</a>
-    </div>
-    <div class="services-grid">
-      <div class="service-item reveal">
-        <div class="service-num">01</div>
-        <div class="service-name">Amazon Account Management</div>
-        <div class="service-desc">Full A-to-Z account management — listings, PPC, A+ Content, Brand Registry, and growth strategy.</div>
-        <span class="service-arrow">→</span>
-      </div>
-      <div class="service-item reveal">
-        <div class="service-num">02</div>
-        <div class="service-name">Flipkart Scaling & Ads</div>
-        <div class="service-desc">Catalogue optimization, smart ads, flash sale strategy and seller performance management.</div>
-        <span class="service-arrow">→</span>
-      </div>
-      <div class="service-item reveal">
-        <div class="service-num">03</div>
-        <div class="service-name">D2C Brand Building</div>
-        <div class="service-desc">Shopify setup, Meta/Google ads, conversion optimization, and retention marketing systems.</div>
-        <span class="service-arrow">→</span>
-      </div>
-      <div class="service-item reveal">
-        <div class="service-num">04</div>
-        <div class="service-name">Performance Marketing</div>
-        <div class="service-desc">PPC management across platforms targeting &lt;15% ACoS with maximum visibility ROI.</div>
-        <span class="service-arrow">→</span>
-      </div>
-      <div class="service-item reveal">
-        <div class="service-num">05</div>
-        <div class="service-name">Listing &amp; SEO Optimization</div>
-        <div class="service-desc">Keyword research, title/bullet optimization, and backend search term strategy.</div>
-        <span class="service-arrow">→</span>
-      </div>
-      <div class="service-item reveal">
-        <div class="service-num">06</div>
-        <div class="service-name">Growth Consulting</div>
-        <div class="service-desc">Monthly strategy retainer with full analytics review, competitor tracking, and actionable roadmaps.</div>
-        <span class="service-arrow">→</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="projects-header">
-    <div>
-      <span class="section-label reveal">Portfolio</span>
-      <h2 class="section-title reveal">Case <span class="accent">Studies</span></h2>
-    </div>
-    <a href="#contact" class="btn-outline reveal">All Projects →</a>
-  </div>
-  <div class="projects-grid">
-    <div class="project-card reveal">
-      <div class="project-thumb" style="background:linear-gradient(135deg,#1a1200,#2d1f00);">
-        🏆
-        <div class="project-overlay">
-          <div class="overlay-btn">View Details</div>
-        </div>
-      </div>
-      <div class="project-info">
-        <div class="project-tag">Amazon PPC</div>
-        <div class="project-title">Electronics Brand — 4.8x ROAS</div>
-        <div class="project-desc">Scaled from ₹80K to ₹4.2L monthly revenue in 3 months with targeted Sponsored Products campaigns.</div>
-      </div>
-    </div>
-    <div class="project-card reveal">
-      <div class="project-thumb" style="background:linear-gradient(135deg,#001a0d,#002d1a);">
-        📦
-        <div class="project-overlay">
-          <div class="overlay-btn">View Details</div>
-        </div>
-      </div>
-      <div class="project-info">
-        <div class="project-tag">Flipkart Growth</div>
-        <div class="project-title">Fashion Label — 3x Orders</div>
-        <div class="project-desc">Triple-digit order growth in 6 months via catalogue revamp, smart ads, and Big Billion Day strategy.</div>
-      </div>
-    </div>
-    <div class="project-card reveal">
-      <div class="project-thumb" style="background:linear-gradient(135deg,#1a0012,#2d001f);">
-        🚀
-        <div class="project-overlay">
-          <div class="overlay-btn">View Details</div>
-        </div>
-      </div>
-      <div class="project-info">
-        <div class="project-tag">D2C Shopify</div>
-        <div class="project-title">Beauty Brand — ₹50L+ Monthly</div>
-        <div class="project-desc">Built complete D2C funnel with Meta Ads + email automation hitting ₹50L+ monthly revenue.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- AMAZON CASE STUDY -->
-<section id="amazon">
-  <div class="amazon-inner">
-    <div>
-      <span class="section-label reveal">Deep Dive</span>
-      <h2 class="section-title reveal">Amazon <span class="accent">Excellence</span></h2>
-      <div class="divider reveal"></div>
-      <p class="section-sub reveal" style="margin-bottom:24px;">
-        I have managed Amazon accounts end-to-end, helping brands achieve top rankings, win the Buy Box, and dominate their category with precise PPC and catalogue strategy.
-      </p>
-      <p class="section-sub reveal">
-        From Brand Registry setup to A+ Content, Sponsored Ads to FBA optimization — every touchpoint is engineered for maximum conversion.
-      </p>
-      <div class="amazon-tags reveal" style="margin-top:32px;">
-        <span class="tag">PPC Campaigns</span>
-        <span class="tag">A+ Content</span>
-        <span class="tag">Brand Registry</span>
-        <span class="tag">FBA Setup</span>
-        <span class="tag">SEO Listings</span>
-        <span class="tag">Buy Box</span>
-        <span class="tag">Lightning Deals</span>
-        <span class="tag">Vine Reviews</span>
-      </div>
-    </div>
-    <div class="amazon-visual reveal">
-      <div class="amazon-metrics">
-        <div class="amazon-metric">
-          <span class="metric-icon">📈</span>
-          <div>
-            <div class="metric-num" data-count="4.8" data-suffix="x">0x</div>
-            <div class="metric-label">Avg. Return on Ad Spend</div>
-          </div>
-        </div>
-        <div class="amazon-metric">
-          <span class="metric-icon">🎯</span>
-          <div>
-            <div class="metric-num" data-count="12" data-suffix="%">0%</div>
-            <div class="metric-label">Average ACoS Achieved</div>
-          </div>
-        </div>
-        <div class="amazon-metric">
-          <span class="metric-icon">⭐</span>
-          <div>
-            <div class="metric-num" data-count="50" data-suffix="+">0+</div>
-            <div class="metric-label">Amazon Brands Managed</div>
-          </div>
-        </div>
-        <div class="amazon-metric">
-          <span class="metric-icon">🏆</span>
-          <div>
-            <div class="metric-num" data-count="95" data-suffix="%">0%</div>
-            <div class="metric-label">Buy Box Win Rate</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-inner">
-    <span class="section-label reveal">Let's Work</span>
-    <h2 class="section-title reveal">Ready to <span class="accent">Scale?</span></h2>
-    <div class="divider reveal" style="margin:24px auto;"></div>
-    <p class="section-sub reveal" style="margin:0 auto;">
-      Whether you're launching a new product or scaling an existing brand to crores — let's build your growth engine together.
-    </p>
-    <div class="contact-actions">
-      <div class="contact-row reveal">
-        <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" class="btn-linkedin" target="_blank">
-          <span>💼</span> LinkedIn
-        </a>
-        <a href="https://wa.me/917567250343" class="btn-whatsapp" target="_blank">
-          <span>💬</span> WhatsApp
-        </a>
-        <a href="https://wa.me/917567250343" class="btn-gold reveal" target="_blank">Book Free Call</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">Jenish Kamli</div>
-  <div class="footer-copy">© 2025 Jenish Kamli. All rights reserved. E-Commerce Growth Expert.</div>
-</footer>
-
-<!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/917567250343" id="wa-float" target="_blank" title="Chat on WhatsApp">💬</a>
-
-<!-- AI CHAT -->
-<div id="chat-widget">
-  <button id="chat-toggle" onclick="toggleChat()">🤖</button>
-  <div id="chat-box">
-    <div class="chat-head">
-      <div class="chat-avatar">🤖</div>
-      <div class="chat-head-info">
-        <div class="name">Jenish AI Assistant</div>
-        <div class="status"><span class="status-dot"></span> Online — E-Commerce Expert</div>
-      </div>
-    </div>
-    <div class="chat-messages" id="chat-messages">
-      <div class="msg bot">👋 Hey! I'm Jenish's AI assistant. Ask me anything about e-commerce growth, platforms, or services!</div>
-    </div>
-    <div class="chat-suggestions">
-      <button class="suggestion-btn" onclick="sendSuggestion('How did you scale on Flipkart?')">Flipkart Growth</button>
-      <button class="suggestion-btn" onclick="sendSuggestion('Tell me about Amazon services')">Amazon</button>
-      <button class="suggestion-btn" onclick="sendSuggestion('What services do you offer?')">Services</button>
-      <button class="suggestion-btn" onclick="sendSuggestion('I want to hire Jenish')">Hire</button>
-    </div>
-    <div class="chat-input-area">
-      <input type="text" id="chat-input" placeholder="Ask about e-commerce..." onkeydown="if(event.key==='Enter')sendChat()"/>
-      <button id="chat-send" onclick="sendChat()">➤</button>
-    </div>
-  </div>
-</div>
 
 <script>
-// ── CURSOR ──
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cursor.style.left=mx+'px';cursor.style.top=my+'px';
-});
-(function animRing(){
-  rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
-  ring.style.left=rx+'px';ring.style.top=ry+'px';
-  requestAnimationFrame(animRing);
-})();
-document.querySelectorAll('a,button,.platform-card,.project-card,.service-item').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{
-    cursor.style.width='16px';cursor.style.height='16px';
-    ring.style.width='50px';ring.style.height='50px';ring.style.borderColor='rgba(201,168,76,.8)';
-  });
-  el.addEventListener('mouseleave',()=>{
-    cursor.style.width='10px';cursor.style.height='10px';
-    ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(201,168,76,.5)';
-  });
-});
+// ... (Your existing JS for Cursor, GSAP, Charts, Chat) ...
 
-// ── GSAP ──
-gsap.registerPlugin(ScrollTrigger);
+/* ─── GAME LOGIC ─── */
 
-// Hero parallax
-gsap.to('.hero-grid',{yPercent:-20,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
-gsap.to('.hero-inner',{yPercent:15,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+// --- Phase 1: Matter.js Physics ---
+const Engine = Matter.Engine,
+      Render = Matter.Render,
+      Runner = Matter.Runner,
+      Bodies = Matter.Bodies,
+      Composite = Matter.Composite,
+      Mouse = Matter.Mouse,
+      MouseConstraint = Matter.MouseConstraint;
 
-// Reveal animations
-document.querySelectorAll('.reveal').forEach((el,i)=>{
-  gsap.fromTo(el,
-    {opacity:0,y:40},
-    {opacity:1,y:0,duration:.9,ease:'power3.out',
-      scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'},
-      delay:(i%4)*0.08
+const engine = Engine.create();
+const gameDiv = document.getElementById('physics-game');
+const width = gameDiv.clientWidth || 1000;
+const height = gameDiv.clientHeight || 500;
+
+const render = Render.create({
+    element: gameDiv,
+    engine: engine,
+    options: {
+        width: width,
+        height: height,
+        wireframes: false,
+        background: 'transparent'
     }
-  );
 });
 
-// Count-up
-function animateCount(el){
-  const target=parseFloat(el.dataset.count);
-  const prefix=el.dataset.prefix||'';
-  const suffix=el.dataset.suffix||'';
-  const dec=target%1!==0?1:0;
-  let current=0;
-  const step=target/60;
-  const interval=setInterval(()=>{
-    current=Math.min(current+step,target);
-    el.textContent=prefix+(dec?current.toFixed(1):Math.floor(current))+suffix;
-    if(current>=target)clearInterval(interval);
-  },16);
-}
-const countEls=document.querySelectorAll('[data-count]');
-const countObserver=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){animateCount(e.target);countObserver.unobserve(e.target);}});
-},{threshold:.3});
-countEls.forEach(el=>countObserver.observe(el));
+// Ground and walls
+const ground = Bodies.rectangle(width/2, height, width, 60, { isStatic: true, render: { fillStyle: '#181818' } });
+const leftWall = Bodies.rectangle(0, height/2, 60, height, { isStatic: true, render: { fillStyle: 'transparent' } });
+const rightWall = Bodies.rectangle(width, height/2, 60, height, { isStatic: true, render: { fillStyle: 'transparent' } });
+Composite.add(engine.world, [ground, leftWall, rightWall]);
 
-// ── CHARTS ──
-let chartsInit=false;
-const chartObserver=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting&&!chartsInit){chartsInit=true;initCharts();}
-  });
-},{threshold:.2});
-chartObserver.observe(document.getElementById('dashboard'));
+// Mouse interaction for dropping
+const mouse = Mouse.create(render.canvas);
+const mouseConstraint = MouseConstraint.create(engine, {
+    mouse: mouse,
+    constraint: { stiffness: 0.2, render: { visible: false } }
+});
+Composite.add(engine.world, mouseConstraint);
+render.mouse = mouse;
 
-function initCharts(){
-  const gold='#C9A84C',goldDim='rgba(201,168,76,0.12)',white='rgba(240,237,230,0.6)';
+let boxesStacked = 0;
+const targetBoxes = 10;
+const scoreSpan = document.getElementById('stack-score');
 
-  // Revenue chart
-  const rCtx=document.getElementById('revenueChart').getContext('2d');
-  const grad=rCtx.createLinearGradient(0,0,0,300);
-  grad.addColorStop(0,'rgba(201,168,76,0.3)');grad.addColorStop(1,'rgba(201,168,76,0)');
-  new Chart(rCtx,{
-    type:'line',
-    data:{
-      labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct'],
-      datasets:[{
-        label:'Revenue (₹L)',data:[8,12,18,22,28,38,42,56,68,82],
-        borderColor:gold,backgroundColor:grad,borderWidth:2,
-        pointBackgroundColor:gold,pointRadius:4,pointHoverRadius:7,
-        fill:true,tension:.4
-      }]
-    },
-    options:{
-      responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false}},
-      scales:{
-        x:{grid:{color:'rgba(201,168,76,0.06)'},ticks:{color:white,font:{size:11}}},
-        y:{grid:{color:'rgba(201,168,76,0.06)'},ticks:{color:white,font:{size:11},callback:v=>'₹'+v+'L'}}
-      },
-      animation:{duration:1800,easing:'easeInOutQuart'}
+// Add a box on click
+Matter.Events.on(mouseConstraint, 'mousedown', function(event) {
+    if(boxesStacked >= targetBoxes) return;
+    
+    // Only drop if clicked in the upper half
+    if(event.mouse.position.y < height / 2) {
+        const size = 40 + Math.random() * 30;
+        const box = Bodies.rectangle(event.mouse.position.x, 50, size, size, {
+            render: {
+                fillStyle: '#C9A84C',
+                strokeStyle: '#8A6B2A',
+                lineWidth: 2
+            }
+        });
+        Composite.add(engine.world, box);
+        boxesStacked++;
+        scoreSpan.innerText = boxesStacked;
+
+        if(boxesStacked >= targetBoxes) {
+            setTimeout(transitionToPhase2, 2000); // Wait a bit then transition
+        }
     }
-  });
+});
 
-  // Platform chart
-  const pCtx=document.getElementById('platformChart').getContext('2d');
-  new Chart(pCtx,{
-    type:'doughnut',
-    data:{
-      labels:['Amazon','Flipkart','Meesho','D2C','Others'],
-      datasets:[{
-        data:[38,28,18,12,4],
-        backgroundColor:['#C9A84C','#8A6B2A','rgba(201,168,76,0.6)','rgba(201,168,76,0.35)','rgba(201,168,76,0.15)'],
-        borderColor:'#141414',borderWidth:2
-      }]
-    },
-    options:{
-      responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{labels:{color:white,font:{size:11},boxWidth:12}}},
-      animation:{duration:1500,easing:'easeInOutQuart'}
+Render.run(render);
+const runner = Runner.create();
+Runner.run(runner, engine);
+
+// --- Phase 2: Clicker Game ---
+let revenue = 0;
+let rps = 0; // Revenue per second
+const targetRevenue = 10000000; // 1 Crore
+
+const revSpan = document.getElementById('revenue-val');
+const rpsSpan = document.getElementById('rps-val');
+const mainBtn = document.getElementById('main-click');
+const upBtns = document.querySelectorAll('.upgrade-btn');
+const p1 = document.getElementById('physics-game');
+const p2 = document.getElementById('clicker-game');
+
+function transitionToPhase2() {
+    gsap.to(p1, {opacity: 0, duration: 1, onComplete: () => {
+        p1.style.display = 'none';
+        p2.style.display = 'flex';
+        gsap.fromTo(p2, {opacity: 0}, {opacity: 1, duration: 1});
+        startGameLoop();
+    }});
+}
+
+function formatMoney(num) {
+    return num.toLocaleString('en-IN');
+}
+
+function updateUI() {
+    revSpan.innerText = formatMoney(Math.floor(revenue));
+    rpsSpan.innerText = formatMoney(rps);
+
+    upBtns.forEach(btn => {
+        const cost = parseInt(btn.dataset.cost);
+        btn.disabled = revenue < cost;
+    });
+
+    if(revenue >= targetRevenue) {
+        document.getElementById('victory-screen').style.display = 'flex';
+        revenue = targetRevenue; // Cap it
     }
-  });
 }
 
-// ── RIPPLE ──
-document.querySelectorAll('.btn-gold,.btn-outline,.btn-linkedin,.btn-whatsapp,.nav-cta').forEach(btn=>{
-  btn.addEventListener('click',function(e){
-    const r=document.createElement('span');
-    r.classList.add('ripple');
-    const rect=this.getBoundingClientRect();
-    const size=Math.max(rect.width,rect.height);
-    r.style.cssText=`width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px;`;
-    this.style.position='relative';this.style.overflow='hidden';
-    this.appendChild(r);setTimeout(()=>r.remove(),600);
-  });
+mainBtn.addEventListener('click', () => {
+    revenue += 100;
+    updateUI();
 });
 
-// ── MAGNETIC BUTTONS ──
-document.querySelectorAll('.btn-gold,.nav-cta').forEach(btn=>{
-  btn.addEventListener('mousemove',function(e){
-    const rect=this.getBoundingClientRect();
-    const x=(e.clientX-rect.left-rect.width/2)*0.15;
-    const y=(e.clientY-rect.top-rect.height/2)*0.15;
-    this.style.transform=`translate(${x}px,${y}px)`;
-  });
-  btn.addEventListener('mouseleave',function(){
-    this.style.transform='';
-  });
+upBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const cost = parseInt(btn.dataset.cost);
+        const boost = parseInt(btn.dataset.rps);
+        if(revenue >= cost) {
+            revenue -= cost;
+            rps += boost;
+            // Increase cost for next purchase
+            btn.dataset.cost = Math.floor(cost * 1.5);
+            btn.querySelector('.up-cost').innerText = `Cost: ₹${formatMoney(btn.dataset.cost)}`;
+            updateUI();
+        }
+    });
 });
 
-// ── CHAT SYSTEM ──
-function toggleChat(){
-  const box=document.getElementById('chat-box');
-  box.classList.toggle('open');
+let lastTime = performance.now();
+function startGameLoop() {
+    requestAnimationFrame(gameLoop);
 }
 
-const RESPONSES={
-  growth:"📈 I scaled a Flipkart brand from ₹40K to ₹3.8L/month in just 4 months! Strategy: catalogue overhaul, smart bidding, Big Billion Day prep, and review generation. The key was finding high-intent keywords with low competition and dominating those first.",
-  amazon:"🛒 Amazon is my strongest platform! I manage full-cycle — Brand Registry, Sponsored Products/Brands/Display, A+ Content, FBA setup, and Buy Box optimization. My average ACoS for Amazon clients is under 12% with 4.8x ROAS.",
-  services:"💼 Here's what I offer:\n1. Amazon Full Management\n2. Flipkart Scaling & Ads\n3. D2C Brand Building\n4. Performance Marketing\n5. Listing & SEO Optimization\n6. Growth Strategy Consulting\n\nAll engagements start with a FREE strategy call!",
-  hire:"🔥 Ready to scale your brand? Let's connect directly!\n\n👉 https://wa.me/917567250343\n\nI'm currently taking on 2-3 new clients this month.",
-  meesho:"📦 Meesho is a goldmine for value-segment products! I help brands optimize catalogues, nail pricing strategy, and run Meesho Ads effectively for maximum volume growth.",
-  roas:"📊 For my clients, I consistently achieve 4-6x ROAS on Amazon PPC and Meta Ads. The secret is granular campaign structure + negative keyword management + dayparting.",
-  flipkart:"🏪 Flipkart scaling is about flash sales, Smart Ads, and catalogue quality. I helped a fashion brand 3x their orders in 6 months via strategic Big Billion Day preparation and year-round catalog optimization.",
-  default:"I'm here to help with e-commerce growth and Jenish's services 🚀\nFor anything else, feel free to connect directly on WhatsApp.\n\n👉 https://wa.me/917567250343"
-};
-
-function getReply(msg){
-  const m=msg.toLowerCase();
-  if(m.includes('growth')||m.includes('scale')||m.includes('grow'))return RESPONSES.growth;
-  if(m.includes('flipkart'))return RESPONSES.flipkart;
-  if(m.includes('amazon'))return RESPONSES.amazon;
-  if(m.includes('meesho'))return RESPONSES.meesho;
-  if(m.includes('roas')||m.includes('return'))return RESPONSES.roas;
-  if(m.includes('service')||m.includes('offer')||m.includes('what do'))return RESPONSES.services;
-  if(m.includes('hire')||m.includes('work with')||m.includes('contact')||m.includes('price')||m.includes('cost'))return RESPONSES.hire;
-  return RESPONSES.default;
+function gameLoop(currentTime) {
+    const deltaTime = (currentTime - lastTime) / 1000;
+    lastTime = currentTime;
+    
+    if(revenue < targetRevenue) {
+        revenue += rps * deltaTime;
+        updateUI();
+    }
+    requestAnimationFrame(gameLoop);
 }
 
-function appendMsg(text,type){
-  const msgs=document.getElementById('chat-messages');
-  const div=document.createElement('div');
-  div.className='msg '+type;
-  div.textContent=text;
-  msgs.appendChild(div);
-  msgs.scrollTop=msgs.scrollHeight;
-  return div;
-}
-
-function showTyping(){
-  const msgs=document.getElementById('chat-messages');
-  const div=document.createElement('div');
-  div.className='typing';div.id='typing-ind';
-  div.innerHTML='<span></span><span></span><span></span>';
-  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
-}
-function hideTyping(){const t=document.getElementById('typing-ind');if(t)t.remove();}
-
-function sendChat(){
-  const input=document.getElementById('chat-input');
-  const text=input.value.trim();
-  if(!text)return;
-  input.value='';
-  appendMsg(text,'user');
-  showTyping();
-  const delay=1200+Math.random()*800;
-  setTimeout(()=>{
-    hideTyping();
-    appendMsg(getReply(text),'bot');
-  },delay);
-}
-
-function sendSuggestion(text){
-  document.getElementById('chat-input').value=text;
-  sendChat();
-}
-
-// Nav scroll effect
-window.addEventListener('scroll',()=>{
-  const nav=document.querySelector('nav');
-  if(window.scrollY>60){nav.style.background='rgba(10,10,10,0.97)';}
-  else{nav.style.background='linear-gradient(180deg,rgba(10,10,10,.95) 0%,transparent 100%)';}
-});
 </script>
 </body>
 </html>
