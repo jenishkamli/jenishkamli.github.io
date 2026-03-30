@@ -5,11 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Jenish Kamli | Freelance E-Commerce Growth Expert</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js" defer></script>
+
 <style>
 :root{
   --gold:#E5B80B;
@@ -33,7 +36,7 @@ body{
 
 /* ─── LAG-FREE CURSOR ─── */
 #cursor{position:fixed;top:0;left:0;width:6px;height:6px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;box-shadow:0 0 10px var(--gold); transform:translate3d(-50%,-50%,0); will-change:transform;}
-#cursor-ring{position:fixed;top:0;left:0;width:40px;height:40px;border:1px solid rgba(229,184,11,0.4);border-radius:50%;pointer-events:none;z-index:9998; transform:translate3d(-50%,-50%,0); transition:transform 0.15s ease-out; will-change:transform;}
+#cursor-ring{position:fixed;top:0;left:0;width:40px;height:40px;border:1px solid rgba(229,184,11,0.4);border-radius:50%;pointer-events:none;z-index:9998; transform:translate3d(-50%,-50%,0); transition:width 0.15s ease-out, height 0.15s ease-out, border-color 0.15s ease-out; will-change:transform, width, height;}
 
 /* ─── SCROLLBAR ─── */
 ::-webkit-scrollbar{width:4px;}
@@ -45,14 +48,14 @@ body{
 .loader-name { font-family: var(--font-body); font-size: 20px; font-weight: 400; letter-spacing: 15px; color: var(--text-main); text-transform: uppercase; margin-bottom: 12px; margin-left: 15px;}
 .loader-role { font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-left: 5px;}
 .loader-bar-wrap { position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: rgba(255,255,255,0.05); }
-.loader-bar { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+.loader-bar { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--gold); box-shadow: 0 0 10px var(--gold); will-change: width; }
 
 /* ─── NAVIGATION ─── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:1000; padding:25px 5%;
   display:flex;align-items:center;justify-content:space-between;
   background:linear-gradient(180deg,rgba(3,3,3,0.95) 0%,transparent 100%);
-  transition:padding 0.3s ease, background 0.3s ease; transform:translateZ(0);
+  transition:padding 0.3s ease, background 0.3s ease; transform:translateZ(0); will-change: padding, background;
 }
 .nav-logo{font-family:var(--font-head);font-size:24px;font-weight:700;color:var(--text-main);letter-spacing:2px;}
 .nav-logo span{color:var(--gold);}
@@ -63,7 +66,7 @@ nav{
 .btn-magnetic{
   padding:14px 36px;background:transparent;border:1px solid var(--gold);border-radius:100px;
   color:var(--gold);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
-  text-decoration:none;transition:background 0.3s, color 0.3s; display:inline-flex; align-items:center; justify-content:center;
+  text-decoration:none;transition:background 0.3s, color 0.3s, transform 0.3s; display:inline-flex; align-items:center; justify-content:center;
   cursor:none; overflow:hidden; position:relative; transform:translateZ(0);
 }
 .btn-magnetic:hover{background:var(--gold); color:var(--dark); box-shadow:0 0 20px var(--gold-glow);}
@@ -116,10 +119,10 @@ section{padding:120px 5%; position:relative; z-index:2;}
 .section-title .accent{color:var(--gold); font-style:italic; font-weight:700;}
 
 /* ─── OPTIMIZED SPOTLIGHT ─── */
-.spotlight-card { position: relative; overflow: hidden; background: var(--card-bg); border: 1px solid rgba(255,255,255,0.03); border-radius: 16px; transform: translateZ(0); }
+.spotlight-card { position: relative; overflow: hidden; background: var(--card-bg); border: 1px solid rgba(255,255,255,0.03); border-radius: 16px; transform: translateZ(0); will-change: transform;}
 .spotlight-card::before {
   content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 0;
-  background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(229,184,11,0.08), transparent 40%);
+  background: radial-gradient(600px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(229,184,11,0.08), transparent 40%);
 }
 .spotlight-card:hover::before { opacity: 1; }
 .spotlight-content { position: relative; z-index: 2; }
@@ -303,20 +306,20 @@ footer{padding:30px 5%; border-top:1px solid #111; display:flex; justify-content
 
 <div class="marquee-container">
   <div class="marquee-content">
-    <span><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon"> Amazon</span>
-    <span><img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg" alt="Shopify"> Shopify</span>
-    <span><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg" alt="Google Ads"> Google Ads</span>
-    <span><img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta"> Meta Ads</span>
-    <span><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="Premiere"> Premiere Pro</span>
+    <span><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" loading="lazy"> Amazon</span>
+    <span><img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg" alt="Shopify" loading="lazy"> Shopify</span>
+    <span><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg" alt="Google Ads" loading="lazy"> Google Ads</span>
+    <span><img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta" loading="lazy"> Meta Ads</span>
+    <span><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="Premiere" loading="lazy"> Premiere Pro</span>
     <span>🛒 Flipkart</span>
     <span>📦 Meesho</span>
     <span>🛍️ Myntra</span>
     <span>💄 Nykaa</span>
-    <span><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon"> Amazon</span>
-    <span><img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg" alt="Shopify"> Shopify</span>
-    <span><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg" alt="Google Ads"> Google Ads</span>
-    <span><img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta"> Meta Ads</span>
-    <span><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="Premiere"> Premiere Pro</span>
+    <span><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" loading="lazy"> Amazon</span>
+    <span><img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg" alt="Shopify" loading="lazy"> Shopify</span>
+    <span><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg" alt="Google Ads" loading="lazy"> Google Ads</span>
+    <span><img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta" loading="lazy"> Meta Ads</span>
+    <span><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="Premiere" loading="lazy"> Premiere Pro</span>
   </div>
 </div>
 
@@ -326,15 +329,15 @@ footer{padding:30px 5%; border-top:1px solid #111; display:flex; justify-content
     <h2 class="section-title">Platforms I <span class="accent">Master</span></h2>
   </div>
   <div class="platform-grid-12">
-    <div class="p-card spotlight-card reveal"><div class="spotlight-content"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" class="p-icon"><div class="p-name">Amazon India</div><div class="platform-badge">Expert</div></div></div>
+    <div class="p-card spotlight-card reveal"><div class="spotlight-content"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" class="p-icon" loading="lazy"><div class="p-name">Amazon India</div><div class="platform-badge">Expert</div></div></div>
     <div class="p-card spotlight-card reveal"><div class="spotlight-content"><div class="p-text-logo" style="color:#047BD5;">Flipkart</div><div class="p-name">Flipkart</div><div class="platform-badge">Expert</div></div></div>
     <div class="p-card spotlight-card reveal"><div class="spotlight-content"><div class="p-text-logo" style="color:#F43397;">meesho</div><div class="p-name">Meesho</div><div class="platform-badge">Expert</div></div></div>
     <div class="p-card spotlight-card reveal"><div class="spotlight-content"><div class="p-text-logo" style="color:#FF3F6C; font-family:sans-serif;">Myntra</div><div class="p-name">Myntra</div><div class="platform-badge">Managed</div></div></div>
-    <div class="p-card spotlight-card reveal"><div class="spotlight-content"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg" class="p-icon"><div class="p-name">Shopify D2C</div><div class="platform-badge">Expert</div></div></div>
-    <div class="p-card spotlight-card reveal"><div class="spotlight-content"><img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Nykaa_logo.svg" class="p-icon" style="filter:invert(1);"><div class="p-name">Nykaa</div><div class="platform-badge">Managed</div></div></div>
-    <div class="p-card spotlight-card reveal"><div class="spotlight-content"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg" class="p-icon"><div class="p-name">Google Ads</div><div class="platform-badge">PPC</div></div></div>
-    <div class="p-card spotlight-card reveal"><div class="spotlight-content"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" class="p-icon"><div class="p-name">Meta Ads</div><div class="platform-badge">Performance</div></div></div>
-    <div class="p-card spotlight-card reveal"><div class="spotlight-content"><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" class="p-icon"><div class="p-name">Premiere Pro</div><div class="platform-badge">Video Ads</div></div></div>
+    <div class="p-card spotlight-card reveal"><div class="spotlight-content"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg" class="p-icon" loading="lazy"><div class="p-name">Shopify D2C</div><div class="platform-badge">Expert</div></div></div>
+    <div class="p-card spotlight-card reveal"><div class="spotlight-content"><img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Nykaa_logo.svg" class="p-icon" style="filter:invert(1);" loading="lazy"><div class="p-name">Nykaa</div><div class="platform-badge">Managed</div></div></div>
+    <div class="p-card spotlight-card reveal"><div class="spotlight-content"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg" class="p-icon" loading="lazy"><div class="p-name">Google Ads</div><div class="platform-badge">PPC</div></div></div>
+    <div class="p-card spotlight-card reveal"><div class="spotlight-content"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" class="p-icon" loading="lazy"><div class="p-name">Meta Ads</div><div class="platform-badge">Performance</div></div></div>
+    <div class="p-card spotlight-card reveal"><div class="spotlight-content"><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" class="p-icon" loading="lazy"><div class="p-name">Premiere Pro</div><div class="platform-badge">Video Ads</div></div></div>
   </div>
 </section>
 
@@ -495,28 +498,50 @@ footer{padding:30px 5%; border-top:1px solid #111; display:flex; justify-content
 </div>
 
 <script>
-// ── MINIMAL PRELOADER ──
+// ── OPTIMIZED PRELOADER (RAF BASED) ──
 window.addEventListener('load', () => {
-  let p = 0; const lBar = document.getElementById('loader-bar');
-  const int = setInterval(()=>{ 
-    p += 10; lBar.style.width = p + "%";
-    if(p >= 100){
-      clearInterval(int);
-      const pl = document.getElementById('preloader');
-      gsap.to(pl, { yPercent: -100, duration: 0.6, ease: "power2.inOut", delay: 0.2, onComplete: () => pl.style.display = 'none' });
-      gsap.fromTo(".hero-title", {y: 30, opacity: 0}, {y: 0, opacity: 1, duration: 0.8, delay: 0.4});
-      gsap.fromTo(".hero-sub", {y: 20, opacity: 0}, {y: 0, opacity: 1, duration: 0.8, delay: 0.6});
+  let startTime = null;
+  const lBar = document.getElementById('loader-bar');
+  const pl = document.getElementById('preloader');
+  
+  function animateLoader(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const progress = timestamp - startTime;
+    const percentage = Math.min((progress / 800) * 100, 100); 
+    lBar.style.width = percentage + "%";
+    
+    if (percentage < 100) {
+      requestAnimationFrame(animateLoader);
+    } else {
+      if(typeof gsap !== 'undefined') {
+        gsap.to(pl, { yPercent: -100, duration: 0.6, ease: "power2.inOut", onComplete: () => pl.style.display = 'none' });
+        gsap.fromTo(".hero-title", {y: 30, opacity: 0}, {y: 0, opacity: 1, duration: 0.8, delay: 0.2});
+        gsap.fromTo(".hero-sub", {y: 20, opacity: 0}, {y: 0, opacity: 1, duration: 0.8, delay: 0.4});
+      } else {
+        pl.style.display = 'none'; // Fallback if GSAP is late
+      }
     }
-  }, 30);
+  }
+  requestAnimationFrame(animateLoader);
 });
 
-// ── FAST CURSOR & SPOTLIGHT (CSS VARS) ──
-const cursor = document.getElementById('cursor'); const ring = document.getElementById('cursor-ring');
+// ── FAST CURSOR & SPOTLIGHT (RAF OPTIMIZED) ──
+const cursor = document.getElementById('cursor'); 
+const ring = document.getElementById('cursor-ring');
+let cursorX = 0, cursorY = 0, isCursorUpdating = false;
+
 document.addEventListener('mousemove', e => { 
-  const x = e.clientX, y = e.clientY;
-  cursor.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
-  ring.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
-});
+  cursorX = e.clientX; 
+  cursorY = e.clientY;
+  if(!isCursorUpdating) {
+    requestAnimationFrame(() => {
+      cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
+      ring.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
+      isCursorUpdating = false;
+    });
+    isCursorUpdating = true;
+  }
+}, {passive: true});
 
 document.querySelectorAll('a, button, .puzzle-tile').forEach(el=>{
   el.addEventListener('mouseenter', ()=>{ ring.style.width='50px'; ring.style.height='50px'; ring.style.borderColor='var(--gold)'; });
@@ -524,11 +549,18 @@ document.querySelectorAll('a, button, .puzzle-tile').forEach(el=>{
 });
 
 document.querySelectorAll('.spotlight-card').forEach(card => {
+  let isCardUpdating = false;
   card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-    card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-  });
+    if(!isCardUpdating) {
+      requestAnimationFrame(() => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        isCardUpdating = false;
+      });
+      isCardUpdating = true;
+    }
+  }, {passive: true});
 });
 
 let scrollTicking = false;
@@ -542,11 +574,15 @@ window.addEventListener('scroll', () => {
     });
     scrollTicking = true;
   }
-});
+}, {passive: true});
 
-// ── GSAP & CHARTS ──
-gsap.registerPlugin(ScrollTrigger);
-document.querySelectorAll('.reveal').forEach((el,i)=>{ gsap.fromTo(el, {opacity:0, y:30}, {opacity:1, y:0, duration:0.6, scrollTrigger:{trigger:el, start:'top 90%'}, delay:(i%3)*0.1}); });
+// ── GSAP & CHARTS (Delayed initialization to respect defer) ──
+window.addEventListener('load', () => {
+  if(typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined'){
+    gsap.registerPlugin(ScrollTrigger);
+    document.querySelectorAll('.reveal').forEach((el,i)=>{ gsap.fromTo(el, {opacity:0, y:30}, {opacity:1, y:0, duration:0.6, scrollTrigger:{trigger:el, start:'top 90%'}, delay:(i%3)*0.1}); });
+  }
+});
 
 const countEls=document.querySelectorAll('[data-count]');
 const countObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){
@@ -556,7 +592,9 @@ const countObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isInt
 countEls.forEach(el=>countObs.observe(el));
 
 let chartsInit=false;
-const chartObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&!chartsInit){chartsInit=true;initCharts();}});});
+const chartObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&!chartsInit){
+  if(typeof Chart !== 'undefined'){ chartsInit=true; initCharts(); }
+}});});
 chartObs.observe(document.getElementById('dashboard'));
 
 function initCharts(){
@@ -583,6 +621,7 @@ function toggleMute(){ isMuted=!isMuted; document.getElementById('audio-toggle')
 // ── PAUSABLE MATTER.JS PIT ──
 let physEng, physRun, physInit=false;
 function initPhysics(){
+  if(typeof Matter === 'undefined') return;
   const cont=document.getElementById('matter-container');
   const {Engine, Render, Runner, MouseConstraint, Mouse, Composite, Bodies, Events} = Matter;
   physEng=Engine.create(); const world=physEng.world;
@@ -607,8 +646,8 @@ function initPhysics(){
   });
 }
 let pitObs=new IntersectionObserver(e=>{
-  if(e[0].isIntersecting){ if(!physInit){ physInit=true; initPhysics(); } else { Matter.Runner.run(physRun, physEng); } } 
-  else { if(physInit) Matter.Runner.stop(physRun); }
+  if(e[0].isIntersecting){ if(!physInit){ physInit=true; initPhysics(); } else if(typeof Matter !== 'undefined' && physRun) { Matter.Runner.run(physRun, physEng); } } 
+  else { if(physInit && typeof Matter !== 'undefined') Matter.Runner.stop(physRun); }
 }, {threshold: 0.1});
 pitObs.observe(document.getElementById('physics-pit'));
 
@@ -619,8 +658,22 @@ function startSlasher(){
   document.getElementById('slasher-start').style.display='none'; if(slashRun)return; slashRun=true;
   const cvs=document.getElementById('slasher-canvas'); const ctx=cvs.getContext('2d');
   let tgts=[], sc=0, m={x:0, y:0, d:false}, tr=[];
-  cvs.addEventListener('mousedown', ()=>{m.d=true; tr=[];}); cvs.addEventListener('mouseup', ()=>{m.d=false; tr=[];});
-  cvs.addEventListener('mousemove', e=>{ const r=cvs.getBoundingClientRect(); m.x=e.clientX-r.left; m.y=e.clientY-r.top; if(m.d){ tr.push({x:m.x,y:m.y}); if(tr.length>4)tr.shift(); chk(); } });
+  
+  cvs.addEventListener('mousedown', ()=>{m.d=true; tr=[];}); 
+  cvs.addEventListener('mouseup', ()=>{m.d=false; tr=[];});
+  
+  // Throttled mouse tracking for array pushing
+  let lastPush = 0;
+  cvs.addEventListener('mousemove', e=>{ 
+    const r=cvs.getBoundingClientRect(); m.x=e.clientX-r.left; m.y=e.clientY-r.top; 
+    if(m.d && (Date.now() - lastPush > 16)){ 
+      tr.push({x:m.x,y:m.y}); 
+      if(tr.length>4)tr.shift(); 
+      chk(); 
+      lastPush = Date.now();
+    } 
+  }, {passive: true});
+
   function chk(){
     if(tr.length<2)return;
     tgts.forEach(t=>{ if(t.a && Math.hypot(t.x-m.x, t.y-m.y)<t.r){ t.a=false; if(t.g){sc+=10; playSFX('slashGood',0.4);}else{sc-=20; playSFX('slashBad',0.3);} document.getElementById('slasher-score').innerText=sc; }});
