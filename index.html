@@ -107,7 +107,7 @@ nav{
   display:flex; align-items:center; gap:15px; transition:color 0.3s;
 }
 .marquee-content span:hover{color:var(--gold);}
-.marquee-content img{height:30px; filter:grayscale(1) brightness(0.5); transition:all 0.3s;}
+.marquee-content img{height:30px; border-radius:4px; filter:grayscale(1) brightness(0.5); transition:all 0.3s;}
 .marquee-content span:hover img{filter:grayscale(0) brightness(1);}
 @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
@@ -130,7 +130,7 @@ section{padding:150px 5%; position:relative; z-index:2;}
 .p-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 50% 0%, var(--gold-glow), transparent 70%);opacity:0;transition:opacity 0.4s;}
 .p-card:hover{transform:translateY(-10px); border-color:var(--gold); box-shadow:0 20px 40px rgba(0,0,0,0.8);}
 .p-card:hover::before{opacity:1;}
-.p-icon{height:45px; margin-bottom:20px; filter:brightness(0) invert(1) opacity(0.5); transition:all 0.4s; display:inline-block;}
+.p-icon{height:45px; width:45px; object-fit:contain; border-radius:8px; margin-bottom:20px; filter:brightness(0) invert(1) opacity(0.5); transition:all 0.4s; display:inline-block;}
 .p-card:hover .p-icon{filter:brightness(1) invert(0) opacity(1); transform:scale(1.1);}
 /* Text fallback for logos without solid SVGs */
 .p-text-logo{font-family:var(--font-head); font-size:28px; font-weight:800; color:rgba(255,255,255,0.3); margin-bottom:20px; transition:all 0.4s; line-height:45px;}
@@ -323,21 +323,21 @@ footer{padding:40px 5%; border-top:1px solid #1a1a1a; display:flex; justify-cont
 
 <div class="marquee-container">
   <div class="marquee-content">
-    <span><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon"> Amazon</span>
-    <span>🛒 Flipkart</span>
-    <span>🛍️ Myntra</span>
-    <span>⚡ Zepto</span>
-    <span>🚀 Blinkit</span>
-    <span>🍅 Instamart</span>
-    <span>📦 Meesho</span>
+    <span><img src="1001326491.jpg" alt="Amazon"> Amazon</span>
+    <span><img src="1001326333.png" alt="Flipkart"> Flipkart</span>
+    <span><img src="1001326335.jpg" alt="Myntra"> Myntra</span>
+    <span><img src="1001326338.jpg" alt="Zepto"> Zepto</span>
+    <span><img src="1001326337.jpg" alt="Blinkit"> Blinkit</span>
+    <span><img src="1001326617.png" alt="Instamart"> Instamart</span>
+    <span><img src="1001326306.png" alt="Meesho"> Meesho</span>
     <span><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="Premiere"> Premiere Pro</span>
-    <span><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon"> Amazon</span>
-    <span>🛒 Flipkart</span>
-    <span>🛍️ Myntra</span>
-    <span>⚡ Zepto</span>
-    <span>🚀 Blinkit</span>
-    <span>🍅 Instamart</span>
-    <span>📦 Meesho</span>
+    <span><img src="1001326491.jpg" alt="Amazon"> Amazon</span>
+    <span><img src="1001326333.png" alt="Flipkart"> Flipkart</span>
+    <span><img src="1001326335.jpg" alt="Myntra"> Myntra</span>
+    <span><img src="1001326338.jpg" alt="Zepto"> Zepto</span>
+    <span><img src="1001326337.jpg" alt="Blinkit"> Blinkit</span>
+    <span><img src="1001326617.png" alt="Instamart"> Instamart</span>
+    <span><img src="1001326306.png" alt="Meesho"> Meesho</span>
     <span><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="Premiere"> Premiere Pro</span>
   </div>
 </div>
@@ -348,19 +348,19 @@ footer{padding:40px 5%; border-top:1px solid #1a1a1a; display:flex; justify-cont
     <h2 class="section-title">Platforms I <span class="accent">Master</span></h2>
   </div>
   <div class="platform-grid-12">
-    <div class="p-card reveal"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" class="p-icon"><div class="p-name">Amazon</div><div class="platform-badge">Expert</div></div>
-    <div class="p-card reveal"><div class="p-text-logo" style="color:#047BD5;">Flipkart</div><div class="p-name">Flipkart</div><div class="platform-badge">Expert</div></div>
-    <div class="p-card reveal"><div class="p-text-logo" style="color:#F43397;">meesho</div><div class="p-name">Meesho</div><div class="platform-badge">Expert</div></div>
-    <div class="p-card reveal"><div class="p-text-logo" style="color:#FF3F6C; font-family:sans-serif;">Myntra</div><div class="p-name">Myntra</div><div class="platform-badge">Managed</div></div>
-    <div class="p-card reveal"><div class="p-text-logo" style="color:#2C3E50; font-family:sans-serif;">AJIO</div><div class="p-name">Ajio</div><div class="platform-badge">Managed</div></div>
+    <div class="p-card reveal"><img src="1001326491.jpg" class="p-icon" alt="Amazon"><div class="p-name">Amazon</div><div class="platform-badge">Expert</div></div>
+    <div class="p-card reveal"><img src="1001326333.png" class="p-icon" alt="Flipkart"><div class="p-name">Flipkart</div><div class="platform-badge">Expert</div></div>
+    <div class="p-card reveal"><img src="1001326306.png" class="p-icon" alt="Meesho"><div class="p-name">Meesho</div><div class="platform-badge">Expert</div></div>
+    <div class="p-card reveal"><img src="1001326335.jpg" class="p-icon" alt="Myntra"><div class="p-name">Myntra</div><div class="platform-badge">Managed</div></div>
+    <div class="p-card reveal"><img src="1001326311.png" class="p-icon" alt="Ajio"><div class="p-name">Ajio</div><div class="platform-badge">Managed</div></div>
     <div class="p-card reveal"><div class="p-text-logo" style="color:#DA1C5C;">Tata CLiQ</div><div class="p-name">Tata Cliq</div><div class="platform-badge">Managed</div></div>
     
-    <div class="p-card reveal"><div class="p-text-logo" style="color:#008CCF;">JioMart</div><div class="p-name">JioMart</div><div class="platform-badge">Growth</div></div>
-    <div class="p-card reveal"><div class="p-text-logo" style="color:#F8CB46;">blinkit</div><div class="p-name">Blinkit</div><div class="platform-badge">Q-Com</div></div>
-    <div class="p-card reveal"><div class="p-text-logo" style="color:#FF1E46;">Zepto</div><div class="p-name">Zepto</div><div class="platform-badge">Q-Com</div></div>
-    <div class="p-card reveal"><div class="p-text-logo" style="color:#FC8019;">Instamart</div><div class="p-name">Swiggy Instamart</div><div class="platform-badge">Q-Com</div></div>
+    <div class="p-card reveal"><img src="1001326308.jpg" class="p-icon" alt="JioMart"><div class="p-name">JioMart</div><div class="platform-badge">Growth</div></div>
+    <div class="p-card reveal"><img src="1001326337.jpg" class="p-icon" alt="Blinkit"><div class="p-name">Blinkit</div><div class="platform-badge">Q-Com</div></div>
+    <div class="p-card reveal"><img src="1001326338.jpg" class="p-icon" alt="Zepto"><div class="p-name">Zepto</div><div class="platform-badge">Q-Com</div></div>
+    <div class="p-card reveal"><img src="1001326617.png" class="p-icon" alt="Instamart"><div class="p-name">Swiggy Instamart</div><div class="platform-badge">Q-Com</div></div>
     <div class="p-card reveal"><div class="p-text-logo" style="color:#002C6C;">GS1</div><div class="p-name">GS1 Compliance</div><div class="platform-badge">Catalog</div></div>
-    <div class="p-card reveal"><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" class="p-icon"><div class="p-name">Premiere Pro</div><div class="platform-badge">Video Ads</div></div>
+    <div class="p-card reveal"><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" class="p-icon" alt="Premiere Pro"><div class="p-name">Premiere Pro</div><div class="platform-badge">Video Ads</div></div>
   </div>
 </section>
 
