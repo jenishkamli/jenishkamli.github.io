@@ -100,7 +100,7 @@ nav{
   background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);
   background-size:80px 80px;
 }
-.hero-inner{text-align:center;position:relative;z-index:2;max-width:900px;padding:0 40px;}
+.hero-inner{text-align:center;position:relative;z-index:2;max-width:1000px;padding:0 40px;}
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
   padding:8px 20px;border:1px solid var(--border);border-radius:100px;
@@ -120,7 +120,7 @@ nav{
 }
 .hero-title .accent{color:var(--gold);font-weight:600;font-style:italic;}
 .hero-sub{
-  font-size:17px;color:var(--muted);line-height:1.8;max-width:640px;margin:0 auto 48px;font-weight:300;
+  font-size:17px;color:var(--muted);line-height:1.8;max-width:680px;margin:0 auto 48px;font-weight:300;
 }
 .hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
 .btn-gold{
@@ -177,13 +177,13 @@ section{padding:120px 60px;}
 #tech-stack { background:var(--black); padding: 120px 0;}
 .tech-header { text-align: center; margin-bottom: 64px; padding: 0 60px; }
 #physics-container {
-  width: 100%; height: 75vh; 
-  background: radial-gradient(circle at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+  width: 100%; height: 80vh; 
+  background: radial-gradient(circle at center, rgba(201,168,76,0.12) 0%, transparent 70%);
   border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
   position: relative; overflow: hidden;
 }
 #physics-container canvas { width: 100%; height: 100%; display: block; }
-.tech-labels-under { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 24px; padding: 0 20px; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;}
+.tech-labels-under { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 24px; padding: 0 40px; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;}
 
 /* ─── EXPERIENCE ─── */
 #experience { background: var(--black2); }
@@ -434,14 +434,14 @@ footer{
   <div class="tech-header">
     <span class="section-label reveal">E-com Arsenal</span>
     <h2 class="section-title reveal">Interactive <span class="accent">Platforms Matrix</span></h2>
-    <p class="section-sub reveal" style="margin: 0 auto;">Hover and push the spheres. I dominate these marketplaces and Q-commerce platforms with physics-defying strategy.</p>
+    <p class="section-sub reveal" style="margin: 0 auto; max-width: 600px;">Hover and push the metallic spheres. I dominate these marketplaces and Q-commerce platforms with physics-defying strategy.</p>
   </div>
   
   <div id="physics-container" class="reveal">
     </div>
   
   <div class="tech-labels-under reveal">
-    <span>Amazon</span>
+    <span>Amazon India</span>
     <span>Flipkart</span>
     <span>Meesho</span>
     <span>Myntra</span>
@@ -460,7 +460,7 @@ footer{
       <div>
         <span class="section-label reveal">Live Results</span>
         <h2 class="section-title reveal">Performance <span class="accent">Dashboard</span></h2>
-        <p class="section-sub reveal">Live performance tracking across marketplaces showing monthly impressions, sales, and units sold.</p>
+        <p class="section-sub reveal">Live performance tracking across marketplaces showing monthly impressions scaling, units managed, and key metrics.</p>
       </div>
       <div class="reveal">
         <select id="monthSelect" class="dashboard-select">
@@ -575,7 +575,7 @@ footer{
         <div class="project-tag">Quick Commerce</div>
         <div class="project-title">Q-Commerce Setup</div>
         <div class="project-desc">
-          <strong>Platforms:</strong> Blinkit, Zepto, Instamart.<br>
+          <strong>Platforms:</strong> Blinkit, Zepto, Swiggy Instamart.<br>
           <strong>Work:</strong> End-to-end onboarding, catalog setup, and daily operations.<br>
           <strong>Result:</strong> Successfully went live selling with strong platform presence.
         </div>
@@ -726,7 +726,7 @@ const countObserver=new IntersectionObserver(entries=>{
 },{threshold:.3});
 countEls.forEach(el=>countObserver.observe(el));
 
-// ── THREE.JS & CANNON.JS (Physics Skill Balls - 10 Platforms) ──
+// ── THREE.JS & CANNON.JS (Heavy Physics Skill Balls - 10 Logos) ──
 function initPhysicsStack() {
   const container = document.getElementById('physics-container');
   if (!container) return;
@@ -743,22 +743,23 @@ function initPhysicsStack() {
   renderer.setPixelRatio(window.devicePixelRatio);
   container.appendChild(renderer.domElement);
 
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  // Lighting perfected for metallic logo look
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
   scene.add(ambientLight);
-  const spotLight = new THREE.SpotLight(0xffffff, 1);
-  spotLight.position.set(10, 20, 10);
+  const spotLight = new THREE.SpotLight(0xffffff, 1.2);
+  spotLight.position.set(10, 25, 10);
   spotLight.angle = Math.PI / 6;
   spotLight.penumbra = 0.5;
   spotLight.castShadow = true;
   scene.add(spotLight);
 
   const world = new CANNON.World();
-  world.gravity.set(0, -9.82, 0);
+  world.gravity.set(0, -12, 0); // Slightly stronger gravity for heavy feel
   world.broadphase = new CANNON.NaiveBroadphase();
   world.solver.iterations = 10;
 
   const defaultMaterial = new CANNON.Material('default');
-  const contactMaterial = new CANNON.ContactMaterial(defaultMaterial, defaultMaterial, { friction: 0.1, restitution: 0.7 });
+  const contactMaterial = new CANNON.ContactMaterial(defaultMaterial, defaultMaterial, { friction: 0.1, restitution: 0.6 }); // Less bouncy, more heavy
   world.addContactMaterial(contactMaterial);
 
   const halfPi = Math.PI / 2;
@@ -773,42 +774,48 @@ function initPhysicsStack() {
   }
   
   createWall(0, -0.5, 0, 40, 1, 40); // Ground
-  createWall(0, 15, -5, 40, 30, 1); // Back
-  createWall(-15, 7.5, 0, 1, 15, 10, 0, halfPi); // Left
-  createWall(15, 7.5, 0, 1, 15, 10, 0, halfPi); // Right
+  createWall(0, 20, -5, 40, 40, 1); // Back
+  createWall(-16, 10, 0, 1, 20, 15, 0, halfPi); // Left
+  createWall(16, 10, 0, 1, 20, 15, 0, halfPi); // Right
 
-  // Updated 10 platforms array
+  // Define 10 platforms with signature colors for "Logo" vibe
   const skills = [
-    { name: 'Amazon', color: '#FF9900' },
-    { name: 'Flipkart', color: '#2874F0' },
-    { name: 'Meesho', color: '#EE2A7B' },
-    { name: 'Myntra', color: '#FE3C7B' },
-    { name: 'Ajio', color: '#2C3E50' },
-    { name: 'Tata Cliq', color: '#E31837' },
-    { name: 'JioMart', color: '#008ecc' },
-    { name: 'Blinkit', color: '#F8CB46' },
-    { name: 'Zepto', color: '#FF3366' },
-    { name: 'Instamart', color: '#FC8019' }
+    { name: 'Amazon', color: '#FF9900' }, // Orange
+    { name: 'Flipkart', color: '#2874F0' }, // Blue
+    { name: 'Meesho', color: '#EE2A7B' }, // Pink
+    { name: 'Myntra', color: '#FE3C7B' }, // Magenta
+    { name: 'Ajio', color: '#2C3E50' }, // Dark Blue/Grey
+    { name: 'Tata Cliq', color: '#E31837' }, // Red
+    { name: 'JioMart', color: '#008ecc' }, // Jio Blue
+    { name: 'Blinkit', color: '#F8CB46' }, // Blinkit Yellow
+    { name: 'Zepto', color: '#FF3366' }, // Zepto Pink/Red
+    { name: 'Instamart', color: '#FC8019' } // Instamart Orange
   ];
 
   const skillSpheres = [];
   const radius = 1.3; // slightly smaller so 10 fit well
 
   skills.forEach((skill, i) => {
+    // Three.js Mesh - Made more metallic/iconic
     const geometry = new THREE.SphereGeometry(radius, 32, 32);
     const material = new THREE.MeshStandardMaterial({ 
-      color: skill.color, metalness: 0.3, roughness: 0.4,
-      emissive: skill.color, emissiveIntensity: 0.1
+      color: skill.color, 
+      metalness: 0.6, // More metallic
+      roughness: 0.3,
+      emissive: skill.color, 
+      emissiveIntensity: 0.15 // Glowing vibe
     });
     const mesh = new THREE.Mesh(geometry, material);
     mesh.castShadow = true; mesh.receiveShadow = true;
     scene.add(mesh);
 
+    // Cannon.js Physics Body
     const shape = new CANNON.Sphere(radius);
     const body = new CANNON.Body({ mass: 1, material: defaultMaterial });
     body.addShape(shape);
-    body.position.set( (Math.random() - 0.5) * 20, 10 + Math.random() * 10, (Math.random() - 0.5) * 2 );
-    body.angularVelocity.set(Math.random(), Math.random(), Math.random());
+    // Random heavy spawn to cause immediate collision chaos
+    body.position.set( (Math.random() - 0.5) * 15, 12 + Math.random() * 8, (Math.random() - 0.5) * 3 );
+    body.angularVelocity.set(Math.random() * 2, Math.random() * 2, Math.random() * 2);
     world.addBody(body);
 
     skillSpheres.push({ mesh, body, initialColor: skill.color });
@@ -823,7 +830,8 @@ function initPhysicsStack() {
     mouse.y = -((e.clientY - rect.top) / H) * 2 + 1;
   }
   
-  const mouseLight = new THREE.PointLight(0xffffff, 0.8, 15);
+  // Point Light follows mouse to highlight balls
+  const mouseLight = new THREE.PointLight(0xffffff, 1.0, 15);
   scene.add(mouseLight);
   
   const mouse3D = new THREE.Vector3();
@@ -843,26 +851,31 @@ function initPhysicsStack() {
     requestAnimationFrame(animate);
     world.step(timeStep);
 
+    // Sync threejs and cannonjs
     skillSpheres.forEach(obj => {
       obj.mesh.position.copy(obj.body.position);
       obj.mesh.quaternion.copy(obj.body.quaternion);
     });
     
+    // Mouse Interaction
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(skillSpheres.map(obj => obj.mesh));
 
-    skillSpheres.forEach(obj => obj.mesh.material.emissiveIntensity = 0.1);
+    skillSpheres.forEach(obj => obj.mesh.material.emissiveIntensity = 0.15); // reset glow
 
     if (intersects.length > 0) {
       const intersectedMesh = intersects[0].object;
       const sphereObj = skillSpheres.find(obj => obj.mesh === intersectedMesh);
       if(sphereObj) {
-        const forceFactor = 8;
+        // Strong magnetic push away on hover
+        const forceFactor = 10; 
         const pushForce = sphereObj.body.position.clone().vsub(new CANNON.Vec3(mouseLight.position.x, mouseLight.position.y, mouseLight.position.z));
         pushForce.normalize();
         pushForce.mult(forceFactor, pushForce);
         sphereObj.body.applyImpulse(pushForce, sphereObj.body.position);
-        sphereObj.mesh.material.emissiveIntensity = 1.0;
+        
+        // Intense glow
+        sphereObj.mesh.material.emissiveIntensity = 1.3;
       }
     }
     
@@ -898,9 +911,9 @@ function initCharts(){
   revChartInstance = new Chart(rCtx,{
     type:'line',
     data:{
-      labels:['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+      labels:['Initial', 'Phase 2', 'Phase 3', 'Current'],
       datasets:[{
-        label:'Impressions (Lakhs)',
+        label:'Impressions Scaling (Lakhs)',
         data: dashboardData.mar.chartData,
         borderColor:gold, backgroundColor:grad, borderWidth:3,
         pointBackgroundColor:gold, pointRadius:5, pointHoverRadius:8,
@@ -912,7 +925,7 @@ function initCharts(){
       plugins:{legend:{display:false}},
       scales:{
         x:{grid:{color:'rgba(201,168,76,0.06)'},ticks:{color:white,font:{size:11}}},
-        y:{grid:{color:'rgba(201,168,76,0.06)'},ticks:{color:white,font:{size:11}}}
+        y:{grid:{color:'rgba(201,168,76,0.06)'},ticks:{color:white,font:{size:11},callback:v=>v+'L'}}
       },
       animation:{duration:1200,easing:'easeOutQuart'}
     }
@@ -950,11 +963,10 @@ document.querySelectorAll('.btn-gold,.btn-outline,.btn-linkedin,.btn-email,.nav-
   btn.addEventListener('click',function(e){
     const r=document.createElement('span');
     r.classList.add('ripple');
-    const rect=this.getBoundingClientRect();
+    const rect=btn.getBoundingClientRect();
     const size=Math.max(rect.width,rect.height);
     r.style.cssText=`width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px;`;
-    this.style.position='relative';this.style.overflow='hidden';
-    this.appendChild(r);setTimeout(()=>r.remove(),600);
+    btn.appendChild(r);setTimeout(()=>r.remove(),600);
   });
 });
 
