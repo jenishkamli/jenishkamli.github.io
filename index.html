@@ -1,7 +1,3 @@
-<dhruvikpatel14042001@gmail.com>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,19 +20,19 @@
 
 <style>
 :root{
-  --gold:#E5B80B;
-  --gold-glow:rgba(229,184,11,0.4);
-  --gold-glow-light:rgba(229,184,11,0.15);
-  --dark:#030303;
-  --dark-surface:#0a0a0a;
-  --glass:rgba(20,20,20,0.6);
-  --glass-btn:rgba(255,255,255,0.05);
-  --border:rgba(229,184,11,0.15);
-  --border-light:rgba(255,255,255,0.1);
-  --text-main:#F4F4F5;
-  --text-muted:#A1A1AA;
-  --font-head:'Cinzel',serif;
-  --font-body:'Outfit',sans-serif;
+  --gold:#E5B80B;
+  --gold-glow:rgba(229,184,11,0.4);
+  --gold-glow-light:rgba(229,184,11,0.15);
+  --dark:#030303;
+  --dark-surface:#0a0a0a;
+  --glass:rgba(20,20,20,0.6);
+  --glass-btn:rgba(255,255,255,0.05);
+  --border:rgba(229,184,11,0.15);
+  --border-light:rgba(255,255,255,0.1);
+  --text-main:#F4F4F5;
+  --text-muted:#A1A1AA;
+  --font-head:'Cinzel',serif;
+  --font-body:'Outfit',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -58,29 +54,29 @@ body{background:var(--dark);color:var(--text-main);font-family:var(--font-body);
 
 /* ─── LIQUID GLASS BUTTON ─── */
 .btn-magnetic{
-  padding:14px 32px;
-  background:var(--glass-btn);
-  backdrop-filter:blur(15px);
-  -webkit-backdrop-filter:blur(15px);
-  border:1px solid var(--border-light);
-  border-radius:100px;
-  color:var(--text-main);
-  font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
-  text-decoration:none;
-  transition:all .35s cubic-bezier(0.23,1,0.32,1);
-  display:inline-flex;align-items:center;justify-content:center;
-  cursor:none;overflow:hidden;position:relative;z-index:1;
+  padding:14px 32px;
+  background:var(--glass-btn);
+  backdrop-filter:blur(15px);
+  -webkit-backdrop-filter:blur(15px);
+  border:1px solid var(--border-light);
+  border-radius:100px;
+  color:var(--text-main);
+  font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  text-decoration:none;
+  transition:all .35s cubic-bezier(0.23,1,0.32,1);
+  display:inline-flex;align-items:center;justify-content:center;
+  cursor:none;overflow:hidden;position:relative;z-index:1;
 }
 .btn-magnetic::before{
-  content:'';position:absolute;top:100%;left:0;width:100%;height:100%;
-  background:var(--gold);transition:all .4s cubic-bezier(0.23,1,0.32,1);z-index:-1;border-radius:50% 50% 0 0;
+  content:'';position:absolute;top:100%;left:0;width:100%;height:100%;
+  background:var(--gold);transition:all .4s cubic-bezier(0.23,1,0.32,1);z-index:-1;border-radius:50% 50% 0 0;
 }
 .btn-magnetic:hover::before{top:0;border-radius:0;}
 .btn-magnetic:hover{
-  color:var(--dark);
-  border-color:var(--gold);
-  box-shadow:0 0 30px var(--gold-glow),0 0 60px rgba(229,184,11,0.15);
-  transform:scale(1.05);
+  color:var(--dark);
+  border-color:var(--gold);
+  box-shadow:0 0 30px var(--gold-glow),0 0 60px rgba(229,184,11,0.15);
+  transform:scale(1.05);
 }
 .btn-magnetic.gold-fill{background:var(--gold);color:var(--dark);border-color:var(--gold);}
 .btn-magnetic.gold-fill::before{background:#fff;}
@@ -90,10 +86,10 @@ body{background:var(--dark);color:var(--text-main);font-family:var(--font-body);
 
 /* ─── NAV ─── */
 nav{
-  position:fixed;top:0;left:0;right:0;z-index:1000;padding:25px 5%;
-  display:flex;align-items:center;justify-content:space-between;
-  background:linear-gradient(180deg,rgba(3,3,3,0.9) 0%,transparent 100%);
-  backdrop-filter:blur(10px);transition:all 0.4s;
+  position:fixed;top:0;left:0;right:0;z-index:1000;padding:25px 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(180deg,rgba(3,3,3,0.9) 0%,transparent 100%);
+  backdrop-filter:blur(10px);transition:all 0.4s;
 }
 .nav-logo{font-family:var(--font-head);font-size:26px;font-weight:700;color:var(--text-main);letter-spacing:1px;}
 .nav-logo span{color:var(--gold);}
@@ -109,15 +105,15 @@ nav{
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:50px 50px;z-index:1;}
 .hero-inner{text-align:center;position:relative;z-index:2;max-width:1100px;padding:0 20px;}
 .hero-badge{
-  display:inline-flex;align-items:center;gap:10px;padding:10px 24px;
-  border:1px solid var(--border);border-radius:100px;
-  font-size:11px;font-weight:800;color:var(--text-main);letter-spacing:2px;text-transform:uppercase;
-  margin-bottom:40px;background:var(--glass);backdrop-filter:blur(20px);
+  display:inline-flex;align-items:center;gap:10px;padding:10px 24px;
+  border:1px solid var(--border);border-radius:100px;
+  font-size:11px;font-weight:800;color:var(--text-main);letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:40px;background:var(--glass);backdrop-filter:blur(20px);
 }
 .hero-badge span{color:var(--gold);}
 .hero-title{
-  font-family:var(--font-head);font-size:clamp(50px,8vw,120px);font-weight:400;line-height:1;
-  letter-spacing:-1px;margin-bottom:30px;text-transform:uppercase;
+  font-family:var(--font-head);font-size:clamp(50px,8vw,120px);font-weight:400;line-height:1;
+  letter-spacing:-1px;margin-bottom:30px;text-transform:uppercase;
 }
 .hero-title .accent{color:var(--gold);font-style:italic;font-weight:700;}
 .hero-sub{font-size:18px;color:var(--text-muted);line-height:1.6;max-width:800px;margin:0 auto 50px;font-weight:300;}
@@ -149,23 +145,23 @@ section{padding:150px 5%;position:relative;z-index:2;}
 #platforms{background:var(--dark);}
 .platform-grid-12{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;max-width:1200px;margin:0 auto;}
 .p-card{
-  background:var(--dark-surface);border:1px solid rgba(255,255,255,0.05);border-radius:16px;
-  padding:40px 20px;text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden;
+  background:var(--dark-surface);border:1px solid rgba(255,255,255,0.05);border-radius:16px;
+  padding:40px 20px;text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden;
 }
 .p-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 50% 0%,var(--gold-glow),transparent 70%);opacity:0;transition:opacity 0.4s;}
 .p-card:hover{transform:translateY(-12px) scale(1.02);border-color:var(--gold);box-shadow:0 20px 50px rgba(0,0,0,0.8),0 0 30px var(--gold-glow-light);}
 .p-card:hover::before{opacity:1;}
 .p-icon{
-  height:52px;width:52px;object-fit:contain;border-radius:10px;margin-bottom:20px;
-  transition:all 0.4s;display:inline-block;
-  filter:brightness(0.7);
-  border:1px solid transparent;
+  height:52px;width:52px;object-fit:contain;border-radius:10px;margin-bottom:20px;
+  transition:all 0.4s;display:inline-block;
+  filter:brightness(0.7);
+  border:1px solid transparent;
 }
 .p-card:hover .p-icon{
-  filter:brightness(1.1);
-  transform:scale(1.15);
-  border-color:rgba(229,184,11,0.3);
-  box-shadow:0 0 20px var(--gold-glow-light);
+  filter:brightness(1.1);
+  transform:scale(1.15);
+  border-color:rgba(229,184,11,0.3);
+  box-shadow:0 0 20px var(--gold-glow-light);
 }
 .p-text-logo{font-family:var(--font-head);font-size:28px;font-weight:800;color:rgba(255,255,255,0.3);margin-bottom:20px;transition:all 0.4s;line-height:52px;}
 .p-card:hover .p-text-logo{color:var(--gold);transform:scale(1.1);text-shadow:0 0 20px var(--gold-glow);}
@@ -176,9 +172,9 @@ section{padding:150px 5%;position:relative;z-index:2;}
 #dashboard{background:var(--dark-surface);}
 .bento-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(180px,auto);gap:20px;max-width:1200px;margin:0 auto;}
 .bento-box{
-  background:var(--glass);border:1px solid var(--border);border-radius:24px;padding:30px;
-  display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;
-  backdrop-filter:blur(20px);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);
+  background:var(--glass);border:1px solid var(--border);border-radius:24px;padding:30px;
+  display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;
+  backdrop-filter:blur(20px);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);
 }
 .bento-box:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,0.5),0 0 40px rgba(229,184,11,0.08);}
 .bento-col-2{grid-column:span 2;}.bento-row-2{grid-row:span 2;}
@@ -192,8 +188,8 @@ section{padding:150px 5%;position:relative;z-index:2;}
 #services{background:var(--dark);}
 .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1200px;margin:0 auto;}
 .svc-card{
-  background:var(--dark-surface);border:1px solid rgba(255,255,255,0.05);padding:50px;border-radius:24px;
-  position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);cursor:none;
+  background:var(--dark-surface);border:1px solid rgba(255,255,255,0.05);padding:50px;border-radius:24px;
+  position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);cursor:none;
 }
 .svc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(45deg,transparent,var(--gold-glow),transparent);transform:translateX(-100%);transition:transform 0.6s;}
 .svc-card:hover{border-color:var(--gold);box-shadow:0 10px 40px rgba(229,184,11,0.1),0 0 30px rgba(229,184,11,0.05);transform:translateY(-4px);}
@@ -220,18 +216,18 @@ section{padding:150px 5%;position:relative;z-index:2;}
 .proof-scroll-wrapper::-webkit-scrollbar-thumb{background:var(--gold);border-radius:10px;}
 .proof-track{display:flex;gap:24px;padding:10px 0;width:max-content;}
 .proof-card{
-  width:320px;height:220px;border-radius:16px;overflow:hidden;
-  border:1px solid rgba(255,255,255,0.08);
-  background:var(--glass);backdrop-filter:blur(10px);
-  position:relative;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);
-  flex-shrink:0;cursor:pointer;
+  width:320px;height:220px;border-radius:16px;overflow:hidden;
+  border:1px solid rgba(255,255,255,0.08);
+  background:var(--glass);backdrop-filter:blur(10px);
+  position:relative;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);
+  flex-shrink:0;cursor:pointer;
 }
 .proof-card:hover{transform:translateY(-10px) scale(1.03);border-color:var(--gold);box-shadow:0 20px 50px rgba(0,0,0,0.8),0 0 30px var(--gold-glow-light);}
 .proof-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;display:block;loading:lazy;}
 .proof-card:hover img{transform:scale(1.08);}
 .proof-card-overlay{
-  position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.2) 60%,transparent 100%);
-  opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:20px;
+  position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.2) 60%,transparent 100%);
+  opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:20px;
 }
 .proof-card:hover .proof-card-overlay{opacity:1;}
 .proof-card-overlay span{font-size:12px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase;}
@@ -239,12 +235,12 @@ section{padding:150px 5%;position:relative;z-index:2;}
 .proof-card-placeholder .proof-icon{font-size:48px;opacity:0.6;}
 .proof-card-placeholder .proof-label{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;}
 .proof-amazon-btn{
-  display:block;text-align:center;margin:40px auto 0;
-  padding:16px 40px;background:var(--glass-btn);backdrop-filter:blur(15px);
-  border:1px solid rgba(255,153,0,0.4);border-radius:100px;
-  color:#FF9900;font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
-  text-decoration:none;transition:all .35s cubic-bezier(0.23,1,0.32,1);
-  width:fit-content;cursor:none;
+  display:block;text-align:center;margin:40px auto 0;
+  padding:16px 40px;background:var(--glass-btn);backdrop-filter:blur(15px);
+  border:1px solid rgba(255,153,0,0.4);border-radius:100px;
+  color:#FF9900;font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  text-decoration:none;transition:all .35s cubic-bezier(0.23,1,0.32,1);
+  width:fit-content;cursor:none;
 }
 .proof-amazon-btn:hover{background:rgba(255,153,0,0.1);box-shadow:0 0 30px rgba(255,153,0,0.3);transform:scale(1.05);}
 
@@ -269,11 +265,11 @@ section{padding:150px 5%;position:relative;z-index:2;}
 .prj-metric-item span:last-child{font-size:10px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;}
 /* Amazon store CTA button */
 .btn-amazon-store{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:12px 24px;background:var(--glass-btn);backdrop-filter:blur(15px);
-  border:1px solid rgba(255,153,0,0.4);border-radius:100px;
-  color:#FF9900;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
-  text-decoration:none;transition:all .35s cubic-bezier(0.23,1,0.32,1);cursor:none;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;background:var(--glass-btn);backdrop-filter:blur(15px);
+  border:1px solid rgba(255,153,0,0.4);border-radius:100px;
+  color:#FF9900;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  text-decoration:none;transition:all .35s cubic-bezier(0.23,1,0.32,1);cursor:none;
 }
 .btn-amazon-store:hover{background:rgba(255,153,0,0.1);box-shadow:0 0 25px rgba(255,153,0,0.25);transform:scale(1.05);}
 
@@ -337,13 +333,13 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
 .reveal{opacity:0;transform:translateY(50px);}
 
 @media(max-width:900px){
-  .bento-col-2{grid-column:span 4;}.bento-box{grid-column:span 2;}.bento-row-2{grid-row:span 1;}
+  .bento-col-2{grid-column:span 4;}.bento-box{grid-column:span 2;}.bento-row-2{grid-row:span 1;}
 }
 @media(max-width:768px){
-  nav{padding:15px 5%;}.nav-links{display:none;}section{padding:100px 5%;}
-  .hero-title{font-size:50px;}.hero-stats{gap:20px;flex-wrap:wrap;}
-  .svc-grid{grid-template-columns:1fr;}.bento-box{grid-column:span 4;}
-  #chat-box{width:320px;}footer{flex-direction:column;gap:15px;}
+  nav{padding:15px 5%;}.nav-links{display:none;}section{padding:100px 5%;}
+  .hero-title{font-size:50px;}.hero-stats{gap:20px;flex-wrap:wrap;}
+  .svc-grid{grid-template-columns:1fr;}.bento-box{grid-column:span 4;}
+  #chat-box{width:320px;}footer{flex-direction:column;gap:15px;}
 }
 @media(max-width:500px){.bento-box{grid-column:span 4;}}
 </style>
@@ -351,388 +347,387 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
 <body>
 
 <div id="preloader">
-  <div class="loader-text">Jenish Kamli</div>
-  <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
-  <div id="percent">0%</div>
+  <div class="loader-text">Jenish Kamli</div>
+  <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
+  <div id="percent">0%</div>
 </div>
 
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
 <nav id="navbar">
-  <div class="nav-logo">J<span>K</span>.</div>
-  <ul class="nav-links">
-    <li><a href="#dashboard">Results</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#proof">Proof</a></li>
-    <li><a href="#projects">Work</a></li>
-    <li><a href="#arcade">Arcade</a></li>
-  </ul>
-  <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" class="btn-magnetic" target="_blank" rel="noopener">Get Free Audit</a>
+  <div class="nav-logo">J<span>K</span>.</div>
+  <ul class="nav-links">
+    <li><a href="#dashboard">Results</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#proof">Proof</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#arcade">Arcade</a></li>
+  </ul>
+  <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" class="btn-magnetic" target="_blank" rel="noopener">Get Free Audit</a>
 </nav>
 
 <!-- ─── HERO ─── -->
 <section id="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-inner">
-    <div class="hero-badge reveal"><span>●</span> Amazon PPC Expert &amp; E-Commerce Marketplace Manager</div>
-    <h1 class="hero-title reveal">
-      Scale Your <span class="accent">Marketplace</span> Revenue
-    </h1>
-    <p class="hero-sub reveal">
-      <strong>Amazon • Flipkart • Quick Commerce Growth</strong><br/>
-      I help brands grow on Amazon, Flipkart, and Quick Commerce platforms (Blinkit, Zepto, Instamart) using data-driven PPC strategies, conversion optimization, and full marketplace management.<br/><br/>
-      From ₹2.5K to ₹6.35L+ monthly revenue — I build systems that scale profit, not just traffic.
-    </p>
-    <div class="hero-actions reveal">
-      <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" class="btn-magnetic gold-fill" target="_blank" rel="noopener" style="padding:18px 48px;">Get Free Marketplace Audit</a>
-      <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" class="btn-magnetic outline-dim" target="_blank" rel="noopener" style="padding:18px 48px;">View LinkedIn Profile</a>
-    </div>
-    <div class="hero-stats reveal">
-      <div class="stat-item"><div class="stat-num" data-count="3" data-suffix="X+">0</div><div class="stat-label">PPC Visibility</div></div>
-      <div class="stat-item"><div class="stat-num" data-count="6.35" data-prefix="₹" data-suffix="L+">0</div><div class="stat-label">Monthly Revenue</div></div>
-      <div class="stat-item"><div class="stat-num" data-count="20.2" data-suffix="L">0</div><div class="stat-label">Total Impressions</div></div>
-      <div class="stat-item"><div class="stat-num" data-count="100" data-suffix="+">0</div><div class="stat-label">SKUs Managed</div></div>
-    </div>
-  </div>
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-badge reveal"><span>●</span> Amazon PPC Expert &amp; E-Commerce Marketplace Manager</div>
+    <h1 class="hero-title reveal">
+      Scale Your <span class="accent">Marketplace</span> Revenue
+    </h1>
+    <p class="hero-sub reveal">
+      <strong>Amazon • Flipkart • Quick Commerce Growth</strong><br/>
+      I help brands grow on Amazon, Flipkart, and Quick Commerce platforms (Blinkit, Zepto, Instamart) using data-driven PPC strategies, conversion optimization, and full marketplace management.<br/><br/>
+      From ₹2.5K to ₹6.35L+ monthly revenue — I build systems that scale profit, not just traffic.
+    </p>
+    <div class="hero-actions reveal">
+      <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" class="btn-magnetic gold-fill" target="_blank" rel="noopener" style="padding:18px 48px;">Get Free Marketplace Audit</a>
+      <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" class="btn-magnetic outline-dim" target="_blank" rel="noopener" style="padding:18px 48px;">View LinkedIn Profile</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="stat-item"><div class="stat-num" data-count="3" data-suffix="X+">0</div><div class="stat-label">PPC Visibility</div></div>
+      <div class="stat-item"><div class="stat-num" data-count="6.35" data-prefix="₹" data-suffix="L+">0</div><div class="stat-label">Monthly Revenue</div></div>
+      <div class="stat-item"><div class="stat-num" data-count="20.2" data-suffix="L">0</div><div class="stat-label">Total Impressions</div></div>
+      <div class="stat-item"><div class="stat-num" data-count="100" data-suffix="+">0</div><div class="stat-label">SKUs Managed</div></div>
+    </div>
+  </div>
 </section>
 
 <!-- ─── MARQUEE ─── -->
 <div class="marquee-container">
-  <div class="marquee-content">
-
-    <span><img src="IMG-20260329-WA0010.jpg" alt="Amazon PPC Expert"> Amazon</span>
-    <span><img src="Flipkart01.jpg" alt="Flipkart Ads Specialist"> Flipkart</span>
-    <span><img src="Myntra01.jpg" alt="Myntra Account Manager"> Myntra</span>
-    <span><img src="Zepto01.jpg" alt="Zepto Quick Commerce"> Zepto</span>
-    <span><img src="Blinkit01.jpg" alt="Blinkit Q-Commerce"> Blinkit</span>
-    <span><img src="Instamart01.jpg" alt="Swiggy Instamart Expert"> Instamart</span>
-    <span><img src="Meesho01.jpg" alt="Meesho Growth Expert"> Meesho</span>
-    <span><img src="JioMart01.jpg" alt="JioMart Manager"> JioMart</span>
-    <span><img src="Amazon01.jpg" alt="Amazon Marketplace Manager"> Amazon</span>
-    <span><img src="Flipkart01.jpg" alt="Flipkart Growth"> Flipkart</span>
-    <span><img src="Myntra01.jpg" alt="Myntra Expert"> Myntra</span>
-    <span><img src="Zepto01.jpg" alt="Zepto Expert"> Zepto</span>
-    <span><img src="Blinkit01.jpg" alt="Blinkit Expert"> Blinkit</span>
-    <span><img src="Instamart01.jpg" alt="Instamart Expert"> Instamart</span>
-    <span><img src="Meesho01.jpg" alt="Meesho Expert"> Meesho</span>
-    <span><img src="JioMart01.jpg" alt="JioMart Expert"> JioMart</span>
-  </div>
+  <div class="marquee-content">
+    <span><img src="Amazon01.jpg" alt="Amazon PPC Expert"> Amazon</span>
+    <span><img src="Flipkart01.jpg" alt="Flipkart Ads Specialist"> Flipkart</span>
+    <span><img src="Myntra01.jpg" alt="Myntra Account Manager"> Myntra</span>
+    <span><img src="Zepto01.jpg" alt="Zepto Quick Commerce"> Zepto</span>
+    <span><img src="Blinkit01.jpg" alt="Blinkit Q-Commerce"> Blinkit</span>
+    <span><img src="Instamart01.jpg" alt="Swiggy Instamart Expert"> Instamart</span>
+    <span><img src="Meesho01.jpg" alt="Meesho Growth Expert"> Meesho</span>
+    <span><img src="JioMart01.jpg" alt="JioMart Manager"> JioMart</span>
+    <span><img src="Amazon01.jpg" alt="Amazon Marketplace Manager"> Amazon</span>
+    <span><img src="Flipkart01.jpg" alt="Flipkart Growth"> Flipkart</span>
+    <span><img src="Myntra01.jpg" alt="Myntra Expert"> Myntra</span>
+    <span><img src="Zepto01.jpg" alt="Zepto Expert"> Zepto</span>
+    <span><img src="Blinkit01.jpg" alt="Blinkit Expert"> Blinkit</span>
+    <span><img src="Instamart01.jpg" alt="Instamart Expert"> Instamart</span>
+    <span><img src="Meesho01.jpg" alt="Meesho Expert"> Meesho</span>
+    <span><img src="JioMart01.jpg" alt="JioMart Expert"> JioMart</span>
+  </div>
 </div>
 
 <!-- ─── PLATFORMS ─── -->
 <section id="platforms">
-  <div class="section-head reveal">
-    <span class="section-label">E-Commerce Ecosystem</span>
-    <h2 class="section-title">Marketplaces I <span class="accent">Scale</span></h2>
-    <p class="section-desc">I specialize in scaling brands across India's leading marketplaces with proven PPC strategies and growth systems.</p>
-  </div>
-  <div class="platform-grid-12">
-    <div class="p-card reveal"><img src="Amazon01.jpg" class="p-icon" alt="Amazon PPC Expert Marketplace Management"><div class="p-name">Amazon</div><div class="platform-badge">PPC Expert</div></div>
-    <div class="p-card reveal"><img src="Flipkart01.jpg" class="p-icon" alt="Flipkart Ads Growth Specialist"><div class="p-name">Flipkart</div><div class="platform-badge">Ads Expert</div></div>
-    <div class="p-card reveal"><img src="Meesho01.jpg" class="p-icon" alt="Meesho Marketplace Scaling"><div class="p-name">Meesho</div><div class="platform-badge">Growth</div></div>
-    <div class="p-card reveal"><img src="Myntra01.jpg" class="p-icon" alt="Myntra Account Management"><div class="p-name">Myntra</div><div class="platform-badge">Managed</div></div>
-    <div class="p-card reveal"><img src="Ajio01.jpg" class="p-icon" alt="Ajio Growth Expert"><div class="p-name">Ajio</div><div class="platform-badge">Managed</div></div>
-    <div class="p-card reveal"><img src="TataCliq01.jpg" class="p-icon" alt="Tata Cliq Manager"><div class="p-name">Tata Cliq</div><div class="platform-badge">Managed</div></div>
-    <div class="p-card reveal"><img src="JioMart01.jpg" class="p-icon" alt="JioMart Growth Manager"><div class="p-name">JioMart</div><div class="platform-badge">Growth</div></div>
-    <div class="p-card reveal"><img src="Blinkit01.jpg" class="p-icon" alt="Blinkit Quick Commerce Expert"><div class="p-name">Blinkit</div><div class="platform-badge">Q-Com</div></div>
-    <div class="p-card reveal"><img src="Zepto01.jpg" class="p-icon" alt="Zepto Quick Commerce Specialist"><div class="p-name">Zepto</div><div class="platform-badge">Q-Com</div></div>
-    <div class="p-card reveal"><img src="Instamart01.jpg" class="p-icon" alt="Swiggy Instamart Expert"><div class="p-name">Swiggy Instamart</div><div class="platform-badge">Q-Com</div></div>
-    <div class="p-card reveal"><div class="p-text-logo" style="color:#002C6C;">GS1</div><div class="p-name">GS1 Compliance</div><div class="platform-badge">Catalog</div></div>
-    <div class="p-card reveal"><div class="p-text-logo" style="color:#9999FF;">Pr</div><div class="p-name">Premiere Pro</div><div class="platform-badge">Video Ads</div></div>
-  </div>
+  <div class="section-head reveal">
+    <span class="section-label">E-Commerce Ecosystem</span>
+    <h2 class="section-title">Marketplaces I <span class="accent">Scale</span></h2>
+    <p class="section-desc">I specialize in scaling brands across India's leading marketplaces with proven PPC strategies and growth systems.</p>
+  </div>
+  <div class="platform-grid-12">
+    <div class="p-card reveal"><img src="Amazon01.jpg" class="p-icon" alt="Amazon PPC Expert Marketplace Management"><div class="p-name">Amazon</div><div class="platform-badge">PPC Expert</div></div>
+    <div class="p-card reveal"><img src="Flipkart01.jpg" class="p-icon" alt="Flipkart Ads Growth Specialist"><div class="p-name">Flipkart</div><div class="platform-badge">Ads Expert</div></div>
+    <div class="p-card reveal"><img src="Meesho01.jpg" class="p-icon" alt="Meesho Marketplace Scaling"><div class="p-name">Meesho</div><div class="platform-badge">Growth</div></div>
+    <div class="p-card reveal"><img src="Myntra01.jpg" class="p-icon" alt="Myntra Account Management"><div class="p-name">Myntra</div><div class="platform-badge">Managed</div></div>
+    <div class="p-card reveal"><img src="Ajio01.jpg" class="p-icon" alt="Ajio Growth Expert"><div class="p-name">Ajio</div><div class="platform-badge">Managed</div></div>
+    <div class="p-card reveal"><img src="TataCliq01.jpg" class="p-icon" alt="Tata Cliq Manager"><div class="p-name">Tata Cliq</div><div class="platform-badge">Managed</div></div>
+    <div class="p-card reveal"><img src="JioMart01.jpg" class="p-icon" alt="JioMart Growth Manager"><div class="p-name">JioMart</div><div class="platform-badge">Growth</div></div>
+    <div class="p-card reveal"><img src="Blinkit01.jpg" class="p-icon" alt="Blinkit Quick Commerce Expert"><div class="p-name">Blinkit</div><div class="platform-badge">Q-Com</div></div>
+    <div class="p-card reveal"><img src="Zepto01.jpg" class="p-icon" alt="Zepto Quick Commerce Specialist"><div class="p-name">Zepto</div><div class="platform-badge">Q-Com</div></div>
+    <div class="p-card reveal"><img src="Instamart01.jpg" class="p-icon" alt="Swiggy Instamart Expert"><div class="p-name">Swiggy Instamart</div><div class="platform-badge">Q-Com</div></div>
+    <div class="p-card reveal"><div class="p-text-logo" style="color:#002C6C;">GS1</div><div class="p-name">GS1 Compliance</div><div class="platform-badge">Catalog</div></div>
+    <div class="p-card reveal"><div class="p-text-logo" style="color:#9999FF;">Pr</div><div class="p-name">Premiere Pro</div><div class="platform-badge">Video Ads</div></div>
+  </div>
 </section>
 
 <!-- ─── DASHBOARD ─── -->
 <section id="dashboard">
-  <div class="section-head reveal">
-    <span class="section-label">Performance Results</span>
-    <h2 class="section-title">Real Marketplace <span class="accent">Growth</span></h2>
-    <p class="section-desc">I focus on profit-driven growth, not just ad spend. These are real campaign numbers.</p>
-  </div>
-  <div class="bento-grid">
-    <div class="bento-box reveal">
-      <div class="b-label">Marketplace Impressions</div>
-      <div class="b-val" data-count="20.2" data-suffix="L">0L</div>
-      <div class="b-desc">↑ Scaled from 6.7L baseline</div>
-    </div>
-    <div class="bento-box reveal">
-      <div class="b-label">Monthly Revenue Hit</div>
-      <div class="b-val" data-count="6.35" data-prefix="₹" data-suffix="L+">₹0</div>
-      <div class="b-desc">↑ From ₹2.5K starting point</div>
-    </div>
-    <div class="bento-box bento-col-2 bento-row-2 reveal">
-      <div class="chart-title">Revenue Growth Trajectory <span style="color:var(--gold);">● Live</span></div>
-      <div class="chart-wrap"><canvas id="revenueChart"></canvas></div>
-    </div>
-    <div class="bento-box reveal">
-      <div class="b-label">SKUs Optimized</div>
-      <div class="b-val" data-count="100" data-suffix="+">0+</div>
-      <div class="b-desc">Full catalog management</div>
-    </div>
-    <div class="bento-box reveal">
-      <div class="b-label">ROAS Growth</div>
-      <div class="b-val" data-count="300" data-suffix="%">0%</div>
-      <div class="b-desc">3X+ visibility for high-intent keywords</div>
-    </div>
-  </div>
+  <div class="section-head reveal">
+    <span class="section-label">Performance Results</span>
+    <h2 class="section-title">Real Marketplace <span class="accent">Growth</span></h2>
+    <p class="section-desc">I focus on profit-driven growth, not just ad spend. These are real campaign numbers.</p>
+  </div>
+  <div class="bento-grid">
+    <div class="bento-box reveal">
+      <div class="b-label">Marketplace Impressions</div>
+      <div class="b-val" data-count="20.2" data-suffix="L">0L</div>
+      <div class="b-desc">↑ Scaled from 6.7L baseline</div>
+    </div>
+    <div class="bento-box reveal">
+      <div class="b-label">Monthly Revenue Hit</div>
+      <div class="b-val" data-count="6.35" data-prefix="₹" data-suffix="L+">₹0</div>
+      <div class="b-desc">↑ From ₹2.5K starting point</div>
+    </div>
+    <div class="bento-box bento-col-2 bento-row-2 reveal">
+      <div class="chart-title">Revenue Growth Trajectory <span style="color:var(--gold);">● Live</span></div>
+      <div class="chart-wrap"><canvas id="revenueChart"></canvas></div>
+    </div>
+    <div class="bento-box reveal">
+      <div class="b-label">SKUs Optimized</div>
+      <div class="b-val" data-count="100" data-suffix="+">0+</div>
+      <div class="b-desc">Full catalog management</div>
+    </div>
+    <div class="bento-box reveal">
+      <div class="b-label">ROAS Growth</div>
+      <div class="b-val" data-count="300" data-suffix="%">0%</div>
+      <div class="b-desc">3X+ visibility for high-intent keywords</div>
+    </div>
+  </div>
 </section>
 
 <!-- ─── SERVICES ─── -->
 <section id="services">
-  <div class="section-head reveal">
-    <span class="section-label">My Services</span>
-    <h2 class="section-title">How I Grow <span class="accent">Your Brand</span></h2>
-  </div>
-  <div class="svc-grid">
-    <div class="svc-card reveal">
-      <div class="svc-num">01</div>
-      <h3 class="svc-title">Marketplace Management</h3>
-      <p class="svc-desc">Complete handling of Amazon, Flipkart & Meesho accounts. I own the full funnel — listing creation, catalog optimization, pricing strategy, and backend account health for 100+ SKUs.</p>
-      <div class="svc-tags"><span class="svc-tag">Listing Optimization</span><span class="svc-tag">Pricing Strategy</span><span class="svc-tag">Backend Management</span></div>
-    </div>
-    <div class="svc-card reveal">
-      <div class="svc-num">02</div>
-      <h3 class="svc-title">Amazon &amp; Flipkart PPC Expert</h3>
-      <p class="svc-desc">Performance-driven ad campaigns built for ROI. I scaled impressions from 6.7L → 20.2L through granular keyword research, advanced bid management, ACoS reduction, and ROAS scaling.</p>
-      <div class="svc-tags"><span class="svc-tag">Keyword Research</span><span class="svc-tag">Bid Optimization</span><span class="svc-tag">ACoS Reduction</span></div>
-    </div>
-    <div class="svc-card reveal">
-      <div class="svc-num">03</div>
-      <h3 class="svc-title">Quick Commerce Growth</h3>
-      <p class="svc-desc">Blinkit • Zepto • Instamart. End-to-end Q-Commerce setup: full onboarding, inventory planning, product visibility boost, and fast sales activation. I turn new brands into top hyper-local sellers.</p>
-      <div class="svc-tags"><span class="svc-tag">Full Onboarding</span><span class="svc-tag">Visibility Boost</span><span class="svc-tag">Sales Activation</span></div>
-    </div>
-    <div class="svc-card reveal">
-      <div class="svc-num">04</div>
-      <h3 class="svc-title">Listing SEO &amp; Conversion Optimization</h3>
-      <p class="svc-desc">Turn traffic into revenue with SEO-rich titles, bullet points, and A+ content. I build high-converting Brand Stores and creatives that rank organically for competitive marketplace search terms.</p>
-      <div class="svc-tags"><span class="svc-tag">SEO-Rich Listings</span><span class="svc-tag">A+ Content</span><span class="svc-tag">High-Converting Creatives</span></div>
-    </div>
-  </div>
+  <div class="section-head reveal">
+    <span class="section-label">My Services</span>
+    <h2 class="section-title">How I Grow <span class="accent">Your Brand</span></h2>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card reveal">
+      <div class="svc-num">01</div>
+      <h3 class="svc-title">Marketplace Management</h3>
+      <p class="svc-desc">Complete handling of Amazon, Flipkart & Meesho accounts. I own the full funnel — listing creation, catalog optimization, pricing strategy, and backend account health for 100+ SKUs.</p>
+      <div class="svc-tags"><span class="svc-tag">Listing Optimization</span><span class="svc-tag">Pricing Strategy</span><span class="svc-tag">Backend Management</span></div>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-num">02</div>
+      <h3 class="svc-title">Amazon &amp; Flipkart PPC Expert</h3>
+      <p class="svc-desc">Performance-driven ad campaigns built for ROI. I scaled impressions from 6.7L → 20.2L through granular keyword research, advanced bid management, ACoS reduction, and ROAS scaling.</p>
+      <div class="svc-tags"><span class="svc-tag">Keyword Research</span><span class="svc-tag">Bid Optimization</span><span class="svc-tag">ACoS Reduction</span></div>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-num">03</div>
+      <h3 class="svc-title">Quick Commerce Growth</h3>
+      <p class="svc-desc">Blinkit • Zepto • Instamart. End-to-end Q-Commerce setup: full onboarding, inventory planning, product visibility boost, and fast sales activation. I turn new brands into top hyper-local sellers.</p>
+      <div class="svc-tags"><span class="svc-tag">Full Onboarding</span><span class="svc-tag">Visibility Boost</span><span class="svc-tag">Sales Activation</span></div>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-num">04</div>
+      <h3 class="svc-title">Listing SEO &amp; Conversion Optimization</h3>
+      <p class="svc-desc">Turn traffic into revenue with SEO-rich titles, bullet points, and A+ content. I build high-converting Brand Stores and creatives that rank organically for competitive marketplace search terms.</p>
+      <div class="svc-tags"><span class="svc-tag">SEO-Rich Listings</span><span class="svc-tag">A+ Content</span><span class="svc-tag">High-Converting Creatives</span></div>
+    </div>
+  </div>
 </section>
 
 <!-- ─── PHYSICS PIT ─── -->
 <section id="physics-pit">
-  <span class="section-label reveal">Marketplace Tech Stack</span>
-  <h2 class="section-title reveal">Drop &amp; <span class="accent">Bounce</span></h2>
-  <div id="matter-container" class="reveal"></div>
-  <p class="pit-hint">Drag objects to explore the Marketplace Manager's tools</p>
+  <span class="section-label reveal">Marketplace Tech Stack</span>
+  <h2 class="section-title reveal">Drop &amp; <span class="accent">Bounce</span></h2>
+  <div id="matter-container" class="reveal"></div>
+  <p class="pit-hint">Drag objects to explore the Marketplace Manager's tools</p>
 </section>
 
 <!-- ─── PROOF OF WORK ─── -->
 <section id="proof">
-  <div class="section-head reveal">
-    <span class="section-label">Proof of Work</span>
-    <h2 class="section-title">Real Results &amp; <span class="accent">Dashboard Proof</span></h2>
-    <p class="section-desc">A glimpse of real campaign dashboards, growth metrics, and marketplace performance results.</p>
-  </div>
-  <div class="proof-scroll-wrapper reveal">
-    <div class="proof-track">
-      <div class="proof-card">
-        <div class="proof-card-placeholder"><div class="proof-icon">📈</div><div class="proof-label">image.01.jpg</div></div>
-        <div class="proof-card-overlay"><span>Amazon PPC Dashboard</span></div>
-      </div>
-      <div class="proof-card">
-        <div class="proof-card-placeholder"><div class="proof-icon">💹</div><div class="proof-label">image.02.jpg</div></div>
-        <div class="proof-card-overlay"><span>Revenue Growth</span></div>
-      </div>
-      <div class="proof-card">
-        <div class="proof-card-placeholder"><div class="proof-icon">🎯</div><div class="proof-label">image.03.jpg</div></div>
-        <div class="proof-card-overlay"><span>ROAS Metrics</span></div>
-      </div>
-      <div class="proof-card">
-        <div class="proof-card-placeholder"><div class="proof-icon">⚡</div><div class="proof-label">image.04.jpg</div></div>
-        <div class="proof-card-overlay"><span>Q-Com Performance</span></div>
-      </div>
-      <div class="proof-card">
-        <div class="proof-card-placeholder"><div class="proof-icon">📦</div><div class="proof-label">image.05.jpg</div></div>
-        <div class="proof-card-overlay"><span>Catalog Compliance</span></div>
-      </div>
-      <div class="proof-card">
-        <div class="proof-card-placeholder"><div class="proof-icon">🏆</div><div class="proof-label">image.06.jpg</div></div>
-        <div class="proof-card-overlay"><span>Brand Store Analytics</span></div>
-      </div>
-      <div class="proof-card">
-        <div class="proof-card-placeholder"><div class="proof-icon">🔥</div><div class="proof-label">image.07.jpg</div></div>
-        <div class="proof-card-overlay"><span>Impression Scale</span></div>
-      </div>
-    </div>
-  </div>
-  <div style="text-align:center;">
-    <a href="https://www.amazon.in/stores/OneLife/page/6EDAF642-1877-4AF9-B0CE-A9476C9520D1?lp_asin=B0DSW7S1MS&ref_=cm_sw_r_apann_ast_store_QX41P0HZ6NMSFDY3QSD5&store_ref=bl_ast_dp_brandlogo_sto" class="proof-amazon-btn" target="_blank" rel="noopener">🏪 View Live Amazon Brand Store →</a>
-  </div>
+  <div class="section-head reveal">
+    <span class="section-label">Proof of Work</span>
+    <h2 class="section-title">Real Results &amp; <span class="accent">Dashboard Proof</span></h2>
+    <p class="section-desc">A glimpse of real campaign dashboards, growth metrics, and marketplace performance results.</p>
+  </div>
+  <div class="proof-scroll-wrapper reveal">
+    <div class="proof-track">
+      <div class="proof-card">
+        <div class="proof-card-placeholder"><div class="proof-icon">📈</div><div class="proof-label">image.01.jpg</div></div>
+        <div class="proof-card-overlay"><span>Amazon PPC Dashboard</span></div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-card-placeholder"><div class="proof-icon">💹</div><div class="proof-label">image.02.jpg</div></div>
+        <div class="proof-card-overlay"><span>Revenue Growth</span></div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-card-placeholder"><div class="proof-icon">🎯</div><div class="proof-label">image.03.jpg</div></div>
+        <div class="proof-card-overlay"><span>ROAS Metrics</span></div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-card-placeholder"><div class="proof-icon">⚡</div><div class="proof-label">image.04.jpg</div></div>
+        <div class="proof-card-overlay"><span>Q-Com Performance</span></div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-card-placeholder"><div class="proof-icon">📦</div><div class="proof-label">image.05.jpg</div></div>
+        <div class="proof-card-overlay"><span>Catalog Compliance</span></div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-card-placeholder"><div class="proof-icon">🏆</div><div class="proof-label">image.06.jpg</div></div>
+        <div class="proof-card-overlay"><span>Brand Store Analytics</span></div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-card-placeholder"><div class="proof-icon">🔥</div><div class="proof-label">image.07.jpg</div></div>
+        <div class="proof-card-overlay"><span>Impression Scale</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;">
+    <a href="https://www.amazon.in/stores/OneLife/page/6EDAF642-1877-4AF9-B0CE-A9476C9520D1?lp_asin=B0DSW7S1MS&ref_=cm_sw_r_apann_ast_store_QX41P0HZ6NMSFDY3QSD5&store_ref=bl_ast_dp_brandlogo_sto" class="proof-amazon-btn" target="_blank" rel="noopener">🏪 View Live Amazon Brand Store →</a>
+  </div>
 </section>
 
 <!-- ─── CASE STUDIES ─── -->
 <section id="projects">
-  <div class="section-head reveal">
-    <span class="section-label">Case Studies</span>
-    <h2 class="section-title">Proven Marketplace <span class="accent">Results</span></h2>
-  </div>
-  <div class="prj-grid">
+  <div class="section-head reveal">
+    <span class="section-label">Case Studies</span>
+    <h2 class="section-title">Proven Marketplace <span class="accent">Results</span></h2>
+  </div>
+  <div class="prj-grid">
 
-    <!-- Case Study 1: Amazon PPC -->
-    <div class="prj-card reveal">
-      <div class="prj-img"><span class="prj-img-icon">📈</span></div>
-      <div class="prj-info">
-        <span class="prj-tag">Amazon PPC Expert</span>
-        <h3 class="prj-title">Amazon PPC Revenue Scaling</h3>
-        <p class="prj-desc">
-          <strong style="color:var(--text-main);">Challenge:</strong> A consumer health brand with near-zero marketplace presence and a high ACoS draining budget with minimal returns.<br/><br/>
-          <strong style="color:var(--text-main);">Strategy:</strong> Rebuilt the entire PPC architecture — keyword harvesting from search term reports, negative keyword mining, separate auto/manual campaigns, and bid laddering. Simultaneously optimized listings with SEO-rich titles and A+ content for conversion.<br/><br/>
-          <strong style="color:var(--text-main);">Result:</strong> Monthly revenue scaled from ₹2,500 to ₹6.35L+ while maintaining a profitable ACoS.
-        </p>
-        <div class="prj-metric">
-          <div class="prj-metric-item"><span>₹6.35L+</span><span>Monthly Rev</span></div>
-          <div class="prj-metric-item"><span>3X+</span><span>ROAS Growth</span></div>
-          <div class="prj-metric-item"><span>20.2L</span><span>Impressions</span></div>
-        </div>
-        <a href="https://www.amazon.in/stores/OneLife/page/6EDAF642-1877-4AF9-B0CE-A9476C9520D1?lp_asin=B0DSW7S1MS&ref_=cm_sw_r_apann_ast_store_QX41P0HZ6NMSFDY3QSD5&store_ref=bl_ast_dp_brandlogo_sto" class="btn-amazon-store" target="_blank" rel="noopener">🏪 View Brand Store</a>
-      </div>
-    </div>
+    <!-- Case Study 1: Amazon PPC -->
+    <div class="prj-card reveal">
+      <div class="prj-img"><span class="prj-img-icon">📈</span></div>
+      <div class="prj-info">
+        <span class="prj-tag">Amazon PPC Expert</span>
+        <h3 class="prj-title">Amazon PPC Revenue Scaling</h3>
+        <p class="prj-desc">
+          <strong style="color:var(--text-main);">Challenge:</strong> A consumer health brand with near-zero marketplace presence and a high ACoS draining budget with minimal returns.<br/><br/>
+          <strong style="color:var(--text-main);">Strategy:</strong> Rebuilt the entire PPC architecture — keyword harvesting from search term reports, negative keyword mining, separate auto/manual campaigns, and bid laddering. Simultaneously optimized listings with SEO-rich titles and A+ content for conversion.<br/><br/>
+          <strong style="color:var(--text-main);">Result:</strong> Monthly revenue scaled from ₹2,500 to ₹6.35L+ while maintaining a profitable ACoS.
+        </p>
+        <div class="prj-metric">
+          <div class="prj-metric-item"><span>₹6.35L+</span><span>Monthly Rev</span></div>
+          <div class="prj-metric-item"><span>3X+</span><span>ROAS Growth</span></div>
+          <div class="prj-metric-item"><span>20.2L</span><span>Impressions</span></div>
+        </div>
+        <a href="https://www.amazon.in/stores/OneLife/page/6EDAF642-1877-4AF9-B0CE-A9476C9520D1?lp_asin=B0DSW7S1MS&ref_=cm_sw_r_apann_ast_store_QX41P0HZ6NMSFDY3QSD5&store_ref=bl_ast_dp_brandlogo_sto" class="btn-amazon-store" target="_blank" rel="noopener">🏪 View Brand Store</a>
+      </div>
+    </div>
 
-    <!-- Case Study 2: Quick Commerce -->
-    <div class="prj-card reveal">
-      <div class="prj-img"><span class="prj-img-icon">⚡</span></div>
-      <div class="prj-info">
-        <span class="prj-tag">Quick Commerce Expert</span>
-        <h3 class="prj-title">Blinkit / Zepto / Instamart Launch</h3>
-        <p class="prj-desc">
-          <strong style="color:var(--text-main);">Challenge:</strong> Brand had zero Q-Commerce presence and no understanding of hyper-local dark store distribution or catalog requirements.<br/><br/>
-          <strong style="color:var(--text-main);">Strategy:</strong> Executed complete end-to-end onboarding across all three platforms — product catalog setup, image compliance, pricing configuration, warehouse mapping, and first-order fulfillment workflow.<br/><br/>
-          <strong style="color:var(--text-main);">Result:</strong> Live sales operational from Day 1 on all three platforms with consistent order growth and strong visibility in local search results.
-        </p>
-        <div class="prj-metric">
-          <div class="prj-metric-item"><span>3</span><span>Platforms</span></div>
-          <div class="prj-metric-item"><span>Day 1</span><span>Live Sales</span></div>
-          <div class="prj-metric-item"><span>100%</span><span>Compliance</span></div>
-        </div>
-      </div>
-    </div>
+    <!-- Case Study 2: Quick Commerce -->
+    <div class="prj-card reveal">
+      <div class="prj-img"><span class="prj-img-icon">⚡</span></div>
+      <div class="prj-info">
+        <span class="prj-tag">Quick Commerce Expert</span>
+        <h3 class="prj-title">Blinkit / Zepto / Instamart Launch</h3>
+        <p class="prj-desc">
+          <strong style="color:var(--text-main);">Challenge:</strong> Brand had zero Q-Commerce presence and no understanding of hyper-local dark store distribution or catalog requirements.<br/><br/>
+          <strong style="color:var(--text-main);">Strategy:</strong> Executed complete end-to-end onboarding across all three platforms — product catalog setup, image compliance, pricing configuration, warehouse mapping, and first-order fulfillment workflow.<br/><br/>
+          <strong style="color:var(--text-main);">Result:</strong> Live sales operational from Day 1 on all three platforms with consistent order growth and strong visibility in local search results.
+        </p>
+        <div class="prj-metric">
+          <div class="prj-metric-item"><span>3</span><span>Platforms</span></div>
+          <div class="prj-metric-item"><span>Day 1</span><span>Live Sales</span></div>
+          <div class="prj-metric-item"><span>100%</span><span>Compliance</span></div>
+        </div>
+      </div>
+    </div>
 
-    <!-- Case Study 3: GS1 & Catalog -->
-    <div class="prj-card reveal">
-      <div class="prj-img"><span class="prj-img-icon">📦</span></div>
-      <div class="prj-info">
-        <span class="prj-tag">Catalog Compliance</span>
-        <h3 class="prj-title">GS1 Compliance &amp; Catalog Health</h3>
-        <p class="prj-desc">
-          <strong style="color:var(--text-main);">Challenge:</strong> 100+ SKUs with inconsistent barcodes, suppressed listings, and failed marketplace compliance checks causing listing deactivations and lost sales.<br/><br/>
-          <strong style="color:var(--text-main);">Strategy:</strong> Implemented GS1 barcode identification across the entire catalog, standardized product data architecture, fixed backend attributes, and resolved all suppressed listings through systematic audit.<br/><br/>
-          <strong style="color:var(--text-main);">Result:</strong> Zero suppressed listings, 100% catalog compliance across Amazon and Flipkart, improved listing accuracy and buy box eligibility.
-        </p>
-        <div class="prj-metric">
-          <div class="prj-metric-item"><span>100+</span><span>SKUs Fixed</span></div>
-          <div class="prj-metric-item"><span>0</span><span>Suppressed</span></div>
-          <div class="prj-metric-item"><span>GS1</span><span>Certified</span></div>
-        </div>
-      </div>
-    </div>
+    <!-- Case Study 3: GS1 & Catalog -->
+    <div class="prj-card reveal">
+      <div class="prj-img"><span class="prj-img-icon">📦</span></div>
+      <div class="prj-info">
+        <span class="prj-tag">Catalog Compliance</span>
+        <h3 class="prj-title">GS1 Compliance &amp; Catalog Health</h3>
+        <p class="prj-desc">
+          <strong style="color:var(--text-main);">Challenge:</strong> 100+ SKUs with inconsistent barcodes, suppressed listings, and failed marketplace compliance checks causing listing deactivations and lost sales.<br/><br/>
+          <strong style="color:var(--text-main);">Strategy:</strong> Implemented GS1 barcode identification across the entire catalog, standardized product data architecture, fixed backend attributes, and resolved all suppressed listings through systematic audit.<br/><br/>
+          <strong style="color:var(--text-main);">Result:</strong> Zero suppressed listings, 100% catalog compliance across Amazon and Flipkart, improved listing accuracy and buy box eligibility.
+        </p>
+        <div class="prj-metric">
+          <div class="prj-metric-item"><span>100+</span><span>SKUs Fixed</span></div>
+          <div class="prj-metric-item"><span>0</span><span>Suppressed</span></div>
+          <div class="prj-metric-item"><span>GS1</span><span>Certified</span></div>
+        </div>
+      </div>
+    </div>
 
-  </div>
+  </div>
 </section>
 
 <!-- ─── CTA SECTION ─── -->
 <section id="cta-section">
-  <div class="cta-inner reveal">
-    <span class="section-label">Free Consultation</span>
-    <h2 class="section-title">Ready to Scale Your <span class="accent">Marketplace Sales?</span></h2>
-    <p class="hero-sub">I will analyze your account and give you a free growth strategy to increase revenue and reduce wasted ad spend. No fluff — just data-driven action.</p>
-    <div class="cta-actions">
-      <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" class="btn-magnetic gold-fill" target="_blank" rel="noopener" style="padding:18px 48px;">Get Free Marketplace Audit</a>
-      <a href="mailto:Jeniish.kamli@gmail.com" class="btn-magnetic outline-dim" style="padding:18px 48px;">Email Me</a>
-    </div>
-  </div>
+  <div class="cta-inner reveal">
+    <span class="section-label">Free Consultation</span>
+    <h2 class="section-title">Ready to Scale Your <span class="accent">Marketplace Sales?</span></h2>
+    <p class="hero-sub">I will analyze your account and give you a free growth strategy to increase revenue and reduce wasted ad spend. No fluff — just data-driven action.</p>
+    <div class="cta-actions">
+      <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" class="btn-magnetic gold-fill" target="_blank" rel="noopener" style="padding:18px 48px;">Get Free Marketplace Audit</a>
+      <a href="mailto:Jeniish.kamli@gmail.com" class="btn-magnetic outline-dim" style="padding:18px 48px;">Email Me</a>
+    </div>
+  </div>
 </section>
 
 <!-- ─── ARCADE (just before footer) ─── -->
 <section id="arcade">
-  <span class="section-label reveal">Interactive Experience</span>
-  <h2 class="section-title reveal">Play My <span class="accent">Skills</span></h2>
-  <p class="section-desc reveal" style="text-align:center;margin-bottom:60px;">Experience how I approach marketplace growth through interactive simulations: ACoS vs ROAS optimization, scaling strategies, and sales funnel thinking.</p>
-  <div class="arcade-grid">
-    <div class="game-box reveal">
-      <div class="game-head">ACoS Slasher</div>
-      <div class="game-sub">Slice Green (ROAS). Avoid Red (ACoS).</div>
-      <div class="game-area">
-        <div class="start-overlay" id="slasher-start" onclick="startSlasher()"><button class="btn-magnetic">Insert Coin</button></div>
-        <canvas id="slasher-canvas" width="300" height="320"></canvas>
-      </div>
-      <div style="margin-top:15px;font-weight:700;color:var(--gold);">Score: <span id="slasher-score">0</span></div>
-    </div>
-    <div class="game-box reveal">
-      <div class="game-head">Marketplace Run</div>
-      <div class="game-sub">Jump over hurdles. Scale Fulfillment.</div>
-      <div class="game-area">
-        <div class="start-overlay" id="runner-start" onclick="startRunner()"><button class="btn-magnetic">Insert Coin</button></div>
-        <canvas id="runner-canvas" width="300" height="320"></canvas>
-      </div>
-      <div style="margin-top:15px;font-weight:700;color:var(--gold);">Distance: <span id="runner-score">0</span>m</div>
-    </div>
-    <div class="game-box reveal">
-      <div class="game-head">The Sales Funnel</div>
-      <div class="game-sub">Route Marketplace Traffic to Sales.</div>
-      <div class="game-area" style="padding:10px;">
-        <div class="puzzle-board" id="puzzle-board"></div>
-      </div>
-      <div style="margin-top:15px;display:flex;justify-content:space-between;align-items:center;">
-        <button class="btn-magnetic" style="padding:8px 16px;font-size:10px;" onclick="checkPuzzle()">Send Traffic</button>
-        <span id="puzzle-status" style="font-size:11px;color:#4ade80;"></span>
-      </div>
-    </div>
-  </div>
+  <span class="section-label reveal">Interactive Experience</span>
+  <h2 class="section-title reveal">Play My <span class="accent">Skills</span></h2>
+  <p class="section-desc reveal" style="text-align:center;margin-bottom:60px;">Experience how I approach marketplace growth through interactive simulations: ACoS vs ROAS optimization, scaling strategies, and sales funnel thinking.</p>
+  <div class="arcade-grid">
+    <div class="game-box reveal">
+      <div class="game-head">ACoS Slasher</div>
+      <div class="game-sub">Slice Green (ROAS). Avoid Red (ACoS).</div>
+      <div class="game-area">
+        <div class="start-overlay" id="slasher-start" onclick="startSlasher()"><button class="btn-magnetic">Insert Coin</button></div>
+        <canvas id="slasher-canvas" width="300" height="320"></canvas>
+      </div>
+      <div style="margin-top:15px;font-weight:700;color:var(--gold);">Score: <span id="slasher-score">0</span></div>
+    </div>
+    <div class="game-box reveal">
+      <div class="game-head">Marketplace Run</div>
+      <div class="game-sub">Jump over hurdles. Scale Fulfillment.</div>
+      <div class="game-area">
+        <div class="start-overlay" id="runner-start" onclick="startRunner()"><button class="btn-magnetic">Insert Coin</button></div>
+        <canvas id="runner-canvas" width="300" height="320"></canvas>
+      </div>
+      <div style="margin-top:15px;font-weight:700;color:var(--gold);">Distance: <span id="runner-score">0</span>m</div>
+    </div>
+    <div class="game-box reveal">
+      <div class="game-head">The Sales Funnel</div>
+      <div class="game-sub">Route Marketplace Traffic to Sales.</div>
+      <div class="game-area" style="padding:10px;">
+        <div class="puzzle-board" id="puzzle-board"></div>
+      </div>
+      <div style="margin-top:15px;display:flex;justify-content:space-between;align-items:center;">
+        <button class="btn-magnetic" style="padding:8px 16px;font-size:10px;" onclick="checkPuzzle()">Send Traffic</button>
+        <span id="puzzle-status" style="font-size:11px;color:#4ade80;"></span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ─── CONTACT ─── -->
 <section id="contact">
-  <div class="contact-wrap reveal">
-    <span class="section-label">Let's Connect</span>
-    <h2 class="section-title">Let's Grow <span class="accent">Your Brand</span></h2>
-    <p class="hero-sub" style="margin-top:20px;">I help brands scale on Amazon, Flipkart &amp; Quick Commerce platforms with proven strategies. Let's talk about your marketplace growth goals.</p>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" class="btn-magnetic gold-fill" target="_blank" rel="noopener" style="padding:16px 40px;">💼 View LinkedIn Profile</a>
-      <a href="mailto:Jeniish.kamli@gmail.com" class="btn-magnetic" style="padding:16px 40px;border-color:#555;color:var(--text-muted);">📩 Jeniish.kamli@gmail.com</a>
-    </div>
-  </div>
+  <div class="contact-wrap reveal">
+    <span class="section-label">Let's Connect</span>
+    <h2 class="section-title">Let's Grow <span class="accent">Your Brand</span></h2>
+    <p class="hero-sub" style="margin-top:20px;">I help brands scale on Amazon, Flipkart &amp; Quick Commerce platforms with proven strategies. Let's talk about your marketplace growth goals.</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" class="btn-magnetic gold-fill" target="_blank" rel="noopener" style="padding:16px 40px;">💼 View LinkedIn Profile</a>
+      <a href="mailto:Jeniish.kamli@gmail.com" class="btn-magnetic" style="padding:16px 40px;border-color:#555;color:var(--text-muted);">📩 Jeniish.kamli@gmail.com</a>
+    </div>
+  </div>
 </section>
 
 <footer>
-  <div class="f-logo">Jenish Kamli.</div>
-  <div class="f-text">© 2026 Jenish Kamli — Amazon PPC Expert &amp; E-Commerce Marketplace Manager. Helping brands scale profitably 🚀</div>
+  <div class="f-logo">Jenish Kamli.</div>
+  <div class="f-text">© 2026 Jenish Kamli — Amazon PPC Expert &amp; E-Commerce Marketplace Manager. Helping brands scale profitably 🚀</div>
 </footer>
 
 <!-- ─── FLOATING BUTTONS ─── -->
 <div class="float-btn" id="audio-toggle" onclick="toggleMute()" title="Mute/Unmute Sounds">🔊</div>
 
 <div id="chat-container">
-  <button class="float-btn" id="chat-toggle" onclick="toggleChat()">🤖</button>
-  <div id="chat-box">
-    <div class="chat-header">
-      <div class="chat-av">🤖</div>
-      <div class="chat-info"><h3>Marketplace AI</h3><p>● ONLINE</p></div>
-    </div>
-    <div class="chat-body" id="chat-messages">
-      <div class="msg bot">Namaste! Ask me about Jenish's Amazon PPC expertise, marketplace results, or Quick Commerce growth strategies!</div>
-    </div>
-    <div class="chat-input-wrap">
-      <input type="text" id="chat-input" placeholder="Ask about Amazon PPC, Q-Com..." onkeydown="if(event.key==='Enter')sendChat()"/>
-      <button id="chat-send" onclick="sendChat()">➤</button>
-    </div>
-  </div>
+  <button class="float-btn" id="chat-toggle" onclick="toggleChat()">🤖</button>
+  <div id="chat-box">
+    <div class="chat-header">
+      <div class="chat-av">🤖</div>
+      <div class="chat-info"><h3>Marketplace AI</h3><p>● ONLINE</p></div>
+    </div>
+    <div class="chat-body" id="chat-messages">
+      <div class="msg bot">Namaste! Ask me about Jenish's Amazon PPC expertise, marketplace results, or Quick Commerce growth strategies!</div>
+    </div>
+    <div class="chat-input-wrap">
+      <input type="text" id="chat-input" placeholder="Ask about Amazon PPC, Q-Com..." onkeydown="if(event.key==='Enter')sendChat()"/>
+      <button id="chat-send" onclick="sendChat()">➤</button>
+    </div>
+  </div>
 </div>
 
 <script>
 // ── PRELOADER ──
 window.addEventListener('load',()=>{
-  let p=0; const pEl=document.getElementById('percent');
-  const int=setInterval(()=>{p+=Math.floor(Math.random()*15);if(p>100)p=100;pEl.innerText=p+"%";if(p===100)clearInterval(int);},50);
-  const tl=gsap.timeline({delay:0.8});
-  tl.to("#loader-bar",{width:"100%",duration:0.8,ease:"power2.inOut"})
-    .to("#preloader",{yPercent:-100,duration:0.8,ease:"power4.inOut"})
-    .fromTo(".hero-title",{y:50,opacity:0},{y:0,opacity:1,duration:1,ease:"power3.out"},"-=0.4")
-    .fromTo(".hero-sub",{y:30,opacity:0},{y:0,opacity:1,duration:0.8},"-=0.6");
+  let p=0; const pEl=document.getElementById('percent');
+  const int=setInterval(()=>{p+=Math.floor(Math.random()*15);if(p>100)p=100;pEl.innerText=p+"%";if(p===100)clearInterval(int);},50);
+  const tl=gsap.timeline({delay:0.8});
+  tl.to("#loader-bar",{width:"100%",duration:0.8,ease:"power2.inOut"})
+    .to("#preloader",{yPercent:-100,duration:0.8,ease:"power4.inOut"})
+    .fromTo(".hero-title",{y:50,opacity:0},{y:0,opacity:1,duration:1,ease:"power3.out"},"-=0.4")
+    .fromTo(".hero-sub",{y:30,opacity:0},{y:0,opacity:1,duration:0.8},"-=0.6");
 });
 
 // ── CURSOR ──
@@ -741,30 +736,30 @@ document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';curso
 let rx=0,ry=0;
 (function animRing(){rx+=(cursor.getBoundingClientRect().left-rx)*0.15;ry+=(cursor.getBoundingClientRect().top-ry)*0.15;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
 document.querySelectorAll('a,button,.p-card,.bento-box,.svc-card,.prj-card,.proof-card,.game-box').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{ring.style.transform='translate(-50%,-50%) scale(1.5)';ring.style.borderColor='var(--gold)';cursor.style.width='12px';cursor.style.height='12px';});
-  el.addEventListener('mouseleave',()=>{ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.borderColor='rgba(229,184,11,0.5)';cursor.style.width='8px';cursor.style.height='8px';});
+  el.addEventListener('mouseenter',()=>{ring.style.transform='translate(-50%,-50%) scale(1.5)';ring.style.borderColor='var(--gold)';cursor.style.width='12px';cursor.style.height='12px';});
+  el.addEventListener('mouseleave',()=>{ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.borderColor='rgba(229,184,11,0.5)';cursor.style.width='8px';cursor.style.height='8px';});
 });
 
 // ── NAV SCROLL ──
 window.addEventListener('scroll',()=>{
-  const nav=document.querySelector('nav');
-  if(window.scrollY>50){nav.style.padding='15px 5%';nav.style.background='rgba(3,3,3,0.98)';}
-  else{nav.style.padding='25px 5%';nav.style.background='linear-gradient(180deg,rgba(3,3,3,0.9) 0%,transparent 100%)';}
+  const nav=document.querySelector('nav');
+  if(window.scrollY>50){nav.style.padding='15px 5%';nav.style.background='rgba(3,3,3,0.98)';}
+  else{nav.style.padding='25px 5%';nav.style.background='linear-gradient(180deg,rgba(3,3,3,0.9) 0%,transparent 100%)';}
 });
 
 // ── GSAP ──
 gsap.registerPlugin(ScrollTrigger);
 gsap.to('.hero-grid',{yPercent:-15,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
 document.querySelectorAll('.reveal').forEach((el,i)=>{
-  gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 85%'},delay:(i%3)*0.1});
+  gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 85%'},delay:(i%3)*0.1});
 });
 
 // ── COUNTERS ──
 const countEls=document.querySelectorAll('[data-count]');
 const countObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){
-  const t=parseFloat(e.target.dataset.count),pre=e.target.dataset.prefix||'',suf=e.target.dataset.suffix||'';let c=0;
-  const int=setInterval(()=>{c+=t/40;if(c>=t){c=t;clearInterval(int);}e.target.textContent=pre+(t%1!==0?c.toFixed(1):Math.floor(c))+suf;},25);
-  countObs.unobserve(e.target);}});},{threshold:0.5});
+  const t=parseFloat(e.target.dataset.count),pre=e.target.dataset.prefix||'',suf=e.target.dataset.suffix||'';let c=0;
+  const int=setInterval(()=>{c+=t/40;if(c>=t){c=t;clearInterval(int);}e.target.textContent=pre+(t%1!==0?c.toFixed(1):Math.floor(c))+suf;},25);
+  countObs.unobserve(e.target);}});},{threshold:0.5});
 countEls.forEach(el=>countObs.observe(el));
 
 // ── CHARTS ──
@@ -772,10 +767,10 @@ let chartsInit=false;
 const chartObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&!chartsInit){chartsInit=true;initCharts();}});});
 chartObs.observe(document.getElementById('dashboard'));
 function initCharts(){
-  const gold='#E5B80B',white='rgba(255,255,255,0.7)';
-  const ctx=document.getElementById('revenueChart').getContext('2d');
-  const grad=ctx.createLinearGradient(0,0,0,250);grad.addColorStop(0,'rgba(229,184,11,0.5)');grad.addColorStop(1,'rgba(229,184,11,0)');
-  new Chart(ctx,{type:'line',data:{labels:['Jan','Feb','Mar'],datasets:[{label:'Revenue (₹)',data:[2500,85000,635000],borderColor:gold,backgroundColor:grad,borderWidth:3,pointBackgroundColor:gold,pointRadius:6,fill:true,tension:0.4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'₹'+ctx.parsed.y.toLocaleString('en-IN')}}},scales:{x:{grid:{color:'#222'},ticks:{color:white}},y:{grid:{color:'#222'},ticks:{color:white,callback:v=>v>=100000?'₹'+(v/100000).toFixed(1)+'L':'₹'+v}}}}});
+  const gold='#E5B80B',white='rgba(255,255,255,0.7)';
+  const ctx=document.getElementById('revenueChart').getContext('2d');
+  const grad=ctx.createLinearGradient(0,0,0,250);grad.addColorStop(0,'rgba(229,184,11,0.5)');grad.addColorStop(1,'rgba(229,184,11,0)');
+  new Chart(ctx,{type:'line',data:{labels:['Jan','Feb','Mar'],datasets:[{label:'Revenue (₹)',data:[2500,85000,635000],borderColor:gold,backgroundColor:grad,borderWidth:3,pointBackgroundColor:gold,pointRadius:6,fill:true,tension:0.4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'₹'+ctx.parsed.y.toLocaleString('en-IN')}}},scales:{x:{grid:{color:'#222'},ticks:{color:white}},y:{grid:{color:'#222'},ticks:{color:white,callback:v=>v>=100000?'₹'+(v/100000).toFixed(1)+'L':'₹'+v}}}}});
 }
 
 // ── AUDIO ──
@@ -794,21 +789,21 @@ scrollWrap.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault()
 
 // ── PHYSICS PIT ──
 function initPhysics(){
-  const cont=document.getElementById('matter-container');
-  const{Engine,Render,Runner,MouseConstraint,Mouse,Composite,Bodies,Events}=Matter;
-  const engine=Engine.create(),world=engine.world;
-  const render=Render.create({element:cont,engine:engine,options:{width:cont.clientWidth,height:cont.clientHeight,wireframes:false,background:'transparent'}});
-  Render.run(render);Runner.run(Runner.create(),engine);
-  const cw=cont.clientWidth,ch=cont.clientHeight,th=60;
-  Composite.add(world,[Bodies.rectangle(cw/2,ch+th/2,cw*2,th,{isStatic:true}),Bodies.rectangle(-th/2,ch/2,th,ch*2,{isStatic:true}),Bodies.rectangle(cw+th/2,ch/2,th,ch*2,{isStatic:true})]);
-  const items=[{t:"Amazon PPC",c:"#FF9900",r:55},{t:"Flipkart Ads",c:"#047BD5",r:50},{t:"Q-Com",c:"#FF1E46",r:50},{t:"ROAS Growth",c:"#E5B80B",r:45},{t:"GS1 Catalog",c:"#002C6C",r:55},{t:"Marketplace",c:"#222",r:65,s:"#E5B80B"}];
-  const bodies=items.map((s,i)=>{let b=Bodies.circle(Math.random()*(cw-100)+50,-100-(i*80),s.r,{restitution:0.9,render:{fillStyle:s.c,strokeStyle:s.s||s.c,lineWidth:3}});b.sData=s;return b;});
-  Composite.add(world,bodies);
-  const mouse=Mouse.create(render.canvas);
-  Composite.add(world,MouseConstraint.create(engine,{mouse:mouse,constraint:{stiffness:0.2,render:{visible:false}}}));render.mouse=mouse;
-  let lastBounce=0;
-  Events.on(engine,'collisionStart',e=>{if(e.pairs.length>0&&Date.now()-lastBounce>100){playSFX('bounce',0.2);lastBounce=Date.now();}});
-  Events.on(render,'afterRender',()=>{const ctx=render.context;ctx.font="bold 13px 'Outfit'";ctx.textAlign="center";ctx.textBaseline="middle";bodies.forEach(b=>{ctx.fillStyle="#FFF";ctx.fillText(b.sData.t,b.position.x,b.position.y);});});
+  const cont=document.getElementById('matter-container');
+  const{Engine,Render,Runner,MouseConstraint,Mouse,Composite,Bodies,Events}=Matter;
+  const engine=Engine.create(),world=engine.world;
+  const render=Render.create({element:cont,engine:engine,options:{width:cont.clientWidth,height:cont.clientHeight,wireframes:false,background:'transparent'}});
+  Render.run(render);Runner.run(Runner.create(),engine);
+  const cw=cont.clientWidth,ch=cont.clientHeight,th=60;
+  Composite.add(world,[Bodies.rectangle(cw/2,ch+th/2,cw*2,th,{isStatic:true}),Bodies.rectangle(-th/2,ch/2,th,ch*2,{isStatic:true}),Bodies.rectangle(cw+th/2,ch/2,th,ch*2,{isStatic:true})]);
+  const items=[{t:"Amazon PPC",c:"#FF9900",r:55},{t:"Flipkart Ads",c:"#047BD5",r:50},{t:"Q-Com",c:"#FF1E46",r:50},{t:"ROAS Growth",c:"#E5B80B",r:45},{t:"GS1 Catalog",c:"#002C6C",r:55},{t:"Marketplace",c:"#222",r:65,s:"#E5B80B"}];
+  const bodies=items.map((s,i)=>{let b=Bodies.circle(Math.random()*(cw-100)+50,-100-(i*80),s.r,{restitution:0.9,render:{fillStyle:s.c,strokeStyle:s.s||s.c,lineWidth:3}});b.sData=s;return b;});
+  Composite.add(world,bodies);
+  const mouse=Mouse.create(render.canvas);
+  Composite.add(world,MouseConstraint.create(engine,{mouse:mouse,constraint:{stiffness:0.2,render:{visible:false}}}));render.mouse=mouse;
+  let lastBounce=0;
+  Events.on(engine,'collisionStart',e=>{if(e.pairs.length>0&&Date.now()-lastBounce>100){playSFX('bounce',0.2);lastBounce=Date.now();}});
+  Events.on(render,'afterRender',()=>{const ctx=render.context;ctx.font="bold 13px 'Outfit'";ctx.textAlign="center";ctx.textBaseline="middle";bodies.forEach(b=>{ctx.fillStyle="#FFF";ctx.fillText(b.sData.t,b.position.x,b.position.y);});});
 }
 let pitObs=new IntersectionObserver(e=>{if(e[0].isIntersecting){initPhysics();pitObs.disconnect();}});
 pitObs.observe(document.getElementById('physics-pit'));
@@ -817,69 +812,67 @@ pitObs.observe(document.getElementById('physics-pit'));
 // 1. Slasher
 let slashRun=false;
 function startSlasher(){
-  document.getElementById('slasher-start').style.display='none';if(slashRun)return;slashRun=true;
-  const cvs=document.getElementById('slasher-canvas');const ctx=cvs.getContext('2d');
-  let tgts=[],parts=[],sc=0,m={x:0,y:0,d:false},tr=[],lst=0;
-  cvs.addEventListener('mousedown',()=>{m.d=true;tr=[];});cvs.addEventListener('mouseup',()=>{m.d=false;tr=[];});
-  cvs.addEventListener('mousemove',e=>{const r=cvs.getBoundingClientRect();m.x=e.clientX-r.left;m.y=e.clientY-r.top;if(m.d){tr.push({x:m.x,y:m.y});if(tr.length>5)tr.shift();if(Date.now()-lst>200){playSFX('swipe',0.1);lst=Date.now();}chk();}});
-  function pGen(x,y,c){for(let i=0;i<8;i++)parts.push({x:x,y:y,vx:(Math.random()-.5)*10,vy:(Math.random()-.5)*10,l:1,c:c});}
-  function chk(){if(tr.length<2)return;tgts.forEach(t=>{if(t.a&&Math.hypot(t.x-m.x,t.y-m.y)<t.r){t.a=false;pGen(t.x,t.y,t.g?'#4ade80':'#ef4444');if(t.g){sc+=10;playSFX('slashGood',0.6);}else{sc-=20;playSFX('slashBad',0.4);}document.getElementById('slasher-score').innerText=sc;}});}
-  function loop(){
-    if(Math.random()<0.03){let g=Math.random()>0.4;tgts.push({x:Math.random()*200+50,y:cvs.height+20,vx:(Math.random()-.5)*3,vy:-(Math.random()*4+6),r:25,g:g,t:g?"ROAS":"ACoS",a:true});}
-    ctx.clearRect(0,0,cvs.width,cvs.height);
-    tgts.forEach(t=>{if(!t.a)return;t.x+=t.vx;t.y+=t.vy;t.vy+=0.15;ctx.beginPath();ctx.arc(t.x,t.y,t.r,0,Math.PI*2);ctx.fillStyle=t.g?'#4ade80':'#ef4444';ctx.fill();ctx.fillStyle='#000';ctx.font="bold 11px Arial";ctx.textAlign="center";ctx.fillText(t.t,t.x,t.y+4);});
-    tgts=tgts.filter(t=>t.y<cvs.height+50&&t.a);
-    parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.l-=0.05;ctx.globalAlpha=Math.max(0,p.l);ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,5,5);});ctx.globalAlpha=1;parts=parts.filter(p=>p.l>0);
-    if(m.d&&tr.length>1){ctx.beginPath();ctx.moveTo(tr[0].x,tr[0].y);for(let i=1;i<tr.length;i++)ctx.lineTo(tr[i].x,tr[i].y);ctx.strokeStyle='#E5B80B';ctx.lineWidth=4;ctx.lineCap='round';ctx.stroke();}
-    if(slashRun)requestAnimationFrame(loop);
-  }loop();
+  document.getElementById('slasher-start').style.display='none';if(slashRun)return;slashRun=true;
+  const cvs=document.getElementById('slasher-canvas');const ctx=cvs.getContext('2d');
+  let tgts=[],parts=[],sc=0,m={x:0,y:0,d:false},tr=[],lst=0;
+  cvs.addEventListener('mousedown',()=>{m.d=true;tr=[];});cvs.addEventListener('mouseup',()=>{m.d=false;tr=[];});
+  cvs.addEventListener('mousemove',e=>{const r=cvs.getBoundingClientRect();m.x=e.clientX-r.left;m.y=e.clientY-r.top;if(m.d){tr.push({x:m.x,y:m.y});if(tr.length>5)tr.shift();if(Date.now()-lst>200){playSFX('swipe',0.1);lst=Date.now();}chk();}});
+  function pGen(x,y,c){for(let i=0;i<8;i++)parts.push({x:x,y:y,vx:(Math.random()-.5)*10,vy:(Math.random()-.5)*10,l:1,c:c});}
+  function chk(){if(tr.length<2)return;tgts.forEach(t=>{if(t.a&&Math.hypot(t.x-m.x,t.y-m.y)<t.r){t.a=false;pGen(t.x,t.y,t.g?'#4ade80':'#ef4444');if(t.g){sc+=10;playSFX('slashGood',0.6);}else{sc-=20;playSFX('slashBad',0.4);}document.getElementById('slasher-score').innerText=sc;}});}
+  function loop(){
+    if(Math.random()<0.03){let g=Math.random()>0.4;tgts.push({x:Math.random()*200+50,y:cvs.height+20,vx:(Math.random()-.5)*3,vy:-(Math.random()*4+6),r:25,g:g,t:g?"ROAS":"ACoS",a:true});}
+    ctx.clearRect(0,0,cvs.width,cvs.height);
+    tgts.forEach(t=>{if(!t.a)return;t.x+=t.vx;t.y+=t.vy;t.vy+=0.15;ctx.beginPath();ctx.arc(t.x,t.y,t.r,0,Math.PI*2);ctx.fillStyle=t.g?'#4ade80':'#ef4444';ctx.fill();ctx.fillStyle='#000';ctx.font="bold 11px Arial";ctx.textAlign="center";ctx.fillText(t.t,t.x,t.y+4);});
+    tgts=tgts.filter(t=>t.y<cvs.height+50&&t.a);
+    parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.l-=0.05;ctx.globalAlpha=Math.max(0,p.l);ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,5,5);});ctx.globalAlpha=1;parts=parts.filter(p=>p.l>0);
+    if(m.d&&tr.length>1){ctx.beginPath();ctx.moveTo(tr[0].x,tr[0].y);for(let i=1;i<tr.length;i++)ctx.lineTo(tr[i].x,tr[i].y);ctx.strokeStyle='#E5B80B';ctx.lineWidth=4;ctx.lineCap='round';ctx.stroke();}
+    if(slashRun)requestAnimationFrame(loop);
+  }loop();
 }
 
 // 2. Runner
 let runRun=false;
 function startRunner(){
-  document.getElementById('runner-start').style.display='none';if(runRun)return;runRun=true;
-  const cvs=document.getElementById('runner-canvas');const ctx=cvs.getContext('2d');
-  let p={x:30,y:200,w:20,h:20,vy:0,j:false},obs=[],sc=0;
-  function jp(){if(!p.j){p.vy=-9;p.j=true;playSFX('jump',0.5);}}
-  cvs.addEventListener('mousedown',jp);window.addEventListener('keydown',e=>{if(e.code==='Space')jp();});
-  function loop(){
-    ctx.clearRect(0,0,cvs.width,cvs.height);ctx.fillStyle='#222';ctx.fillRect(0,220,cvs.width,cvs.height-220);ctx.strokeStyle='#E5B80B';ctx.beginPath();ctx.moveTo(0,220);ctx.lineTo(cvs.width,220);ctx.stroke();
-    p.vy+=0.5;p.y+=p.vy;if(p.y>200){p.y=200;p.j=false;p.vy=0;}ctx.fillStyle='#E5B80B';ctx.fillRect(p.x,p.y,p.w,p.h);
-    if(Math.random()<0.02&&(obs.length==0||obs[obs.length-1].x<150))obs.push({x:cvs.width,y:190+(Math.random()>.5?0:-20),w:15,h:30});
-    let hit=false;obs.forEach(o=>{o.x-=5;ctx.fillStyle='#ef4444';ctx.fillRect(o.x,o.y,o.w,o.h);if(p.x<o.x+o.w&&p.x+p.w>o.x&&p.y<o.y+o.h&&p.y+p.h>o.y)hit=true;});obs=obs.filter(o=>o.x>-20);
-    if(!hit){sc++;document.getElementById('runner-score').innerText=Math.floor(sc/10);if(runRun)requestAnimationFrame(loop);}
-    else{playSFX('crash',0.8);ctx.fillStyle='#FFF';ctx.font="18px 'Outfit'";ctx.textAlign="center";ctx.fillText("CRASHED!",cvs.width/2,100);runRun=false;document.getElementById('runner-start').style.display='flex';document.getElementById('runner-start').innerHTML=`<button class="btn-magnetic" onclick="(()=>{runRun=false;startRunner();})()">Restart</button>`;}
-  }loop();
+  document.getElementById('runner-start').style.display='none';if(runRun)return;runRun=true;
+  const cvs=document.getElementById('runner-canvas');const ctx=cvs.getContext('2d');
+  let p={x:30,y:200,w:20,h:20,vy:0,j:false},obs=[],sc=0;
+  function jp(){if(!p.j){p.vy=-9;p.j=true;playSFX('jump',0.5);}}
+  cvs.addEventListener('mousedown',jp);window.addEventListener('keydown',e=>{if(e.code==='Space')jp();});
+  function loop(){
+    ctx.clearRect(0,0,cvs.width,cvs.height);ctx.fillStyle='#222';ctx.fillRect(0,220,cvs.width,cvs.height-220);ctx.strokeStyle='#E5B80B';ctx.beginPath();ctx.moveTo(0,220);ctx.lineTo(cvs.width,220);ctx.stroke();
+    p.vy+=0.5;p.y+=p.vy;if(p.y>200){p.y=200;p.j=false;p.vy=0;}ctx.fillStyle='#E5B80B';ctx.fillRect(p.x,p.y,p.w,p.h);
+    if(Math.random()<0.02&&(obs.length==0||obs[obs.length-1].x<150))obs.push({x:cvs.width,y:190+(Math.random()>.5?0:-20),w:15,h:30});
+    let hit=false;obs.forEach(o=>{o.x-=5;ctx.fillStyle='#ef4444';ctx.fillRect(o.x,o.y,o.w,o.h);if(p.x<o.x+o.w&&p.x+p.w>o.x&&p.y<o.y+o.h&&p.y+p.h>o.y)hit=true;});obs=obs.filter(o=>o.x>-20);
+    if(!hit){sc++;document.getElementById('runner-score').innerText=Math.floor(sc/10);if(runRun)requestAnimationFrame(loop);}
+    else{playSFX('crash',0.8);ctx.fillStyle='#FFF';ctx.font="18px 'Outfit'";ctx.textAlign="center";ctx.fillText("CRASHED!",cvs.width/2,100);runRun=false;document.getElementById('runner-start').style.display='flex';document.getElementById('runner-start').innerHTML=`<button class="btn-magnetic" onclick="(()=>{runRun=false;startRunner();})()">Restart</button>`;}
+  }loop();
 }
 
 // 3. Puzzle
 const pBoard=document.getElementById('puzzle-board');const pTypes=['━','┃','┏','┛','┗','┓'];
 for(let i=0;i<16;i++){
-  let t=document.createElement('div');t.className='puzzle-tile';
-  if(i===0){t.classList.add('puzzle-start');t.innerText="TRFC";}else if(i===15){t.classList.add('puzzle-end');t.innerText="SALE";}
-  else{t.innerText=pTypes[Math.floor(Math.random()*pTypes.length)];let rot=[0,90,180,270][Math.floor(Math.random()*4)];t.style.transform=`rotate(${rot}deg)`;t.dataset.rot=rot;t.addEventListener('click',()=>{playSFX('click',0.4);let r=(parseInt(t.dataset.rot)+90)%360;t.dataset.rot=r;t.style.transform=`rotate(${r}deg)`;});}
-  pBoard.appendChild(t);
+  let t=document.createElement('div');t.className='puzzle-tile';
+  if(i===0){t.classList.add('puzzle-start');t.innerText="TRFC";}else if(i===15){t.classList.add('puzzle-end');t.innerText="SALE";}
+  else{t.innerText=pTypes[Math.floor(Math.random()*pTypes.length)];let rot=[0,90,180,270][Math.floor(Math.random()*4)];t.style.transform=`rotate(${rot}deg)`;t.dataset.rot=rot;t.addEventListener('click',()=>{playSFX('click',0.4);let r=(parseInt(t.dataset.rot)+90)%360;t.dataset.rot=r;t.style.transform=`rotate(${r}deg)`;});}
+  pBoard.appendChild(t);
 }
 function checkPuzzle(){playSFX('win',0.6);document.getElementById('puzzle-status').innerText="Traffic Flowing! 🚀";}
 
 // ── AI CHAT ──
 function toggleChat(){const box=document.getElementById('chat-box');box.classList.toggle('open');}
 function getReply(msg){
-  const m=msg.toLowerCase();
-  if(/who|about|name/.test(m))return"I'm Jenish Kamli — Amazon PPC Expert & E-Commerce Marketplace Manager. I scale brands across Amazon, Flipkart, and Quick Commerce platforms.";
-  if(/quick|blinkit|zepto|instamart|q-com/.test(m))return"⚡ I handle complete onboarding and growth for Blinkit, Zepto, and Swiggy Instamart — from catalog setup to live sales on Day 1.";
-  if(/revenue|growth|result|stats/.test(m))return"📈 Scaled monthly revenue from ₹2.5K → ₹6.35L+. Took impressions from 6.7L → 20.2L. 3X+ ROAS growth. All real campaign numbers.";
-  if(/amazon|brand store/.test(m))return"🏪 Check out the live Amazon Brand Store: https://www.amazon.in/stores/OneLife";
-  if(/ppc|ads|acos|roas/.test(m))return"💰 I specialize in Amazon & Flipkart PPC — keyword harvesting, negative keywords, bid laddering, and ROAS optimization for maximum ROI.";
-  if(/contact|email|hire|audit/.test(m))return"🔥 Email: Jeniish.kamli@gmail.com | LinkedIn: linkedin.com/in/jenish-kamli-47b787253 | Get a free marketplace audit today!";
-  if(/service|offer/.test(m))return"💼 Services: Amazon PPC, Flipkart Ads, Q-Commerce Growth (Blinkit/Zepto/Instamart), Catalog Compliance (GS1), Listing SEO & A+ Content.";
-  return"I'm Jenish's AI assistant. Ask about Amazon PPC results, Quick Commerce growth, or marketplace management. LinkedIn: linkedin.com/in/jenish-kamli-47b787253";
+  const m=msg.toLowerCase();
+  if(/who|about|name/.test(m))return"I'm Jenish Kamli — Amazon PPC Expert & E-Commerce Marketplace Manager. I scale brands across Amazon, Flipkart, and Quick Commerce platforms.";
+  if(/quick|blinkit|zepto|instamart|q-com/.test(m))return"⚡ I handle complete onboarding and growth for Blinkit, Zepto, and Swiggy Instamart — from catalog setup to live sales on Day 1.";
+  if(/revenue|growth|result|stats/.test(m))return"📈 Scaled monthly revenue from ₹2.5K → ₹6.35L+. Took impressions from 6.7L → 20.2L. 3X+ ROAS growth. All real campaign numbers.";
+  if(/amazon|brand store/.test(m))return"🏪 Check out the live Amazon Brand Store: https://www.amazon.in/stores/OneLife";
+  if(/ppc|ads|acos|roas/.test(m))return"💰 I specialize in Amazon & Flipkart PPC — keyword harvesting, negative keywords, bid laddering, and ROAS optimization for maximum ROI.";
+  if(/contact|email|hire|audit/.test(m))return"🔥 Email: Jeniish.kamli@gmail.com | LinkedIn: linkedin.com/in/jenish-kamli-47b787253 | Get a free marketplace audit today!";
+  if(/service|offer/.test(m))return"💼 Services: Amazon PPC, Flipkart Ads, Q-Commerce Growth (Blinkit/Zepto/Instamart), Catalog Compliance (GS1), Listing SEO & A+ Content.";
+  return"I'm Jenish's AI assistant. Ask about Amazon PPC results, Quick Commerce growth, or marketplace management. LinkedIn: linkedin.com/in/jenish-kamli-47b787253";
 }
 function appendMsg(txt,type){const b=document.getElementById('chat-messages');const d=document.createElement('div');d.className='msg '+type;d.textContent=txt;b.appendChild(d);b.scrollTop=b.scrollHeight;}
 function sendChat(){const i=document.getElementById('chat-input');const t=i.value.trim();if(!t)return;i.value='';appendMsg(t,'user');const typEl=document.createElement('div');typEl.className='msg bot';typEl.id='typ-ind';typEl.textContent='...';document.getElementById('chat-messages').appendChild(typEl);setTimeout(()=>{document.getElementById('typ-ind').remove();appendMsg(getReply(t),'bot');},700+Math.random()*400);}
 </script>
 </body>
 </html>
-
-
