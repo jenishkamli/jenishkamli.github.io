@@ -886,3 +886,314 @@ function sendChat(){const i=document.getElementById('chat-input');const t=i.valu
 </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Digitals | Unified Profit Architect</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --bg-dark: #0a0a0a;
+            --card-dark: #141414;
+            --input-bg: #1f1f1f;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #333333;
+            --danger: #ef4444;
+            --success: #22c55e;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: var(--bg-dark); color: var(--text-main); 
+            display: flex; justify-content: center; padding: 40px 20px; margin: 0;
+        }
+
+        .container {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+            max-width: 1100px; width: 100%;
+        }
+
+        .card { 
+            background: var(--card-dark); padding: 2.5rem; 
+            border-radius: 16px; border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.05); 
+        }
+
+        h2 { color: var(--primary-gold); font-weight: 300; text-transform: uppercase; margin-top: 0; margin-bottom: 20px; letter-spacing: 1px;}
+        h3 { font-size: 1rem; color: var(--text-muted); border-bottom: 1px solid var(--border-color); padding-bottom: 5px; margin-bottom: 15px;}
+
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .full-width { grid-column: span 2; }
+
+        label { display: block; font-size: 0.8rem; margin-bottom: 6px; color: var(--text-muted); text-transform: uppercase; }
+        
+        input, select { 
+            width: 100%; padding: 10px; background: var(--input-bg);
+            color: var(--text-main); border: 1px solid var(--border-color); 
+            border-radius: 8px; box-sizing: border-box; font-size: 1rem;
+        }
+        input:focus, select:focus { outline: none; border-color: var(--primary-gold); }
+
+        .results-box { background: var(--input-bg); padding: 20px; border-radius: 12px; margin-top: 20px; }
+        .result-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 1rem; }
+        
+        .profit-highlight { 
+            font-size: 1.8rem; color: var(--primary-gold); 
+            border-top: 1px solid var(--border-color); padding-top: 15px; margin-top: 10px; font-weight: bold;
+        }
+
+        .warning-text { color: var(--danger); font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h2>Profit Architect</h2>
+        
+        <div class="input-grid">
+            <div class="full-width">
+                <label>Select Platform</label>
+                <select id="platformSelect" onchange="loadPlatformDefaults()">
+                    <option value="amazon">Amazon</option>
+                    <option value="flipkart">Flipkart</option>
+                    <option value="meesho">Meesho</option>
+                    <option value="myntra">Myntra / Ajio / Nykaa (Fashion/Beauty)</option>
+                    <option value="tatacliq">Tata Cliq</option>
+                    <option value="snapdeal">Snapdeal</option>
+                    <option value="quickcomm">Quick Commerce (Blinkit / Zepto / Instamart)</option>
+                </select>
+            </div>
+
+            <div class="full-width"><h3>Product Details</h3></div>
+            <div>
+                <label>Selling Price (₹)</label>
+                <input type="number" id="salePrice" value="1000" oninput="calculate()">
+            </div>
+            <div>
+                <label>COGS + Packaging (₹)</label>
+                <input type="number" id="cogs" value="400" oninput="calculate()">
+            </div>
+            
+            <div class="full-width"><h3>Weight & Logistics</h3></div>
+            <div>
+                <label>Dead Weight (Grams)</label>
+                <input type="number" id="deadWeight" value="300" oninput="calculate()">
+            </div>
+            <div>
+                <label>Dimensions (L x W x H in cm)</label>
+                <div style="display: flex; gap: 5px;">
+                    <input type="number" id="dimL" value="10" placeholder="L" oninput="calculate()">
+                    <input type="number" id="dimW" value="10" placeholder="W" oninput="calculate()">
+                    <input type="number" id="dimH" value="10" placeholder="H" oninput="calculate()">
+                </div>
+            </div>
+            <div class="full-width" style="font-size: 0.8rem; color: var(--primary-gold);">
+                Calculated Billable Weight: <span id="billableWeight">300</span>g
+            </div>
+
+            <div class="full-width"><h3>Platform Variables</h3></div>
+            <div>
+                <label>Commission Margin (%)</label>
+                <input type="number" id="commission" value="10" oninput="calculate()">
+            </div>
+            <div>
+                <label>Base Shipping/In-ward Fee (₹)</label>
+                <input type="number" id="shipping" value="65" oninput="calculate()">
+            </div>
+            <div>
+                <label>Fixed / Closing Fee (₹)</label>
+                <input type="number" id="fixedFee" value="30" oninput="calculate()">
+            </div>
+            <div>
+                <label>Ad Spend / Marketing (₹ per unit)</label>
+                <input type="number" id="ads" value="50" oninput="calculate()">
+            </div>
+
+            <div class="full-width"><h3>Growth Variables (Returns)</h3></div>
+            <div>
+                <label>Expected RTO (%)</label>
+                <input type="number" id="rtoRate" value="10" oninput="calculate()">
+            </div>
+            <div>
+                <label>Customer Return (%)</label>
+                <input type="number" id="crRate" value="5" oninput="calculate()">
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Financial Breakdown</h2>
+        <canvas id="profitChart" height="200"></canvas>
+
+        <div class="results-box">
+            <div class="result-row" style="color: var(--text-muted);">
+                <span>Platform Deductions (inc 18% GST):</span>
+                <span id="resFees">₹0</span>
+            </div>
+            <div class="result-row" style="color: var(--text-muted);">
+                <span>Net Settlement (Bank Payout):</span>
+                <span id="resSettlement">₹0</span>
+            </div>
+            <div class="result-row warning-text">
+                <span>RTO & Return Penalty Impact:</span>
+                <span id="resPenalty">-₹0</span>
+            </div>
+            <div class="result-row profit-highlight">
+                <span>TRUE NET PROFIT:</span>
+                <span id="resProfit">₹0</span>
+            </div>
+            <div class="result-row" style="margin-top: 10px;">
+                <span style="color: var(--text-muted);">True Margin %:</span>
+                <span id="resMargin" style="color: var(--success); font-weight: bold; font-size: 1.2rem;">0%</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let myChart = null;
+
+    // Baseline definitions for different platforms
+    const platformData = {
+        amazon: { comm: 10, fixed: 30, ship: 65, rto: 5, cr: 8 },
+        flipkart: { comm: 10, fixed: 30, ship: 65, rto: 8, cr: 10 },
+        meesho: { comm: 0, fixed: 0, ship: 80, rto: 25, cr: 10 }, // 0 comm, high RTO
+        myntra: { comm: 35, fixed: 0, ship: 0, rto: 15, cr: 20 }, // High margin, often inclusive logistics
+        tatacliq: { comm: 20, fixed: 20, ship: 60, rto: 5, cr: 8 },
+        snapdeal: { comm: 12, fixed: 20, ship: 60, rto: 15, cr: 10 },
+        quickcomm: { comm: 25, fixed: 0, ship: 15, rto: 1, cr: 1 } // High margin, low ship/returns
+    };
+
+    function loadPlatformDefaults() {
+        const p = document.getElementById('platformSelect').value;
+        const data = platformData[p];
+        
+        document.getElementById('commission').value = data.comm;
+        document.getElementById('fixedFee').value = data.fixed;
+        document.getElementById('shipping').value = data.ship;
+        document.getElementById('rtoRate').value = data.rto;
+        document.getElementById('crRate').value = data.cr;
+        
+        calculate();
+    }
+
+    function calculate() {
+        // 1. Get Inputs
+        const salePrice = parseFloat(document.getElementById('salePrice').value) || 0;
+        const cogs = parseFloat(document.getElementById('cogs').value) || 0;
+        const commPercent = parseFloat(document.getElementById('commission').value) || 0;
+        const baseShipping = parseFloat(document.getElementById('shipping').value) || 0;
+        const fixedFee = parseFloat(document.getElementById('fixedFee').value) || 0;
+        const ads = parseFloat(document.getElementById('ads').value) || 0;
+        const rtoRate = parseFloat(document.getElementById('rtoRate').value) || 0;
+        const crRate = parseFloat(document.getElementById('crRate').value) || 0;
+
+        // 2. Volumetric Weight Calculation
+        const deadWeight = parseFloat(document.getElementById('deadWeight').value) || 0;
+        const l = parseFloat(document.getElementById('dimL').value) || 0;
+        const w = parseFloat(document.getElementById('dimW').value) || 0;
+        const h = parseFloat(document.getElementById('dimH').value) || 0;
+        
+        const volWeight = (l * w * h) / 5; // standard /5000 logic converted to grams
+        const billableWeight = Math.max(deadWeight, volWeight);
+        document.getElementById('billableWeight').innerText = billableWeight.toFixed(0);
+
+        // Calculate extra shipping if weight > 500g (Approx standard logic)
+        let totalShipping = baseShipping;
+        if(billableWeight > 500 && document.getElementById('platformSelect').value !== 'quickcomm' && document.getElementById('platformSelect').value !== 'myntra') {
+            const extraMultiplier = Math.ceil((billableWeight - 500) / 500);
+            totalShipping += (extraMultiplier * 25); // Approx ₹25 per extra 500g
+        }
+
+        // 3. Platform Deductions
+        const commAmount = (salePrice * commPercent) / 100;
+        const totalTaxableFees = commAmount + totalShipping + fixedFee;
+        const gstOnFees = totalTaxableFees * 0.18;
+        const totalPlatformDeductions = totalTaxableFees + gstOnFees;
+
+        const settlement = salePrice - totalPlatformDeductions;
+
+        // 4. Return Penalties (The Growth Math)
+        // RTO = usually lose forward shipping. CR = lose forward + reverse + packaging
+        const rtoPenalty = (totalShipping * 1.5) * (rtoRate / 100); 
+        const crPenalty = (totalShipping * 2 + (cogs * 0.1)) * (crRate / 100); 
+        const totalPenalty = rtoPenalty + crPenalty;
+
+        // 5. Final Profit
+        const finalProfit = settlement - cogs - ads - totalPenalty;
+        const marginPercent = salePrice > 0 ? (finalProfit / salePrice) * 100 : 0;
+
+        // 6. Update UI
+        document.getElementById('resFees').innerText = "₹" + totalPlatformDeductions.toFixed(2);
+        document.getElementById('resSettlement').innerText = "₹" + settlement.toFixed(2);
+        document.getElementById('resPenalty').innerText = "-₹" + totalPenalty.toFixed(2);
+        document.getElementById('resProfit').innerText = "₹" + finalProfit.toFixed(2);
+        document.getElementById('resMargin').innerText = marginPercent.toFixed(1) + "%";
+        
+        if (finalProfit < 0) {
+            document.getElementById('resProfit').style.color = 'var(--danger)';
+            document.getElementById('resMargin').style.color = 'var(--danger)';
+        } else {
+            document.getElementById('resProfit').style.color = 'var(--primary-gold)';
+            document.getElementById('resMargin').style.color = 'var(--success)';
+        }
+
+        updateChart(cogs, totalPlatformDeductions, totalPenalty, ads, finalProfit);
+    }
+
+    function updateChart(cogs, fees, penalty, ads, profit) {
+        const ctx = document.getElementById('profitChart').getContext('2d');
+        
+        const dataValues = [
+            Math.max(cogs, 0), 
+            Math.max(fees, 0), 
+            Math.max(penalty, 0), 
+            Math.max(ads, 0), 
+            Math.max(profit, 0)
+        ];
+
+        if (myChart) {
+            myChart.destroy();
+        }
+
+        myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['COGS', 'Platform Fees', 'Returns Loss', 'Marketing', 'Net Profit'],
+                datasets: [{
+                    data: dataValues,
+                    backgroundColor: [
+                        '#334155', // Slate
+                        '#64748b', // Lighter Slate
+                        '#ef4444', // Red
+                        '#3b82f6', // Blue
+                        '#D4AF37'  // Gold
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'right', labels: { color: '#f8fafc', font: { size: 11 } } }
+                }
+            }
+        });
+    }
+
+    // Initialize
+    loadPlatformDefaults();
+</script>
+
+</body>
+</html>
