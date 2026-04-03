@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Jenish Kamli | Quick Shift Creative | E-Commerce Growth Specialist</title>
-<meta name="description" content="Jenish Kamli — Scale Your Brand Across Amazon, Flipkart & Quick Commerce. Quick Shift Creative E-Commerce Growth Systems." />
-<meta name="keywords" content="Quick Shift Creative, Amazon Expert, Flipkart Growth, Quick Commerce Specialist, Jenish Kamli" />
+<title>Jenish Kamli | E-Commerce Marketplace Manager & Growth Specialist</title>
+<meta name="description" content="Jenish Kamli — Scale Your Brand Across Amazon, Flipkart, Myntra, Ajio, JioMart & Quick Commerce Platforms. Multi-Platform E-Commerce Growth System." />
+<meta name="keywords" content="E-Commerce Marketplace Manager, Amazon Expert, Flipkart Growth, Quick Commerce Specialist, Blinkit Zepto Instamart, D2C Shopify, Jenish Kamli, Quick Shift Creative" />
 <meta name="author" content="Jenish Kamli" />
-<meta property="og:title" content="Jenish Kamli | Quick Shift Creative | E-Commerce Growth Specialist" />
+<meta property="og:title" content="Jenish Kamli | E-Commerce Marketplace Manager & Growth Specialist" />
 <meta property="og:description" content="Generated ₹15L+ monthly revenue across marketplaces. Amazon, Flipkart, D2C & Quick Commerce Growth Specialist." />
 <meta property="og:type" content="website" />
 
@@ -25,7 +25,7 @@
   --gold-glow-light:rgba(229,184,11,0.15);
   --dark:#030303;
   --dark-surface:#0a0a0a;
-  --glass:rgba(20,20,20,0.65);
+  --glass:rgba(20,20,20,0.6);
   --glass-btn:rgba(255,255,255,0.05);
   --border:rgba(229,184,11,0.15);
   --border-light:rgba(255,255,255,0.1);
@@ -40,7 +40,7 @@ body{background:var(--dark);color:var(--text-main);font-family:var(--font-body);
 
 /* ─── CURSOR ─── */
 #cursor{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 15px var(--gold);transition:width .2s,height .2s;}
-#cursor-ring{position:fixed;width:45px;height:45px;border:1px solid rgba(229,184,11,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease-out;}
+#cursor-ring{position:fixed;width:45px;height:45px;border:1px solid rgba(229,184,11,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .1s ease-out;}
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:var(--dark);}
 ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:10px;}
@@ -65,23 +65,37 @@ body{background:var(--dark);color:var(--text-main);font-family:var(--font-body);
 .media-placeholder:hover::after { opacity: 1; }
 .media-placeholder .icon { font-size: 32px; color: var(--gold); }
 
-/* ─── LIQUID GLASS BUTTONS ─── */
+/* ─── LIQUID GLASS BUTTON ─── */
 .btn-magnetic{
-  padding:14px 32px; background:var(--glass-btn); backdrop-filter:blur(15px);
-  -webkit-backdrop-filter:blur(15px); border:1px solid var(--border-light); border-radius:100px;
-  color:var(--text-main); font-size:13px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
-  text-decoration:none; transition:all .35s cubic-bezier(0.23,1,0.32,1);
-  display:inline-flex; align-items:center; justify-content:center;
-  cursor:none; overflow:hidden; position:relative; z-index:1;
+  padding:14px 32px;
+  background:var(--glass-btn);
+  backdrop-filter:blur(15px);
+  -webkit-backdrop-filter:blur(15px);
+  border:1px solid var(--border-light);
+  border-radius:100px;
+  color:var(--text-main);
+  font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  text-decoration:none;
+  transition:all .35s cubic-bezier(0.23,1,0.32,1);
+  display:inline-flex;align-items:center;justify-content:center;
+  cursor:none;overflow:hidden;position:relative;z-index:1;
 }
 .btn-magnetic::before{
-  content:''; position:absolute; top:100%; left:0; width:100%; height:100%;
-  background:var(--gold); transition:all .4s cubic-bezier(0.23,1,0.32,1); z-index:-1; border-radius:50% 50% 0 0;
+  content:'';position:absolute;top:100%;left:0;width:100%;height:100%;
+  background:var(--gold);transition:all .4s cubic-bezier(0.23,1,0.32,1);z-index:-1;border-radius:50% 50% 0 0;
 }
-.btn-magnetic:hover::before{top:0; border-radius:0;}
-.btn-magnetic:hover{ color:var(--dark); border-color:var(--gold); box-shadow:0 0 30px var(--gold-glow); transform:scale(1.05); }
-.btn-magnetic.gold-fill{background:var(--gold); color:var(--dark); border-color:var(--gold);}
-.btn-magnetic.outline-dim{border-color:#333; color:var(--text-muted);}
+.btn-magnetic:hover::before{top:0;border-radius:0;}
+.btn-magnetic:hover{
+  color:var(--dark);
+  border-color:var(--gold);
+  box-shadow:0 0 30px var(--gold-glow),0 0 60px rgba(229,184,11,0.15);
+  transform:scale(1.05);
+}
+.btn-magnetic.gold-fill{background:var(--gold);color:var(--dark);border-color:var(--gold);}
+.btn-magnetic.gold-fill::before{background:#fff;}
+.btn-magnetic.gold-fill:hover{color:var(--dark);}
+.btn-magnetic.outline-dim{border-color:#333;color:var(--text-muted);}
+.btn-magnetic.outline-dim:hover{color:var(--dark);border-color:var(--gold);}
 
 /* ─── NAV ─── */
 nav{
@@ -94,6 +108,8 @@ nav{
 .nav-logo span{color:var(--gold);}
 .nav-links{display:flex;gap:40px;list-style:none;}
 .nav-links a{color:var(--text-main);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-5px;left:0;width:0%;height:2px;background:var(--gold);transition:width 0.3s;}
+.nav-links a:hover::after{width:100%;}
 
 /* ─── HERO ─── */
 #hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
@@ -107,78 +123,278 @@ nav{
   font-size:11px;font-weight:800;color:var(--text-main);letter-spacing:2px;text-transform:uppercase;
   margin-bottom:40px;background:var(--glass);backdrop-filter:blur(20px);
 }
-.hero-title{font-family:var(--font-head);font-size:clamp(40px,7vw,110px);font-weight:400;line-height:1.1;margin-bottom:30px;text-transform:uppercase;}
+.hero-badge span{color:var(--gold);}
+.hero-title{
+  font-family:var(--font-head);font-size:clamp(40px,7vw,110px);font-weight:400;line-height:1.1;
+  letter-spacing:-1px;margin-bottom:30px;text-transform:uppercase;
+}
 .hero-title .accent{color:var(--gold);font-style:italic;font-weight:700;}
-.hero-sub{font-size:18px;color:var(--text-muted);line-height:1.6;max-width:850px;margin:0 auto 50px;}
+.hero-sub{font-size:18px;color:var(--text-muted);line-height:1.6;max-width:850px;margin:0 auto 50px;font-weight:300;}
+.hero-sub strong{color:var(--text-main);}
+.hero-actions{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
 .hero-stats{display:flex;gap:40px;justify-content:center;margin-top:70px;flex-wrap:wrap;}
 .stat-item{text-align:center; background:var(--glass); padding:20px; border-radius:16px; border:1px solid rgba(255,255,255,0.05); min-width:160px; backdrop-filter:blur(10px);}
 .stat-num{font-family:var(--font-head);font-size:38px;font-weight:700;color:var(--gold);line-height:1;}
 .stat-label{font-size:11px;color:var(--text-muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:8px;}
 
-/* ─── MARQUEE ─── */
-.marquee-container{width:100%;padding:20px 0;background:var(--dark-surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;position:relative;z-index:10;display:flex;}
-.marquee-content{display:flex;gap:60px;white-space:nowrap;animation:marquee 30s linear infinite;align-items:center;}
-.marquee-item{display:inline-flex;align-items:center;gap:12px;}
-.marquee-logo-text{font-family:var(--font-head);font-size:20px;font-weight:700;color:rgba(255,255,255,0.2);letter-spacing:2px;text-transform:uppercase;}
-
-/* ─── DASHBOARD ─── */
-#dashboard{background:var(--dark); padding:150px 5%;}
-.bento-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(180px,auto);gap:20px;max-width:1200px;margin:0 auto;}
-.bento-box{background:var(--glass); border:1px solid var(--border); border-radius:24px; padding:30px; display:flex; flex-direction:column; justify-content:center; backdrop-filter:blur(20px); transition:0.4s;}
-.bento-col-2{grid-column:span 2;}.bento-row-2{grid-row:span 2;}
-.b-val{font-family:var(--font-head);font-size:42px;font-weight:700;color:var(--gold);line-height:1;}
-.chart-wrap{height:100%;width:100%;min-height:280px;}
-
-/* ─── PHYSICS PIT ─── */
-#physics-pit{background:var(--dark); text-align:center; padding:100px 5%;}
-#matter-container{width:100%;max-width:1200px;height:500px;margin:0 auto;border-radius:24px;background:radial-gradient(circle at center,#111 0%,#000 100%);border:1px solid #333;cursor:grab;overflow:hidden;}
-
-/* ─── LIQUID GLASS CALENDAR MODAL ─── */
-#calendar-modal {
+/* ─── LIQUID GLASS POP-UP MODAL ─── */
+#booking-modal {
   position: fixed; inset: 0; z-index: 100000;
   display: flex; align-items: center; justify-content: center;
   opacity: 0; pointer-events: none; transition: all 0.6s cubic-bezier(0.23,1,0.32,1);
-  background: rgba(3, 3, 3, 0.5); backdrop-filter: blur(0px); 
+  background: rgba(3, 3, 3, 0.4); backdrop-filter: blur(0px);
 }
-#calendar-modal.active {
+#booking-modal.active {
   opacity: 1; pointer-events: all;
-  backdrop-filter: blur(25px); 
+  backdrop-filter: blur(20px);
 }
-.calendar-glass {
-  width: 95%; max-width: 1100px; height: 85vh;
-  background: rgba(15, 15, 15, 0.7);
+.modal-glass-container {
+  width: 95%; max-width: 1000px; height: 85vh;
+  background: rgba(10, 10, 10, 0.8);
   border: 1px solid rgba(229, 184, 11, 0.4);
   border-radius: 32px; overflow: hidden;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.9), inset 0 0 20px rgba(229,184,11,0.05);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.9), 0 0 50px rgba(229, 184, 11, 0.1);
   position: relative; 
-  transform: scale(0.85) translateY(60px); 
-  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(0.9) translateY(40px); 
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
-#calendar-modal.active .calendar-glass {
+#booking-modal.active .modal-glass-container {
   transform: scale(1) translateY(0);
 }
-.close-calendar {
+.close-modal-btn {
   position: absolute; top: 25px; right: 25px;
   background: var(--dark-surface); color: var(--gold);
   border: 1px solid var(--border); border-radius: 50%;
   width: 50px; height: 50px; font-size: 26px;
   display: flex; align-items: center; justify-content: center;
-  cursor: pointer; z-index: 100; transition: 0.3s;
+  cursor: none; z-index: 100; transition: 0.3s;
 }
-.close-calendar:hover { background: var(--gold); color: var(--dark); transform: rotate(90deg) scale(1.1); }
+.close-modal-btn:hover { background: var(--gold); color: var(--dark); transform: rotate(90deg); }
 .calendar-iframe { width: 100%; height: 100%; border: none; background: transparent; }
 
+/* ─── MARQUEE ─── */
+.marquee-container{width:100%;padding:20px 0;background:var(--dark-surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;position:relative;z-index:10;display:flex;}
+.marquee-content{display:flex;gap:60px;white-space:nowrap;animation:marquee 30s linear infinite;align-items:center;}
+.marquee-item{display:inline-flex;align-items:center;gap:12px;transition:all 0.3s;cursor:default;}
+.marquee-item:hover .marquee-logo-text{opacity:1;color:var(--gold);}
+.marquee-logo-text{font-family:var(--font-head);font-size:20px;font-weight:700;color:rgba(255,255,255,0.2);letter-spacing:2px;text-transform:uppercase;transition:color 0.3s;}
+.marquee-logo-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;opacity:0.5;transition:opacity 0.3s;}
+.marquee-item:hover .marquee-logo-icon{opacity:1;}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* ─── SECTIONS ─── */
+section{padding:120px 5%;position:relative;z-index:2;}
+.section-head{text-align:center;margin-bottom:80px;}
+.section-label{font-size:12px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:block;}
+.section-title{font-family:var(--font-head);font-size:clamp(32px,5vw,56px);font-weight:400;line-height:1.1;text-transform:uppercase;}
+.section-title .accent{color:var(--gold);font-style:italic;font-weight:700;}
+.section-desc{font-size:16px;color:var(--text-muted);line-height:1.7;max-width:700px;margin:20px auto 0;}
+
+/* ─── ABOUT / BRAND STRATEGIST ─── */
+#about{background:var(--dark);}
+.about-grid {display:grid; grid-template-columns:1fr 1fr; gap:50px; max-width:1200px; margin:0 auto; align-items:center;}
+.about-text p {font-size:17px; color:var(--text-muted); line-height:1.8; margin-bottom:20px;}
+.about-text strong {color:var(--text-main);}
+
+/* ─── PLATFORMS ─── */
+#platforms{background:var(--dark-surface);}
+.platform-grid-12{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;max-width:1200px;margin:0 auto;}
+.p-card{
+  background:var(--dark);border:1px solid rgba(255,255,255,0.05);border-radius:16px;
+  padding:40px 20px;text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden;
+}
+.p-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 50% 0%,var(--gold-glow),transparent 70%);opacity:0;transition:opacity 0.4s;}
+.p-card:hover{transform:translateY(-12px) scale(1.02);border-color:var(--gold);box-shadow:0 20px 50px rgba(0,0,0,0.8),0 0 30px var(--gold-glow-light);}
+.p-card:hover::before{opacity:1;}
+.p-logo-wrap{
+  width:60px;height:60px;border-radius:14px;margin:0 auto 20px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;font-weight:900;letter-spacing:-1px;color:#fff;
+  transition:all 0.4s;position:relative;z-index:2;
+  border:1px solid rgba(255,255,255,0.08);
+}
+.p-card:hover .p-logo-wrap{transform:scale(1.15);box-shadow:0 0 20px var(--gold-glow-light);border-color:rgba(229,184,11,0.3);}
+.p-name{font-size:14px;font-weight:600;color:var(--text-main);position:relative;z-index:2;}
+.platform-badge{display:inline-block;margin-top:8px;padding:4px 10px;background:rgba(229,184,11,0.1);color:var(--gold);font-size:9px;font-weight:800;border-radius:100px;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(229,184,11,0.2);}
+
+/* ─── DASHBOARD ─── */
+#dashboard{background:var(--dark);}
+.bento-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(180px,auto);gap:20px;max-width:1200px;margin:0 auto;}
+.bento-box{
+  background:var(--glass);border:1px solid var(--border);border-radius:24px;padding:30px;
+  display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;
+  backdrop-filter:blur(20px);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+.bento-box:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,0.5),0 0 40px rgba(229,184,11,0.08);}
+.bento-col-2{grid-column:span 2;}.bento-row-2{grid-row:span 2;}
+.b-label{font-size:12px;font-weight:800;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-bottom:10px;}
+.b-val{font-family:var(--font-head);font-size:42px;font-weight:700;color:var(--gold);line-height:1;}
+.b-desc{font-size:13px;color:#4ade80;margin-top:10px;font-weight:600;}
+.chart-wrap{height:100%;width:100%;min-height:280px; position:relative;}
+.chart-title{font-size:15px;font-weight:700;color:var(--text-main);margin-bottom:20px;}
+
+/* ─── SERVICES ─── */
+#services{background:var(--dark-surface);}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1200px;margin:0 auto;}
+.svc-card{
+  background:var(--dark);border:1px solid rgba(255,255,255,0.05);padding:50px;border-radius:24px;
+  position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);cursor:none;
+}
+.svc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(45deg,transparent,var(--gold-glow),transparent);transform:translateX(-100%);transition:transform 0.6s;}
+.svc-card:hover{border-color:var(--gold);box-shadow:0 10px 40px rgba(229,184,11,0.1),0 0 30px rgba(229,184,11,0.05);transform:translateY(-4px);}
+.svc-card:hover::before{transform:translateX(100%);}
+.svc-num{font-family:var(--font-head);font-size:60px;font-weight:800;color:rgba(255,255,255,0.03);position:absolute;top:20px;right:30px;line-height:1;transition:color 0.4s;}
+.svc-card:hover .svc-num{color:var(--gold-glow);}
+.svc-title{font-size:22px;font-weight:700;color:var(--text-main);margin-bottom:15px;position:relative;z-index:2;}
+.svc-desc{font-size:15px;color:var(--text-muted);line-height:1.7;position:relative;z-index:2;}
+
+/* ─── PHYSICS PIT ─── */
+#physics-pit{background:var(--dark);text-align:center;padding:100px 5%;}
+#matter-container{width:100%;max-width:1200px;height:500px;margin:0 auto;border-radius:24px;background:radial-gradient(circle at center,#111 0%,#000 100%);border:1px solid #333;box-shadow:inset 0 0 50px rgba(0,0,0,1);cursor:grab;overflow:hidden;}
+#matter-container:active{cursor:grabbing;}
+.pit-hint{margin-top:20px;font-size:13px;color:var(--text-muted);letter-spacing:1px;}
+
+/* ─── PROOF SECTION ─── */
+#proof{background:var(--dark-surface);padding:150px 5%;}
+.proof-scroll-wrapper{overflow-x:auto;overflow-y:visible;padding-bottom:20px;-webkit-overflow-scrolling:touch;cursor:grab;}
+.proof-scroll-wrapper:active{cursor:grabbing;}
+.proof-scroll-wrapper::-webkit-scrollbar{height:3px;}
+.proof-scroll-wrapper::-webkit-scrollbar-track{background:#111;}
+.proof-scroll-wrapper::-webkit-scrollbar-thumb{background:var(--gold);border-radius:10px;}
+.proof-track{display:flex;gap:24px;padding:10px 0;width:max-content;}
+.proof-card{
+  width:320px;height:220px;border-radius:16px;overflow:hidden;
+  border:1px solid rgba(255,255,255,0.08);
+  background:var(--glass);backdrop-filter:blur(10px);
+  position:relative;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);
+  flex-shrink:0;cursor:pointer;
+}
+.proof-card:hover{transform:translateY(-10px) scale(1.03);border-color:var(--gold);box-shadow:0 20px 50px rgba(0,0,0,0.8),0 0 30px var(--gold-glow-light);}
+
+/* ─── CASE STUDIES ─── */
+#projects{background:var(--dark);}
+.prj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px;max-width:1200px;margin:0 auto;}
+.prj-card{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:var(--dark-surface);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);cursor:none;}
+.prj-card:hover{transform:translateY(-12px);border-color:var(--gold);box-shadow:0 20px 50px rgba(0,0,0,0.6),0 0 40px rgba(229,184,11,0.08);}
+.prj-img{height:220px; display:flex;align-items:center;justify-content:center; position:relative;overflow:hidden;}
+.prj-info{padding:35px;}
+.prj-tag{display:inline-block;padding:6px 14px;background:rgba(229,184,11,0.1);color:var(--gold);font-size:10px;font-weight:800;border-radius:100px;letter-spacing:1px;text-transform:uppercase;margin-bottom:15px;border:1px solid rgba(229,184,11,0.2);}
+.prj-title{font-size:22px;font-weight:700;margin-bottom:12px;color:var(--text-main);}
+.prj-desc{font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:20px;}
+
+/* ─── PROFIT CALCULATOR ─── */
+#calculator{background:var(--dark-surface);padding:150px 5%;}
+.calc-inner{max-width:680px;margin:0 auto;}
+.calc-card{
+  background:var(--glass);border:1px solid var(--border);border-radius:28px;
+  overflow:hidden;backdrop-filter:blur(30px);
+  box-shadow:0 30px 80px rgba(0,0,0,0.6),0 0 60px rgba(229,184,11,0.04);
+  position:relative;
+}
+.calc-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.calc-body{padding:50px;}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.calc-form-group{margin-bottom:0;}
+.calc-form-group.full{grid-column:span 2;}
+.calc-label{display:block;margin-bottom:8px;font-size:11px;color:var(--text-muted);font-weight:800;letter-spacing:2px;text-transform:uppercase;}
+.calc-input,.calc-select{
+  width:100%;padding:14px 18px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(0,0,0,0.4);
+  color:var(--text-main);
+  font-size:16px;font-family:var(--font-body);
+  outline:none;transition:all 0.3s;
+  -webkit-appearance:none;appearance:none;
+}
+.calc-select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23E5B80B' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;padding-right:44px;
+}
+.calc-input:focus,.calc-select:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-glow-light);}
+.calc-btn-wrap{margin-top:30px;}
+.calc-btn{
+  width:100%;padding:18px;
+  background:var(--gold);color:var(--dark);
+  border:none;border-radius:12px;
+  font-size:14px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;font-family:var(--font-body);
+  transition:all 0.3s cubic-bezier(0.23,1,0.32,1);
+  position:relative;overflow:hidden;
+}
+.calc-btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(255,255,255,0.2);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.6s,height 0.6s;}
+.calc-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px var(--gold-glow);}
+.calc-btn:active::before{width:400px;height:400px;}
+.calc-results{display:none; margin-top:0; padding:40px 50px; background:rgba(0,0,0,0.3); border-top:1px solid var(--border);}
+.calc-results.visible{display:block;animation:fadeInUp 0.5s ease forwards;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.result-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:14px;}
+.result-row:last-child{border-bottom:none;}
+.result-row .r-label{color:var(--text-muted);}
+.result-row .r-val{font-weight:700;color:var(--text-main);}
+.r-val.deduct{color:#ef4444;}
+.result-total{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;margin-top:20px;background:rgba(229,184,11,0.06);border:1px solid var(--border);border-radius:14px;}
+.result-total .r-label{font-family:var(--font-head);font-size:14px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;}
+.result-total .r-val{font-family:var(--font-head);font-size:32px;font-weight:700;}
+.r-val.profit{color:#4ade80;}
+.r-val.loss{color:#ef4444;}
+.result-margin{display:flex;justify-content:space-between;padding:14px 20px;background:rgba(0,0,0,0.3);border-radius:10px;margin-top:10px;font-size:13px;font-weight:700;}
+
+/* ─── CTA SECTION ─── */
+#cta-section{background:linear-gradient(135deg,var(--dark-surface) 0%,rgba(10,8,0,1) 50%,var(--dark-surface) 100%);padding:120px 5%;text-align:center;position:relative;overflow:hidden;}
+#cta-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50vw;height:50vw;background:radial-gradient(circle,rgba(229,184,11,0.1) 0%,transparent 70%);pointer-events:none;}
+.cta-inner{max-width:800px;margin:0 auto;position:relative;z-index:2;}
+.cta-inner .section-title{font-size:clamp(28px,4vw,48px);}
+.cta-inner .hero-sub{margin-top:20px;font-size:17px;}
+.cta-actions{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:40px;}
+
 /* ─── FOOTER ─── */
-footer{padding:60px 5%; border-top:1px solid #1a1a1a; background:var(--dark-surface); display:flex; justify-content:space-between; align-items:center;}
-.f-logo{font-family:var(--font-head);font-size:24px;color:var(--gold);}
-.f-brand-tag{display:inline-block; margin-top:10px; padding:6px 15px; border:1px solid rgba(229,184,11,0.4); border-radius:100px; font-size:11px; color:var(--gold); letter-spacing:1px; text-transform:uppercase; font-weight:700;}
+footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content:space-between;align-items:center;background:var(--dark-surface);}
+.f-logo{font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--gold);}
+.f-text{font-size:13px;color:var(--text-muted); text-align:right;}
+.f-brand-tag{display:inline-block; margin-top:8px; padding:4px 10px; border:1px solid rgba(229,184,11,0.3); border-radius:100px; font-size:10px; color:var(--gold); letter-spacing:1px; text-transform:uppercase;}
+
+/* ─── CHAT & FLOAT UI ─── */
+.float-btn{position:fixed;z-index:900;display:flex;align-items:center;justify-content:center;border-radius:50%;cursor:none;transition:all 0.3s;}
+#audio-toggle{bottom:30px;right:30px;width:50px;height:50px;background:var(--glass);border:1px solid var(--border);color:var(--gold);font-size:20px;backdrop-filter:blur(10px);}
+#audio-toggle:hover{transform:scale(1.1);background:rgba(229,184,11,0.1);}
+
+#chat-container{position:fixed;bottom:100px;right:30px;z-index:900;}
+#chat-toggle{width:60px;height:60px;background:var(--gold);border:none;font-size:28px;box-shadow:0 10px 30px var(--gold-glow);position:relative;}
+#chat-toggle:hover{transform:scale(1.1);}
+#chat-box{position:absolute;bottom:80px;right:0;width:380px;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:20px;overflow:hidden;display:none;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,0.9);}
+#chat-box.open{display:flex;}
+.chat-header{padding:20px;background:rgba(229,184,11,0.05);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:15px;}
+.chat-av{width:45px;height:45px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 15px var(--gold-glow);}
+.chat-info h3{font-size:16px;color:var(--text-main);margin-bottom:4px;}
+.chat-info p{font-size:11px;color:#4ade80;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.chat-body{height:350px;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:15px;}
+.msg{max-width:85%;padding:12px 16px;border-radius:12px;font-size:14px;line-height:1.5;word-wrap:break-word;}
+.msg.bot{background:#111;border:1px solid #333;align-self:flex-start;border-bottom-left-radius:2px;}
+.msg.user{background:var(--gold);color:var(--dark);font-weight:600;align-self:flex-end;border-bottom-right-radius:2px;}
+.chat-input-wrap{padding:15px;border-top:1px solid #333;background:#0a0a0a;display:flex;gap:10px;}
+#chat-input{flex:1;background:#111;border:1px solid #333;border-radius:8px;padding:12px;color:#fff;outline:none;font-family:var(--font-body);}
+#chat-input:focus{border-color:var(--gold);}
+#chat-send{width:45px;height:45px;background:var(--gold);border:none;border-radius:8px;cursor:pointer;font-size:20px;}
 
 .reveal{opacity:0;transform:translateY(50px);}
 
+@media(max-width:900px){
+  .bento-col-2{grid-column:span 4;}.bento-box{grid-column:span 2;}.bento-row-2{grid-row:span 1;}
+  .calc-grid{grid-template-columns:1fr;}.calc-form-group.full{grid-column:span 1;}
+  .about-grid{grid-template-columns:1fr;}
+}
 @media(max-width:768px){
-  nav{padding:15px 5%;}.nav-links{display:none;}
-  .hero-title{font-size:42px;}
-  footer{flex-direction:column; gap:20px; text-align:center;}
+  nav{padding:15px 5%;}.nav-links{display:none;}section{padding:100px 5%;}
+  .hero-title{font-size:42px;}.hero-stats{gap:20px;flex-wrap:wrap;}
+  .svc-grid{grid-template-columns:1fr;}.bento-box{grid-column:span 4;}
+  #chat-box{width:320px;}footer{flex-direction:column;gap:15px;text-align:center;}
+  .calc-body{padding:30px;}.calc-results{padding:30px;}
+  .f-text{text-align:center !important;}
+  .modal-glass-container { width: 100%; height: 90vh; border-radius: 20px 20px 0 0; }
 }
 </style>
 </head>
@@ -197,10 +413,11 @@ footer{padding:60px 5%; border-top:1px solid #1a1a1a; background:var(--dark-surf
   <div class="nav-logo">J<span>K</span>.</div>
   <ul class="nav-links">
     <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#dashboard">Results</a></li>
-    <li><a href="#physics-pit">Stack</a></li>
+    <li><a href="#services">Services</a></li>
   </ul>
-  <a href="#" onclick="openCalendar(event)" class="btn-magnetic">Book Audit</a>
+  <a href="#" onclick="toggleBookingModal(event)" class="btn-magnetic">Book Audit</a>
 </nav>
 
 <section id="hero">
@@ -211,12 +428,46 @@ footer{padding:60px 5%; border-top:1px solid #1a1a1a; background:var(--dark-surf
     <h1 class="hero-title reveal">Scale Your Brand with <span class="accent">Quick Shift</span></h1>
     <p class="hero-sub reveal">Helping brands scale across Amazon, Flipkart, & Quick Commerce with data-driven growth systems. Multi-platform execution focused on ROI.</p>
     <div class="hero-actions reveal">
-      <a href="#" onclick="openCalendar(event)" class="btn-magnetic gold-fill" style="padding:18px 48px;">Book Free Strategy Call</a>
+      <a href="#" onclick="toggleBookingModal(event)" class="btn-magnetic gold-fill" style="padding:18px 48px;">Book Free Strategy Call</a>
     </div>
     <div class="hero-stats reveal">
       <div class="stat-item"><div class="stat-num" data-count="15" data-prefix="₹" data-suffix="L+">0</div><div class="stat-label">Monthly Revenue</div></div>
       <div class="stat-item"><div class="stat-num" data-count="1500" data-suffix="+">0</div><div class="stat-label">Monthly Orders</div></div>
       <div class="stat-item"><div class="stat-num" data-count="100" data-suffix="M+">0</div><div class="stat-label">Total Impressions</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-container">
+  <div class="marquee-content" id="marquee-track">
+    <div class="marquee-item"><span class="marquee-logo-text">Amazon</span></div>
+    <div class="marquee-item"><span class="marquee-logo-text">Flipkart</span></div>
+    <div class="marquee-item"><span class="marquee-logo-text">Myntra</span></div>
+    <div class="marquee-item"><span class="marquee-logo-text">Ajio</span></div>
+    <div class="marquee-item"><span class="marquee-logo-text">Blinkit</span></div>
+    <div class="marquee-item"><span class="marquee-logo-text">Zepto</span></div>
+    <div class="marquee-item"><span class="marquee-logo-text">Shopify</span></div>
+    <div class="marquee-item"><span class="marquee-logo-text">Amazon</span></div>
+    <div class="marquee-item"><span class="marquee-logo-text">Flipkart</span></div>
+    <div class="marquee-item"><span class="marquee-logo-text">Myntra</span></div>
+    <div class="marquee-item"><span class="marquee-logo-text">Ajio</span></div>
+    <div class="marquee-item"><span class="marquee-logo-text">Blinkit</span></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <span class="section-label" style="text-align:left;">Quick Shift Creative</span>
+      <h2 class="section-title" style="text-align:left; margin-bottom:30px;">The <span class="accent">DNA</span> of Growth</h2>
+      <p>I’m <strong>Jenish Kamli</strong> — an experienced E-Commerce Marketplace Manager, Brand Growth Strategist, and Quick Commerce Specialist.</p>
+      <p>I help businesses build scalable revenue systems across e-commerce and D2C platforms like Shopify and WooCommerce. My approach focuses on data-driven execution, marketplace optimization, and long-term brand development.</p>
+    </div>
+    <div class="about-media">
+      <div class="media-placeholder video" style="min-height:350px;">
+        <div class="icon">▶</div>
+        <div>Agency Introduction Video</div>
+      </div>
     </div>
   </div>
 </section>
@@ -232,100 +483,63 @@ footer{padding:60px 5%; border-top:1px solid #1a1a1a; background:var(--dark-surf
     </div>
     <div class="bento-box reveal">
       <div class="b-val">100M+</div>
-      <div class="stat-label">Cross-Platform Impressions</div>
+      <div class="b-desc">Driven across platforms</div>
     </div>
     <div class="bento-box reveal">
       <div class="b-val">45%</div>
-      <div class="stat-label">Average Organic Growth</div>
-    </div>
-  </div>
-</section>
-
-<section id="about" style="background:var(--dark-surface); padding:100px 5%;">
-  <div class="section-head reveal">
-    <span class="section-label">Quick Shift Creative</span>
-    <h2 class="section-title">The <span class="accent">DNA</span> of Growth</h2>
-  </div>
-  <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;" class="reveal">
-    <div>
-      <p style="font-size:17px; color:var(--text-muted); line-height:1.8; margin-bottom:20px;">I’m <strong>Jenish Kamli</strong> — an experienced E-Commerce Manager & Quick Commerce Specialist. I help businesses build scalable revenue systems across Amazon, Flipkart, Myntra, and D2C platforms like Shopify.</p>
-    </div>
-    <div class="media-placeholder video" style="min-height:350px;">
-      <div class="icon">▶</div>
-      <div>Agency Introduction Video Placeholder</div>
-    </div>
-  </div>
-</section>
-
-<section id="proof" style="background:var(--dark); padding:150px 5%;">
-  <div class="section-head reveal">
-    <h2 class="section-title">Dashboard <span class="accent">Proof</span></h2>
-  </div>
-  <div class="proof-scroll-wrapper reveal" style="overflow-x:auto; padding-bottom:20px; cursor:grab;">
-    <div class="proof-track" style="display:flex;gap:24px;width:max-content;">
-      <div class="proof-card" style="width:320px;height:220px;border-radius:16px;background:var(--glass);flex-shrink:0;">
-        <div class="media-placeholder image"><div class="icon">📈</div><div>Amazon Analytics</div></div>
-      </div>
-      <div class="proof-card" style="width:320px;height:220px;border-radius:16px;background:var(--glass);flex-shrink:0;">
-        <div class="media-placeholder video"><div class="icon">▶</div><div>100M+ Impressions Dashboard Video</div></div>
-      </div>
-      <div class="proof-card" style="width:320px;height:220px;border-radius:16px;background:var(--glass);flex-shrink:0;">
-        <div class="media-placeholder image"><div class="icon">⚡</div><div>Blinkit Analytics</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="projects" style="background:var(--dark-surface); padding:150px 5%;">
-  <div class="section-head reveal">
-    <h2 class="section-title">Multi-Platform <span class="accent">Success</span></h2>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px;max-width:1200px;margin:0 auto;">
-    <div class="prj-card reveal" style="border-radius:20px;background:var(--dark);overflow:hidden;border:1px solid rgba(255,255,255,0.05);">
-      <div class="media-placeholder image" style="height:220px;border:none;border-radius:0;"><div class="icon">📷</div></div>
-      <div style="padding:35px;">
-        <span style="display:inline-block;padding:6px 14px;background:rgba(229,184,11,0.1);color:var(--gold);font-size:10px;font-weight:800;border-radius:100px;margin-bottom:15px;">Amazon Expert</span>
-        <h3 style="font-size:22px;font-weight:700;margin-bottom:12px;">Marketplace Growth</h3>
-      </div>
-    </div>
-    <div class="prj-card reveal" style="border-radius:20px;background:var(--dark);overflow:hidden;border:1px solid rgba(255,255,255,0.05);">
-      <div class="media-placeholder video" style="height:220px;border:none;border-radius:0;"><div class="icon">▶</div><div>Q-Com Growth Video Placeholder</div></div>
-      <div style="padding:35px;">
-        <span style="display:inline-block;padding:6px 14px;background:rgba(229,184,11,0.1);color:var(--gold);font-size:10px;font-weight:800;border-radius:100px;margin-bottom:15px;">Quick Commerce</span>
-        <h3 style="font-size:22px;font-weight:700;margin-bottom:12px;">Q-Com Onboarding</h3>
-      </div>
+      <div class="b-desc">Organic Growth Baseline</div>
     </div>
   </div>
 </section>
 
 <section id="physics-pit">
-  <h2 class="section-title reveal" style="margin-bottom:40px;">Interactive <span class="accent">Tech Stack</span></h2>
+  <span class="section-label reveal">E-Commerce Ecosystem</span>
+  <h2 class="section-title reveal">Interactive <span class="accent">Stack</span></h2>
   <div id="matter-container" class="reveal"></div>
-  <p style="margin-top:20px; color:var(--text-muted); font-size:12px; letter-spacing:2px;">DRAG OBJECTS TO EXPLORE</p>
+  <p class="pit-hint">Drag objects to explore the multi-platform tech stack</p>
 </section>
 
-<section id="cta" style="text-align:center; padding:150px 5%;">
-  <div class="reveal">
+<section id="proof">
+  <div class="section-head reveal">
+    <h2 class="section-title">Dashboard <span class="accent">Proof</span></h2>
+  </div>
+  <div class="proof-scroll-wrapper reveal">
+    <div class="proof-track">
+      <div class="proof-card"><div class="media-placeholder image"><div class="icon">📈</div><div>Amazon Analytics</div></div></div>
+      <div class="proof-card"><div class="media-placeholder image"><div class="icon">💹</div><div>Flipkart Growth</div></div></div>
+      <div class="proof-card"><div class="media-placeholder video"><div class="icon">▶</div><div>100M+ Impressions</div></div></div>
+      <div class="proof-card"><div class="media-placeholder image"><div class="icon">⚡</div><div>Blinkit Dashboard</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="cta-section">
+  <div class="cta-inner reveal">
     <h2 class="section-title">Ready to Scale Your Brand?</h2>
-    <p class="hero-sub">Let's build a powerful e-commerce growth system together. No fluff, just results.</p>
-    <a href="#" onclick="openCalendar(event)" class="btn-magnetic gold-fill" style="padding:18px 48px;">Book Your Free Audit</a>
+    <p class="hero-sub">Let's build a powerful e-commerce growth system together.</p>
+    <div class="cta-actions">
+      <a href="#" onclick="toggleBookingModal(event)" class="btn-magnetic gold-fill" style="padding:18px 48px;">Book a Strategy Call</a>
+      <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" target="_blank" class="btn-magnetic outline-dim" style="padding:18px 48px;">LinkedIn Profile</a>
+    </div>
   </div>
 </section>
 
 <footer>
   <div class="f-logo">Jenish Kamli.</div>
-  <div style="text-align:right;">
-    <p style="color:var(--text-muted); font-size:13px;">E-Commerce Growth Specialist © 2026</p>
-    <span class="f-brand-tag">Quick Shift Creative</span>
+  <div class="f-text">
+    <strong>E-Commerce Marketplace Manager &amp; Brand Growth Specialist</strong><br/>
+    <span class="f-brand-tag">A Quick Shift Creative Initiative</span>
   </div>
 </footer>
 
-<div id="calendar-modal">
-  <div class="calendar-glass">
-    <button class="close-calendar" onclick="closeCalendar()">×</button>
+<div id="booking-modal">
+  <div class="modal-glass-container">
+    <button class="close-modal-btn" onclick="toggleBookingModal(event)">×</button>
     <iframe class="calendar-iframe" src="https://calendar.app.google/xHj2anRZ1imLTqEU9" title="Book a Meeting"></iframe>
   </div>
 </div>
+
+<div class="float-btn" id="audio-toggle" onclick="toggleMute()" title="Mute/Unmute Sounds">🔊</div>
 
 <script>
 // ── PRELOADER ──
@@ -334,7 +548,9 @@ window.addEventListener('load',()=>{
   const int=setInterval(()=>{p+=Math.floor(Math.random()*15);if(p>100)p=100;pEl.innerText=p+"%";if(p===100)clearInterval(int);},50);
   const tl=gsap.timeline({delay:0.8});
   tl.to("#loader-bar",{width:"100%",duration:0.8,ease:"power2.inOut"})
-    .to("#preloader",{yPercent:-100,duration:0.8,ease:"power4.inOut"});
+    .to("#preloader",{yPercent:-100,duration:0.8,ease:"power4.inOut"})
+    .fromTo(".hero-title",{y:50,opacity:0},{y:0,opacity:1,duration:1,ease:"power3.out"},"-=0.4")
+    .fromTo(".hero-sub",{y:30,opacity:0},{y:0,opacity:1,duration:0.8},"-=0.6");
 });
 
 // ── CURSOR ──
@@ -343,17 +559,22 @@ document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';curso
 let rx=0,ry=0;
 (function animRing(){rx+=(cursor.getBoundingClientRect().left-rx)*0.15;ry+=(cursor.getBoundingClientRect().top-ry)*0.15;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
 
-// ── CALENDAR LIQUID MODAL LOGIC ──
-function openCalendar(e) {
+document.querySelectorAll('a,button,.p-card,.bento-box,.media-placeholder,.close-modal-btn').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.transform='translate(-50%,-50%) scale(1.5)';ring.style.borderColor='var(--gold)';cursor.style.width='12px';cursor.style.height='12px';});
+  el.addEventListener('mouseleave',()=>{ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.borderColor='rgba(229,184,11,0.5)';cursor.style.width='8px';cursor.style.height='8px';});
+});
+
+// ── MODAL LOGIC ──
+function toggleBookingModal(e) {
   if(e) e.preventDefault();
-  document.getElementById('calendar-modal').classList.add('active');
-}
-function closeCalendar() {
-  document.getElementById('calendar-modal').classList.remove('active');
+  const modal = document.getElementById('booking-modal');
+  modal.classList.toggle('active');
+  playSFX('click');
 }
 
-// ── GSAP REVEALS ──
+// ── GSAP ──
 gsap.registerPlugin(ScrollTrigger);
+gsap.to('.hero-grid',{yPercent:-15,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
 document.querySelectorAll('.reveal').forEach((el,i)=>{
   gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 85%'},delay:(i%3)*0.1});
 });
@@ -366,45 +587,45 @@ const countObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isInt
   countObs.unobserve(e.target);}});},{threshold:0.5});
 countEls.forEach(el=>countObs.observe(el));
 
-// ── CHART.JS TRAJECTORY ──
-const ctx=document.getElementById('revenueChart').getContext('2d');
-new Chart(ctx,{
-  type:'line',
-  data:{
-    labels:['Month 1','Month 2','Month 3','Month 4','Month 5','Current'],
-    datasets:[{
-      label:'Revenue Growth',
-      data:[150000, 350000, 680000, 950000, 1200000, 1550000],
-      borderColor:'#E5B80B', backgroundColor:'rgba(229,184,11,0.1)', borderWidth:3, fill:true, tension:0.4, pointRadius: 5, pointBackgroundColor: '#E5B80B'
-    }]
-  },
-  options:{ 
-    responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, 
-    scales:{
-        y:{grid:{color:'#222'},ticks:{color:'#fff', callback: v => '₹'+(v/100000).toFixed(1)+'L'}},
-        x:{grid:{color:'#222'},ticks:{color:'#fff'}}
-    } 
-  }
+// ── CHARTS ──
+let chartCtx=document.getElementById('revenueChart').getContext('2d');
+new Chart(chartCtx,{
+    type:'line',
+    data:{
+      labels:['Month 1','Month 2','Month 3','Month 4','Month 5','Current'],
+      datasets:[{
+        label:'Revenue',
+        data:[150000, 350000, 680000, 950000, 1200000, 1550000],
+        borderColor:'#E5B80B', backgroundColor:'rgba(229,184,11,0.1)', borderWidth:3, fill:true, tension:0.4
+      }]
+    },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{y:{grid:{color:'#222'},ticks:{color:'#fff', callback: v => '₹'+(v/100000).toFixed(1)+'L'}},x:{grid:{color:'#222'},ticks:{color:'#fff'}}} }
 });
 
-// ── MATTER.JS PHYSICS PIT ──
+// ── PHYSICS ──
 function initPhysics(){
   const cont=document.getElementById('matter-container');
   const{Engine,Render,Runner,Composite,Bodies,MouseConstraint,Mouse}=Matter;
   const engine=Engine.create(),world=engine.world;
   const render=Render.create({element:cont,engine:engine,options:{width:cont.clientWidth,height:cont.clientHeight,wireframes:false,background:'transparent'}});
-  Render.run(render); Runner.run(Runner.create(),engine);
+  Render.run(render);Runner.run(Runner.create(),engine);
   const cw=cont.clientWidth,ch=cont.clientHeight;
   Composite.add(world,[Bodies.rectangle(cw/2,ch+25,cw,50,{isStatic:true}),Bodies.rectangle(-25,ch/2,50,ch,{isStatic:true}),Bodies.rectangle(cw+25,ch/2,50,ch,{isStatic:true})]);
-  const items=["Amazon","Flipkart","QuickShift","Shopify","Blinkit","Zepto"];
+  const items=["Amazon","Flipkart","Shopify","Blinkit","Zepto"];
   items.forEach((t,i)=>{
-    let b=Bodies.circle(Math.random()*cw,-100-(i*50),45,{restitution:0.8,render:{fillStyle: (i%2==0 ? '#E5B80B' : '#111'), strokeStyle: '#E5B80B', lineWidth: 2}});
+    let b=Bodies.circle(Math.random()*cw,-100-(i*50),45,{restitution:0.8,render:{fillStyle:'#E5B80B', strokeStyle:'#fff', lineWidth:2}});
     Composite.add(world,b);
   });
   const mouse=Mouse.create(render.canvas);
   Composite.add(world,MouseConstraint.create(engine,{mouse:mouse,constraint:{stiffness:0.2,render:{visible:false}}}));
 }
 initPhysics();
+
+// ── AUDIO ──
+let isMuted=false;
+const sounds={click:'https://actions.google.com/sounds/v1/ui/button_click.ogg'};
+function playSFX(n,v=0.5){if(!isMuted&&sounds[n]){let a=new Audio(sounds[n]);a.volume=v;a.play().catch(e=>{});}}
+function toggleMute(){isMuted=!isMuted;document.getElementById('audio-toggle').innerText=isMuted?'🔇':'🔊';}
 </script>
 </body>
 </html>
