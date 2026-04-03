@@ -65,126 +65,298 @@ body{background:var(--dark);color:var(--text-main);font-family:var(--font-body);
 .media-placeholder:hover::after { opacity: 1; }
 .media-placeholder .icon { font-size: 32px; color: var(--gold); }
 
-/* ─── LIQUID GLASS CALENDAR MODAL ─── */
-#calendar-modal {
-  position: fixed; inset: 0; z-index: 100000;
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none; transition: all 0.6s cubic-bezier(0.23,1,0.32,1);
-  background: rgba(3, 3, 3, 0.4); backdrop-filter: blur(0px);
-}
-#calendar-modal.active { opacity: 1; pointer-events: all; backdrop-filter: blur(25px); }
-.calendar-glass {
-  width: 95%; max-width: 1100px; height: 85vh;
-  background: rgba(10, 10, 10, 0.8); border: 1px solid var(--gold); border-radius: 32px; overflow: hidden;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.9); transform: scale(0.9) translateY(40px); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-#calendar-modal.active .calendar-glass { transform: scale(1) translateY(0); }
-.close-calendar { position: absolute; top: 25px; right: 25px; background: var(--dark-surface); color: var(--gold); border: 1px solid var(--border); border-radius: 50%; width: 50px; height: 50px; font-size: 26px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 101; transition: 0.3s; }
-.close-calendar:hover { background: var(--gold); color: var(--dark); transform: rotate(90deg); }
-.calendar-iframe { width: 100%; height: 100%; border: none; background: transparent; }
-
 /* ─── LIQUID GLASS BUTTON ─── */
 .btn-magnetic{
-  padding:14px 32px; background:var(--glass-btn); backdrop-filter:blur(15px); border:1px solid var(--border-light); border-radius:100px;
-  color:var(--text-main); font-size:13px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none;
-  transition:all .35s cubic-bezier(0.23,1,0.32,1); display:inline-flex; align-items:center; justify-content:center; cursor:none; overflow:hidden; position:relative; z-index:1;
+  padding:14px 32px;
+  background:var(--glass-btn);
+  backdrop-filter:blur(15px);
+  -webkit-backdrop-filter:blur(15px);
+  border:1px solid var(--border-light);
+  border-radius:100px;
+  color:var(--text-main);
+  font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  text-decoration:none;
+  transition:all .35s cubic-bezier(0.23,1,0.32,1);
+  display:inline-flex;align-items:center;justify-content:center;
+  cursor:none;overflow:hidden;position:relative;z-index:1;
 }
-.btn-magnetic::before{ content:''; position:absolute; top:100%; left:0; width:100%; height:100%; background:var(--gold); transition:all .4s cubic-bezier(0.23,1,0.32,1); z-index:-1; border-radius:50% 50% 0 0; }
-.btn-magnetic:hover::before{top:0; border-radius:0;}
-.btn-magnetic:hover{ color:var(--dark); border-color:var(--gold); box-shadow:0 0 30px var(--gold-glow); transform:scale(1.05); }
-.btn-magnetic.gold-fill{background:var(--gold); color:var(--dark); border-color:var(--gold);}
+.btn-magnetic::before{
+  content:'';position:absolute;top:100%;left:0;width:100%;height:100%;
+  background:var(--gold);transition:all .4s cubic-bezier(0.23,1,0.32,1);z-index:-1;border-radius:50% 50% 0 0;
+}
+.btn-magnetic:hover::before{top:0;border-radius:0;}
+.btn-magnetic:hover{
+  color:var(--dark);
+  border-color:var(--gold);
+  box-shadow:0 0 30px var(--gold-glow),0 0 60px rgba(229,184,11,0.15);
+  transform:scale(1.05);
+}
+.btn-magnetic.gold-fill{background:var(--gold);color:var(--dark);border-color:var(--gold);}
+.btn-magnetic.gold-fill::before{background:#fff;}
+.btn-magnetic.gold-fill:hover{color:var(--dark);}
+.btn-magnetic.outline-dim{border-color:#333;color:var(--text-muted);}
+.btn-magnetic.outline-dim:hover{color:var(--dark);border-color:var(--gold);}
 
 /* ─── NAV ─── */
-nav{ position:fixed; top:0; left:0; right:0; z-index:1000; padding:25px 5%; display:flex; align-items:center; justify-content:space-between; background:linear-gradient(180deg,rgba(3,3,3,0.9) 0%,transparent 100%); backdrop-filter:blur(10px); transition:all 0.4s; }
-.nav-logo{font-family:var(--font-head); font-size:26px; font-weight:700; color:var(--text-main); letter-spacing:1px;}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;padding:25px 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(180deg,rgba(3,3,3,0.9) 0%,transparent 100%);
+  backdrop-filter:blur(10px);transition:all 0.4s;
+}
+.nav-logo{font-family:var(--font-head);font-size:26px;font-weight:700;color:var(--text-main);letter-spacing:1px;}
 .nav-logo span{color:var(--gold);}
-.nav-links{display:flex; gap:40px; list-style:none;}
-.nav-links a{color:var(--text-main); text-decoration:none; font-size:13px; font-weight:600; letter-spacing:1px; text-transform:uppercase; position:relative;}
+.nav-links{display:flex;gap:40px;list-style:none;}
+.nav-links a{color:var(--text-main);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-5px;left:0;width:0%;height:2px;background:var(--gold);transition:width 0.3s;}
+.nav-links a:hover::after{width:100%;}
 
 /* ─── HERO ─── */
-#hero{min-height:100vh; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;}
-.hero-glow{position:absolute; width:60vw; height:60vw; background:radial-gradient(circle,var(--gold-glow) 0%,transparent 70%); top:50%; left:50%; transform:translate(-50%,-50%); opacity:0.3; filter:blur(60px); z-index:0; animation:pulseGlow 6s infinite alternate;}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.hero-glow{position:absolute;width:60vw;height:60vw;background:radial-gradient(circle,var(--gold-glow) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.3;filter:blur(60px);z-index:0;animation:pulseGlow 6s infinite alternate;}
 @keyframes pulseGlow{0%{transform:translate(-50%,-50%) scale(0.8);opacity:0.2;}100%{transform:translate(-50%,-50%) scale(1.1);opacity:0.4;}}
-.hero-grid{position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px); background-size:50px 50px; z-index:1;}
-.hero-inner{text-align:center; position:relative; z-index:2; max-width:1100px; padding:0 20px;}
-.hero-badge{ display:inline-flex; align-items:center; gap:10px; padding:10px 24px; border:1px solid var(--border); border-radius:100px; font-size:11px; font-weight:800; color:var(--text-main); letter-spacing:2px; text-transform:uppercase; margin-bottom:40px; background:var(--glass); backdrop-filter:blur(20px); }
-.hero-title{ font-family:var(--font-head); font-size:clamp(40px,7vw,110px); font-weight:400; line-height:1.1; letter-spacing:-1px; margin-bottom:30px; text-transform:uppercase; }
-.hero-title .accent{color:var(--gold); font-style:italic; font-weight:700;}
-.hero-sub{font-size:18px; color:var(--text-muted); line-height:1.6; max-width:850px; margin:0 auto 50px; font-weight:300;}
-.hero-stats{display:flex; gap:40px; justify-content:center; margin-top:70px; flex-wrap:wrap;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:50px 50px;z-index:1;}
+.hero-inner{text-align:center;position:relative;z-index:2;max-width:1100px;padding:0 20px;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;padding:10px 24px;
+  border:1px solid var(--border);border-radius:100px;
+  font-size:11px;font-weight:800;color:var(--text-main);letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:40px;background:var(--glass);backdrop-filter:blur(20px);
+}
+.hero-badge span{color:var(--gold);}
+.hero-title{
+  font-family:var(--font-head);font-size:clamp(40px,7vw,110px);font-weight:400;line-height:1.1;
+  letter-spacing:-1px;margin-bottom:30px;text-transform:uppercase;
+}
+.hero-title .accent{color:var(--gold);font-style:italic;font-weight:700;}
+.hero-sub{font-size:18px;color:var(--text-muted);line-height:1.6;max-width:850px;margin:0 auto 50px;font-weight:300;}
+.hero-sub strong{color:var(--text-main);}
+.hero-actions{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
+.hero-stats{display:flex;gap:40px;justify-content:center;margin-top:70px;flex-wrap:wrap;}
 .stat-item{text-align:center; background:var(--glass); padding:20px; border-radius:16px; border:1px solid rgba(255,255,255,0.05); min-width:160px; backdrop-filter:blur(10px);}
-.stat-num{font-family:var(--font-head); font-size:38px; font-weight:700; color:var(--gold); line-height:1;}
-.stat-label{font-size:11px; color:var(--text-muted); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-top:8px;}
+.stat-num{font-family:var(--font-head);font-size:38px;font-weight:700;color:var(--gold);line-height:1;}
+.stat-label{font-size:11px;color:var(--text-muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:8px;}
 
 /* ─── MARQUEE ─── */
-.marquee-container{width:100%; padding:20px 0; background:var(--dark-surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); overflow:hidden; position:relative; z-index:10; display:flex;}
-.marquee-content{display:flex; gap:60px; white-space:nowrap; animation:marquee 30s linear infinite; align-items:center;}
-.marquee-item{display:inline-flex; align-items:center; gap:12px;}
-.marquee-logo-text{font-family:var(--font-head); font-size:20px; font-weight:700; color:rgba(255,255,255,0.2); letter-spacing:2px; text-transform:uppercase;}
+.marquee-container{width:100%;padding:20px 0;background:var(--dark-surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;position:relative;z-index:10;display:flex;}
+.marquee-content{display:flex;gap:60px;white-space:nowrap;animation:marquee 30s linear infinite;align-items:center;}
+.marquee-item{display:inline-flex;align-items:center;gap:12px;transition:all 0.3s;cursor:default;}
+.marquee-item:hover .marquee-logo-text{opacity:1;color:var(--gold);}
+.marquee-logo-text{font-family:var(--font-head);font-size:20px;font-weight:700;color:rgba(255,255,255,0.2);letter-spacing:2px;text-transform:uppercase;transition:color 0.3s;}
+.marquee-logo-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;opacity:0.5;transition:opacity 0.3s;}
+.marquee-item:hover .marquee-logo-icon{opacity:1;}
 @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
 /* ─── SECTIONS ─── */
-section{padding:120px 5%; position:relative; z-index:2;}
-.section-head{text-align:center; margin-bottom:80px;}
-.section-label{font-size:12px; font-weight:800; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:20px; display:block;}
-.section-title{font-family:var(--font-head); font-size:clamp(32px,5vw,56px); font-weight:400; line-height:1.1; text-transform:uppercase;}
-.section-title .accent{color:var(--gold); font-style:italic; font-weight:700;}
+section{padding:120px 5%;position:relative;z-index:2;}
+.section-head{text-align:center;margin-bottom:80px;}
+.section-label{font-size:12px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:block;}
+.section-title{font-family:var(--font-head);font-size:clamp(32px,5vw,56px);font-weight:400;line-height:1.1;text-transform:uppercase;}
+.section-title .accent{color:var(--gold);font-style:italic;font-weight:700;}
+.section-desc{font-size:16px;color:var(--text-muted);line-height:1.7;max-width:700px;margin:20px auto 0;}
+
+/* ─── ABOUT / BRAND STRATEGIST ─── */
+#about{background:var(--dark);}
+.about-grid {display:grid; grid-template-columns:1fr 1fr; gap:50px; max-width:1200px; margin:0 auto; align-items:center;}
+.about-text p {font-size:17px; color:var(--text-muted); line-height:1.8; margin-bottom:20px;}
+.about-text strong {color:var(--text-main);}
 
 /* ─── PLATFORMS ─── */
-.platform-grid-12{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:20px; max-width:1200px; margin:0 auto;}
-.p-card{ background:var(--dark); border:1px solid rgba(255,255,255,0.05); border-radius:16px; padding:40px 20px; text-align:center; transition:0.4s; position:relative; overflow:hidden; }
-.p-card:hover{transform:translateY(-12px); border-color:var(--gold);}
-.p-logo-wrap{ width:60px; height:60px; border-radius:14px; margin:0 auto 20px; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:900; color:#fff; border:1px solid rgba(255,255,255,0.08); }
+#platforms{background:var(--dark-surface);}
+.platform-grid-12{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;max-width:1200px;margin:0 auto;}
+.p-card{
+  background:var(--dark);border:1px solid rgba(255,255,255,0.05);border-radius:16px;
+  padding:40px 20px;text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden;
+}
+.p-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 50% 0%,var(--gold-glow),transparent 70%);opacity:0;transition:opacity 0.4s;}
+.p-card:hover{transform:translateY(-12px) scale(1.02);border-color:var(--gold);box-shadow:0 20px 50px rgba(0,0,0,0.8),0 0 30px var(--gold-glow-light);}
+.p-card:hover::before{opacity:1;}
+.p-logo-wrap{
+  width:60px;height:60px;border-radius:14px;margin:0 auto 20px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;font-weight:900;letter-spacing:-1px;color:#fff;
+  transition:all 0.4s;position:relative;z-index:2;
+  border:1px solid rgba(255,255,255,0.08);
+}
+.p-card:hover .p-logo-wrap{transform:scale(1.15);box-shadow:0 0 20px var(--gold-glow-light);border-color:rgba(229,184,11,0.3);}
+.p-name{font-size:14px;font-weight:600;color:var(--text-main);position:relative;z-index:2;}
+.platform-badge{display:inline-block;margin-top:8px;padding:4px 10px;background:rgba(229,184,11,0.1);color:var(--gold);font-size:9px;font-weight:800;border-radius:100px;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(229,184,11,0.2);}
 
 /* ─── DASHBOARD ─── */
-.bento-grid{display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:minmax(180px,auto); gap:20px; max-width:1200px; margin:0 auto;}
-.bento-box{ background:var(--glass); border:1px solid var(--border); border-radius:24px; padding:30px; display:flex; flex-direction:column; justify-content:center; backdrop-filter:blur(20px); transition:0.4s; }
+#dashboard{background:var(--dark);}
+.bento-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(180px,auto);gap:20px;max-width:1200px;margin:0 auto;}
+.bento-box{
+  background:var(--glass);border:1px solid var(--border);border-radius:24px;padding:30px;
+  display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;
+  backdrop-filter:blur(20px);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+.bento-box:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,0.5),0 0 40px rgba(229,184,11,0.08);}
 .bento-col-2{grid-column:span 2;}.bento-row-2{grid-row:span 2;}
-.b-val{font-family:var(--font-head); font-size:42px; font-weight:700; color:var(--gold); line-height:1;}
-.chart-wrap{height:100%; width:100%; min-height:280px;}
+.b-label{font-size:12px;font-weight:800;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-bottom:10px;}
+.b-val{font-family:var(--font-head);font-size:42px;font-weight:700;color:var(--gold);line-height:1;}
+.b-desc{font-size:13px;color:#4ade80;margin-top:10px;font-weight:600;}
+.chart-wrap{height:100%;width:100%;min-height:280px; position:relative;}
+.chart-title{font-size:15px;font-weight:700;color:var(--text-main);margin-bottom:20px;}
 
 /* ─── SERVICES ─── */
-.svc-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:1200px; margin:0 auto;}
-.svc-card{ background:var(--dark); border:1px solid rgba(255,255,255,0.05); padding:50px; border-radius:24px; position:relative; overflow:hidden; transition:0.4s; }
-.svc-card:hover{border-color:var(--gold); transform:translateY(-4px);}
-.svc-num{font-family:var(--font-head); font-size:60px; font-weight:800; color:rgba(255,255,255,0.03); position:absolute; top:20px; right:30px;}
-.svc-title{font-size:22px; font-weight:700; color:var(--text-main); margin-bottom:15px; position:relative; z-index:2;}
-.svc-desc{font-size:15px; color:var(--text-muted); line-height:1.7; position:relative; z-index:2;}
+#services{background:var(--dark-surface);}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1200px;margin:0 auto;}
+.svc-card{
+  background:var(--dark);border:1px solid rgba(255,255,255,0.05);padding:50px;border-radius:24px;
+  position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);cursor:none;
+}
+.svc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(45deg,transparent,var(--gold-glow),transparent);transform:translateX(-100%);transition:transform 0.6s;}
+.svc-card:hover{border-color:var(--gold);box-shadow:0 10px 40px rgba(229,184,11,0.1),0 0 30px rgba(229,184,11,0.05);transform:translateY(-4px);}
+.svc-card:hover::before{transform:translateX(100%);}
+.svc-num{font-family:var(--font-head);font-size:60px;font-weight:800;color:rgba(255,255,255,0.03);position:absolute;top:20px;right:30px;line-height:1;transition:color 0.4s;}
+.svc-card:hover .svc-num{color:var(--gold-glow);}
+.svc-title{font-size:22px;font-weight:700;color:var(--text-main);margin-bottom:15px;position:relative;z-index:2;}
+.svc-desc{font-size:15px;color:var(--text-muted);line-height:1.7;position:relative;z-index:2;}
 
 /* ─── PHYSICS PIT ─── */
-#physics-pit{background:var(--dark); text-align:center; padding:100px 5%;}
-#matter-container{width:100%; max-width:1200px; height:500px; margin:0 auto; border-radius:24px; background:radial-gradient(circle at center,#111 0%,#000 100%); border:1px solid #333; cursor:grab; overflow:hidden;}
+#physics-pit{background:var(--dark);text-align:center;padding:100px 5%;}
+#matter-container{width:100%;max-width:1200px;height:500px;margin:0 auto;border-radius:24px;background:radial-gradient(circle at center,#111 0%,#000 100%);border:1px solid #333;box-shadow:inset 0 0 50px rgba(0,0,0,1);cursor:grab;overflow:hidden;}
+#matter-container:active{cursor:grabbing;}
+.pit-hint{margin-top:20px;font-size:13px;color:var(--text-muted);letter-spacing:1px;}
+
+/* ─── PROOF SECTION ─── */
+#proof{background:var(--dark-surface);padding:150px 5%;}
+.proof-scroll-wrapper{overflow-x:auto;overflow-y:visible;padding-bottom:20px;-webkit-overflow-scrolling:touch;cursor:grab;}
+.proof-scroll-wrapper:active{cursor:grabbing;}
+.proof-scroll-wrapper::-webkit-scrollbar{height:3px;}
+.proof-scroll-wrapper::-webkit-scrollbar-track{background:#111;}
+.proof-scroll-wrapper::-webkit-scrollbar-thumb{background:var(--gold);border-radius:10px;}
+.proof-track{display:flex;gap:24px;padding:10px 0;width:max-content;}
+.proof-card{
+  width:320px;height:220px;border-radius:16px;overflow:hidden;
+  border:1px solid rgba(255,255,255,0.08);
+  background:var(--glass);backdrop-filter:blur(10px);
+  position:relative;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);
+  flex-shrink:0;cursor:pointer;
+}
+.proof-card:hover{transform:translateY(-10px) scale(1.03);border-color:var(--gold);box-shadow:0 20px 50px rgba(0,0,0,0.8),0 0 30px var(--gold-glow-light);}
+
+/* ─── CASE STUDIES ─── */
+#projects{background:var(--dark);}
+.prj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px;max-width:1200px;margin:0 auto;}
+.prj-card{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:var(--dark-surface);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);cursor:none;}
+.prj-card:hover{transform:translateY(-12px);border-color:var(--gold);box-shadow:0 20px 50px rgba(0,0,0,0.6),0 0 40px rgba(229,184,11,0.08);}
+.prj-img{height:220px; display:flex;align-items:center;justify-content:center; position:relative;overflow:hidden;}
+.prj-info{padding:35px;}
+.prj-tag{display:inline-block;padding:6px 14px;background:rgba(229,184,11,0.1);color:var(--gold);font-size:10px;font-weight:800;border-radius:100px;letter-spacing:1px;text-transform:uppercase;margin-bottom:15px;border:1px solid rgba(229,184,11,0.2);}
+.prj-title{font-size:22px;font-weight:700;margin-bottom:12px;color:var(--text-main);}
+.prj-desc{font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:20px;}
 
 /* ─── PROFIT CALCULATOR ─── */
-#calculator{background:var(--dark-surface); padding:150px 5%;}
-.calc-card{ background:var(--glass); border:1px solid var(--border); border-radius:28px; overflow:hidden; backdrop-filter:blur(30px); max-width:680px; margin:0 auto; position:relative;}
+#calculator{background:var(--dark-surface);padding:150px 5%;}
+.calc-inner{max-width:680px;margin:0 auto;}
+.calc-card{
+  background:var(--glass);border:1px solid var(--border);border-radius:28px;
+  overflow:hidden;backdrop-filter:blur(30px);
+  box-shadow:0 30px 80px rgba(0,0,0,0.6),0 0 60px rgba(229,184,11,0.04);
+  position:relative;
+}
+.calc-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
 .calc-body{padding:50px;}
-.calc-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
-.calc-input,.calc-select{ width:100%; padding:14px 18px; border-radius:12px; border:1px solid rgba(255,255,255,0.08); background:rgba(0,0,0,0.4); color:var(--text-main); font-family:var(--font-body); outline:none; transition:0.3s;}
-.calc-input:focus{border-color:var(--gold);}
-.calc-btn{ width:100%; padding:18px; background:var(--gold); color:var(--dark); border:none; border-radius:12px; font-weight:800; text-transform:uppercase; cursor:pointer; transition:0.3s;}
-.calc-results{ display:none; padding:40px 50px; background:rgba(0,0,0,0.3); border-top:1px solid var(--border);}
-.result-total{ display:flex; justify-content:space-between; align-items:center; padding:20px 24px; background:rgba(229,184,11,0.06); border:1px solid var(--border); border-radius:14px; margin-top:20px;}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.calc-form-group{margin-bottom:0;}
+.calc-form-group.full{grid-column:span 2;}
+.calc-label{display:block;margin-bottom:8px;font-size:11px;color:var(--text-muted);font-weight:800;letter-spacing:2px;text-transform:uppercase;}
+.calc-input,.calc-select{
+  width:100%;padding:14px 18px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(0,0,0,0.4);
+  color:var(--text-main);
+  font-size:16px;font-family:var(--font-body);
+  outline:none;transition:all 0.3s;
+  -webkit-appearance:none;appearance:none;
+}
+.calc-select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23E5B80B' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;padding-right:44px;
+}
+.calc-input:focus,.calc-select:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-glow-light);}
+.calc-btn-wrap{margin-top:30px;}
+.calc-btn{
+  width:100%;padding:18px;
+  background:var(--gold);color:var(--dark);
+  border:none;border-radius:12px;
+  font-size:14px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;font-family:var(--font-body);
+  transition:all 0.3s cubic-bezier(0.23,1,0.32,1);
+  position:relative;overflow:hidden;
+}
+.calc-btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(255,255,255,0.2);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.6s,height 0.6s;}
+.calc-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px var(--gold-glow);}
+.calc-btn:active::before{width:400px;height:400px;}
+.calc-results{display:none; margin-top:0; padding:40px 50px; background:rgba(0,0,0,0.3); border-top:1px solid var(--border);}
+.calc-results.visible{display:block;animation:fadeInUp 0.5s ease forwards;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.result-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:14px;}
+.result-row:last-child{border-bottom:none;}
+.result-row .r-label{color:var(--text-muted);}
+.result-row .r-val{font-weight:700;color:var(--text-main);}
+.r-val.deduct{color:#ef4444;}
+.result-total{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;margin-top:20px;background:rgba(229,184,11,0.06);border:1px solid var(--border);border-radius:14px;}
+.result-total .r-label{font-family:var(--font-head);font-size:14px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;}
+.result-total .r-val{font-family:var(--font-head);font-size:32px;font-weight:700;}
+.r-val.profit{color:#4ade80;}
+.r-val.loss{color:#ef4444;}
+.result-margin{display:flex;justify-content:space-between;padding:14px 20px;background:rgba(0,0,0,0.3);border-radius:10px;margin-top:10px;font-size:13px;font-weight:700;}
+
+/* ─── CTA SECTION ─── */
+#cta-section{background:linear-gradient(135deg,var(--dark-surface) 0%,rgba(10,8,0,1) 50%,var(--dark-surface) 100%);padding:120px 5%;text-align:center;position:relative;overflow:hidden;}
+#cta-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50vw;height:50vw;background:radial-gradient(circle,rgba(229,184,11,0.1) 0%,transparent 70%);pointer-events:none;}
+.cta-inner{max-width:800px;margin:0 auto;position:relative;z-index:2;}
+.cta-inner .section-title{font-size:clamp(28px,4vw,48px);}
+.cta-inner .hero-sub{margin-top:20px;font-size:17px;}
+.cta-actions{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:40px;}
+
+/* ─── FOOTER ─── */
+footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content:space-between;align-items:center;background:var(--dark-surface);}
+.f-logo{font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--gold);}
+.f-text{font-size:13px;color:var(--text-muted);}
 
 /* ─── CHAT & FLOAT UI ─── */
-.float-btn{position:fixed; z-index:900; display:flex; align-items:center; justify-content:center; border-radius:50%; cursor:none; transition:all 0.3s;}
-#audio-toggle{bottom:30px; right:30px; width:50px; height:50px; background:var(--glass); border:1px solid var(--border); color:var(--gold); font-size:20px; backdrop-filter:blur(10px);}
-#chat-container{position:fixed; bottom:100px; right:30px; z-index:900;}
-#chat-toggle{width:60px; height:60px; background:var(--gold); border:none; font-size:28px; box-shadow:0 10px 30px var(--gold-glow);}
-#chat-box{position:absolute; bottom:80px; right:0; width:380px; background:rgba(10,10,10,0.97); backdrop-filter:blur(20px); border:1px solid var(--border); border-radius:20px; overflow:hidden; display:none; flex-direction:column; box-shadow:0 30px 80px rgba(0,0,0,0.9);}
+.float-btn{position:fixed;z-index:900;display:flex;align-items:center;justify-content:center;border-radius:50%;cursor:none;transition:all 0.3s;}
+#audio-toggle{bottom:30px;right:30px;width:50px;height:50px;background:var(--glass);border:1px solid var(--border);color:var(--gold);font-size:20px;backdrop-filter:blur(10px);}
+#audio-toggle:hover{transform:scale(1.1);background:rgba(229,184,11,0.1);}
+
+#chat-container{position:fixed;bottom:100px;right:30px;z-index:900;}
+#chat-toggle{width:60px;height:60px;background:var(--gold);border:none;font-size:28px;box-shadow:0 10px 30px var(--gold-glow);position:relative;}
+#chat-toggle:hover{transform:scale(1.1);}
+#chat-box{position:absolute;bottom:80px;right:0;width:380px;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:20px;overflow:hidden;display:none;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,0.9);}
 #chat-box.open{display:flex;}
-.chat-body{height:350px; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:15px;}
-.msg{max-width:85%; padding:12px 16px; border-radius:12px; font-size:14px; line-height:1.5;}
-.msg.bot{background:#111; border:1px solid #333; align-self:flex-start;}
-.msg.user{background:var(--gold); color:var(--dark); font-weight:600; align-self:flex-end;}
+.chat-header{padding:20px;background:rgba(229,184,11,0.05);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:15px;}
+.chat-av{width:45px;height:45px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 15px var(--gold-glow);}
+.chat-info h3{font-size:16px;color:var(--text-main);margin-bottom:4px;}
+.chat-info p{font-size:11px;color:#4ade80;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.chat-body{height:350px;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:15px;}
+.msg{max-width:85%;padding:12px 16px;border-radius:12px;font-size:14px;line-height:1.5;word-wrap:break-word;}
+.msg.bot{background:#111;border:1px solid #333;align-self:flex-start;border-bottom-left-radius:2px;}
+.msg.user{background:var(--gold);color:var(--dark);font-weight:600;align-self:flex-end;border-bottom-right-radius:2px;}
+.chat-input-wrap{padding:15px;border-top:1px solid #333;background:#0a0a0a;display:flex;gap:10px;}
+#chat-input{flex:1;background:#111;border:1px solid #333;border-radius:8px;padding:12px;color:#fff;outline:none;font-family:var(--font-body);}
+#chat-input:focus{border-color:var(--gold);}
+#chat-send{width:45px;height:45px;background:var(--gold);border:none;border-radius:8px;cursor:pointer;font-size:20px;}
 
-footer{padding:60px 5%; border-top:1px solid #1a1a1a; background:var(--dark-surface); display:flex; justify-content:space-between; align-items:center;}
-.reveal{opacity:0; transform:translateY(50px);}
+.reveal{opacity:0;transform:translateY(50px);}
 
+@media(max-width:900px){
+  .bento-col-2{grid-column:span 4;}.bento-box{grid-column:span 2;}.bento-row-2{grid-row:span 1;}
+  .calc-grid{grid-template-columns:1fr;}.calc-form-group.full{grid-column:span 1;}
+  .about-grid{grid-template-columns:1fr;}
+}
 @media(max-width:768px){
-  nav{padding:15px 5%;}.nav-links{display:none;}
-  .hero-title{font-size:42px;}
-  footer{flex-direction:column; gap:20px; text-align:center;}
+  nav{padding:15px 5%;}.nav-links{display:none;}section{padding:100px 5%;}
+  .hero-title{font-size:42px;}.hero-stats{gap:20px;flex-wrap:wrap;}
+  .svc-grid{grid-template-columns:1fr;}.bento-box{grid-column:span 4;}
+  #chat-box{width:320px;}footer{flex-direction:column;gap:15px;text-align:center;}
+  .calc-body{padding:30px;}.calc-results{padding:30px;}
 }
 </style>
 </head>
@@ -205,28 +377,54 @@ footer{padding:60px 5%; border-top:1px solid #1a1a1a; background:var(--dark-surf
     <li><a href="#about">About</a></li>
     <li><a href="#dashboard">Results</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#calculator">Calculator</a></li>
+    <li><a href="#projects">Work</a></li>
   </ul>
-  <a href="#" onclick="openCalendar(event)" class="btn-magnetic">Book Audit</a>
+  <a href="mailto:Jeniish.kamli@gmail.com" class="btn-magnetic" rel="noopener">Contact Me</a>
 </nav>
 
 <section id="hero">
   <div class="hero-glow"></div>
   <div class="hero-grid"></div>
   <div class="hero-inner">
-    <div class="hero-badge reveal"><span>●</span> Marketplace Manager &amp; Growth Specialist</div>
-    <h1 class="hero-title reveal">Scale Your Brand Across <span class="accent">Marketplaces</span></h1>
-    <p class="hero-sub reveal">I help brands grow through marketplace management, brand development, and scalable e-commerce growth systems across Amazon, Flipkart, & Quick Commerce Platforms.</p>
+    <div class="hero-badge reveal"><span>●</span> E-Commerce Marketplace Manager &amp; Growth Specialist</div>
+    <h1 class="hero-title reveal">
+      Scale Your Brand Across <span class="accent">Marketplaces</span>
+    </h1>
+    <p class="hero-sub reveal">
+      <strong>Amazon • Flipkart • Myntra • Ajio • JioMart • Quick Commerce Expert</strong><br/><br/>
+      I help brands grow through marketplace management, brand development, and scalable e-commerce growth systems across multiple platforms.
+    </p>
     <div class="hero-actions reveal">
-      <a href="#" onclick="openCalendar(event)" class="btn-magnetic gold-fill" style="padding:18px 48px;">Book a Strategy Call</a>
+      <a href="mailto:Jeniish.kamli@gmail.com" class="btn-magnetic gold-fill" style="padding:18px 48px;">Build Your Growth System</a>
     </div>
     <div class="hero-stats reveal">
       <div class="stat-item"><div class="stat-num" data-count="15" data-prefix="₹" data-suffix="L+">0</div><div class="stat-label">Monthly Revenue</div></div>
       <div class="stat-item"><div class="stat-num" data-count="1500" data-suffix="+">0</div><div class="stat-label">Monthly Orders</div></div>
       <div class="stat-item"><div class="stat-num" data-count="100" data-suffix="M+">0</div><div class="stat-label">Total Impressions</div></div>
+      <div class="stat-item"><div class="stat-num" data-count="45" data-suffix="%">0</div><div class="stat-label">Organic Growth</div></div>
     </div>
   </div>
 </section>
+
+<div class="marquee-container">
+  <div class="marquee-content" id="marquee-track">
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#FF9900;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 100 100"><text y="75" font-size="80" font-family="Arial" font-weight="900" fill="#fff">a</text></svg></div><span class="marquee-logo-text">Amazon</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#047BD5;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="16" font-family="Arial" font-weight="900" fill="#fff">F</text></svg></div><span class="marquee-logo-text">Flipkart</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#FF3E6C;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="16" font-family="Arial" font-weight="900" fill="#fff">M</text></svg></div><span class="marquee-logo-text">Myntra</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#8B5CF6;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="16" font-family="Arial" font-weight="900" fill="#fff">Z</text></svg></div><span class="marquee-logo-text">Zepto</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#F8D12F;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="15" font-family="Arial" font-weight="900" fill="#000">⚡</text></svg></div><span class="marquee-logo-text">Blinkit</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#95BF47;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="16" font-family="Arial" font-weight="900" fill="#fff">S</text></svg></div><span class="marquee-logo-text">Shopify</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#9C27B0;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="16" font-family="Arial" font-weight="900" fill="#fff">M</text></svg></div><span class="marquee-logo-text">Meesho</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#005BBB;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="14" font-family="Arial" font-weight="900" fill="#fff">Jio</text></svg></div><span class="marquee-logo-text">JioMart</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#000;border:1px solid #444;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="14" font-family="Arial" font-weight="900" fill="#fff">AJ</text></svg></div><span class="marquee-logo-text">Ajio</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#7B519D;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="15" font-family="Arial" font-weight="900" fill="#fff">W</text></svg></div><span class="marquee-logo-text">WooCommerce</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#FF9900;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 100 100"><text y="75" font-size="80" font-family="Arial" font-weight="900" fill="#fff">a</text></svg></div><span class="marquee-logo-text">Amazon</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#047BD5;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="16" font-family="Arial" font-weight="900" fill="#fff">F</text></svg></div><span class="marquee-logo-text">Flipkart</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#FF3E6C;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="16" font-family="Arial" font-weight="900" fill="#fff">M</text></svg></div><span class="marquee-logo-text">Myntra</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#8B5CF6;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="16" font-family="Arial" font-weight="900" fill="#fff">Z</text></svg></div><span class="marquee-logo-text">Zepto</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#F8D12F;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="15" font-family="Arial" font-weight="900" fill="#000">⚡</text></svg></div><span class="marquee-logo-text">Blinkit</span></div>
+  </div>
+</div>
 
 <section id="about">
   <div class="about-grid reveal">
@@ -234,33 +432,71 @@ footer{padding:60px 5%; border-top:1px solid #1a1a1a; background:var(--dark-surf
       <span class="section-label" style="text-align:left;">Brand Strategist</span>
       <h2 class="section-title" style="text-align:left; margin-bottom:30px;">The <span class="accent">DNA</span> of Growth</h2>
       <p>I’m <strong>Jenish Kamli</strong> — an experienced E-Commerce Marketplace Manager, Brand Growth Strategist, and Quick Commerce Specialist.</p>
-      <p>I specialize in managing and scaling brands across leading marketplaces including Amazon, Flipkart, Myntra, Ajio, Tata Cliq, JioMart, and Meesho. My approach focuses on data-driven execution and long-term brand development.</p>
+      <p>I specialize in managing and scaling brands across leading marketplaces including Amazon, Flipkart, Myntra, Ajio, Tata Cliq, JioMart, and Meesho, along with quick commerce platforms like Blinkit, Zepto, and Swiggy Instamart.</p>
+      <p>With hands-on experience in marketplace operations, product optimization, and brand growth strategy, I help businesses build scalable revenue systems across e-commerce and D2C platforms like Shopify and WooCommerce. My approach focuses on data-driven execution, marketplace optimization, and long-term brand development.</p>
     </div>
     <div class="about-media">
       <div class="media-placeholder video" style="min-height:350px;">
         <div class="icon">▶</div>
-        <div>Agency Introduction Video</div>
       </div>
     </div>
   </div>
 </section>
 
+<section id="platforms">
+  <div class="section-head reveal">
+    <span class="section-label">E-Commerce Ecosystem</span>
+    <h2 class="section-title">Platforms I <span class="accent">Scale</span></h2>
+    <p class="section-desc">From traditional marketplaces to Quick Commerce and custom D2C stores, I manage the complete ecosystem.</p>
+  </div>
+  <div class="platform-grid-12">
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#FF9900;">a</div><div class="p-name">Amazon</div><div class="platform-badge">Marketplace</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#047BD5;">F</div><div class="p-name">Flipkart</div><div class="platform-badge">Marketplace</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#FF3E6C;">M</div><div class="p-name">Myntra</div><div class="platform-badge">Brand Scale</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#111;border:1px solid #444;">AJ</div><div class="p-name">Ajio</div><div class="platform-badge">Brand Scale</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#F8D12F;color:#000;">⚡</div><div class="p-name">Blinkit</div><div class="platform-badge">Q-Com</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9);">Z</div><div class="p-name">Zepto</div><div class="platform-badge">Q-Com</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#FC8019;">IM</div><div class="p-name">Instamart</div><div class="platform-badge">Q-Com</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#95BF47;">S</div><div class="p-name">Shopify</div><div class="platform-badge">D2C</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#7B519D;">W</div><div class="p-name">WooCommerce</div><div class="platform-badge">D2C</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:linear-gradient(135deg,#9C27B0,#E91E8C);">M</div><div class="p-name">Meesho</div><div class="platform-badge">Optimization</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#DC143C;">TC</div><div class="p-name">Tata Cliq</div><div class="platform-badge">Operations</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#005BBB;">Jio</div><div class="p-name">JioMart</div><div class="platform-badge">Operations</div></div>
+  </div>
+</section>
+
 <section id="dashboard">
   <div class="section-head reveal">
-    <span class="section-label">Performance Analytics</span>
+    <span class="section-label">Performance & Analytics</span>
     <h2 class="section-title">Real Marketplace <span class="accent">Growth</span></h2>
+    <p class="section-desc">Proven results across multiple e-commerce platforms with consistent growth in revenue, orders, and visibility.</p>
   </div>
   <div class="bento-grid">
+    <div class="bento-box reveal">
+      <div class="b-label">Total Impressions</div>
+      <div class="b-val">100M+</div>
+      <div class="b-desc">↑ Driven across platforms</div>
+    </div>
+    <div class="bento-box reveal">
+      <div class="b-label">Monthly Orders</div>
+      <div class="b-val">1000+</div>
+      <div class="b-desc">↑ Optimized operations flow</div>
+    </div>
+    
     <div class="bento-box bento-col-2 bento-row-2 reveal">
+      <div class="chart-title">Monthly Revenue Scaling <span style="color:var(--gold);">● ₹15L+ Live Trajectory</span></div>
       <div class="chart-wrap"><canvas id="revenueChart"></canvas></div>
     </div>
+
     <div class="bento-box reveal">
-      <div class="b-val">100M+</div>
-      <div class="stat-label">Driven Impressions</div>
+      <div class="b-label">Revenue Target Hit</div>
+      <div class="b-val" data-count="15" data-prefix="₹" data-suffix="L+">₹0</div>
+      <div class="b-desc">Monthly generated revenue</div>
     </div>
     <div class="bento-box reveal">
-      <div class="b-val">45%</div>
-      <div class="stat-label">Organic Growth Baseline</div>
+      <div class="b-label">Growth Strategy</div>
+      <div class="b-val" style="font-size:28px;">55% Perf.</div>
+      <div class="b-desc">Balanced with 45% Organic</div>
     </div>
   </div>
 </section>
@@ -273,74 +509,226 @@ footer{padding:60px 5%; border-top:1px solid #1a1a1a; background:var(--dark-surf
   <div class="svc-grid">
     <div class="svc-card reveal">
       <div class="svc-num">01</div>
-      <h3 class="svc-title">Marketplace Management</h3>
-      <p class="svc-desc">Complete Amazon, Flipkart, Myntra, Ajio, Tata Cliq, and JioMart marketplace management including catalog optimization and performance tracking.</p>
+      <h3 class="svc-title">Marketplace Management Services</h3>
+      <p class="svc-desc">Complete Amazon, Flipkart, Myntra, Ajio, Tata Cliq, and JioMart marketplace management including catalog optimization, listing management, and performance tracking.</p>
     </div>
     <div class="svc-card reveal">
       <div class="svc-num">02</div>
+      <h3 class="svc-title">E-Commerce Brand Management</h3>
+      <p class="svc-desc">End-to-end brand growth strategy including product positioning, content optimization, and conversion-focused improvements across marketplaces and D2C platforms.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-num">03</div>
       <h3 class="svc-title">Quick Commerce Management</h3>
       <p class="svc-desc">Onboarding and scaling brands on Blinkit, Zepto, and Swiggy Instamart with fast-paced execution and optimized catalog management.</p>
     </div>
+    <div class="svc-card reveal">
+      <div class="svc-num">04</div>
+      <h3 class="svc-title">D2C Store Growth</h3>
+      <p class="svc-desc">Managing and optimizing direct-to-consumer websites (Shopify & WooCommerce) for improved conversion rates, user experience, and brand consistency.</p>
+    </div>
+  </div>
+</section>
+
+<section id="physics-pit">
+  <span class="section-label reveal">E-Commerce Ecosystem</span>
+  <h2 class="section-title reveal">Drop &amp; <span class="accent">Bounce</span></h2>
+  <div id="matter-container" class="reveal"></div>
+  <p class="pit-hint">Drag objects to explore the multi-platform tech stack</p>
+</section>
+
+<section id="proof">
+  <div class="section-head reveal">
+    <span class="section-label">Proof of Work</span>
+    <h2 class="section-title">Marketplace <span class="accent">Dashboards</span></h2>
+    <p class="section-desc">Real marketplace dashboards showing consistent growth in revenue, orders, and impressions across platforms. Due to confidentiality agreements, detailed client data and brand identities are not publicly disclosed.</p>
+  </div>
+  <div class="proof-scroll-wrapper reveal">
+    <div class="proof-track">
+      <div class="proof-card">
+        <div class="media-placeholder image"><div class="icon">📈</div></div>
+        <div class="proof-card-overlay"><span>Amazon Analytics</span></div>
+      </div>
+      <div class="proof-card">
+        <div class="media-placeholder image"><div class="icon">💹</div></div>
+        <div class="proof-card-overlay"><span>Flipkart Growth</span></div>
+      </div>
+      <div class="proof-card">
+        <div class="media-placeholder video"><div class="icon">▶</div></div>
+        <div class="proof-card-overlay"><span>100M+ Impressions</span></div>
+      </div>
+      <div class="proof-card">
+        <div class="media-placeholder image"><div class="icon">⚡</div></div>
+        <div class="proof-card-overlay"><span>Blinkit Dashboard</span></div>
+      </div>
+      <div class="proof-card">
+        <div class="media-placeholder image"><div class="icon">🛒</div></div>
+        <div class="proof-card-overlay"><span>Shopify Sales</span></div>
+      </div>
+      <div class="proof-card">
+        <div class="media-placeholder video"><div class="icon">▶</div></div>
+        <div class="proof-card-overlay"><span>Multi-Platform Revenue</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-head reveal">
+    <span class="section-label">Case Studies</span>
+    <h2 class="section-title">Multi-Platform <span class="accent">Success</span></h2>
+    <p class="section-desc">Built a balanced growth model with 45% organic and 55% performance-driven revenue.</p>
+  </div>
+  <div class="prj-grid">
+
+    <div class="prj-card reveal">
+      <div class="prj-img">
+        <div class="media-placeholder image" style="border:none; border-radius:0;"><div class="icon">📷</div></div>
+      </div>
+      <div class="prj-info">
+        <span class="prj-tag">Amazon Expert</span>
+        <h3 class="prj-title">Amazon Marketplace Growth</h3>
+        <p class="prj-desc">Managed and scaled Amazon seller accounts with optimized listings, brand positioning, and structured marketplace growth strategies. Created brand stores and A+ content to improve product presentation, brand identity, and conversion rates.</p>
+      </div>
+    </div>
+
+    <div class="prj-card reveal">
+      <div class="prj-img">
+        <div class="media-placeholder image" style="border:none; border-radius:0;"><div class="icon">📷</div></div>
+      </div>
+      <div class="prj-info">
+        <span class="prj-tag">Flipkart Specialist</span>
+        <h3 class="prj-title">Flipkart Order Flow Scale</h3>
+        <p class="prj-desc">Improved product visibility and order flow through structured marketplace management and catalog optimization. Scaled operations from low baseline to consistent high-volume order flow.</p>
+      </div>
+    </div>
+
+    <div class="prj-card reveal">
+      <div class="prj-img">
+        <div class="media-placeholder video" style="border:none; border-radius:0;"><div class="icon">▶</div></div>
+      </div>
+      <div class="prj-info">
+        <span class="prj-tag">Quick Commerce</span>
+        <h3 class="prj-title">Q-Com Onboarding Project</h3>
+        <p class="prj-desc">Successfully onboarded and scaled products on Blinkit, Zepto, and Swiggy Instamart platforms, ensuring fast-paced execution, perfect catalog compliance, and hyper-local visibility.</p>
+      </div>
+    </div>
+
+    <div class="prj-card reveal">
+      <div class="prj-img">
+        <div class="media-placeholder image" style="border:none; border-radius:0;"><div class="icon">📷</div></div>
+      </div>
+      <div class="prj-info">
+        <span class="prj-tag">Catalog Authority</span>
+        <h3 class="prj-title">GS1 Barcode Implementation</h3>
+        <p class="prj-desc">Handled GS1 barcode registration, GTIN allocation, and UPC implementation for proper marketplace compliance and brand authenticity across all leading e-commerce platforms.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <section id="calculator">
   <div class="section-head reveal">
     <span class="section-label">Free Tool</span>
-    <h2 class="section-title">Profit <span class="accent">Calculator</span></h2>
+    <h2 class="section-title">Marketplace <span class="accent">Profit Calculator</span></h2>
+    <p class="section-desc">Calculate your real margins across Amazon, Flipkart, Meesho, Myntra & Quick Commerce platforms — before you sell a single unit.</p>
   </div>
-  <div class="calc-card reveal">
-    <div class="calc-body">
-      <div class="calc-grid">
-        <div style="grid-column: span 2;">
-          <label style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">Select Platform</label>
-          <select class="calc-select" id="calc-platform">
-            <option value="amazon">🟠 Amazon</option>
-            <option value="flipkart">🔵 Flipkart</option>
-            <option value="blinkit">⚡ Quick Commerce</option>
-          </select>
+  <div class="calc-inner reveal">
+    <div class="calc-card">
+      <div class="calc-body">
+        <div class="calc-grid">
+          <div class="calc-form-group full">
+            <label class="calc-label" for="calc-platform">Select Platform</label>
+            <select class="calc-select" id="calc-platform">
+              <optgroup label="Traditional E-Commerce">
+                <option value="amazon">🟠 Amazon</option>
+                <option value="flipkart">🔵 Flipkart</option>
+                <option value="meesho">🟣 Meesho</option>
+                <option value="myntra">🔴 Myntra (Fashion)</option>
+              </optgroup>
+              <optgroup label="Quick Commerce (Q-Comm)">
+                <option value="blinkit">⚡ Blinkit / Zepto / Instamart</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="calc-form-group">
+            <label class="calc-label" for="calc-sp">Selling Price (₹)</label>
+            <input type="number" class="calc-input" id="calc-sp" placeholder="e.g. 899" min="0">
+          </div>
+          <div class="calc-form-group">
+            <label class="calc-label" for="calc-cp">Sourcing / Mfg Cost (₹)</label>
+            <input type="number" class="calc-input" id="calc-cp" placeholder="e.g. 350" min="0">
+          </div>
+          <div class="calc-form-group full">
+            <label class="calc-label" for="calc-ship">Estimated Shipping Cost (₹)</label>
+            <input type="number" class="calc-input" id="calc-ship" placeholder="e.g. 45" min="0">
+          </div>
         </div>
-        <div>
-          <label style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">Selling Price (₹)</label>
-          <input type="number" class="calc-input" id="calc-sp" placeholder="e.g. 999">
-        </div>
-        <div>
-          <label style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">Cost Price (₹)</label>
-          <input type="number" class="calc-input" id="calc-cp" placeholder="e.g. 400">
+        <div class="calc-btn-wrap">
+          <button class="calc-btn" onclick="calculateProfit()">⚡ Calculate My Margins</button>
         </div>
       </div>
-      <button class="calc-btn" style="margin-top:30px;" onclick="calculateProfit()">⚡ Calculate Margin</button>
-    </div>
-    <div class="calc-results" id="calc-res">
-      <div class="result-total">
-        <span style="font-family:var(--font-head); font-size:14px; color:var(--text-muted); text-transform:uppercase;">Estimated Net Profit</span>
-        <span id="cr-profit" class="b-val" style="font-size:32px;">₹0</span>
+
+      <div class="calc-results" id="calc-results-block">
+        <div class="result-row"><span class="r-label">Selling Price</span><span class="r-val" id="cr-sp">₹0</span></div>
+        <div class="result-row"><span class="r-label">Marketplace Commission</span><span class="r-val deduct" id="cr-comm">- ₹0</span></div>
+        <div class="result-row"><span class="r-label">Fixed / Collection Fees</span><span class="r-val deduct" id="cr-fixed">- ₹0</span></div>
+        <div class="result-row"><span class="r-label">Shipping / Forwarding</span><span class="r-val deduct" id="cr-ship">- ₹0</span></div>
+        <div class="result-row"><span class="r-label">GST on Fees (18%)</span><span class="r-val deduct" id="cr-gst">- ₹0</span></div>
+        <div class="result-row"><span class="r-label">Sourcing Cost</span><span class="r-val deduct" id="cr-cp">- ₹0</span></div>
+        <div class="result-total">
+          <span class="r-label">Net Profit</span>
+          <span class="r-val" id="cr-profit">₹0</span>
+        </div>
+        <div class="result-margin">
+          <span style="color:var(--text-muted);font-size:12px;letter-spacing:1px;text-transform:uppercase;">ROI Margin</span>
+          <span id="cr-margin" style="color:var(--gold);">0%</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="physics-pit">
-  <h2 class="section-title reveal">Interactive <span class="accent">Tech Stack</span></h2>
-  <div id="matter-container" class="reveal"></div>
+<section id="cta-section">
+  <div class="cta-inner reveal">
+    <span class="section-label">Final Power Line</span>
+    <h2 class="section-title" style="margin-bottom:20px;">E-Commerce Growth is not just about selling products...</h2>
+    <p class="hero-sub" style="font-size:22px; color:var(--gold); font-weight:600;">...it’s about building scalable systems across marketplaces, D2C, and quick commerce platforms.</p>
+    <p class="hero-sub">Looking to scale your brand across Amazon, Flipkart, and quick commerce platforms? Let’s build a powerful e-commerce growth system that delivers consistent and scalable results.</p>
+    <div class="cta-actions">
+      <a href="mailto:Jeniish.kamli@gmail.com" class="btn-magnetic gold-fill" style="padding:18px 48px;">Get in Touch</a>
+      <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" target="_blank" rel="noopener" class="btn-magnetic outline-dim" style="padding:18px 48px;">LinkedIn Profile</a>
+    </div>
+  </div>
 </section>
 
 <footer>
   <div class="f-logo">Jenish Kamli.</div>
-  <div style="text-align:right;">
-    <p style="color:var(--text-muted); font-size:13px;">E-Commerce Growth Specialist © 2026</p>
-    <span class="f-brand-tag" style="display:inline-block; margin-top:8px; padding:4px 10px; border:1px solid rgba(229,184,11,0.3); border-radius:100px; font-size:10px; color:var(--gold); text-transform:uppercase;">Quick Shift Creative</span>
+  <div class="f-text" style="text-align:right;">
+    <strong>E-Commerce Marketplace Manager &amp; Brand Growth Specialist</strong><br/>
+    <span style="color:var(--text-muted);">Helping brands scale across Amazon, Flipkart, and quick commerce ecosystems.</span>
   </div>
 </footer>
 
-<div id="calendar-modal">
-  <div class="calendar-glass">
-    <button class="close-calendar" onclick="closeCalendar()">×</button>
-    <iframe class="calendar-iframe" src="https://calendar.app.google/xHj2anRZ1imLTqEU9" title="Book a Meeting"></iframe>
+<div class="float-btn" id="audio-toggle" onclick="toggleMute()" title="Mute/Unmute Sounds">🔊</div>
+
+<div id="chat-container">
+  <button class="float-btn" id="chat-toggle" onclick="toggleChat()">🤖</button>
+  <div id="chat-box">
+    <div class="chat-header">
+      <div class="chat-av">🤖</div>
+      <div class="chat-info"><h3>Marketplace AI</h3><p>● ONLINE</p></div>
+    </div>
+    <div class="chat-body" id="chat-messages">
+      <div class="msg bot">Namaste! Ask me about Jenish's ₹15L+ marketplace results, D2C Shopify scaling, or Quick Commerce growth strategies!</div>
+    </div>
+    <div class="chat-input-wrap">
+      <input type="text" id="chat-input" placeholder="Ask about D2C, Q-Com, Amazon..." onkeydown="if(event.key==='Enter')sendChat()"/>
+      <button id="chat-send" onclick="sendChat()">➤</button>
+    </div>
   </div>
 </div>
-
-<div class="float-btn" id="audio-toggle" onclick="toggleMute()" title="Mute/Unmute Sounds">🔊</div>
 
 <script>
 // ── PRELOADER ──
@@ -349,7 +737,9 @@ window.addEventListener('load',()=>{
   const int=setInterval(()=>{p+=Math.floor(Math.random()*15);if(p>100)p=100;pEl.innerText=p+"%";if(p===100)clearInterval(int);},50);
   const tl=gsap.timeline({delay:0.8});
   tl.to("#loader-bar",{width:"100%",duration:0.8,ease:"power2.inOut"})
-    .to("#preloader",{yPercent:-100,duration:0.8,ease:"power4.inOut"});
+    .to("#preloader",{yPercent:-100,duration:0.8,ease:"power4.inOut"})
+    .fromTo(".hero-title",{y:50,opacity:0},{y:0,opacity:1,duration:1,ease:"power3.out"},"-=0.4")
+    .fromTo(".hero-sub",{y:30,opacity:0},{y:0,opacity:1,duration:0.8},"-=0.6");
 });
 
 // ── CURSOR ──
@@ -357,13 +747,21 @@ const cursor=document.getElementById('cursor'),ring=document.getElementById('cur
 document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';});
 let rx=0,ry=0;
 (function animRing(){rx+=(cursor.getBoundingClientRect().left-rx)*0.15;ry+=(cursor.getBoundingClientRect().top-ry)*0.15;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+document.querySelectorAll('a,button,.p-card,.bento-box,.svc-card,.prj-card,.proof-card,.calc-card,.calc-btn,.media-placeholder').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.transform='translate(-50%,-50%) scale(1.5)';ring.style.borderColor='var(--gold)';cursor.style.width='12px';cursor.style.height='12px';});
+  el.addEventListener('mouseleave',()=>{ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.borderColor='rgba(229,184,11,0.5)';cursor.style.width='8px';cursor.style.height='8px';});
+});
 
-// ── CALENDAR LOGIC ──
-function openCalendar(e){ e.preventDefault(); document.getElementById('calendar-modal').classList.add('active'); playSFX('click'); }
-function closeCalendar(){ document.getElementById('calendar-modal').classList.remove('active'); }
+// ── NAV SCROLL ──
+window.addEventListener('scroll',()=>{
+  const nav=document.querySelector('nav');
+  if(window.scrollY>50){nav.style.padding='15px 5%';nav.style.background='rgba(3,3,3,0.98)';}
+  else{nav.style.padding='25px 5%';nav.style.background='linear-gradient(180deg,rgba(3,3,3,0.9) 0%,transparent 100%)';}
+});
 
-// ── GSAP REVEALS ──
+// ── GSAP ──
 gsap.registerPlugin(ScrollTrigger);
+gsap.to('.hero-grid',{yPercent:-15,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
 document.querySelectorAll('.reveal').forEach((el,i)=>{
   gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 85%'},delay:(i%3)*0.1});
 });
@@ -376,55 +774,164 @@ const countObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isInt
   countObs.unobserve(e.target);}});},{threshold:0.5});
 countEls.forEach(el=>countObs.observe(el));
 
-// ── CHART ──
-new Chart(document.getElementById('revenueChart'),{
-  type:'line',
-  data:{
-    labels:['Month 1','Month 2','Month 3','Month 4','Current'],
-    datasets:[{
-      label:'Revenue',
-      data:[250000, 650000, 950000, 1200000, 1550000],
-      borderColor:'#E5B80B', backgroundColor:'rgba(229,184,11,0.1)', borderWidth:3, fill:true, tension:0.4
-    }]
-  },
-  options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{y:{grid:{color:'#222'},ticks:{color:'#fff', callback: v => '₹'+(v/100000).toFixed(1)+'L'}},x:{grid:{color:'#222'},ticks:{color:'#fff'}}} }
-});
-
-// ── CALCULATOR LOGIC ──
-function calculateProfit(){
-  const sp = parseFloat(document.getElementById('calc-sp').value)||0;
-  const cp = parseFloat(document.getElementById('calc-cp').value)||0;
-  if(sp === 0) { alert("Enter Selling Price"); return; }
-  const fees = sp * 0.20; // Simplified placeholder marketplace fee
-  const profit = sp - fees - cp;
-  document.getElementById('cr-profit').innerText = "₹" + profit.toLocaleString('en-IN');
-  document.getElementById('calc-res').style.display = "block";
-  playSFX('click');
-}
-
-// ── PHYSICS ──
-function initPhysics(){
-  const cont=document.getElementById('matter-container');
-  const{Engine,Render,Runner,Composite,Bodies,MouseConstraint,Mouse}=Matter;
-  const engine=Engine.create(),world=engine.world;
-  const render=Render.create({element:cont,engine:engine,options:{width:cont.clientWidth,height:cont.clientHeight,wireframes:false,background:'transparent'}});
-  Render.run(render); Runner.run(Runner.create(),engine);
-  const cw=cont.clientWidth,ch=cont.clientHeight;
-  Composite.add(world,[Bodies.rectangle(cw/2,ch+25,cw,50,{isStatic:true}),Bodies.rectangle(-25,ch/2,50,ch,{isStatic:true}),Bodies.rectangle(cw+25,ch/2,50,ch,{isStatic:true})]);
-  ["Amazon","Flipkart","Blinkit","Shopify","Growth"].forEach((t,i)=>{
-    let b=Bodies.circle(Math.random()*cw,-100-(i*50),45,{restitution:0.8,render:{fillStyle:'#E5B80B'}});
-    Composite.add(world,b);
+// ── NEW WORKABLE CHART (₹15L+ Scale) ──
+let chartsInit=false;
+const chartObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&!chartsInit){chartsInit=true;initCharts();}});});
+chartObs.observe(document.getElementById('dashboard'));
+function initCharts(){
+  const gold='#E5B80B',white='rgba(255,255,255,0.7)';
+  const ctx=document.getElementById('revenueChart').getContext('2d');
+  const grad=ctx.createLinearGradient(0,0,0,250);grad.addColorStop(0,'rgba(229,184,11,0.5)');grad.addColorStop(1,'rgba(229,184,11,0)');
+  new Chart(ctx,{
+    type:'line',
+    data:{
+      labels:['Month 1','Month 2','Month 3','Month 4','Month 5','Current'],
+      datasets:[{
+        label:'Revenue (₹)',
+        // Data perfectly scaled to show growth hitting the 15L mark
+        data:[150000, 350000, 680000, 950000, 1200000, 1550000],
+        borderColor:gold,
+        backgroundColor:grad,
+        borderWidth:3,
+        pointBackgroundColor:gold,
+        pointRadius:6,
+        fill:true,
+        tension:0.4
+      }]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{label:ctx=>'₹'+ctx.parsed.y.toLocaleString('en-IN')}}
+      },
+      scales:{
+        x:{grid:{color:'#222'},ticks:{color:white}},
+        y:{
+          grid:{color:'#222'},
+          ticks:{
+            color:white,
+            // Custom tick formatting for Lakhs
+            callback: function(v){
+              if(v >= 100000) return '₹' + (v/100000).toFixed(1) + 'L';
+              return '₹' + v;
+            }
+          }
+        }
+      }
+    }
   });
-  const mouse=Mouse.create(render.canvas);
-  Composite.add(world,MouseConstraint.create(engine,{mouse:mouse,constraint:{stiffness:0.2,render:{visible:false}}}));
 }
-initPhysics();
 
 // ── AUDIO ──
 let isMuted=false;
-const sounds={click:'https://actions.google.com/sounds/v1/ui/button_click.ogg'};
+const sounds={bounce:'https://actions.google.com/sounds/v1/cartoon/pop.ogg',click:'https://actions.google.com/sounds/v1/ui/button_click.ogg'};
 function playSFX(n,v=0.5){if(!isMuted&&sounds[n]){let a=new Audio(sounds[n]);a.volume=v;a.play().catch(e=>{});}}
 function toggleMute(){isMuted=!isMuted;document.getElementById('audio-toggle').innerText=isMuted?'🔇':'🔊';}
+
+// ── PROOF SCROLL DRAG ──
+const scrollWrap=document.querySelector('.proof-scroll-wrapper');
+let isDown=false,startX,scrollLeft;
+scrollWrap.addEventListener('mousedown',e=>{isDown=true;scrollWrap.style.cursor='grabbing';startX=e.pageX-scrollWrap.offsetLeft;scrollLeft=scrollWrap.scrollLeft;});
+scrollWrap.addEventListener('mouseleave',()=>{isDown=false;scrollWrap.style.cursor='grab';});
+scrollWrap.addEventListener('mouseup',()=>{isDown=false;scrollWrap.style.cursor='grab';});
+scrollWrap.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();const x=e.pageX-scrollWrap.offsetLeft;const walk=(x-startX)*1.5;scrollWrap.scrollLeft=scrollLeft-walk;});
+
+// ── NEW PHYSICS PIT (Updated Stack) ──
+function initPhysics(){
+  const cont=document.getElementById('matter-container');
+  const{Engine,Render,Runner,MouseConstraint,Mouse,Composite,Bodies,Events}=Matter;
+  const engine=Engine.create(),world=engine.world;
+  const render=Render.create({element:cont,engine:engine,options:{width:cont.clientWidth,height:cont.clientHeight,wireframes:false,background:'transparent'}});
+  Render.run(render);Runner.run(Runner.create(),engine);
+  const cw=cont.clientWidth,ch=cont.clientHeight,th=60;
+  Composite.add(world,[Bodies.rectangle(cw/2,ch+th/2,cw*2,th,{isStatic:true}),Bodies.rectangle(-th/2,ch/2,th,ch*2,{isStatic:true}),Bodies.rectangle(cw+th/2,ch/2,th,ch*2,{isStatic:true})]);
+  
+  // New items based on the updated content
+  const items=[
+    {t:"Amazon",c:"#FF9900",r:55},
+    {t:"Flipkart",c:"#047BD5",r:55},
+    {t:"Shopify",c:"#95BF47",r:50},
+    {t:"Blinkit",c:"#F8D12F",r:45},
+    {t:"Myntra",c:"#FF3E6C",r:45},
+    {t:"Growth",c:"#222",r:65,s:"#E5B80B"}
+  ];
+  const bodies=items.map((s,i)=>{let b=Bodies.circle(Math.random()*(cw-100)+50,-100-(i*80),s.r,{restitution:0.9,render:{fillStyle:s.c,strokeStyle:s.s||s.c,lineWidth:3}});b.sData=s;return b;});
+  Composite.add(world,bodies);
+  const mouse=Mouse.create(render.canvas);
+  Composite.add(world,MouseConstraint.create(engine,{mouse:mouse,constraint:{stiffness:0.2,render:{visible:false}}}));render.mouse=mouse;
+  let lastBounce=0;
+  Events.on(engine,'collisionStart',e=>{if(e.pairs.length>0&&Date.now()-lastBounce>100){playSFX('bounce',0.2);lastBounce=Date.now();}});
+  Events.on(render,'afterRender',()=>{const ctx=render.context;ctx.font="bold 13px 'Outfit'";ctx.textAlign="center";ctx.textBaseline="middle";bodies.forEach(b=>{ctx.fillStyle="#FFF";ctx.fillText(b.sData.t,b.position.x,b.position.y);});});
+}
+let pitObs=new IntersectionObserver(e=>{if(e[0].isIntersecting){initPhysics();pitObs.disconnect();}});
+pitObs.observe(document.getElementById('physics-pit'));
+
+// ── PROFIT CALCULATOR ──
+function calculateProfit(){
+  const platform=document.getElementById('calc-platform').value;
+  const sp=parseFloat(document.getElementById('calc-sp').value)||0;
+  const cp=parseFloat(document.getElementById('calc-cp').value)||0;
+  const shipping=parseFloat(document.getElementById('calc-ship').value)||0;
+
+  if(sp===0){alert("Please enter a valid Selling Price.");return;}
+
+  let commissionRate=0,fixedFee=0,collectionRate=0;
+
+  switch(platform){
+    case 'amazon': commissionRate=(sp<1000)?0:0.10; fixedFee=(sp<1000)?30:60; collectionRate=0.02; break;
+    case 'flipkart': commissionRate=(sp<1000)?0:0.12; fixedFee=(sp<1000)?35:65; collectionRate=0.02; break;
+    case 'meesho': commissionRate=0;fixedFee=0;collectionRate=0; break;
+    case 'myntra': commissionRate=0.20;fixedFee=25;collectionRate=0.02; break;
+    case 'blinkit': commissionRate=0.20;fixedFee=8;collectionRate=0; break;
+  }
+
+  const commissionAmount=sp*commissionRate;
+  const collectionAmount=sp*collectionRate;
+  const totalFixedAndCollection=fixedFee+collectionAmount;
+  const totalMarketplaceFees=commissionAmount+totalFixedAndCollection;
+  const gstOnFees=totalMarketplaceFees*0.18;
+  const totalDeductions=totalMarketplaceFees+gstOnFees+shipping;
+  const settlement=sp-totalDeductions;
+  const profit=settlement-cp;
+  const profitMargin=(profit/sp)*100;
+
+  document.getElementById('cr-sp').innerText=`₹${sp.toFixed(2)}`;
+  document.getElementById('cr-comm').innerText=`- ₹${commissionAmount.toFixed(2)}`;
+  document.getElementById('cr-fixed').innerText=`- ₹${totalFixedAndCollection.toFixed(2)}`;
+  document.getElementById('cr-ship').innerText=`- ₹${shipping.toFixed(2)}`;
+  document.getElementById('cr-gst').innerText=`- ₹${gstOnFees.toFixed(2)}`;
+  document.getElementById('cr-cp').innerText=`- ₹${cp.toFixed(2)}`;
+
+  const profitEl=document.getElementById('cr-profit');
+  profitEl.innerText=`₹${profit.toFixed(2)}`;
+  profitEl.className='r-val '+(profit>=0?'profit':'loss');
+
+  const marginEl=document.getElementById('cr-margin');
+  marginEl.innerText=`${profitMargin.toFixed(2)}%`;
+  marginEl.style.color=profitMargin>=0?'#4ade80':'#ef4444';
+
+  const block=document.getElementById('calc-results-block');
+  block.style.display='block';
+  block.classList.add('visible');
+  playSFX('click',0.4);
+}
+
+// ── AI CHAT (UPDATED) ──
+function toggleChat(){const box=document.getElementById('chat-box');box.classList.toggle('open');}
+function getReply(msg){
+  const m=msg.toLowerCase();
+  if(/who|about|name/.test(m))return"I'm Jenish Kamli — an experienced E-Commerce Marketplace Manager, Brand Growth Strategist, and Quick Commerce Specialist.";
+  if(/quick|blinkit|zepto|instamart|q-com/.test(m))return"⚡ I handle complete onboarding and growth for Blinkit, Zepto, and Instamart. From catalog compliance to hyper-local scaling.";
+  if(/revenue|growth|result|stats/.test(m))return"📈 I've generated ₹15L+ monthly revenue across marketplaces, managing 1500+ orders/month, and driving 100M+ impressions with a 45% Organic / 55% Performance split.";
+  if(/d2c|shopify|woo/.test(m))return"🛒 Yes! I manage D2C Store Growth via Shopify & WooCommerce, optimizing for better conversion rates, user experience, and brand consistency.";
+  if(/contact|email|hire|audit/.test(m))return"🔥 Available for freelance, consulting, and full-scale management projects. Email me at: Jeniish.kamli@gmail.com";
+  if(/service|offer/.test(m))return"💼 Services: Marketplace Management (Amazon, Flipkart, etc.), D2C Growth (Shopify), Quick Commerce Onboarding, & E-Commerce Brand Management.";
+  return"I'm Jenish's AI assistant. Ask about the ₹15L+ revenue system, D2C Shopify scaling, or Quick Commerce strategies!";
+}
+function appendMsg(txt,type){const b=document.getElementById('chat-messages');const d=document.createElement('div');d.className='msg '+type;d.textContent=txt;b.appendChild(d);b.scrollTop=b.scrollHeight;}
+function sendChat(){const i=document.getElementById('chat-input');const t=i.value.trim();if(!t)return;i.value='';appendMsg(t,'user');const typEl=document.createElement('div');typEl.className='msg bot';typEl.id='typ-ind';typEl.textContent='...';document.getElementById('chat-messages').appendChild(typEl);setTimeout(()=>{document.getElementById('typ-ind').remove();appendMsg(getReply(t),'bot');},700+Math.random()*400);}
 </script>
 </body>
 </html>
