@@ -210,7 +210,7 @@ section{padding:120px 5%;position:relative;z-index:2;}
 .svc-card:hover::before{transform:translateX(100%);}
 .svc-num{font-family:var(--font-head);font-size:60px;font-weight:800;color:rgba(255,255,255,0.03);position:absolute;top:20px;right:30px;line-height:1;transition:color 0.4s;}
 .svc-card:hover .svc-num{color:var(--gold-glow);}
-.svc-title{font-size:22px;font-weight:700;color:var(--text-main);margin-bottom:15px;position:relative;z-index:2;}
+.svc-title{font-size:24px;font-weight:700;color:var(--text-main);margin-bottom:15px;position:relative;z-index:2;}
 .svc-desc{font-size:15px;color:var(--text-muted);line-height:1.7;position:relative;z-index:2;}
 
 /* ─── PHYSICS PIT ─── */
@@ -239,7 +239,7 @@ section{padding:120px 5%;position:relative;z-index:2;}
 /* ─── CASE STUDIES ─── */
 #projects{background:var(--dark);}
 .prj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px;max-width:1200px;margin:0 auto;}
-.prj-card{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:var(--dark-surface);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);cursor:none;}
+.prj-card{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:var(--dark-surface);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);cursor:pointer;}
 .prj-card:hover{transform:translateY(-12px);border-color:var(--gold);box-shadow:0 20px 50px rgba(0,0,0,0.6),0 0 40px rgba(229,184,11,0.08);}
 .prj-img{height:220px; display:flex;align-items:center;justify-content:center; position:relative;overflow:hidden;}
 .prj-info{padding:35px;}
@@ -321,30 +321,29 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
 .f-logo{font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--gold);}
 .f-text{font-size:13px;color:var(--text-muted);}
 
-/* ─── CHAT & FLOAT UI ─── */
-.float-btn{position:fixed;z-index:900;display:flex;align-items:center;justify-content:center;border-radius:50%;cursor:none;transition:all 0.3s;}
-#audio-toggle{bottom:30px;right:30px;width:50px;height:50px;background:var(--glass);border:1px solid var(--border);color:var(--gold);font-size:20px;backdrop-filter:blur(10px);}
-#audio-toggle:hover{transform:scale(1.1);background:rgba(229,184,11,0.1);}
+/* ─── LIQUID GLASS GOOGLE CALENDAR MODAL ─── */
+#calendar-modal { position: fixed; inset: 0; z-index: 100000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.6s cubic-bezier(0.23,1,0.32,1); background: rgba(3, 3, 3, 0.4); backdrop-filter: blur(0px); }
+#calendar-modal.active { opacity: 1; pointer-events: all; backdrop-filter: blur(25px); }
+.calendar-glass { width: 95%; max-width: 1100px; height: 85vh; background: rgba(10, 10, 10, 0.8); border: 1px solid var(--gold); border-radius: 32px; overflow: hidden; transform: translateY(40px); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 40px 100px rgba(0,0,0,0.9); }
+#calendar-modal.active .calendar-glass { transform: translateY(0); }
+.close-calendar { position: absolute; top: 25px; right: 25px; background: var(--dark-surface); color: var(--gold); border: 1px solid var(--border); border-radius: 50%; width: 50px; height: 50px; font-size: 26px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 101; transition: 0.3s; }
+.close-calendar:hover { background: var(--gold); color: var(--dark); transform: rotate(90deg); }
+.calendar-iframe { width: 100%; height: 100%; border: none; background: transparent; }
 
-#chat-container{position:fixed;bottom:100px;right:30px;z-index:900;}
-#chat-toggle{width:60px;height:60px;background:var(--gold);border:none;font-size:28px;box-shadow:0 10px 30px var(--gold-glow);position:relative;}
-#chat-toggle:hover{transform:scale(1.1);}
-#chat-box{position:absolute;bottom:80px;right:0;width:380px;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:20px;overflow:hidden;display:none;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,0.9);}
-#chat-box.open{display:flex;}
-.chat-header{padding:20px;background:rgba(229,184,11,0.05);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:15px;}
-.chat-av{width:45px;height:45px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 15px var(--gold-glow);}
-.chat-info h3{font-size:16px;color:var(--text-main);margin-bottom:4px;}
-.chat-info p{font-size:11px;color:#4ade80;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
-.chat-body{height:350px;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:15px;}
-.msg{max-width:85%;padding:12px 16px;border-radius:12px;font-size:14px;line-height:1.5;word-wrap:break-word;}
-.msg.bot{background:#111;border:1px solid #333;align-self:flex-start;border-bottom-left-radius:2px;}
-.msg.user{background:var(--gold);color:var(--dark);font-weight:600;align-self:flex-end;border-bottom-right-radius:2px;}
-.chat-input-wrap{padding:15px;border-top:1px solid #333;background:#0a0a0a;display:flex;gap:10px;}
-#chat-input{flex:1;background:#111;border:1px solid #333;border-radius:8px;padding:12px;color:#fff;outline:none;font-family:var(--font-body);}
-#chat-input:focus{border-color:var(--gold);}
-#chat-send{width:45px;height:45px;background:var(--gold);border:none;border-radius:8px;cursor:pointer;font-size:20px;}
-
-.reveal{opacity:0;transform:translateY(50px);}
+/* ─── CASE STUDY GLASSMORPHISM MODAL ─── */
+#cs-modal { position: fixed; inset: 0; z-index: 100000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.6s cubic-bezier(0.23,1,0.32,1); background: rgba(3, 3, 3, 0.6); backdrop-filter: blur(0px); }
+#cs-modal.active { opacity: 1; pointer-events: all; backdrop-filter: blur(20px); }
+.cs-glass { width: 95%; max-width: 900px; max-height: 90vh; overflow-y: auto; background: rgba(15, 15, 15, 0.95); border: 1px solid var(--gold); border-radius: 24px; box-shadow: 0 40px 100px rgba(0,0,0,0.9); position: relative; transform: translateY(40px); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); padding: 50px; }
+#cs-modal.active .cs-glass { transform: translateY(0); }
+.close-cs { position: absolute; top: 20px; right: 20px; background: var(--dark-surface); color: var(--gold); border: 1px solid var(--border); border-radius: 50%; width: 45px; height: 45px; font-size: 24px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 101; transition: 0.3s; }
+.close-cs:hover { background: var(--gold); color: var(--dark); transform: rotate(90deg); }
+.cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
+.cs-block { background: rgba(255,255,255,0.02); padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); }
+.cs-label { font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 15px; display: block; }
+.cs-text { font-size: 15px; color: var(--text-muted); line-height: 1.7; }
+.cs-graph-container { grid-column: span 2; background: rgba(0,0,0,0.4); padding: 30px; border-radius: 16px; border: 1px solid rgba(229,184,11,0.2); }
+.cs-title-modal { font-family: var(--font-head); font-size: 32px; color: var(--text-main); margin-bottom: 10px; }
+.cs-tag-modal { display: inline-block; padding: 6px 14px; background: rgba(229,184,11,0.1); color: var(--gold); font-size: 10px; font-weight: 800; border-radius: 100px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; border: 1px solid rgba(229,184,11,0.2); }
 
 @media(max-width:900px){
   .bento-col-2{grid-column:span 4;}.bento-box{grid-column:span 2;}.bento-row-2{grid-row:span 1;}
@@ -355,8 +354,8 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
   nav{padding:15px 5%;}.nav-links{display:none;}section{padding:100px 5%;}
   .hero-title{font-size:42px;}.hero-stats{gap:20px;flex-wrap:wrap;}
   .svc-grid{grid-template-columns:1fr;}.bento-box{grid-column:span 4;}
-  #chat-box{width:320px;}footer{flex-direction:column;gap:15px;text-align:center;}
   .calc-body{padding:30px;}.calc-results{padding:30px;}
+  .cs-grid{grid-template-columns: 1fr;} .cs-graph-container{grid-column: span 1;} .cs-glass{padding: 30px;}
 }
 </style>
 </head>
@@ -377,9 +376,9 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
     <li><a href="#about">About</a></li>
     <li><a href="#dashboard">Results</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#projects">Work</a></li>
+    <li><a href="#calculator">Calculator</a></li>
   </ul>
-  <a href="mailto:Jeniish.kamli@gmail.com" class="btn-magnetic" rel="noopener">Contact Me</a>
+  <a href="#" onclick="openCalendar(event)" class="btn-magnetic">Book Audit</a>
 </nav>
 
 <section id="hero">
@@ -395,7 +394,7 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
       I help brands grow through marketplace management, brand development, and scalable e-commerce growth systems across multiple platforms.
     </p>
     <div class="hero-actions reveal">
-      <a href="mailto:Jeniish.kamli@gmail.com" class="btn-magnetic gold-fill" style="padding:18px 48px;">Build Your Growth System</a>
+      <a href="#" onclick="openCalendar(event)" class="btn-magnetic gold-fill" style="padding:18px 48px;">Book a Strategy Call</a>
     </div>
     <div class="hero-stats reveal">
       <div class="stat-item"><div class="stat-num" data-count="15" data-prefix="₹" data-suffix="L+">0</div><div class="stat-label">Monthly Revenue</div></div>
@@ -581,47 +580,51 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
   </div>
   <div class="prj-grid">
 
-    <div class="prj-card reveal">
+    <div class="prj-card reveal" onclick="openCSModal(0)">
       <div class="prj-img">
         <div class="media-placeholder image" style="border:none; border-radius:0;"><div class="icon">📷</div></div>
       </div>
       <div class="prj-info">
         <span class="prj-tag">Amazon Expert</span>
         <h3 class="prj-title">Amazon Marketplace Growth</h3>
-        <p class="prj-desc">Managed and scaled Amazon seller accounts with optimized listings, brand positioning, and structured marketplace growth strategies. Created brand stores and A+ content to improve product presentation, brand identity, and conversion rates.</p>
+        <p class="prj-desc">Managed and scaled Amazon seller accounts with optimized listings, brand positioning, and structured marketplace growth strategies.</p>
+        <p style="font-size:11px; color:var(--gold); margin-top:15px;">✦ Click to view full case study</p>
       </div>
     </div>
 
-    <div class="prj-card reveal">
+    <div class="prj-card reveal" onclick="openCSModal(1)">
       <div class="prj-img">
         <div class="media-placeholder image" style="border:none; border-radius:0;"><div class="icon">📷</div></div>
       </div>
       <div class="prj-info">
         <span class="prj-tag">Flipkart Specialist</span>
         <h3 class="prj-title">Flipkart Order Flow Scale</h3>
-        <p class="prj-desc">Improved product visibility and order flow through structured marketplace management and catalog optimization. Scaled operations from low baseline to consistent high-volume order flow.</p>
+        <p class="prj-desc">Improved product visibility and order flow through structured marketplace management and catalog optimization.</p>
+        <p style="font-size:11px; color:var(--gold); margin-top:15px;">✦ Click to view full case study</p>
       </div>
     </div>
 
-    <div class="prj-card reveal">
+    <div class="prj-card reveal" onclick="openCSModal(2)">
       <div class="prj-img">
         <div class="media-placeholder video" style="border:none; border-radius:0;"><div class="icon">▶</div></div>
       </div>
       <div class="prj-info">
         <span class="prj-tag">Quick Commerce</span>
         <h3 class="prj-title">Q-Com Onboarding Project</h3>
-        <p class="prj-desc">Successfully onboarded and scaled products on Blinkit, Zepto, and Swiggy Instamart platforms, ensuring fast-paced execution, perfect catalog compliance, and hyper-local visibility.</p>
+        <p class="prj-desc">Successfully onboarded and scaled products on Blinkit, Zepto, and Swiggy Instamart platforms ensuring fast-paced execution.</p>
+        <p style="font-size:11px; color:var(--gold); margin-top:15px;">✦ Click to view full case study</p>
       </div>
     </div>
 
-    <div class="prj-card reveal">
+    <div class="prj-card reveal" onclick="openCSModal(3)">
       <div class="prj-img">
         <div class="media-placeholder image" style="border:none; border-radius:0;"><div class="icon">📷</div></div>
       </div>
       <div class="prj-info">
         <span class="prj-tag">Catalog Authority</span>
         <h3 class="prj-title">GS1 Barcode Implementation</h3>
-        <p class="prj-desc">Handled GS1 barcode registration, GTIN allocation, and UPC implementation for proper marketplace compliance and brand authenticity across all leading e-commerce platforms.</p>
+        <p class="prj-desc">Handled GS1 barcode registration, GTIN allocation, and UPC implementation for proper marketplace compliance.</p>
+        <p style="font-size:11px; color:var(--gold); margin-top:15px;">✦ Click to view full case study</p>
       </div>
     </div>
 
@@ -697,7 +700,7 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
     <p class="hero-sub" style="font-size:22px; color:var(--gold); font-weight:600;">...it’s about building scalable systems across marketplaces, D2C, and quick commerce platforms.</p>
     <p class="hero-sub">Looking to scale your brand across Amazon, Flipkart, and quick commerce platforms? Let’s build a powerful e-commerce growth system that delivers consistent and scalable results.</p>
     <div class="cta-actions">
-      <a href="mailto:Jeniish.kamli@gmail.com" class="btn-magnetic gold-fill" style="padding:18px 48px;">Get in Touch</a>
+      <a href="#" onclick="openCalendar(event)" class="btn-magnetic gold-fill" style="padding:18px 48px;">Book a Strategy Call</a>
       <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" target="_blank" rel="noopener" class="btn-magnetic outline-dim" style="padding:18px 48px;">LinkedIn Profile</a>
     </div>
   </div>
@@ -711,21 +714,34 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
   </div>
 </footer>
 
-<div class="float-btn" id="audio-toggle" onclick="toggleMute()" title="Mute/Unmute Sounds">🔊</div>
+<div id="calendar-modal">
+  <div class="calendar-glass">
+    <button class="close-calendar" onclick="closeCalendar()">×</button>
+    <iframe class="calendar-iframe" src="https://calendar.app.google/xHj2anRZ1imLTqEU9" title="Book a Meeting"></iframe>
+  </div>
+</div>
 
-<div id="chat-container">
-  <button class="float-btn" id="chat-toggle" onclick="toggleChat()">🤖</button>
-  <div id="chat-box">
-    <div class="chat-header">
-      <div class="chat-av">🤖</div>
-      <div class="chat-info"><h3>Marketplace AI</h3><p>● ONLINE</p></div>
-    </div>
-    <div class="chat-body" id="chat-messages">
-      <div class="msg bot">Namaste! Ask me about Jenish's ₹15L+ marketplace results, D2C Shopify scaling, or Quick Commerce growth strategies!</div>
-    </div>
-    <div class="chat-input-wrap">
-      <input type="text" id="chat-input" placeholder="Ask about D2C, Q-Com, Amazon..." onkeydown="if(event.key==='Enter')sendChat()"/>
-      <button id="chat-send" onclick="sendChat()">➤</button>
+<div id="cs-modal">
+  <div class="cs-glass">
+    <button class="close-cs" onclick="closeCSModal()">×</button>
+    <span id="cs-tag" class="cs-tag-modal">Tag</span>
+    <h2 id="cs-title" class="cs-title-modal">Title</h2>
+    
+    <div class="cs-grid">
+      <div class="cs-block">
+        <span class="cs-label">The Problem</span>
+        <p id="cs-problem" class="cs-text">Problem description...</p>
+      </div>
+      <div class="cs-block">
+        <span class="cs-label">The Strategy</span>
+        <p id="cs-strategy" class="cs-text">Strategy description...</p>
+      </div>
+      <div class="cs-graph-container">
+        <span class="cs-label">The Result (Growth Trajectory)</span>
+        <div style="width:100%; height:250px; position:relative;">
+          <canvas id="cs-chart"></canvas>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -747,7 +763,7 @@ const cursor=document.getElementById('cursor'),ring=document.getElementById('cur
 document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';});
 let rx=0,ry=0;
 (function animRing(){rx+=(cursor.getBoundingClientRect().left-rx)*0.15;ry+=(cursor.getBoundingClientRect().top-ry)*0.15;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
-document.querySelectorAll('a,button,.p-card,.bento-box,.svc-card,.prj-card,.proof-card,.calc-card,.calc-btn,.media-placeholder').forEach(el=>{
+document.querySelectorAll('a,button,.p-card,.bento-box,.svc-card,.prj-card,.proof-card,.calc-card,.calc-btn,.media-placeholder,.close-calendar,.close-cs').forEach(el=>{
   el.addEventListener('mouseenter',()=>{ring.style.transform='translate(-50%,-50%) scale(1.5)';ring.style.borderColor='var(--gold)';cursor.style.width='12px';cursor.style.height='12px';});
   el.addEventListener('mouseleave',()=>{ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.borderColor='rgba(229,184,11,0.5)';cursor.style.width='8px';cursor.style.height='8px';});
 });
@@ -758,6 +774,103 @@ window.addEventListener('scroll',()=>{
   if(window.scrollY>50){nav.style.padding='15px 5%';nav.style.background='rgba(3,3,3,0.98)';}
   else{nav.style.padding='25px 5%';nav.style.background='linear-gradient(180deg,rgba(3,3,3,0.9) 0%,transparent 100%)';}
 });
+
+// ── CALENDAR LIQUID MODAL LOGIC ──
+function openCalendar(e) {
+  if(e) e.preventDefault();
+  document.getElementById('calendar-modal').classList.add('active');
+}
+function closeCalendar() {
+  document.getElementById('calendar-modal').classList.remove('active');
+}
+
+// ── CASE STUDY MODAL LOGIC ──
+const csData = [
+  {
+    tag: "Amazon Expert",
+    title: "Amazon Marketplace Growth",
+    problem: "Brand growth was stagnant. The account suffered from low organic ranking, high ACoS, and poor catalog visibility leading to flat sales.",
+    strategy: "Implemented granular keyword harvesting, dynamic bid adjustments, SEO-rich titles, and premium A+ content to boost conversion rates.",
+    graphLabel: "Monthly Revenue (₹)",
+    graphData: [10000, 50000, 200000, 600000, 1000000, 1500000],
+    graphColor: "#E5B80B"
+  },
+  {
+    tag: "Flipkart Specialist",
+    title: "Flipkart Order Flow Scale",
+    problem: "Product visibility was negligible on Flipkart. Orders were highly inconsistent due to poor ad placements and unoptimized listings.",
+    strategy: "Restructured marketplace management, optimized catalog for Flipkart's algorithm, and scaled PLA campaigns strategically.",
+    graphLabel: "Monthly Orders",
+    graphData: [50, 150, 400, 800, 1200, 1500],
+    graphColor: "#047BD5"
+  },
+  {
+    tag: "Quick Commerce",
+    title: "Q-Com Onboarding Project",
+    problem: "Zero presence on Quick Commerce platforms (Blinkit, Zepto, Instamart) meaning the brand was missing out on impulse buyers.",
+    strategy: "Fast-paced execution covering 100% catalog compliance, mapping dark stores, and running localized visibility campaigns.",
+    graphLabel: "Q-Com Sales (₹)",
+    graphData: [0, 20000, 75000, 200000, 450000, 800000],
+    graphColor: "#F8D12F"
+  },
+  {
+    tag: "Catalog Authority",
+    title: "GS1 Barcode Implementation",
+    problem: "Listings were facing frequent suppressions and buy-box losses across platforms due to invalid UPCs and inconsistent back-end data.",
+    strategy: "Executed comprehensive GS1 barcode registration, GTIN allocation, and standardized backend architecture across all marketplaces.",
+    graphLabel: "Compliance Rate (%)",
+    graphData: [30, 45, 60, 85, 95, 100],
+    graphColor: "#4ade80"
+  }
+];
+
+let csChartInstance = null;
+
+function openCSModal(index) {
+  const data = csData[index];
+  document.getElementById('cs-tag').innerText = data.tag;
+  document.getElementById('cs-title').innerText = data.title;
+  document.getElementById('cs-problem').innerText = data.problem;
+  document.getElementById('cs-strategy').innerText = data.strategy;
+  
+  document.getElementById('cs-modal').classList.add('active');
+
+  if(csChartInstance) { csChartInstance.destroy(); }
+  const ctx = document.getElementById('cs-chart').getContext('2d');
+  const grad = ctx.createLinearGradient(0,0,0,250);
+  grad.addColorStop(0, data.graphColor + '80'); 
+  grad.addColorStop(1, 'rgba(0,0,0,0)');
+
+  csChartInstance = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Current'],
+      datasets: [{
+        label: data.graphLabel,
+        data: data.graphData,
+        borderColor: data.graphColor,
+        backgroundColor: grad,
+        borderWidth: 3,
+        fill: true,
+        tension: 0.4,
+        pointBackgroundColor: data.graphColor,
+        pointRadius: 5
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { color: '#222' }, ticks: { color: '#aaa' } },
+        y: { grid: { color: '#222' }, ticks: { color: '#aaa' } }
+      }
+    }
+  });
+}
+
+function closeCSModal() {
+  document.getElementById('cs-modal').classList.remove('active');
+}
 
 // ── GSAP ──
 gsap.registerPlugin(ScrollTrigger);
@@ -774,7 +887,7 @@ const countObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isInt
   countObs.unobserve(e.target);}});},{threshold:0.5});
 countEls.forEach(el=>countObs.observe(el));
 
-// ── NEW WORKABLE CHART (₹15L+ Scale) ──
+// ── MAIN DASHBOARD CHART ──
 let chartsInit=false;
 const chartObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&!chartsInit){chartsInit=true;initCharts();}});});
 chartObs.observe(document.getElementById('dashboard'));
@@ -788,57 +901,22 @@ function initCharts(){
       labels:['Month 1','Month 2','Month 3','Month 4','Month 5','Current'],
       datasets:[{
         label:'Revenue (₹)',
-        // Data perfectly scaled to show growth hitting the 15L mark
         data:[150000, 350000, 680000, 950000, 1200000, 1550000],
-        borderColor:gold,
-        backgroundColor:grad,
-        borderWidth:3,
-        pointBackgroundColor:gold,
-        pointRadius:6,
-        fill:true,
-        tension:0.4
+        borderColor:gold, backgroundColor:grad, borderWidth:3,
+        pointBackgroundColor:gold, pointRadius:6, fill:true, tension:0.4
       }]
     },
     options:{
-      responsive:true,
-      maintainAspectRatio:false,
-      plugins:{
-        legend:{display:false},
-        tooltip:{callbacks:{label:ctx=>'₹'+ctx.parsed.y.toLocaleString('en-IN')}}
-      },
+      responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}},
       scales:{
         x:{grid:{color:'#222'},ticks:{color:white}},
-        y:{
-          grid:{color:'#222'},
-          ticks:{
-            color:white,
-            // Custom tick formatting for Lakhs
-            callback: function(v){
-              if(v >= 100000) return '₹' + (v/100000).toFixed(1) + 'L';
-              return '₹' + v;
-            }
-          }
-        }
+        y:{grid:{color:'#222'},ticks:{color:white, callback: v => v>=100000 ? '₹'+(v/100000).toFixed(1)+'L' : '₹'+v}}
       }
     }
   });
 }
 
-// ── AUDIO ──
-let isMuted=false;
-const sounds={bounce:'https://actions.google.com/sounds/v1/cartoon/pop.ogg',click:'https://actions.google.com/sounds/v1/ui/button_click.ogg'};
-function playSFX(n,v=0.5){if(!isMuted&&sounds[n]){let a=new Audio(sounds[n]);a.volume=v;a.play().catch(e=>{});}}
-function toggleMute(){isMuted=!isMuted;document.getElementById('audio-toggle').innerText=isMuted?'🔇':'🔊';}
-
-// ── PROOF SCROLL DRAG ──
-const scrollWrap=document.querySelector('.proof-scroll-wrapper');
-let isDown=false,startX,scrollLeft;
-scrollWrap.addEventListener('mousedown',e=>{isDown=true;scrollWrap.style.cursor='grabbing';startX=e.pageX-scrollWrap.offsetLeft;scrollLeft=scrollWrap.scrollLeft;});
-scrollWrap.addEventListener('mouseleave',()=>{isDown=false;scrollWrap.style.cursor='grab';});
-scrollWrap.addEventListener('mouseup',()=>{isDown=false;scrollWrap.style.cursor='grab';});
-scrollWrap.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();const x=e.pageX-scrollWrap.offsetLeft;const walk=(x-startX)*1.5;scrollWrap.scrollLeft=scrollLeft-walk;});
-
-// ── NEW PHYSICS PIT (Updated Stack) ──
+// ── PHYSICS PIT ──
 function initPhysics(){
   const cont=document.getElementById('matter-container');
   const{Engine,Render,Runner,MouseConstraint,Mouse,Composite,Bodies,Events}=Matter;
@@ -848,21 +926,14 @@ function initPhysics(){
   const cw=cont.clientWidth,ch=cont.clientHeight,th=60;
   Composite.add(world,[Bodies.rectangle(cw/2,ch+th/2,cw*2,th,{isStatic:true}),Bodies.rectangle(-th/2,ch/2,th,ch*2,{isStatic:true}),Bodies.rectangle(cw+th/2,ch/2,th,ch*2,{isStatic:true})]);
   
-  // New items based on the updated content
   const items=[
-    {t:"Amazon",c:"#FF9900",r:55},
-    {t:"Flipkart",c:"#047BD5",r:55},
-    {t:"Shopify",c:"#95BF47",r:50},
-    {t:"Blinkit",c:"#F8D12F",r:45},
-    {t:"Myntra",c:"#FF3E6C",r:45},
-    {t:"Growth",c:"#222",r:65,s:"#E5B80B"}
+    {t:"Amazon",c:"#FF9900",r:55},{t:"Flipkart",c:"#047BD5",r:55},{t:"Shopify",c:"#95BF47",r:50},
+    {t:"Blinkit",c:"#F8D12F",r:45},{t:"Myntra",c:"#FF3E6C",r:45},{t:"Growth",c:"#222",r:65,s:"#E5B80B"}
   ];
   const bodies=items.map((s,i)=>{let b=Bodies.circle(Math.random()*(cw-100)+50,-100-(i*80),s.r,{restitution:0.9,render:{fillStyle:s.c,strokeStyle:s.s||s.c,lineWidth:3}});b.sData=s;return b;});
   Composite.add(world,bodies);
   const mouse=Mouse.create(render.canvas);
   Composite.add(world,MouseConstraint.create(engine,{mouse:mouse,constraint:{stiffness:0.2,render:{visible:false}}}));render.mouse=mouse;
-  let lastBounce=0;
-  Events.on(engine,'collisionStart',e=>{if(e.pairs.length>0&&Date.now()-lastBounce>100){playSFX('bounce',0.2);lastBounce=Date.now();}});
   Events.on(render,'afterRender',()=>{const ctx=render.context;ctx.font="bold 13px 'Outfit'";ctx.textAlign="center";ctx.textBaseline="middle";bodies.forEach(b=>{ctx.fillStyle="#FFF";ctx.fillText(b.sData.t,b.position.x,b.position.y);});});
 }
 let pitObs=new IntersectionObserver(e=>{if(e[0].isIntersecting){initPhysics();pitObs.disconnect();}});
@@ -915,23 +986,7 @@ function calculateProfit(){
   const block=document.getElementById('calc-results-block');
   block.style.display='block';
   block.classList.add('visible');
-  playSFX('click',0.4);
 }
-
-// ── AI CHAT (UPDATED) ──
-function toggleChat(){const box=document.getElementById('chat-box');box.classList.toggle('open');}
-function getReply(msg){
-  const m=msg.toLowerCase();
-  if(/who|about|name/.test(m))return"I'm Jenish Kamli — an experienced E-Commerce Marketplace Manager, Brand Growth Strategist, and Quick Commerce Specialist.";
-  if(/quick|blinkit|zepto|instamart|q-com/.test(m))return"⚡ I handle complete onboarding and growth for Blinkit, Zepto, and Instamart. From catalog compliance to hyper-local scaling.";
-  if(/revenue|growth|result|stats/.test(m))return"📈 I've generated ₹15L+ monthly revenue across marketplaces, managing 1500+ orders/month, and driving 100M+ impressions with a 45% Organic / 55% Performance split.";
-  if(/d2c|shopify|woo/.test(m))return"🛒 Yes! I manage D2C Store Growth via Shopify & WooCommerce, optimizing for better conversion rates, user experience, and brand consistency.";
-  if(/contact|email|hire|audit/.test(m))return"🔥 Available for freelance, consulting, and full-scale management projects. Email me at: Jeniish.kamli@gmail.com";
-  if(/service|offer/.test(m))return"💼 Services: Marketplace Management (Amazon, Flipkart, etc.), D2C Growth (Shopify), Quick Commerce Onboarding, & E-Commerce Brand Management.";
-  return"I'm Jenish's AI assistant. Ask about the ₹15L+ revenue system, D2C Shopify scaling, or Quick Commerce strategies!";
-}
-function appendMsg(txt,type){const b=document.getElementById('chat-messages');const d=document.createElement('div');d.className='msg '+type;d.textContent=txt;b.appendChild(d);b.scrollTop=b.scrollHeight;}
-function sendChat(){const i=document.getElementById('chat-input');const t=i.value.trim();if(!t)return;i.value='';appendMsg(t,'user');const typEl=document.createElement('div');typEl.className='msg bot';typEl.id='typ-ind';typEl.textContent='...';document.getElementById('chat-messages').appendChild(typEl);setTimeout(()=>{document.getElementById('typ-ind').remove();appendMsg(getReply(t),'bot');},700+Math.random()*400);}
 </script>
 </body>
 </html>
