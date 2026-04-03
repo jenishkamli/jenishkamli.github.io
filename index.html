@@ -127,10 +127,11 @@ nav{
 /* ─── MARQUEE ─── */
 .marquee-container{width:100%;padding:20px 0;background:var(--dark-surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;position:relative;z-index:10;display:flex;}
 .marquee-content{display:flex;gap:60px;white-space:nowrap;animation:marquee 30s linear infinite;align-items:center;}
-.marquee-content span{font-family:var(--font-head);font-size:24px;font-weight:700;color:rgba(255,255,255,0.2);letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:15px;transition:color 0.3s;}
-.marquee-content span:hover{color:var(--gold);}
-.marquee-content img{height:30px;border-radius:4px;filter:grayscale(1) brightness(0.5);transition:all 0.3s;}
-.marquee-content span:hover img{filter:grayscale(0) brightness(1);}
+.marquee-item{display:inline-flex;align-items:center;gap:12px;transition:all 0.3s;cursor:default;}
+.marquee-item:hover .marquee-logo-text{opacity:1;color:var(--gold);}
+.marquee-logo-text{font-family:var(--font-head);font-size:20px;font-weight:700;color:rgba(255,255,255,0.2);letter-spacing:2px;text-transform:uppercase;transition:color 0.3s;}
+.marquee-logo-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;opacity:0.5;transition:opacity 0.3s;}
+.marquee-item:hover .marquee-logo-icon{opacity:1;}
 @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
 /* ─── SECTIONS ─── */
@@ -151,20 +152,19 @@ section{padding:150px 5%;position:relative;z-index:2;}
 .p-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 50% 0%,var(--gold-glow),transparent 70%);opacity:0;transition:opacity 0.4s;}
 .p-card:hover{transform:translateY(-12px) scale(1.02);border-color:var(--gold);box-shadow:0 20px 50px rgba(0,0,0,0.8),0 0 30px var(--gold-glow-light);}
 .p-card:hover::before{opacity:1;}
-.p-icon{
-  height:52px;width:52px;object-fit:contain;border-radius:10px;margin-bottom:20px;
-  transition:all 0.4s;display:inline-block;
-  filter:brightness(0.7);
-  border:1px solid transparent;
+/* Platform logo icon style */
+.p-logo-wrap{
+  width:60px;height:60px;border-radius:14px;margin:0 auto 20px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;font-weight:900;letter-spacing:-1px;
+  transition:all 0.4s;position:relative;z-index:2;
+  border:1px solid rgba(255,255,255,0.08);
 }
-.p-card:hover .p-icon{
-  filter:brightness(1.1);
+.p-card:hover .p-logo-wrap{
   transform:scale(1.15);
-  border-color:rgba(229,184,11,0.3);
   box-shadow:0 0 20px var(--gold-glow-light);
+  border-color:rgba(229,184,11,0.3);
 }
-.p-text-logo{font-family:var(--font-head);font-size:28px;font-weight:800;color:rgba(255,255,255,0.3);margin-bottom:20px;transition:all 0.4s;line-height:52px;}
-.p-card:hover .p-text-logo{color:var(--gold);transform:scale(1.1);text-shadow:0 0 20px var(--gold-glow);}
 .p-name{font-size:14px;font-weight:600;color:var(--text-main);position:relative;z-index:2;letter-spacing:1px;}
 .platform-badge{display:inline-block;margin-top:8px;padding:4px 10px;background:rgba(229,184,11,0.1);color:var(--gold);font-size:9px;font-weight:800;border-radius:100px;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(229,184,11,0.2);}
 
@@ -223,7 +223,7 @@ section{padding:150px 5%;position:relative;z-index:2;}
   flex-shrink:0;cursor:pointer;
 }
 .proof-card:hover{transform:translateY(-10px) scale(1.03);border-color:var(--gold);box-shadow:0 20px 50px rgba(0,0,0,0.8),0 0 30px var(--gold-glow-light);}
-.proof-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;display:block;loading:lazy;}
+.proof-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;display:block;}
 .proof-card:hover img{transform:scale(1.08);}
 .proof-card-overlay{
   position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.2) 60%,transparent 100%);
@@ -235,14 +235,16 @@ section{padding:150px 5%;position:relative;z-index:2;}
 .proof-card-placeholder .proof-icon{font-size:48px;opacity:0.6;}
 .proof-card-placeholder .proof-label{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;}
 .proof-amazon-btn{
-  display:block;text-align:center;margin:40px auto 0;
-  padding:16px 40px;background:var(--glass-btn);backdrop-filter:blur(15px);
-  border:1px solid rgba(255,153,0,0.4);border-radius:100px;
-  color:#FF9900;font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:18px 44px;background:rgba(255,153,0,0.08);backdrop-filter:blur(15px);
+  border:1px solid rgba(255,153,0,0.5);border-radius:100px;
+  color:#FF9900;font-size:14px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
   text-decoration:none;transition:all .35s cubic-bezier(0.23,1,0.32,1);
-  width:fit-content;cursor:none;
+  cursor:none;position:relative;overflow:hidden;
 }
-.proof-amazon-btn:hover{background:rgba(255,153,0,0.1);box-shadow:0 0 30px rgba(255,153,0,0.3);transform:scale(1.05);}
+.proof-amazon-btn::before{content:'';position:absolute;top:100%;left:0;width:100%;height:100%;background:rgba(255,153,0,0.15);transition:all .4s cubic-bezier(0.23,1,0.32,1);z-index:-1;border-radius:50% 50% 0 0;}
+.proof-amazon-btn:hover::before{top:0;border-radius:0;}
+.proof-amazon-btn:hover{box-shadow:0 0 40px rgba(255,153,0,0.4),0 0 80px rgba(255,153,0,0.1);transform:scale(1.05);border-color:#FF9900;}
 
 /* ─── CASE STUDIES ─── */
 #projects{background:var(--dark);}
@@ -263,7 +265,6 @@ section{padding:150px 5%;position:relative;z-index:2;}
 .prj-metric-item{padding:8px 14px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:8px;}
 .prj-metric-item span:first-child{display:block;font-size:16px;font-weight:800;color:#4ade80;font-family:var(--font-head);}
 .prj-metric-item span:last-child{font-size:10px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;}
-/* Amazon store CTA button */
 .btn-amazon-store{
   display:inline-flex;align-items:center;gap:8px;
   padding:12px 24px;background:var(--glass-btn);backdrop-filter:blur(15px);
@@ -273,6 +274,86 @@ section{padding:150px 5%;position:relative;z-index:2;}
 }
 .btn-amazon-store:hover{background:rgba(255,153,0,0.1);box-shadow:0 0 25px rgba(255,153,0,0.25);transform:scale(1.05);}
 
+/* ─── PROFIT CALCULATOR ─── */
+#calculator{background:var(--dark-surface);padding:150px 5%;}
+.calc-inner{max-width:680px;margin:0 auto;}
+.calc-card{
+  background:var(--glass);border:1px solid var(--border);border-radius:28px;
+  overflow:hidden;backdrop-filter:blur(30px);
+  box-shadow:0 30px 80px rgba(0,0,0,0.6),0 0 60px rgba(229,184,11,0.04);
+  position:relative;
+}
+.calc-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.calc-body{padding:50px;}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.calc-form-group{margin-bottom:0;}
+.calc-form-group.full{grid-column:span 2;}
+.calc-label{display:block;margin-bottom:8px;font-size:11px;color:var(--text-muted);font-weight:800;letter-spacing:2px;text-transform:uppercase;}
+.calc-input,.calc-select{
+  width:100%;padding:14px 18px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(0,0,0,0.4);
+  color:var(--text-main);
+  font-size:16px;font-family:var(--font-body);
+  outline:none;transition:all 0.3s;
+  -webkit-appearance:none;appearance:none;
+}
+.calc-select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23E5B80B' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;padding-right:44px;
+}
+.calc-input:focus,.calc-select:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-glow-light);}
+.calc-btn-wrap{margin-top:30px;}
+.calc-btn{
+  width:100%;padding:18px;
+  background:var(--gold);color:var(--dark);
+  border:none;border-radius:12px;
+  font-size:14px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;font-family:var(--font-body);
+  transition:all 0.3s cubic-bezier(0.23,1,0.32,1);
+  position:relative;overflow:hidden;
+}
+.calc-btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(255,255,255,0.2);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.6s,height 0.6s;}
+.calc-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px var(--gold-glow);}
+.calc-btn:active::before{width:400px;height:400px;}
+/* Results */
+.calc-results{
+  display:none;
+  margin-top:0;
+  padding:40px 50px;
+  background:rgba(0,0,0,0.3);
+  border-top:1px solid var(--border);
+}
+.calc-results.visible{display:block;animation:fadeInUp 0.5s ease forwards;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.result-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:14px;}
+.result-row:last-child{border-bottom:none;}
+.result-row .r-label{color:var(--text-muted);}
+.result-row .r-val{font-weight:700;color:var(--text-main);}
+.r-val.deduct{color:#ef4444;}
+.result-total{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 24px;margin-top:20px;
+  background:rgba(229,184,11,0.06);border:1px solid var(--border);border-radius:14px;
+}
+.result-total .r-label{font-family:var(--font-head);font-size:14px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;}
+.result-total .r-val{font-family:var(--font-head);font-size:32px;font-weight:700;}
+.r-val.profit{color:#4ade80;}
+.r-val.loss{color:#ef4444;}
+.result-margin{
+  display:flex;justify-content:space-between;padding:14px 20px;
+  background:rgba(0,0,0,0.3);border-radius:10px;margin-top:10px;
+  font-size:13px;font-weight:700;
+}
+.calc-disclaimer{
+  margin-top:20px;font-size:11px;color:var(--text-muted);text-align:center;line-height:1.6;
+  padding:0 20px;letter-spacing:0.5px;
+}
+
 /* ─── CTA SECTION ─── */
 #cta-section{background:linear-gradient(135deg,var(--dark-surface) 0%,rgba(10,8,0,1) 50%,var(--dark-surface) 100%);padding:120px 5%;text-align:center;position:relative;overflow:hidden;}
 #cta-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50vw;height:50vw;background:radial-gradient(circle,rgba(229,184,11,0.1) 0%,transparent 70%);pointer-events:none;}
@@ -280,21 +361,6 @@ section{padding:150px 5%;position:relative;z-index:2;}
 .cta-inner .section-title{font-size:clamp(32px,5vw,56px);}
 .cta-inner .hero-sub{margin-top:20px;font-size:17px;}
 .cta-actions{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:40px;}
-
-/* ─── ARCADE ─── */
-#arcade{background:var(--dark-surface);padding:120px 5%;text-align:center;position:relative;}
-.arcade-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;max-width:1200px;margin:0 auto;}
-.game-box{background:#050505;border:2px solid #222;border-radius:20px;padding:20px;display:flex;flex-direction:column;height:450px;position:relative;box-shadow:0 20px 50px rgba(0,0,0,0.8);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);}
-.game-box:hover{border-color:var(--gold);box-shadow:0 20px 60px var(--gold-glow),0 0 40px rgba(229,184,11,0.1);transform:translateY(-10px);}
-.game-head{font-family:var(--font-head);font-size:22px;color:var(--gold);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
-.game-sub{font-size:12px;color:var(--text-muted);margin-bottom:20px;}
-.game-area{flex:1;background:#000;border-radius:8px;position:relative;overflow:hidden;border:2px inset #222;cursor:crosshair;}
-.game-area::after{content:" ";display:block;position:absolute;top:0;left:0;bottom:0;right:0;background:linear-gradient(rgba(18,16,16,0) 50%,rgba(0,0,0,0.25) 50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,255,0,0.06));z-index:5;background-size:100% 2px,3px 100%;pointer-events:none;}
-.start-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.88);display:flex;align-items:center;justify-content:center;z-index:10;}
-.puzzle-board{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;height:100%;padding:15px;background:#0a0a0a;}
-.puzzle-tile{background:#111;border:1px solid #222;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:36px;color:var(--gold);cursor:pointer;transition:all 0.2s;}
-.puzzle-tile:hover{background:#222;border-color:var(--gold);}
-.puzzle-start,.puzzle-end{background:rgba(229,184,11,0.1);font-size:10px;font-weight:800;letter-spacing:1px;border-color:var(--gold);}
 
 /* ─── CONTACT ─── */
 #contact{background:var(--dark);text-align:center;}
@@ -334,12 +400,14 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
 
 @media(max-width:900px){
   .bento-col-2{grid-column:span 4;}.bento-box{grid-column:span 2;}.bento-row-2{grid-row:span 1;}
+  .calc-grid{grid-template-columns:1fr;}.calc-form-group.full{grid-column:span 1;}
 }
 @media(max-width:768px){
   nav{padding:15px 5%;}.nav-links{display:none;}section{padding:100px 5%;}
   .hero-title{font-size:50px;}.hero-stats{gap:20px;flex-wrap:wrap;}
   .svc-grid{grid-template-columns:1fr;}.bento-box{grid-column:span 4;}
   #chat-box{width:320px;}footer{flex-direction:column;gap:15px;}
+  .calc-body{padding:30px;}.calc-results{padding:30px;}
 }
 @media(max-width:500px){.bento-box{grid-column:span 4;}}
 </style>
@@ -362,7 +430,7 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
     <li><a href="#services">Services</a></li>
     <li><a href="#proof">Proof</a></li>
     <li><a href="#projects">Work</a></li>
-    <li><a href="#arcade">Arcade</a></li>
+    <li><a href="#calculator">Calculator</a></li>
   </ul>
   <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" class="btn-magnetic" target="_blank" rel="noopener">Get Free Audit</a>
 </nav>
@@ -383,7 +451,7 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
     </p>
     <div class="hero-actions reveal">
       <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" class="btn-magnetic gold-fill" target="_blank" rel="noopener" style="padding:18px 48px;">Get Free Marketplace Audit</a>
-      <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" class="btn-magnetic outline-dim" target="_blank" rel="noopener" style="padding:18px 48px;">View LinkedIn Profile</a>
+      <a href="https://www.amazon.in/stores/OneLife/page/6EDAF642-1877-4AF9-B0CE-A9476C9520D1?lp_asin=B0DSW7S1MS&ref_=cm_sw_r_apann_ast_store_QX41P0HZ6NMSFDY3QSD5&store_ref=bl_ast_dp_brandlogo_sto" class="btn-magnetic outline-dim" target="_blank" rel="noopener" style="padding:18px 48px;">🏪 View Amazon Brand Store</a>
     </div>
     <div class="hero-stats reveal">
       <div class="stat-item"><div class="stat-num" data-count="3" data-suffix="X+">0</div><div class="stat-label">PPC Visibility</div></div>
@@ -396,23 +464,138 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
 
 <!-- ─── MARQUEE ─── -->
 <div class="marquee-container">
-  <div class="marquee-content">
-    <span><img src="Amazon01.jpg" alt="Amazon PPC Expert"> Amazon</span>
-    <span><img src="Flipkart01.jpg" alt="Flipkart Ads Specialist"> Flipkart</span>
-    <span><img src="Myntra01.jpg" alt="Myntra Account Manager"> Myntra</span>
-    <span><img src="Zepto01.jpg" alt="Zepto Quick Commerce"> Zepto</span>
-    <span><img src="Blinkit01.jpg" alt="Blinkit Q-Commerce"> Blinkit</span>
-    <span><img src="Instamart01.jpg" alt="Swiggy Instamart Expert"> Instamart</span>
-    <span><img src="Meesho01.jpg" alt="Meesho Growth Expert"> Meesho</span>
-    <span><img src="JioMart01.jpg" alt="JioMart Manager"> JioMart</span>
-    <span><img src="Amazon01.jpg" alt="Amazon Marketplace Manager"> Amazon</span>
-    <span><img src="Flipkart01.jpg" alt="Flipkart Growth"> Flipkart</span>
-    <span><img src="Myntra01.jpg" alt="Myntra Expert"> Myntra</span>
-    <span><img src="Zepto01.jpg" alt="Zepto Expert"> Zepto</span>
-    <span><img src="Blinkit01.jpg" alt="Blinkit Expert"> Blinkit</span>
-    <span><img src="Instamart01.jpg" alt="Instamart Expert"> Instamart</span>
-    <span><img src="Meesho01.jpg" alt="Meesho Expert"> Meesho</span>
-    <span><img src="JioMart01.jpg" alt="JioMart Expert"> JioMart</span>
+  <div class="marquee-content" id="marquee-track">
+    <!-- Amazon -->
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#FF9900;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><text y="75" font-size="80" font-family="Arial" font-weight="900" fill="#fff">a</text></svg>
+      </div>
+      <span class="marquee-logo-text">Amazon</span>
+    </div>
+    <!-- Flipkart -->
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#047BD5;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><text y="18" font-size="16" font-family="Arial" font-weight="900">F</text></svg>
+      </div>
+      <span class="marquee-logo-text">Flipkart</span>
+    </div>
+    <!-- Myntra -->
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#FF3E6C;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><text y="18" font-size="16" font-family="Arial" font-weight="900">M</text></svg>
+      </div>
+      <span class="marquee-logo-text">Myntra</span>
+    </div>
+    <!-- Zepto -->
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#8B5CF6;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><text y="18" font-size="16" font-family="Arial" font-weight="900">Z</text></svg>
+      </div>
+      <span class="marquee-logo-text">Zepto</span>
+    </div>
+    <!-- Blinkit -->
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#F8D12F;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><text y="18" font-size="15" font-family="Arial" font-weight="900">⚡</text></svg>
+      </div>
+      <span class="marquee-logo-text">Blinkit</span>
+    </div>
+    <!-- Instamart -->
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#FC8019;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><text y="18" font-size="14" font-family="Arial" font-weight="900">SI</text></svg>
+      </div>
+      <span class="marquee-logo-text">Instamart</span>
+    </div>
+    <!-- Meesho -->
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#9C27B0;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><text y="18" font-size="16" font-family="Arial" font-weight="900">M</text></svg>
+      </div>
+      <span class="marquee-logo-text">Meesho</span>
+    </div>
+    <!-- JioMart -->
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#005BBB;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><text y="18" font-size="14" font-family="Arial" font-weight="900">Jio</text></svg>
+      </div>
+      <span class="marquee-logo-text">JioMart</span>
+    </div>
+    <!-- Ajio -->
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#000;border:1px solid #444;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><text y="18" font-size="14" font-family="Arial" font-weight="900">AJ</text></svg>
+      </div>
+      <span class="marquee-logo-text">Ajio</span>
+    </div>
+    <!-- Tata Cliq -->
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#DC143C;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><text y="18" font-size="15" font-family="Arial" font-weight="900">T</text></svg>
+      </div>
+      <span class="marquee-logo-text">Tata Cliq</span>
+    </div>
+    <!-- Duplicate for seamless loop -->
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#FF9900;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 100 100" fill="none"><text y="75" font-size="80" font-family="Arial" font-weight="900" fill="#fff">a</text></svg>
+      </div>
+      <span class="marquee-logo-text">Amazon</span>
+    </div>
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#047BD5;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><text y="18" font-size="16" font-family="Arial" font-weight="900">F</text></svg>
+      </div>
+      <span class="marquee-logo-text">Flipkart</span>
+    </div>
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#FF3E6C;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><text y="18" font-size="16" font-family="Arial" font-weight="900">M</text></svg>
+      </div>
+      <span class="marquee-logo-text">Myntra</span>
+    </div>
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#8B5CF6;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><text y="18" font-size="16" font-family="Arial" font-weight="900">Z</text></svg>
+      </div>
+      <span class="marquee-logo-text">Zepto</span>
+    </div>
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#F8D12F;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><text y="18" font-size="15" font-family="Arial" font-weight="900">⚡</text></svg>
+      </div>
+      <span class="marquee-logo-text">Blinkit</span>
+    </div>
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#FC8019;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><text y="18" font-size="14" font-family="Arial" font-weight="900">SI</text></svg>
+      </div>
+      <span class="marquee-logo-text">Instamart</span>
+    </div>
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#9C27B0;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><text y="18" font-size="16" font-family="Arial" font-weight="900">M</text></svg>
+      </div>
+      <span class="marquee-logo-text">Meesho</span>
+    </div>
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#005BBB;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><text y="18" font-size="14" font-family="Arial" font-weight="900">Jio</text></svg>
+      </div>
+      <span class="marquee-logo-text">JioMart</span>
+    </div>
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#000;border:1px solid #444;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><text y="18" font-size="14" font-family="Arial" font-weight="900">AJ</text></svg>
+      </div>
+      <span class="marquee-logo-text">Ajio</span>
+    </div>
+    <div class="marquee-item">
+      <div class="marquee-logo-icon" style="background:#DC143C;border-radius:8px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><text y="18" font-size="15" font-family="Arial" font-weight="900">T</text></svg>
+      </div>
+      <span class="marquee-logo-text">Tata Cliq</span>
+    </div>
   </div>
 </div>
 
@@ -424,18 +607,103 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
     <p class="section-desc">I specialize in scaling brands across India's leading marketplaces with proven PPC strategies and growth systems.</p>
   </div>
   <div class="platform-grid-12">
-    <div class="p-card reveal"><img src="Amazon01.jpg" class="p-icon" alt="Amazon PPC Expert Marketplace Management"><div class="p-name">Amazon</div><div class="platform-badge">PPC Expert</div></div>
-    <div class="p-card reveal"><img src="Flipkart01.jpg" class="p-icon" alt="Flipkart Ads Growth Specialist"><div class="p-name">Flipkart</div><div class="platform-badge">Ads Expert</div></div>
-    <div class="p-card reveal"><img src="Meesho01.jpg" class="p-icon" alt="Meesho Marketplace Scaling"><div class="p-name">Meesho</div><div class="platform-badge">Growth</div></div>
-    <div class="p-card reveal"><img src="Myntra01.jpg" class="p-icon" alt="Myntra Account Management"><div class="p-name">Myntra</div><div class="platform-badge">Managed</div></div>
-    <div class="p-card reveal"><img src="Ajio01.jpg" class="p-icon" alt="Ajio Growth Expert"><div class="p-name">Ajio</div><div class="platform-badge">Managed</div></div>
-    <div class="p-card reveal"><img src="TataCliq01.jpg" class="p-icon" alt="Tata Cliq Manager"><div class="p-name">Tata Cliq</div><div class="platform-badge">Managed</div></div>
-    <div class="p-card reveal"><img src="JioMart01.jpg" class="p-icon" alt="JioMart Growth Manager"><div class="p-name">JioMart</div><div class="platform-badge">Growth</div></div>
-    <div class="p-card reveal"><img src="Blinkit01.jpg" class="p-icon" alt="Blinkit Quick Commerce Expert"><div class="p-name">Blinkit</div><div class="platform-badge">Q-Com</div></div>
-    <div class="p-card reveal"><img src="Zepto01.jpg" class="p-icon" alt="Zepto Quick Commerce Specialist"><div class="p-name">Zepto</div><div class="platform-badge">Q-Com</div></div>
-    <div class="p-card reveal"><img src="Instamart01.jpg" class="p-icon" alt="Swiggy Instamart Expert"><div class="p-name">Swiggy Instamart</div><div class="platform-badge">Q-Com</div></div>
-    <div class="p-card reveal"><div class="p-text-logo" style="color:#002C6C;">GS1</div><div class="p-name">GS1 Compliance</div><div class="platform-badge">Catalog</div></div>
-    <div class="p-card reveal"><div class="p-text-logo" style="color:#9999FF;">Pr</div><div class="p-name">Premiere Pro</div><div class="platform-badge">Video Ads</div></div>
+
+    <!-- Amazon -->
+    <div class="p-card reveal">
+      <div class="p-logo-wrap" style="background:#FF9900;">
+        <svg width="32" height="32" viewBox="0 0 100 100" fill="none"><text y="80" font-size="90" font-family="Arial" font-weight="900" fill="#fff">a</text></svg>
+      </div>
+      <div class="p-name">Amazon</div><div class="platform-badge">PPC Expert</div>
+    </div>
+
+    <!-- Flipkart -->
+    <div class="p-card reveal">
+      <div class="p-logo-wrap" style="background:#047BD5;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><text y="20" font-size="20" font-family="Arial" font-weight="900">F</text></svg>
+      </div>
+      <div class="p-name">Flipkart</div><div class="platform-badge">Ads Expert</div>
+    </div>
+
+    <!-- Meesho -->
+    <div class="p-card reveal">
+      <div class="p-logo-wrap" style="background:linear-gradient(135deg,#9C27B0,#E91E8C);">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><text y="20" font-size="20" font-family="Arial" font-weight="900">M</text></svg>
+      </div>
+      <div class="p-name">Meesho</div><div class="platform-badge">Growth</div>
+    </div>
+
+    <!-- Myntra -->
+    <div class="p-card reveal">
+      <div class="p-logo-wrap" style="background:#FF3E6C;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><text y="20" font-size="16" font-family="Arial" font-weight="900">Mn</text></svg>
+      </div>
+      <div class="p-name">Myntra</div><div class="platform-badge">Managed</div>
+    </div>
+
+    <!-- Ajio -->
+    <div class="p-card reveal">
+      <div class="p-logo-wrap" style="background:#111;border:1px solid #333;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><text y="20" font-size="14" font-family="Arial" font-weight="900">AJ</text></svg>
+      </div>
+      <div class="p-name">Ajio</div><div class="platform-badge">Managed</div>
+    </div>
+
+    <!-- Tata Cliq -->
+    <div class="p-card reveal">
+      <div class="p-logo-wrap" style="background:#DC143C;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><text y="20" font-size="14" font-family="Arial" font-weight="900">TC</text></svg>
+      </div>
+      <div class="p-name">Tata Cliq</div><div class="platform-badge">Managed</div>
+    </div>
+
+    <!-- JioMart -->
+    <div class="p-card reveal">
+      <div class="p-logo-wrap" style="background:#005BBB;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><text y="20" font-size="12" font-family="Arial" font-weight="900">Jio</text></svg>
+      </div>
+      <div class="p-name">JioMart</div><div class="platform-badge">Growth</div>
+    </div>
+
+    <!-- Blinkit -->
+    <div class="p-card reveal">
+      <div class="p-logo-wrap" style="background:#F8D12F;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="#000"><text y="22" font-size="22" font-family="Arial" font-weight="900">⚡</text></svg>
+      </div>
+      <div class="p-name">Blinkit</div><div class="platform-badge">Q-Com</div>
+    </div>
+
+    <!-- Zepto -->
+    <div class="p-card reveal">
+      <div class="p-logo-wrap" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9);">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><text y="20" font-size="20" font-family="Arial" font-weight="900">Z</text></svg>
+      </div>
+      <div class="p-name">Zepto</div><div class="platform-badge">Q-Com</div>
+    </div>
+
+    <!-- Instamart -->
+    <div class="p-card reveal">
+      <div class="p-logo-wrap" style="background:#FC8019;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><text y="20" font-size="12" font-family="Arial" font-weight="900">IM</text></svg>
+      </div>
+      <div class="p-name">Swiggy Instamart</div><div class="platform-badge">Q-Com</div>
+    </div>
+
+    <!-- GS1 -->
+    <div class="p-card reveal">
+      <div class="p-logo-wrap" style="background:linear-gradient(135deg,#002C6C,#004B9C);">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><text y="20" font-size="12" font-family="Arial" font-weight="900">GS1</text></svg>
+      </div>
+      <div class="p-name">GS1 Compliance</div><div class="platform-badge">Catalog</div>
+    </div>
+
+    <!-- Premiere Pro -->
+    <div class="p-card reveal">
+      <div class="p-logo-wrap" style="background:linear-gradient(135deg,#000,#1a1a2e);">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="#9999FF"><text y="20" font-size="14" font-family="Arial" font-weight="900">Pr</text></svg>
+      </div>
+      <div class="p-name">Premiere Pro</div><div class="platform-badge">Video Ads</div>
+    </div>
+
   </div>
 </section>
 
@@ -526,37 +794,40 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
   <div class="proof-scroll-wrapper reveal">
     <div class="proof-track">
       <div class="proof-card">
-        <div class="proof-card-placeholder"><div class="proof-icon">📈</div><div class="proof-label">image.01.jpg</div></div>
+        <div class="proof-card-placeholder"><div class="proof-icon">📈</div><div class="proof-label">Amazon PPC Dashboard</div></div>
         <div class="proof-card-overlay"><span>Amazon PPC Dashboard</span></div>
       </div>
       <div class="proof-card">
-        <div class="proof-card-placeholder"><div class="proof-icon">💹</div><div class="proof-label">image.02.jpg</div></div>
+        <div class="proof-card-placeholder"><div class="proof-icon">💹</div><div class="proof-label">Revenue Growth</div></div>
         <div class="proof-card-overlay"><span>Revenue Growth</span></div>
       </div>
       <div class="proof-card">
-        <div class="proof-card-placeholder"><div class="proof-icon">🎯</div><div class="proof-label">image.03.jpg</div></div>
+        <div class="proof-card-placeholder"><div class="proof-icon">🎯</div><div class="proof-label">ROAS Metrics</div></div>
         <div class="proof-card-overlay"><span>ROAS Metrics</span></div>
       </div>
       <div class="proof-card">
-        <div class="proof-card-placeholder"><div class="proof-icon">⚡</div><div class="proof-label">image.04.jpg</div></div>
+        <div class="proof-card-placeholder"><div class="proof-icon">⚡</div><div class="proof-label">Q-Com Performance</div></div>
         <div class="proof-card-overlay"><span>Q-Com Performance</span></div>
       </div>
       <div class="proof-card">
-        <div class="proof-card-placeholder"><div class="proof-icon">📦</div><div class="proof-label">image.05.jpg</div></div>
+        <div class="proof-card-placeholder"><div class="proof-icon">📦</div><div class="proof-label">Catalog Compliance</div></div>
         <div class="proof-card-overlay"><span>Catalog Compliance</span></div>
       </div>
       <div class="proof-card">
-        <div class="proof-card-placeholder"><div class="proof-icon">🏆</div><div class="proof-label">image.06.jpg</div></div>
+        <div class="proof-card-placeholder"><div class="proof-icon">🏆</div><div class="proof-label">Brand Store Analytics</div></div>
         <div class="proof-card-overlay"><span>Brand Store Analytics</span></div>
       </div>
       <div class="proof-card">
-        <div class="proof-card-placeholder"><div class="proof-icon">🔥</div><div class="proof-label">image.07.jpg</div></div>
+        <div class="proof-card-placeholder"><div class="proof-icon">🔥</div><div class="proof-label">Impression Scale</div></div>
         <div class="proof-card-overlay"><span>Impression Scale</span></div>
       </div>
     </div>
   </div>
-  <div style="text-align:center;">
-    <a href="https://www.amazon.in/stores/OneLife/page/6EDAF642-1877-4AF9-B0CE-A9476C9520D1?lp_asin=B0DSW7S1MS&ref_=cm_sw_r_apann_ast_store_QX41P0HZ6NMSFDY3QSD5&store_ref=bl_ast_dp_brandlogo_sto" class="proof-amazon-btn" target="_blank" rel="noopener">🏪 View Live Amazon Brand Store →</a>
+  <div style="text-align:center;margin-top:50px;">
+    <a href="https://www.amazon.in/stores/OneLife/page/6EDAF642-1877-4AF9-B0CE-A9476C9520D1?lp_asin=B0DSW7S1MS&ref_=cm_sw_r_apann_ast_store_QX41P0HZ6NMSFDY3QSD5&store_ref=bl_ast_dp_brandlogo_sto" class="proof-amazon-btn" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF9900"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+      🏪 View Live Amazon Brand Store →
+    </a>
   </div>
 </section>
 
@@ -568,7 +839,6 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
   </div>
   <div class="prj-grid">
 
-    <!-- Case Study 1: Amazon PPC -->
     <div class="prj-card reveal">
       <div class="prj-img"><span class="prj-img-icon">📈</span></div>
       <div class="prj-info">
@@ -588,7 +858,6 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
       </div>
     </div>
 
-    <!-- Case Study 2: Quick Commerce -->
     <div class="prj-card reveal">
       <div class="prj-img"><span class="prj-img-icon">⚡</span></div>
       <div class="prj-info">
@@ -607,7 +876,6 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
       </div>
     </div>
 
-    <!-- Case Study 3: GS1 & Catalog -->
     <div class="prj-card reveal">
       <div class="prj-img"><span class="prj-img-icon">📦</span></div>
       <div class="prj-info">
@@ -629,6 +897,70 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
   </div>
 </section>
 
+<!-- ─── PROFIT CALCULATOR ─── -->
+<section id="calculator">
+  <div class="section-head reveal">
+    <span class="section-label">Free Tool</span>
+    <h2 class="section-title">Marketplace <span class="accent">Profit Calculator</span></h2>
+    <p class="section-desc">Calculate your real margins across Amazon, Flipkart, Meesho, Myntra & Quick Commerce platforms — before you sell a single unit.</p>
+  </div>
+  <div class="calc-inner reveal">
+    <div class="calc-card">
+      <div class="calc-body">
+        <div class="calc-grid">
+          <div class="calc-form-group full">
+            <label class="calc-label" for="calc-platform">Select Platform</label>
+            <select class="calc-select" id="calc-platform">
+              <optgroup label="Traditional E-Commerce">
+                <option value="amazon">🟠 Amazon</option>
+                <option value="flipkart">🔵 Flipkart</option>
+                <option value="meesho">🟣 Meesho</option>
+                <option value="myntra">🔴 Myntra (Fashion)</option>
+              </optgroup>
+              <optgroup label="Quick Commerce (Q-Comm)">
+                <option value="blinkit">⚡ Blinkit / Zepto / Instamart</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="calc-form-group">
+            <label class="calc-label" for="calc-sp">Selling Price (₹)</label>
+            <input type="number" class="calc-input" id="calc-sp" placeholder="e.g. 899" min="0">
+          </div>
+          <div class="calc-form-group">
+            <label class="calc-label" for="calc-cp">Sourcing / Mfg Cost (₹)</label>
+            <input type="number" class="calc-input" id="calc-cp" placeholder="e.g. 350" min="0">
+          </div>
+          <div class="calc-form-group full">
+            <label class="calc-label" for="calc-ship">Estimated Shipping Cost (₹)</label>
+            <input type="number" class="calc-input" id="calc-ship" placeholder="e.g. 45" min="0">
+          </div>
+        </div>
+        <div class="calc-btn-wrap">
+          <button class="calc-btn" onclick="calculateProfit()">⚡ Calculate My Margins</button>
+        </div>
+      </div>
+
+      <div class="calc-results" id="calc-results-block">
+        <div class="result-row"><span class="r-label">Selling Price</span><span class="r-val" id="cr-sp">₹0</span></div>
+        <div class="result-row"><span class="r-label">Marketplace Commission</span><span class="r-val deduct" id="cr-comm">- ₹0</span></div>
+        <div class="result-row"><span class="r-label">Fixed / Collection Fees</span><span class="r-val deduct" id="cr-fixed">- ₹0</span></div>
+        <div class="result-row"><span class="r-label">Shipping / Forwarding</span><span class="r-val deduct" id="cr-ship">- ₹0</span></div>
+        <div class="result-row"><span class="r-label">GST on Marketplace Fees (18%)</span><span class="r-val deduct" id="cr-gst">- ₹0</span></div>
+        <div class="result-row"><span class="r-label">Sourcing / Mfg Cost</span><span class="r-val deduct" id="cr-cp">- ₹0</span></div>
+        <div class="result-total">
+          <span class="r-label">Net Profit</span>
+          <span class="r-val" id="cr-profit">₹0</span>
+        </div>
+        <div class="result-margin">
+          <span style="color:var(--text-muted);font-size:12px;letter-spacing:1px;text-transform:uppercase;">ROI Margin</span>
+          <span id="cr-margin" style="color:var(--gold);">0%</span>
+        </div>
+        <p class="calc-disclaimer">Estimates based on standard categories and April 2026 fee structures. Actual payouts may vary by weight slab, RTO rate, and category-specific rules. Always verify with the latest seller portal fee structures.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── CTA SECTION ─── -->
 <section id="cta-section">
   <div class="cta-inner reveal">
@@ -642,44 +974,6 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
   </div>
 </section>
 
-<!-- ─── ARCADE (just before footer) ─── -->
-<section id="arcade">
-  <span class="section-label reveal">Interactive Experience</span>
-  <h2 class="section-title reveal">Play My <span class="accent">Skills</span></h2>
-  <p class="section-desc reveal" style="text-align:center;margin-bottom:60px;">Experience how I approach marketplace growth through interactive simulations: ACoS vs ROAS optimization, scaling strategies, and sales funnel thinking.</p>
-  <div class="arcade-grid">
-    <div class="game-box reveal">
-      <div class="game-head">ACoS Slasher</div>
-      <div class="game-sub">Slice Green (ROAS). Avoid Red (ACoS).</div>
-      <div class="game-area">
-        <div class="start-overlay" id="slasher-start" onclick="startSlasher()"><button class="btn-magnetic">Insert Coin</button></div>
-        <canvas id="slasher-canvas" width="300" height="320"></canvas>
-      </div>
-      <div style="margin-top:15px;font-weight:700;color:var(--gold);">Score: <span id="slasher-score">0</span></div>
-    </div>
-    <div class="game-box reveal">
-      <div class="game-head">Marketplace Run</div>
-      <div class="game-sub">Jump over hurdles. Scale Fulfillment.</div>
-      <div class="game-area">
-        <div class="start-overlay" id="runner-start" onclick="startRunner()"><button class="btn-magnetic">Insert Coin</button></div>
-        <canvas id="runner-canvas" width="300" height="320"></canvas>
-      </div>
-      <div style="margin-top:15px;font-weight:700;color:var(--gold);">Distance: <span id="runner-score">0</span>m</div>
-    </div>
-    <div class="game-box reveal">
-      <div class="game-head">The Sales Funnel</div>
-      <div class="game-sub">Route Marketplace Traffic to Sales.</div>
-      <div class="game-area" style="padding:10px;">
-        <div class="puzzle-board" id="puzzle-board"></div>
-      </div>
-      <div style="margin-top:15px;display:flex;justify-content:space-between;align-items:center;">
-        <button class="btn-magnetic" style="padding:8px 16px;font-size:10px;" onclick="checkPuzzle()">Send Traffic</button>
-        <span id="puzzle-status" style="font-size:11px;color:#4ade80;"></span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ─── CONTACT ─── -->
 <section id="contact">
   <div class="contact-wrap reveal">
@@ -688,6 +982,7 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
     <p class="hero-sub" style="margin-top:20px;">I help brands scale on Amazon, Flipkart &amp; Quick Commerce platforms with proven strategies. Let's talk about your marketplace growth goals.</p>
     <div class="social-links">
       <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" class="btn-magnetic gold-fill" target="_blank" rel="noopener" style="padding:16px 40px;">💼 View LinkedIn Profile</a>
+      <a href="https://www.amazon.in/stores/OneLife/page/6EDAF642-1877-4AF9-B0CE-A9476C9520D1?lp_asin=B0DSW7S1MS&ref_=cm_sw_r_apann_ast_store_QX41P0HZ6NMSFDY3QSD5&store_ref=bl_ast_dp_brandlogo_sto" class="btn-magnetic" style="padding:16px 40px;border-color:rgba(255,153,0,0.5);color:#FF9900;" target="_blank" rel="noopener">🏪 Amazon Brand Store</a>
       <a href="mailto:Jeniish.kamli@gmail.com" class="btn-magnetic" style="padding:16px 40px;border-color:#555;color:var(--text-muted);">📩 Jeniish.kamli@gmail.com</a>
     </div>
   </div>
@@ -735,7 +1030,7 @@ const cursor=document.getElementById('cursor'),ring=document.getElementById('cur
 document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';});
 let rx=0,ry=0;
 (function animRing(){rx+=(cursor.getBoundingClientRect().left-rx)*0.15;ry+=(cursor.getBoundingClientRect().top-ry)*0.15;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
-document.querySelectorAll('a,button,.p-card,.bento-box,.svc-card,.prj-card,.proof-card,.game-box').forEach(el=>{
+document.querySelectorAll('a,button,.p-card,.bento-box,.svc-card,.prj-card,.proof-card,.calc-card,.calc-btn').forEach(el=>{
   el.addEventListener('mouseenter',()=>{ring.style.transform='translate(-50%,-50%) scale(1.5)';ring.style.borderColor='var(--gold)';cursor.style.width='12px';cursor.style.height='12px';});
   el.addEventListener('mouseleave',()=>{ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.borderColor='rgba(229,184,11,0.5)';cursor.style.width='8px';cursor.style.height='8px';});
 });
@@ -775,7 +1070,7 @@ function initCharts(){
 
 // ── AUDIO ──
 let isMuted=false;
-const sounds={jump:'https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg',crash:'https://actions.google.com/sounds/v1/cartoon/wood_plank_foley.ogg',slashGood:'https://actions.google.com/sounds/v1/cartoon/pop.ogg',slashBad:'https://actions.google.com/sounds/v1/alarms/buzzer_alarm.ogg',swipe:'https://actions.google.com/sounds/v1/weapons/fast_swoosh.ogg',click:'https://actions.google.com/sounds/v1/ui/button_click.ogg',win:'https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg',bounce:'https://actions.google.com/sounds/v1/cartoon/pop.ogg'};
+const sounds={bounce:'https://actions.google.com/sounds/v1/cartoon/pop.ogg',click:'https://actions.google.com/sounds/v1/ui/button_click.ogg'};
 function playSFX(n,v=0.5){if(!isMuted&&sounds[n]){let a=new Audio(sounds[n]);a.volume=v;a.play().catch(e=>{});}}
 function toggleMute(){isMuted=!isMuted;document.getElementById('audio-toggle').innerText=isMuted?'🔇':'🔊';}
 
@@ -808,55 +1103,69 @@ function initPhysics(){
 let pitObs=new IntersectionObserver(e=>{if(e[0].isIntersecting){initPhysics();pitObs.disconnect();}});
 pitObs.observe(document.getElementById('physics-pit'));
 
-// ── ARCADE ──
-// 1. Slasher
-let slashRun=false;
-function startSlasher(){
-  document.getElementById('slasher-start').style.display='none';if(slashRun)return;slashRun=true;
-  const cvs=document.getElementById('slasher-canvas');const ctx=cvs.getContext('2d');
-  let tgts=[],parts=[],sc=0,m={x:0,y:0,d:false},tr=[],lst=0;
-  cvs.addEventListener('mousedown',()=>{m.d=true;tr=[];});cvs.addEventListener('mouseup',()=>{m.d=false;tr=[];});
-  cvs.addEventListener('mousemove',e=>{const r=cvs.getBoundingClientRect();m.x=e.clientX-r.left;m.y=e.clientY-r.top;if(m.d){tr.push({x:m.x,y:m.y});if(tr.length>5)tr.shift();if(Date.now()-lst>200){playSFX('swipe',0.1);lst=Date.now();}chk();}});
-  function pGen(x,y,c){for(let i=0;i<8;i++)parts.push({x:x,y:y,vx:(Math.random()-.5)*10,vy:(Math.random()-.5)*10,l:1,c:c});}
-  function chk(){if(tr.length<2)return;tgts.forEach(t=>{if(t.a&&Math.hypot(t.x-m.x,t.y-m.y)<t.r){t.a=false;pGen(t.x,t.y,t.g?'#4ade80':'#ef4444');if(t.g){sc+=10;playSFX('slashGood',0.6);}else{sc-=20;playSFX('slashBad',0.4);}document.getElementById('slasher-score').innerText=sc;}});}
-  function loop(){
-    if(Math.random()<0.03){let g=Math.random()>0.4;tgts.push({x:Math.random()*200+50,y:cvs.height+20,vx:(Math.random()-.5)*3,vy:-(Math.random()*4+6),r:25,g:g,t:g?"ROAS":"ACoS",a:true});}
-    ctx.clearRect(0,0,cvs.width,cvs.height);
-    tgts.forEach(t=>{if(!t.a)return;t.x+=t.vx;t.y+=t.vy;t.vy+=0.15;ctx.beginPath();ctx.arc(t.x,t.y,t.r,0,Math.PI*2);ctx.fillStyle=t.g?'#4ade80':'#ef4444';ctx.fill();ctx.fillStyle='#000';ctx.font="bold 11px Arial";ctx.textAlign="center";ctx.fillText(t.t,t.x,t.y+4);});
-    tgts=tgts.filter(t=>t.y<cvs.height+50&&t.a);
-    parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.l-=0.05;ctx.globalAlpha=Math.max(0,p.l);ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,5,5);});ctx.globalAlpha=1;parts=parts.filter(p=>p.l>0);
-    if(m.d&&tr.length>1){ctx.beginPath();ctx.moveTo(tr[0].x,tr[0].y);for(let i=1;i<tr.length;i++)ctx.lineTo(tr[i].x,tr[i].y);ctx.strokeStyle='#E5B80B';ctx.lineWidth=4;ctx.lineCap='round';ctx.stroke();}
-    if(slashRun)requestAnimationFrame(loop);
-  }loop();
-}
+// ── PROFIT CALCULATOR ──
+function calculateProfit(){
+  const platform=document.getElementById('calc-platform').value;
+  const sp=parseFloat(document.getElementById('calc-sp').value)||0;
+  const cp=parseFloat(document.getElementById('calc-cp').value)||0;
+  const shipping=parseFloat(document.getElementById('calc-ship').value)||0;
 
-// 2. Runner
-let runRun=false;
-function startRunner(){
-  document.getElementById('runner-start').style.display='none';if(runRun)return;runRun=true;
-  const cvs=document.getElementById('runner-canvas');const ctx=cvs.getContext('2d');
-  let p={x:30,y:200,w:20,h:20,vy:0,j:false},obs=[],sc=0;
-  function jp(){if(!p.j){p.vy=-9;p.j=true;playSFX('jump',0.5);}}
-  cvs.addEventListener('mousedown',jp);window.addEventListener('keydown',e=>{if(e.code==='Space')jp();});
-  function loop(){
-    ctx.clearRect(0,0,cvs.width,cvs.height);ctx.fillStyle='#222';ctx.fillRect(0,220,cvs.width,cvs.height-220);ctx.strokeStyle='#E5B80B';ctx.beginPath();ctx.moveTo(0,220);ctx.lineTo(cvs.width,220);ctx.stroke();
-    p.vy+=0.5;p.y+=p.vy;if(p.y>200){p.y=200;p.j=false;p.vy=0;}ctx.fillStyle='#E5B80B';ctx.fillRect(p.x,p.y,p.w,p.h);
-    if(Math.random()<0.02&&(obs.length==0||obs[obs.length-1].x<150))obs.push({x:cvs.width,y:190+(Math.random()>.5?0:-20),w:15,h:30});
-    let hit=false;obs.forEach(o=>{o.x-=5;ctx.fillStyle='#ef4444';ctx.fillRect(o.x,o.y,o.w,o.h);if(p.x<o.x+o.w&&p.x+p.w>o.x&&p.y<o.y+o.h&&p.y+p.h>o.y)hit=true;});obs=obs.filter(o=>o.x>-20);
-    if(!hit){sc++;document.getElementById('runner-score').innerText=Math.floor(sc/10);if(runRun)requestAnimationFrame(loop);}
-    else{playSFX('crash',0.8);ctx.fillStyle='#FFF';ctx.font="18px 'Outfit'";ctx.textAlign="center";ctx.fillText("CRASHED!",cvs.width/2,100);runRun=false;document.getElementById('runner-start').style.display='flex';document.getElementById('runner-start').innerHTML=`<button class="btn-magnetic" onclick="(()=>{runRun=false;startRunner();})()">Restart</button>`;}
-  }loop();
-}
+  if(sp===0){alert("Please enter a valid Selling Price.");return;}
 
-// 3. Puzzle
-const pBoard=document.getElementById('puzzle-board');const pTypes=['━','┃','┏','┛','┗','┓'];
-for(let i=0;i<16;i++){
-  let t=document.createElement('div');t.className='puzzle-tile';
-  if(i===0){t.classList.add('puzzle-start');t.innerText="TRFC";}else if(i===15){t.classList.add('puzzle-end');t.innerText="SALE";}
-  else{t.innerText=pTypes[Math.floor(Math.random()*pTypes.length)];let rot=[0,90,180,270][Math.floor(Math.random()*4)];t.style.transform=`rotate(${rot}deg)`;t.dataset.rot=rot;t.addEventListener('click',()=>{playSFX('click',0.4);let r=(parseInt(t.dataset.rot)+90)%360;t.dataset.rot=r;t.style.transform=`rotate(${r}deg)`;});}
-  pBoard.appendChild(t);
+  let commissionRate=0,fixedFee=0,collectionRate=0;
+
+  switch(platform){
+    case 'amazon':
+      commissionRate=(sp<1000)?0:0.10;
+      fixedFee=(sp<1000)?30:60;
+      collectionRate=0.02;
+      break;
+    case 'flipkart':
+      commissionRate=(sp<1000)?0:0.12;
+      fixedFee=(sp<1000)?35:65;
+      collectionRate=0.02;
+      break;
+    case 'meesho':
+      commissionRate=0;fixedFee=0;collectionRate=0;
+      break;
+    case 'myntra':
+      commissionRate=0.20;fixedFee=25;collectionRate=0.02;
+      break;
+    case 'blinkit':
+      commissionRate=0.20;fixedFee=8;collectionRate=0;
+      break;
+  }
+
+  const commissionAmount=sp*commissionRate;
+  const collectionAmount=sp*collectionRate;
+  const totalFixedAndCollection=fixedFee+collectionAmount;
+  const totalMarketplaceFees=commissionAmount+totalFixedAndCollection;
+  const gstOnFees=totalMarketplaceFees*0.18;
+  const totalDeductions=totalMarketplaceFees+gstOnFees+shipping;
+  const settlement=sp-totalDeductions;
+  const profit=settlement-cp;
+  const profitMargin=(profit/sp)*100;
+
+  document.getElementById('cr-sp').innerText=`₹${sp.toFixed(2)}`;
+  document.getElementById('cr-comm').innerText=`- ₹${commissionAmount.toFixed(2)}`;
+  document.getElementById('cr-fixed').innerText=`- ₹${totalFixedAndCollection.toFixed(2)}`;
+  document.getElementById('cr-ship').innerText=`- ₹${shipping.toFixed(2)}`;
+  document.getElementById('cr-gst').innerText=`- ₹${gstOnFees.toFixed(2)}`;
+  document.getElementById('cr-cp').innerText=`- ₹${cp.toFixed(2)}`;
+
+  const profitEl=document.getElementById('cr-profit');
+  profitEl.innerText=`₹${profit.toFixed(2)}`;
+  profitEl.className='r-val '+(profit>=0?'profit':'loss');
+
+  const marginEl=document.getElementById('cr-margin');
+  marginEl.innerText=`${profitMargin.toFixed(2)}%`;
+  marginEl.style.color=profitMargin>=0?'#4ade80':'#ef4444';
+
+  const block=document.getElementById('calc-results-block');
+  block.style.display='block';
+  block.classList.add('visible');
+  playSFX('click',0.4);
 }
-function checkPuzzle(){playSFX('win',0.6);document.getElementById('puzzle-status').innerText="Traffic Flowing! 🚀";}
 
 // ── AI CHAT ──
 function toggleChat(){const box=document.getElementById('chat-box');box.classList.toggle('open');}
@@ -869,6 +1178,7 @@ function getReply(msg){
   if(/ppc|ads|acos|roas/.test(m))return"💰 I specialize in Amazon & Flipkart PPC — keyword harvesting, negative keywords, bid laddering, and ROAS optimization for maximum ROI.";
   if(/contact|email|hire|audit/.test(m))return"🔥 Email: Jeniish.kamli@gmail.com | LinkedIn: linkedin.com/in/jenish-kamli-47b787253 | Get a free marketplace audit today!";
   if(/service|offer/.test(m))return"💼 Services: Amazon PPC, Flipkart Ads, Q-Commerce Growth (Blinkit/Zepto/Instamart), Catalog Compliance (GS1), Listing SEO & A+ Content.";
+  if(/calculat|margin|profit|fee/.test(m))return"🧮 Try my free Marketplace Profit Calculator on this page! Enter your selling price, cost, and shipping to instantly see your real margins across platforms.";
   return"I'm Jenish's AI assistant. Ask about Amazon PPC results, Quick Commerce growth, or marketplace management. LinkedIn: linkedin.com/in/jenish-kamli-47b787253";
 }
 function appendMsg(txt,type){const b=document.getElementById('chat-messages');const d=document.createElement('div');d.className='msg '+type;d.textContent=txt;b.appendChild(d);b.scrollTop=b.scrollHeight;}
