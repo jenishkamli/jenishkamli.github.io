@@ -7,6 +7,9 @@
 <meta name="description" content="Jenish Kamli — Scale Your Brand Across Amazon, Flipkart & Quick Commerce. Quick Shift Creative E-Commerce Growth Systems." />
 <meta name="keywords" content="Quick Shift Creative, Amazon Expert, Flipkart Growth, Quick Commerce Specialist, Jenish Kamli" />
 <meta name="author" content="Jenish Kamli" />
+<meta property="og:title" content="Jenish Kamli | Quick Shift Creative | E-Commerce Growth Specialist" />
+<meta property="og:description" content="Generated ₹15L+ monthly revenue across marketplaces. Amazon, Flipkart, D2C & Quick Commerce Growth Specialist." />
+<meta property="og:type" content="website" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet"/>
@@ -38,18 +41,34 @@ body{background:var(--dark);color:var(--text-main);font-family:var(--font-body);
 /* ─── CURSOR ─── */
 #cursor{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 15px var(--gold);transition:width .2s,height .2s;}
 #cursor-ring{position:fixed;width:45px;height:45px;border:1px solid rgba(229,184,11,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease-out;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--dark);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:10px;}
 
 /* ─── PRELOADER ─── */
 #preloader{position:fixed;inset:0;background:var(--dark);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.loader-text{font-family:var(--font-head);font-size:3vw;color:var(--gold);letter-spacing:5px;text-transform:uppercase;text-shadow:0 0-30px var(--gold-glow);}
+.loader-text{font-family:var(--font-head);font-size:3vw;color:var(--gold);letter-spacing:5px;text-transform:uppercase;text-shadow:0 0 30px var(--gold-glow);}
 .loader-bar-wrap{width:300px;height:1px;background:#222;margin-top:30px;position:relative;}
 .loader-bar{position:absolute;top:0;left:0;height:100%;width:0%;background:var(--gold);box-shadow:0 0 10px var(--gold);}
 #percent{margin-top:15px;font-size:12px;color:var(--text-muted);letter-spacing:2px;font-weight:600;}
 
+/* ─── MEDIA PLACEHOLDERS ─── */
+.media-placeholder {
+  width: 100%; height: 100%; min-height: 200px;
+  background: linear-gradient(135deg, #111 0%, #1a1a1a 50%, #050505 100%);
+  border: 1px dashed rgba(229,184,11,0.3); border-radius: 12px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  color: var(--text-muted); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  transition: all 0.3s; position: relative; overflow: hidden;
+}
+.media-placeholder::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle, var(--gold-glow-light), transparent 70%); opacity: 0; transition: opacity 0.4s; }
+.media-placeholder:hover::after { opacity: 1; }
+.media-placeholder .icon { font-size: 32px; color: var(--gold); }
+
 /* ─── LIQUID GLASS BUTTONS ─── */
 .btn-magnetic{
   padding:14px 32px; background:var(--glass-btn); backdrop-filter:blur(15px);
-  border:1px solid var(--border-light); border-radius:100px;
+  -webkit-backdrop-filter:blur(15px); border:1px solid var(--border-light); border-radius:100px;
   color:var(--text-main); font-size:13px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
   text-decoration:none; transition:all .35s cubic-bezier(0.23,1,0.32,1);
   display:inline-flex; align-items:center; justify-content:center;
@@ -94,7 +113,7 @@ nav{
 .hero-stats{display:flex;gap:40px;justify-content:center;margin-top:70px;flex-wrap:wrap;}
 .stat-item{text-align:center; background:var(--glass); padding:20px; border-radius:16px; border:1px solid rgba(255,255,255,0.05); min-width:160px; backdrop-filter:blur(10px);}
 .stat-num{font-family:var(--font-head);font-size:38px;font-weight:700;color:var(--gold);line-height:1;}
-.stat-label{font-size:11px;color:var(--text-muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;}
+.stat-label{font-size:11px;color:var(--text-muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:8px;}
 
 /* ─── MARQUEE ─── */
 .marquee-container{width:100%;padding:20px 0;background:var(--dark-surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;position:relative;z-index:10;display:flex;}
@@ -119,11 +138,11 @@ nav{
   position: fixed; inset: 0; z-index: 100000;
   display: flex; align-items: center; justify-content: center;
   opacity: 0; pointer-events: none; transition: all 0.6s cubic-bezier(0.23,1,0.32,1);
-  background: rgba(3, 3, 3, 0.5); backdrop-filter: blur(0px); /* Initial state */
+  background: rgba(3, 3, 3, 0.5); backdrop-filter: blur(0px); 
 }
 #calendar-modal.active {
   opacity: 1; pointer-events: all;
-  backdrop-filter: blur(25px); /* Liquid blur effect */
+  backdrop-filter: blur(25px); 
 }
 .calendar-glass {
   width: 95%; max-width: 1100px; height: 85vh;
@@ -222,6 +241,63 @@ footer{padding:60px 5%; border-top:1px solid #1a1a1a; background:var(--dark-surf
   </div>
 </section>
 
+<section id="about" style="background:var(--dark-surface); padding:100px 5%;">
+  <div class="section-head reveal">
+    <span class="section-label">Quick Shift Creative</span>
+    <h2 class="section-title">The <span class="accent">DNA</span> of Growth</h2>
+  </div>
+  <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;" class="reveal">
+    <div>
+      <p style="font-size:17px; color:var(--text-muted); line-height:1.8; margin-bottom:20px;">I’m <strong>Jenish Kamli</strong> — an experienced E-Commerce Manager & Quick Commerce Specialist. I help businesses build scalable revenue systems across Amazon, Flipkart, Myntra, and D2C platforms like Shopify.</p>
+    </div>
+    <div class="media-placeholder video" style="min-height:350px;">
+      <div class="icon">▶</div>
+      <div>Agency Introduction Video Placeholder</div>
+    </div>
+  </div>
+</section>
+
+<section id="proof" style="background:var(--dark); padding:150px 5%;">
+  <div class="section-head reveal">
+    <h2 class="section-title">Dashboard <span class="accent">Proof</span></h2>
+  </div>
+  <div class="proof-scroll-wrapper reveal" style="overflow-x:auto; padding-bottom:20px; cursor:grab;">
+    <div class="proof-track" style="display:flex;gap:24px;width:max-content;">
+      <div class="proof-card" style="width:320px;height:220px;border-radius:16px;background:var(--glass);flex-shrink:0;">
+        <div class="media-placeholder image"><div class="icon">📈</div><div>Amazon Analytics</div></div>
+      </div>
+      <div class="proof-card" style="width:320px;height:220px;border-radius:16px;background:var(--glass);flex-shrink:0;">
+        <div class="media-placeholder video"><div class="icon">▶</div><div>100M+ Impressions Dashboard Video</div></div>
+      </div>
+      <div class="proof-card" style="width:320px;height:220px;border-radius:16px;background:var(--glass);flex-shrink:0;">
+        <div class="media-placeholder image"><div class="icon">⚡</div><div>Blinkit Analytics</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" style="background:var(--dark-surface); padding:150px 5%;">
+  <div class="section-head reveal">
+    <h2 class="section-title">Multi-Platform <span class="accent">Success</span></h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px;max-width:1200px;margin:0 auto;">
+    <div class="prj-card reveal" style="border-radius:20px;background:var(--dark);overflow:hidden;border:1px solid rgba(255,255,255,0.05);">
+      <div class="media-placeholder image" style="height:220px;border:none;border-radius:0;"><div class="icon">📷</div></div>
+      <div style="padding:35px;">
+        <span style="display:inline-block;padding:6px 14px;background:rgba(229,184,11,0.1);color:var(--gold);font-size:10px;font-weight:800;border-radius:100px;margin-bottom:15px;">Amazon Expert</span>
+        <h3 style="font-size:22px;font-weight:700;margin-bottom:12px;">Marketplace Growth</h3>
+      </div>
+    </div>
+    <div class="prj-card reveal" style="border-radius:20px;background:var(--dark);overflow:hidden;border:1px solid rgba(255,255,255,0.05);">
+      <div class="media-placeholder video" style="height:220px;border:none;border-radius:0;"><div class="icon">▶</div><div>Q-Com Growth Video Placeholder</div></div>
+      <div style="padding:35px;">
+        <span style="display:inline-block;padding:6px 14px;background:rgba(229,184,11,0.1);color:var(--gold);font-size:10px;font-weight:800;border-radius:100px;margin-bottom:15px;">Quick Commerce</span>
+        <h3 style="font-size:22px;font-weight:700;margin-bottom:12px;">Q-Com Onboarding</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="physics-pit">
   <h2 class="section-title reveal" style="margin-bottom:40px;">Interactive <span class="accent">Tech Stack</span></h2>
   <div id="matter-container" class="reveal"></div>
@@ -271,7 +347,6 @@ let rx=0,ry=0;
 function openCalendar(e) {
   if(e) e.preventDefault();
   document.getElementById('calendar-modal').classList.add('active');
-  gsap.to(window, {duration: 0.5, scrollTo: 0}); // Optional smooth scroll to top
 }
 function closeCalendar() {
   document.getElementById('calendar-modal').classList.remove('active');
