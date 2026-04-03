@@ -137,41 +137,6 @@ nav{
 .stat-num{font-family:var(--font-head);font-size:38px;font-weight:700;color:var(--gold);line-height:1;}
 .stat-label{font-size:11px;color:var(--text-muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:8px;}
 
-/* ─── LIQUID GLASS POP-UP MODAL ─── */
-#booking-modal {
-  position: fixed; inset: 0; z-index: 100000;
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none; transition: all 0.6s cubic-bezier(0.23,1,0.32,1);
-  background: rgba(3, 3, 3, 0.4); backdrop-filter: blur(0px);
-}
-#booking-modal.active {
-  opacity: 1; pointer-events: all;
-  backdrop-filter: blur(20px);
-}
-.modal-glass-container {
-  width: 95%; max-width: 1000px; height: 85vh;
-  background: rgba(10, 10, 10, 0.8);
-  border: 1px solid rgba(229, 184, 11, 0.4);
-  border-radius: 32px; overflow: hidden;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.9), 0 0 50px rgba(229, 184, 11, 0.1);
-  position: relative; 
-  transform: scale(0.9) translateY(40px); 
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-#booking-modal.active .modal-glass-container {
-  transform: scale(1) translateY(0);
-}
-.close-modal-btn {
-  position: absolute; top: 25px; right: 25px;
-  background: var(--dark-surface); color: var(--gold);
-  border: 1px solid var(--border); border-radius: 50%;
-  width: 50px; height: 50px; font-size: 26px;
-  display: flex; align-items: center; justify-content: center;
-  cursor: none; z-index: 100; transition: 0.3s;
-}
-.close-modal-btn:hover { background: var(--gold); color: var(--dark); transform: rotate(90deg); }
-.calendar-iframe { width: 100%; height: 100%; border: none; background: transparent; }
-
 /* ─── MARQUEE ─── */
 .marquee-container{width:100%;padding:20px 0;background:var(--dark-surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;position:relative;z-index:10;display:flex;}
 .marquee-content{display:flex;gap:60px;white-space:nowrap;animation:marquee 30s linear infinite;align-items:center;}
@@ -357,6 +322,38 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
 .f-text{font-size:13px;color:var(--text-muted); text-align:right;}
 .f-brand-tag{display:inline-block; margin-top:8px; padding:4px 10px; border:1px solid rgba(229,184,11,0.3); border-radius:100px; font-size:10px; color:var(--gold); letter-spacing:1px; text-transform:uppercase;}
 
+/* ─── CALENDLY GLASS MODAL ─── */
+#calendly-modal {
+  position: fixed; inset: 0; z-index: 100000;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
+  background: rgba(3, 3, 3, 0.85); backdrop-filter: blur(15px);
+}
+#calendly-modal.active {
+  opacity: 1; pointer-events: all;
+}
+.calendly-glass {
+  width: 95%; max-width: 1000px; height: 85vh;
+  background: var(--glass);
+  border: 1px solid var(--gold);
+  border-radius: 24px; overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 50px var(--gold-glow-light);
+  position: relative; transform: scale(0.95) translateY(20px); transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
+}
+#calendly-modal.active .calendly-glass {
+  transform: scale(1) translateY(0);
+}
+.close-calendly {
+  position: absolute; top: 20px; right: 20px;
+  background: var(--dark-surface); color: var(--gold);
+  border: 1px solid var(--border); border-radius: 50%;
+  width: 45px; height: 45px; font-size: 24px; font-weight: bold;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 10; transition: 0.3s;
+}
+.close-calendly:hover { background: var(--gold); color: var(--dark); transform: scale(1.1); box-shadow: 0 0 20px var(--gold-glow);}
+.calendly-iframe { width: 100%; height: 100%; border: none; background: transparent; }
+
 /* ─── CHAT & FLOAT UI ─── */
 .float-btn{position:fixed;z-index:900;display:flex;align-items:center;justify-content:center;border-radius:50%;cursor:none;transition:all 0.3s;}
 #audio-toggle{bottom:30px;right:30px;width:50px;height:50px;background:var(--glass);border:1px solid var(--border);color:var(--gold);font-size:20px;backdrop-filter:blur(10px);}
@@ -394,7 +391,7 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
   #chat-box{width:320px;}footer{flex-direction:column;gap:15px;text-align:center;}
   .calc-body{padding:30px;}.calc-results{padding:30px;}
   .f-text{text-align:center !important;}
-  .modal-glass-container { width: 100%; height: 90vh; border-radius: 20px 20px 0 0; }
+  .calendly-glass{width: 100%; height: 90vh; border-radius: 20px 20px 0 0;}
 }
 </style>
 </head>
@@ -412,114 +409,312 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
 <nav id="navbar">
   <div class="nav-logo">J<span>K</span>.</div>
   <ul class="nav-links">
-    <li><a href="#hero">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#dashboard">Results</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Work</a></li>
   </ul>
-  <a href="#" onclick="toggleBookingModal(event)" class="btn-magnetic">Book Audit</a>
+  <a href="#" onclick="openCalendly(event)" class="btn-magnetic">Book Audit</a>
 </nav>
 
 <section id="hero">
   <div class="hero-glow"></div>
   <div class="hero-grid"></div>
   <div class="hero-inner">
-    <div class="hero-badge reveal"><span>●</span> Marketplace Manager &amp; Growth Specialist</div>
-    <h1 class="hero-title reveal">Scale Your Brand with <span class="accent">Quick Shift</span></h1>
-    <p class="hero-sub reveal">Helping brands scale across Amazon, Flipkart, & Quick Commerce with data-driven growth systems. Multi-platform execution focused on ROI.</p>
+    <div class="hero-badge reveal"><span>●</span> E-Commerce Marketplace Manager &amp; Growth Specialist</div>
+    <h1 class="hero-title reveal">
+      Scale Your Brand Across <span class="accent">Marketplaces</span>
+    </h1>
+    <p class="hero-sub reveal">
+      <strong>Amazon • Flipkart • Myntra • Ajio • JioMart • Quick Commerce Expert</strong><br/><br/>
+      I help brands grow through marketplace management, brand development, and scalable e-commerce growth systems across multiple platforms.
+    </p>
     <div class="hero-actions reveal">
-      <a href="#" onclick="toggleBookingModal(event)" class="btn-magnetic gold-fill" style="padding:18px 48px;">Book Free Strategy Call</a>
+      <a href="#" onclick="openCalendly(event)" class="btn-magnetic gold-fill" style="padding:18px 48px;">Book a Strategy Call</a>
     </div>
     <div class="hero-stats reveal">
       <div class="stat-item"><div class="stat-num" data-count="15" data-prefix="₹" data-suffix="L+">0</div><div class="stat-label">Monthly Revenue</div></div>
       <div class="stat-item"><div class="stat-num" data-count="1500" data-suffix="+">0</div><div class="stat-label">Monthly Orders</div></div>
       <div class="stat-item"><div class="stat-num" data-count="100" data-suffix="M+">0</div><div class="stat-label">Total Impressions</div></div>
+      <div class="stat-item"><div class="stat-num" data-count="45" data-suffix="%">0</div><div class="stat-label">Organic Growth</div></div>
     </div>
   </div>
 </section>
 
 <div class="marquee-container">
   <div class="marquee-content" id="marquee-track">
-    <div class="marquee-item"><span class="marquee-logo-text">Amazon</span></div>
-    <div class="marquee-item"><span class="marquee-logo-text">Flipkart</span></div>
-    <div class="marquee-item"><span class="marquee-logo-text">Myntra</span></div>
-    <div class="marquee-item"><span class="marquee-logo-text">Ajio</span></div>
-    <div class="marquee-item"><span class="marquee-logo-text">Blinkit</span></div>
-    <div class="marquee-item"><span class="marquee-logo-text">Zepto</span></div>
-    <div class="marquee-item"><span class="marquee-logo-text">Shopify</span></div>
-    <div class="marquee-item"><span class="marquee-logo-text">Amazon</span></div>
-    <div class="marquee-item"><span class="marquee-logo-text">Flipkart</span></div>
-    <div class="marquee-item"><span class="marquee-logo-text">Myntra</span></div>
-    <div class="marquee-item"><span class="marquee-logo-text">Ajio</span></div>
-    <div class="marquee-item"><span class="marquee-logo-text">Blinkit</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#FF9900;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 100 100"><text y="75" font-size="80" font-family="Arial" font-weight="900" fill="#fff">a</text></svg></div><span class="marquee-logo-text">Amazon</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#047BD5;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="16" font-family="Arial" font-weight="900" fill="#fff">F</text></svg></div><span class="marquee-logo-text">Flipkart</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#FF3E6C;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="16" font-family="Arial" font-weight="900" fill="#fff">M</text></svg></div><span class="marquee-logo-text">Myntra</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#8B5CF6;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="16" font-family="Arial" font-weight="900" fill="#fff">Z</text></svg></div><span class="marquee-logo-text">Zepto</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#F8D12F;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="15" font-family="Arial" font-weight="900" fill="#000">⚡</text></svg></div><span class="marquee-logo-text">Blinkit</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#95BF47;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="16" font-family="Arial" font-weight="900" fill="#fff">S</text></svg></div><span class="marquee-logo-text">Shopify</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#9C27B0;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="16" font-family="Arial" font-weight="900" fill="#fff">M</text></svg></div><span class="marquee-logo-text">Meesho</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#005BBB;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="14" font-family="Arial" font-weight="900" fill="#fff">Jio</text></svg></div><span class="marquee-logo-text">JioMart</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#000;border:1px solid #444;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="14" font-family="Arial" font-weight="900" fill="#fff">AJ</text></svg></div><span class="marquee-logo-text">Ajio</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#7B519D;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="15" font-family="Arial" font-weight="900" fill="#fff">W</text></svg></div><span class="marquee-logo-text">WooCommerce</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#FF9900;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 100 100"><text y="75" font-size="80" font-family="Arial" font-weight="900" fill="#fff">a</text></svg></div><span class="marquee-logo-text">Amazon</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#047BD5;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="16" font-family="Arial" font-weight="900" fill="#fff">F</text></svg></div><span class="marquee-logo-text">Flipkart</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#FF3E6C;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="16" font-family="Arial" font-weight="900" fill="#fff">M</text></svg></div><span class="marquee-logo-text">Myntra</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#8B5CF6;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="16" font-family="Arial" font-weight="900" fill="#fff">Z</text></svg></div><span class="marquee-logo-text">Zepto</span></div>
+    <div class="marquee-item"><div class="marquee-logo-icon" style="background:#F8D12F;border-radius:8px;"><svg width="22" height="22" viewBox="0 0 24 24"><text y="18" font-size="15" font-family="Arial" font-weight="900" fill="#000">⚡</text></svg></div><span class="marquee-logo-text">Blinkit</span></div>
   </div>
 </div>
 
 <section id="about">
   <div class="about-grid reveal">
     <div class="about-text">
-      <span class="section-label" style="text-align:left;">Quick Shift Creative</span>
+      <span class="section-label" style="text-align:left;">Brand Strategist</span>
       <h2 class="section-title" style="text-align:left; margin-bottom:30px;">The <span class="accent">DNA</span> of Growth</h2>
       <p>I’m <strong>Jenish Kamli</strong> — an experienced E-Commerce Marketplace Manager, Brand Growth Strategist, and Quick Commerce Specialist.</p>
-      <p>I help businesses build scalable revenue systems across e-commerce and D2C platforms like Shopify and WooCommerce. My approach focuses on data-driven execution, marketplace optimization, and long-term brand development.</p>
+      <p>I specialize in managing and scaling brands across leading marketplaces including Amazon, Flipkart, Myntra, Ajio, Tata Cliq, JioMart, and Meesho, along with quick commerce platforms like Blinkit, Zepto, and Swiggy Instamart.</p>
+      <p>With hands-on experience in marketplace operations, product optimization, and brand growth strategy, I help businesses build scalable revenue systems across e-commerce and D2C platforms like Shopify and WooCommerce. My approach focuses on data-driven execution, marketplace optimization, and long-term brand development.</p>
     </div>
     <div class="about-media">
       <div class="media-placeholder video" style="min-height:350px;">
         <div class="icon">▶</div>
-        <div>Agency Introduction Video</div>
+        <div>Cinematic Video Placeholder</div>
       </div>
     </div>
   </div>
 </section>
 
+<section id="platforms">
+  <div class="section-head reveal">
+    <span class="section-label">E-Commerce Ecosystem</span>
+    <h2 class="section-title">Platforms I <span class="accent">Scale</span></h2>
+    <p class="section-desc">From traditional marketplaces to Quick Commerce and custom D2C stores, I manage the complete ecosystem.</p>
+  </div>
+  <div class="platform-grid-12">
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#FF9900;">a</div><div class="p-name">Amazon</div><div class="platform-badge">Marketplace</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#047BD5;">F</div><div class="p-name">Flipkart</div><div class="platform-badge">Marketplace</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#FF3E6C;">M</div><div class="p-name">Myntra</div><div class="platform-badge">Brand Scale</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#111;border:1px solid #444;">AJ</div><div class="p-name">Ajio</div><div class="platform-badge">Brand Scale</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#F8D12F;color:#000;">⚡</div><div class="p-name">Blinkit</div><div class="platform-badge">Q-Com</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9);">Z</div><div class="p-name">Zepto</div><div class="platform-badge">Q-Com</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#FC8019;">IM</div><div class="p-name">Instamart</div><div class="platform-badge">Q-Com</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#95BF47;">S</div><div class="p-name">Shopify</div><div class="platform-badge">D2C</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#7B519D;">W</div><div class="p-name">WooCommerce</div><div class="platform-badge">D2C</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:linear-gradient(135deg,#9C27B0,#E91E8C);">M</div><div class="p-name">Meesho</div><div class="platform-badge">Optimization</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#DC143C;">TC</div><div class="p-name">Tata Cliq</div><div class="platform-badge">Operations</div></div>
+    <div class="p-card reveal"><div class="p-logo-wrap" style="background:#005BBB;">Jio</div><div class="p-name">JioMart</div><div class="platform-badge">Operations</div></div>
+  </div>
+</section>
+
 <section id="dashboard">
   <div class="section-head reveal">
-    <span class="section-label">Performance Analytics</span>
+    <span class="section-label">Performance & Analytics</span>
     <h2 class="section-title">Real Marketplace <span class="accent">Growth</span></h2>
+    <p class="section-desc">Proven results across multiple e-commerce platforms with consistent growth in revenue, orders, and visibility.</p>
   </div>
   <div class="bento-grid">
+    <div class="bento-box reveal">
+      <div class="b-label">Total Impressions</div>
+      <div class="b-val">100M+</div>
+      <div class="b-desc">↑ Driven across platforms</div>
+    </div>
+    <div class="bento-box reveal">
+      <div class="b-label">Monthly Orders</div>
+      <div class="b-val">1000+</div>
+      <div class="b-desc">↑ Optimized operations flow</div>
+    </div>
     <div class="bento-box bento-col-2 bento-row-2 reveal">
+      <div class="chart-title">Monthly Revenue Scaling <span style="color:var(--gold);">● ₹15L+ Live Trajectory</span></div>
       <div class="chart-wrap"><canvas id="revenueChart"></canvas></div>
     </div>
     <div class="bento-box reveal">
-      <div class="b-val">100M+</div>
-      <div class="b-desc">Driven across platforms</div>
+      <div class="b-label">Revenue Target Hit</div>
+      <div class="b-val" data-count="15" data-prefix="₹" data-suffix="L+">₹0</div>
+      <div class="b-desc">Monthly generated revenue</div>
     </div>
     <div class="bento-box reveal">
-      <div class="b-val">45%</div>
-      <div class="b-desc">Organic Growth Baseline</div>
+      <div class="b-label">Growth Strategy</div>
+      <div class="b-val" style="font-size:28px;">55% Perf.</div>
+      <div class="b-desc">Balanced with 45% Organic</div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-head reveal">
+    <span class="section-label">My Expertise</span>
+    <h2 class="section-title">E-Commerce <span class="accent">Solutions</span></h2>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card reveal">
+      <div class="svc-num">01</div>
+      <h3 class="svc-title">Marketplace Management</h3>
+      <p class="svc-desc">Complete Amazon, Flipkart, Myntra, Ajio, Tata Cliq, and JioMart marketplace management including catalog optimization, listing management, and performance tracking.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-num">02</div>
+      <h3 class="svc-title">E-Commerce Brand Management</h3>
+      <p class="svc-desc">End-to-end brand growth strategy including product positioning, content optimization, and conversion-focused improvements across marketplaces and D2C platforms.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-num">03</div>
+      <h3 class="svc-title">Quick Commerce Management</h3>
+      <p class="svc-desc">Onboarding and scaling brands on Blinkit, Zepto, and Swiggy Instamart with fast-paced execution and optimized catalog management.</p>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-num">04</div>
+      <h3 class="svc-title">D2C Store Growth</h3>
+      <p class="svc-desc">Managing and optimizing direct-to-consumer websites (Shopify & WooCommerce) for improved conversion rates, user experience, and brand consistency.</p>
     </div>
   </div>
 </section>
 
 <section id="physics-pit">
   <span class="section-label reveal">E-Commerce Ecosystem</span>
-  <h2 class="section-title reveal">Interactive <span class="accent">Stack</span></h2>
+  <h2 class="section-title reveal">Drop &amp; <span class="accent">Bounce</span></h2>
   <div id="matter-container" class="reveal"></div>
   <p class="pit-hint">Drag objects to explore the multi-platform tech stack</p>
 </section>
 
 <section id="proof">
   <div class="section-head reveal">
-    <h2 class="section-title">Dashboard <span class="accent">Proof</span></h2>
+    <span class="section-label">Proof of Work</span>
+    <h2 class="section-title">Marketplace <span class="accent">Dashboards</span></h2>
+    <p class="section-desc">Real marketplace dashboards showing consistent growth in revenue, orders, and impressions across platforms. Due to confidentiality agreements, detailed client data and brand identities are not publicly disclosed.</p>
   </div>
   <div class="proof-scroll-wrapper reveal">
     <div class="proof-track">
-      <div class="proof-card"><div class="media-placeholder image"><div class="icon">📈</div><div>Amazon Analytics</div></div></div>
-      <div class="proof-card"><div class="media-placeholder image"><div class="icon">💹</div><div>Flipkart Growth</div></div></div>
-      <div class="proof-card"><div class="media-placeholder video"><div class="icon">▶</div><div>100M+ Impressions</div></div></div>
-      <div class="proof-card"><div class="media-placeholder image"><div class="icon">⚡</div><div>Blinkit Dashboard</div></div></div>
+      <div class="proof-card">
+        <div class="media-placeholder image"><div class="icon">📈</div><div>Amazon Analytics</div></div>
+        <div class="proof-card-overlay"><span>Amazon Analytics</span></div>
+      </div>
+      <div class="proof-card">
+        <div class="media-placeholder image"><div class="icon">💹</div><div>Flipkart Growth</div></div>
+        <div class="proof-card-overlay"><span>Flipkart Growth</span></div>
+      </div>
+      <div class="proof-card">
+        <div class="media-placeholder video"><div class="icon">▶</div><div>100M+ Impressions</div></div>
+        <div class="proof-card-overlay"><span>100M+ Impressions</span></div>
+      </div>
+      <div class="proof-card">
+        <div class="media-placeholder image"><div class="icon">⚡</div><div>Blinkit Dashboard</div></div>
+        <div class="proof-card-overlay"><span>Blinkit Dashboard</span></div>
+      </div>
+      <div class="proof-card">
+        <div class="media-placeholder image"><div class="icon">🛒</div><div>Shopify Sales</div></div>
+        <div class="proof-card-overlay"><span>Shopify Sales</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-head reveal">
+    <span class="section-label">Case Studies</span>
+    <h2 class="section-title">Multi-Platform <span class="accent">Success</span></h2>
+    <p class="section-desc">Built a balanced growth model with 45% organic and 55% performance-driven revenue.</p>
+  </div>
+  <div class="prj-grid">
+    <div class="prj-card reveal">
+      <div class="prj-img"><div class="media-placeholder image" style="border:none; border-radius:0;"><div class="icon">📷</div></div></div>
+      <div class="prj-info">
+        <span class="prj-tag">Amazon Expert</span>
+        <h3 class="prj-title">Amazon Marketplace Growth</h3>
+        <p class="prj-desc">Managed and scaled Amazon seller accounts with optimized listings, brand positioning, and structured marketplace growth strategies. Created brand stores and A+ content to improve product presentation, brand identity, and conversion rates.</p>
+      </div>
+    </div>
+    <div class="prj-card reveal">
+      <div class="prj-img"><div class="media-placeholder image" style="border:none; border-radius:0;"><div class="icon">📷</div></div></div>
+      <div class="prj-info">
+        <span class="prj-tag">Flipkart Specialist</span>
+        <h3 class="prj-title">Flipkart Order Flow Scale</h3>
+        <p class="prj-desc">Improved product visibility and order flow through structured marketplace management and catalog optimization. Scaled operations from low baseline to consistent high-volume order flow.</p>
+      </div>
+    </div>
+    <div class="prj-card reveal">
+      <div class="prj-img"><div class="media-placeholder video" style="border:none; border-radius:0;"><div class="icon">▶</div></div></div>
+      <div class="prj-info">
+        <span class="prj-tag">Quick Commerce</span>
+        <h3 class="prj-title">Q-Com Onboarding Project</h3>
+        <p class="prj-desc">Successfully onboarded and scaled products on Blinkit, Zepto, and Swiggy Instamart platforms, ensuring fast-paced execution, perfect catalog compliance, and hyper-local visibility.</p>
+      </div>
+    </div>
+    <div class="prj-card reveal">
+      <div class="prj-img"><div class="media-placeholder image" style="border:none; border-radius:0;"><div class="icon">📷</div></div></div>
+      <div class="prj-info">
+        <span class="prj-tag">Catalog Authority</span>
+        <h3 class="prj-title">GS1 Barcode Implementation</h3>
+        <p class="prj-desc">Handled GS1 barcode registration, GTIN allocation, and UPC implementation for proper marketplace compliance and brand authenticity across all leading e-commerce platforms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="calculator">
+  <div class="section-head reveal">
+    <span class="section-label">Free Tool</span>
+    <h2 class="section-title">Marketplace <span class="accent">Profit Calculator</span></h2>
+    <p class="section-desc">Calculate your real margins across Amazon, Flipkart, Meesho, Myntra & Quick Commerce platforms — before you sell a single unit.</p>
+  </div>
+  <div class="calc-inner reveal">
+    <div class="calc-card">
+      <div class="calc-body">
+        <div class="calc-grid">
+          <div class="calc-form-group full">
+            <label class="calc-label" for="calc-platform">Select Platform</label>
+            <select class="calc-select" id="calc-platform">
+              <optgroup label="Traditional E-Commerce">
+                <option value="amazon">🟠 Amazon</option>
+                <option value="flipkart">🔵 Flipkart</option>
+                <option value="meesho">🟣 Meesho</option>
+                <option value="myntra">🔴 Myntra (Fashion)</option>
+              </optgroup>
+              <optgroup label="Quick Commerce (Q-Comm)">
+                <option value="blinkit">⚡ Blinkit / Zepto / Instamart</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="calc-form-group">
+            <label class="calc-label" for="calc-sp">Selling Price (₹)</label>
+            <input type="number" class="calc-input" id="calc-sp" placeholder="e.g. 899" min="0">
+          </div>
+          <div class="calc-form-group">
+            <label class="calc-label" for="calc-cp">Sourcing / Mfg Cost (₹)</label>
+            <input type="number" class="calc-input" id="calc-cp" placeholder="e.g. 350" min="0">
+          </div>
+          <div class="calc-form-group full">
+            <label class="calc-label" for="calc-ship">Estimated Shipping Cost (₹)</label>
+            <input type="number" class="calc-input" id="calc-ship" placeholder="e.g. 45" min="0">
+          </div>
+        </div>
+        <div class="calc-btn-wrap">
+          <button class="calc-btn" onclick="calculateProfit()">⚡ Calculate My Margins</button>
+        </div>
+      </div>
+      <div class="calc-results" id="calc-results-block">
+        <div class="result-row"><span class="r-label">Selling Price</span><span class="r-val" id="cr-sp">₹0</span></div>
+        <div class="result-row"><span class="r-label">Marketplace Commission</span><span class="r-val deduct" id="cr-comm">- ₹0</span></div>
+        <div class="result-row"><span class="r-label">Fixed / Collection Fees</span><span class="r-val deduct" id="cr-fixed">- ₹0</span></div>
+        <div class="result-row"><span class="r-label">Shipping / Forwarding</span><span class="r-val deduct" id="cr-ship">- ₹0</span></div>
+        <div class="result-row"><span class="r-label">GST on Fees (18%)</span><span class="r-val deduct" id="cr-gst">- ₹0</span></div>
+        <div class="result-row"><span class="r-label">Sourcing Cost</span><span class="r-val deduct" id="cr-cp">- ₹0</span></div>
+        <div class="result-total">
+          <span class="r-label">Net Profit</span>
+          <span class="r-val" id="cr-profit">₹0</span>
+        </div>
+        <div class="result-margin">
+          <span style="color:var(--text-muted);font-size:12px;letter-spacing:1px;text-transform:uppercase;">ROI Margin</span>
+          <span id="cr-margin" style="color:var(--gold);">0%</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="cta-section">
   <div class="cta-inner reveal">
-    <h2 class="section-title">Ready to Scale Your Brand?</h2>
-    <p class="hero-sub">Let's build a powerful e-commerce growth system together.</p>
+    <span class="section-label">Final Power Line</span>
+    <h2 class="section-title" style="margin-bottom:20px;">E-Commerce Growth is not just about selling products...</h2>
+    <p class="hero-sub" style="font-size:22px; color:var(--gold); font-weight:600;">...it’s about building scalable systems across marketplaces, D2C, and quick commerce platforms.</p>
+    <p class="hero-sub">Looking to scale your brand across Amazon, Flipkart, and quick commerce platforms? Let’s build a powerful e-commerce growth system that delivers consistent and scalable results.</p>
     <div class="cta-actions">
-      <a href="#" onclick="toggleBookingModal(event)" class="btn-magnetic gold-fill" style="padding:18px 48px;">Book a Strategy Call</a>
-      <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" target="_blank" class="btn-magnetic outline-dim" style="padding:18px 48px;">LinkedIn Profile</a>
+      <a href="#" onclick="openCalendly(event)" class="btn-magnetic gold-fill" style="padding:18px 48px;">Book a Strategy Call</a>
+      <a href="https://www.linkedin.com/in/jenish-kamli-47b787253" target="_blank" rel="noopener" class="btn-magnetic outline-dim" style="padding:18px 48px;">LinkedIn Profile</a>
     </div>
   </div>
 </section>
@@ -528,18 +723,36 @@ footer{padding:40px 5%;border-top:1px solid #1a1a1a;display:flex;justify-content
   <div class="f-logo">Jenish Kamli.</div>
   <div class="f-text">
     <strong>E-Commerce Marketplace Manager &amp; Brand Growth Specialist</strong><br/>
+    <span style="color:var(--text-muted);">Helping brands scale across Amazon, Flipkart, and quick commerce ecosystems.</span><br/>
     <span class="f-brand-tag">A Quick Shift Creative Initiative</span>
   </div>
 </footer>
 
-<div id="booking-modal">
-  <div class="modal-glass-container">
-    <button class="close-modal-btn" onclick="toggleBookingModal(event)">×</button>
-    <iframe class="calendar-iframe" src="https://calendar.app.google/xHj2anRZ1imLTqEU9" title="Book a Meeting"></iframe>
+<div id="calendly-modal">
+  <div class="calendly-glass">
+    <button class="close-calendly" onclick="closeCalendly()">×</button>
+    <iframe class="calendly-iframe" src="https://calendly.com/YOUR_CALENDLY_LINK_HERE" title="Book an Audit"></iframe>
   </div>
 </div>
 
 <div class="float-btn" id="audio-toggle" onclick="toggleMute()" title="Mute/Unmute Sounds">🔊</div>
+
+<div id="chat-container">
+  <button class="float-btn" id="chat-toggle" onclick="toggleChat()">🤖</button>
+  <div id="chat-box">
+    <div class="chat-header">
+      <div class="chat-av">🤖</div>
+      <div class="chat-info"><h3>Marketplace AI</h3><p>● ONLINE</p></div>
+    </div>
+    <div class="chat-body" id="chat-messages">
+      <div class="msg bot">Namaste! Ask me about Jenish's ₹15L+ marketplace results, D2C Shopify scaling, or Quick Commerce growth strategies!</div>
+    </div>
+    <div class="chat-input-wrap">
+      <input type="text" id="chat-input" placeholder="Ask about D2C, Q-Com, Amazon..." onkeydown="if(event.key==='Enter')sendChat()"/>
+      <button id="chat-send" onclick="sendChat()">➤</button>
+    </div>
+  </div>
+</div>
 
 <script>
 // ── PRELOADER ──
@@ -558,18 +771,26 @@ const cursor=document.getElementById('cursor'),ring=document.getElementById('cur
 document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';});
 let rx=0,ry=0;
 (function animRing(){rx+=(cursor.getBoundingClientRect().left-rx)*0.15;ry+=(cursor.getBoundingClientRect().top-ry)*0.15;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
-
-document.querySelectorAll('a,button,.p-card,.bento-box,.media-placeholder,.close-modal-btn').forEach(el=>{
+document.querySelectorAll('a,button,.p-card,.bento-box,.svc-card,.prj-card,.proof-card,.calc-card,.calc-btn,.media-placeholder,.close-calendly').forEach(el=>{
   el.addEventListener('mouseenter',()=>{ring.style.transform='translate(-50%,-50%) scale(1.5)';ring.style.borderColor='var(--gold)';cursor.style.width='12px';cursor.style.height='12px';});
   el.addEventListener('mouseleave',()=>{ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.borderColor='rgba(229,184,11,0.5)';cursor.style.width='8px';cursor.style.height='8px';});
 });
 
-// ── MODAL LOGIC ──
-function toggleBookingModal(e) {
+// ── NAV SCROLL ──
+window.addEventListener('scroll',()=>{
+  const nav=document.querySelector('nav');
+  if(window.scrollY>50){nav.style.padding='15px 5%';nav.style.background='rgba(3,3,3,0.98)';}
+  else{nav.style.padding='25px 5%';nav.style.background='linear-gradient(180deg,rgba(3,3,3,0.9) 0%,transparent 100%)';}
+});
+
+// ── CALENDLY MODAL LOGIC ──
+function openCalendly(e) {
   if(e) e.preventDefault();
-  const modal = document.getElementById('booking-modal');
-  modal.classList.toggle('active');
+  document.getElementById('calendly-modal').classList.add('active');
   playSFX('click');
+}
+function closeCalendly() {
+  document.getElementById('calendly-modal').classList.remove('active');
 }
 
 // ── GSAP ──
@@ -587,45 +808,134 @@ const countObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isInt
   countObs.unobserve(e.target);}});},{threshold:0.5});
 countEls.forEach(el=>countObs.observe(el));
 
-// ── CHARTS ──
-let chartCtx=document.getElementById('revenueChart').getContext('2d');
-new Chart(chartCtx,{
+// ── WORKABLE CHART (₹15L+ Scale) ──
+let chartsInit=false;
+const chartObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&!chartsInit){chartsInit=true;initCharts();}});});
+chartObs.observe(document.getElementById('dashboard'));
+function initCharts(){
+  const gold='#E5B80B',white='rgba(255,255,255,0.7)';
+  const ctx=document.getElementById('revenueChart').getContext('2d');
+  const grad=ctx.createLinearGradient(0,0,0,250);grad.addColorStop(0,'rgba(229,184,11,0.5)');grad.addColorStop(1,'rgba(229,184,11,0)');
+  new Chart(ctx,{
     type:'line',
     data:{
       labels:['Month 1','Month 2','Month 3','Month 4','Month 5','Current'],
       datasets:[{
-        label:'Revenue',
+        label:'Revenue (₹)',
         data:[150000, 350000, 680000, 950000, 1200000, 1550000],
-        borderColor:'#E5B80B', backgroundColor:'rgba(229,184,11,0.1)', borderWidth:3, fill:true, tension:0.4
+        borderColor:gold, backgroundColor:grad, borderWidth:3,
+        pointBackgroundColor:gold, pointRadius:6, fill:true, tension:0.4
       }]
     },
-    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{y:{grid:{color:'#222'},ticks:{color:'#fff', callback: v => '₹'+(v/100000).toFixed(1)+'L'}},x:{grid:{color:'#222'},ticks:{color:'#fff'}}} }
-});
-
-// ── PHYSICS ──
-function initPhysics(){
-  const cont=document.getElementById('matter-container');
-  const{Engine,Render,Runner,Composite,Bodies,MouseConstraint,Mouse}=Matter;
-  const engine=Engine.create(),world=engine.world;
-  const render=Render.create({element:cont,engine:engine,options:{width:cont.clientWidth,height:cont.clientHeight,wireframes:false,background:'transparent'}});
-  Render.run(render);Runner.run(Runner.create(),engine);
-  const cw=cont.clientWidth,ch=cont.clientHeight;
-  Composite.add(world,[Bodies.rectangle(cw/2,ch+25,cw,50,{isStatic:true}),Bodies.rectangle(-25,ch/2,50,ch,{isStatic:true}),Bodies.rectangle(cw+25,ch/2,50,ch,{isStatic:true})]);
-  const items=["Amazon","Flipkart","Shopify","Blinkit","Zepto"];
-  items.forEach((t,i)=>{
-    let b=Bodies.circle(Math.random()*cw,-100-(i*50),45,{restitution:0.8,render:{fillStyle:'#E5B80B', strokeStyle:'#fff', lineWidth:2}});
-    Composite.add(world,b);
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{callbacks:{label:ctx=>'₹'+ctx.parsed.y.toLocaleString('en-IN')}} },
+      scales:{
+        x:{grid:{color:'#222'},ticks:{color:white}},
+        y:{grid:{color:'#222'},ticks:{color:white, callback: v => v>=100000 ? '₹'+(v/100000).toFixed(1)+'L' : '₹'+v}}
+      }
+    }
   });
-  const mouse=Mouse.create(render.canvas);
-  Composite.add(world,MouseConstraint.create(engine,{mouse:mouse,constraint:{stiffness:0.2,render:{visible:false}}}));
 }
-initPhysics();
 
 // ── AUDIO ──
 let isMuted=false;
-const sounds={click:'https://actions.google.com/sounds/v1/ui/button_click.ogg'};
+const sounds={bounce:'https://actions.google.com/sounds/v1/cartoon/pop.ogg',click:'https://actions.google.com/sounds/v1/ui/button_click.ogg'};
 function playSFX(n,v=0.5){if(!isMuted&&sounds[n]){let a=new Audio(sounds[n]);a.volume=v;a.play().catch(e=>{});}}
 function toggleMute(){isMuted=!isMuted;document.getElementById('audio-toggle').innerText=isMuted?'🔇':'🔊';}
+
+// ── PROOF SCROLL DRAG ──
+const scrollWrap=document.querySelector('.proof-scroll-wrapper');
+let isDown=false,startX,scrollLeft;
+scrollWrap.addEventListener('mousedown',e=>{isDown=true;scrollWrap.style.cursor='grabbing';startX=e.pageX-scrollWrap.offsetLeft;scrollLeft=scrollWrap.scrollLeft;});
+scrollWrap.addEventListener('mouseleave',()=>{isDown=false;scrollWrap.style.cursor='grab';});
+scrollWrap.addEventListener('mouseup',()=>{isDown=false;scrollWrap.style.cursor='grab';});
+scrollWrap.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();const x=e.pageX-scrollWrap.offsetLeft;const walk=(x-startX)*1.5;scrollWrap.scrollLeft=scrollLeft-walk;});
+
+// ── PHYSICS PIT ──
+function initPhysics(){
+  const cont=document.getElementById('matter-container');
+  const{Engine,Render,Runner,MouseConstraint,Mouse,Composite,Bodies,Events}=Matter;
+  const engine=Engine.create(),world=engine.world;
+  const render=Render.create({element:cont,engine:engine,options:{width:cont.clientWidth,height:cont.clientHeight,wireframes:false,background:'transparent'}});
+  Render.run(render);Runner.run(Runner.create(),engine);
+  const cw=cont.clientWidth,ch=cont.clientHeight,th=60;
+  Composite.add(world,[Bodies.rectangle(cw/2,ch+th/2,cw*2,th,{isStatic:true}),Bodies.rectangle(-th/2,ch/2,th,ch*2,{isStatic:true}),Bodies.rectangle(cw+th/2,ch/2,th,ch*2,{isStatic:true})]);
+  const items=[
+    {t:"Amazon",c:"#FF9900",r:55},{t:"Flipkart",c:"#047BD5",r:55},{t:"Shopify",c:"#95BF47",r:50},
+    {t:"Blinkit",c:"#F8D12F",r:45},{t:"Myntra",c:"#FF3E6C",r:45},{t:"Growth",c:"#222",r:65,s:"#E5B80B"}
+  ];
+  const bodies=items.map((s,i)=>{let b=Bodies.circle(Math.random()*(cw-100)+50,-100-(i*80),s.r,{restitution:0.9,render:{fillStyle:s.c,strokeStyle:s.s||s.c,lineWidth:3}});b.sData=s;return b;});
+  Composite.add(world,bodies);
+  const mouse=Mouse.create(render.canvas);
+  Composite.add(world,MouseConstraint.create(engine,{mouse:mouse,constraint:{stiffness:0.2,render:{visible:false}}}));render.mouse=mouse;
+  let lastBounce=0;
+  Events.on(engine,'collisionStart',e=>{if(e.pairs.length>0&&Date.now()-lastBounce>100){playSFX('bounce',0.2);lastBounce=Date.now();}});
+  Events.on(render,'afterRender',()=>{const ctx=render.context;ctx.font="bold 13px 'Outfit'";ctx.textAlign="center";ctx.textBaseline="middle";bodies.forEach(b=>{ctx.fillStyle="#FFF";ctx.fillText(b.sData.t,b.position.x,b.position.y);});});
+}
+let pitObs=new IntersectionObserver(e=>{if(e[0].isIntersecting){initPhysics();pitObs.disconnect();}});
+pitObs.observe(document.getElementById('physics-pit'));
+
+// ── PROFIT CALCULATOR ──
+function calculateProfit(){
+  const platform=document.getElementById('calc-platform').value;
+  const sp=parseFloat(document.getElementById('calc-sp').value)||0;
+  const cp=parseFloat(document.getElementById('calc-cp').value)||0;
+  const shipping=parseFloat(document.getElementById('calc-ship').value)||0;
+  if(sp===0){alert("Please enter a valid Selling Price.");return;}
+  let commissionRate=0,fixedFee=0,collectionRate=0;
+  switch(platform){
+    case 'amazon': commissionRate=(sp<1000)?0:0.10; fixedFee=(sp<1000)?30:60; collectionRate=0.02; break;
+    case 'flipkart': commissionRate=(sp<1000)?0:0.12; fixedFee=(sp<1000)?35:65; collectionRate=0.02; break;
+    case 'meesho': commissionRate=0;fixedFee=0;collectionRate=0; break;
+    case 'myntra': commissionRate=0.20;fixedFee=25;collectionRate=0.02; break;
+    case 'blinkit': commissionRate=0.20;fixedFee=8;collectionRate=0; break;
+  }
+  const commissionAmount=sp*commissionRate;
+  const collectionAmount=sp*collectionRate;
+  const totalFixedAndCollection=fixedFee+collectionAmount;
+  const totalMarketplaceFees=commissionAmount+totalFixedAndCollection;
+  const gstOnFees=totalMarketplaceFees*0.18;
+  const totalDeductions=totalMarketplaceFees+gstOnFees+shipping;
+  const settlement=sp-totalDeductions;
+  const profit=settlement-cp;
+  const profitMargin=(profit/sp)*100;
+
+  document.getElementById('cr-sp').innerText=`₹${sp.toFixed(2)}`;
+  document.getElementById('cr-comm').innerText=`- ₹${commissionAmount.toFixed(2)}`;
+  document.getElementById('cr-fixed').innerText=`- ₹${totalFixedAndCollection.toFixed(2)}`;
+  document.getElementById('cr-ship').innerText=`- ₹${shipping.toFixed(2)}`;
+  document.getElementById('cr-gst').innerText=`- ₹${gstOnFees.toFixed(2)}`;
+  document.getElementById('cr-cp').innerText=`- ₹${cp.toFixed(2)}`;
+
+  const profitEl=document.getElementById('cr-profit');
+  profitEl.innerText=`₹${profit.toFixed(2)}`;
+  profitEl.className='r-val '+(profit>=0?'profit':'loss');
+  const marginEl=document.getElementById('cr-margin');
+  marginEl.innerText=`${profitMargin.toFixed(2)}%`;
+  marginEl.style.color=profitMargin>=0?'#4ade80':'#ef4444';
+
+  const block=document.getElementById('calc-results-block');
+  block.style.display='block';
+  block.classList.add('visible');
+  playSFX('click',0.4);
+}
+
+// ── AI CHAT ──
+function toggleChat(){const box=document.getElementById('chat-box');box.classList.toggle('open');}
+function getReply(msg){
+  const m=msg.toLowerCase();
+  if(/who|about|name/.test(m))return"I'm Jenish Kamli — an experienced E-Commerce Marketplace Manager, Brand Growth Strategist, and Quick Commerce Specialist.";
+  if(/quick|blinkit|zepto|instamart|q-com/.test(m))return"⚡ I handle complete onboarding and growth for Blinkit, Zepto, and Instamart. From catalog compliance to hyper-local scaling.";
+  if(/revenue|growth|result|stats/.test(m))return"📈 I've generated ₹15L+ monthly revenue across marketplaces, managing 1500+ orders/month, and driving 100M+ impressions with a 45% Organic / 55% Performance split.";
+  if(/d2c|shopify|woo/.test(m))return"🛒 Yes! I manage D2C Store Growth via Shopify & WooCommerce, optimizing for better conversion rates, user experience, and brand consistency.";
+  if(/contact|email|hire|audit|book|call/.test(m))return"🔥 You can easily book a strategy call with me by clicking the 'Book Audit' button at the top of the page!";
+  if(/service|offer/.test(m))return"💼 Services: Marketplace Management (Amazon, Flipkart, etc.), D2C Growth (Shopify), Quick Commerce Onboarding, & E-Commerce Brand Management.";
+  if(/quick shift creative|agency/.test(m))return"🚀 Quick Shift Creative is my agency initiative focused on scaling e-commerce brands to the next level.";
+  return"I'm Jenish's AI assistant. Ask about the ₹15L+ revenue system, D2C Shopify scaling, or Quick Commerce strategies!";
+}
+function appendMsg(txt,type){const b=document.getElementById('chat-messages');const d=document.createElement('div');d.className='msg '+type;d.textContent=txt;b.appendChild(d);b.scrollTop=b.scrollHeight;}
+function sendChat(){const i=document.getElementById('chat-input');const t=i.value.trim();if(!t)return;i.value='';appendMsg(t,'user');const typEl=document.createElement('div');typEl.className='msg bot';typEl.id='typ-ind';typEl.textContent='...';document.getElementById('chat-messages').appendChild(typEl);setTimeout(()=>{document.getElementById('typ-ind').remove();appendMsg(getReply(t),'bot');},700+Math.random()*400);}
 </script>
 </body>
 </html>
